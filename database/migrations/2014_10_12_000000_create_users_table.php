@@ -23,12 +23,14 @@ class CreateUsersTable extends Migration
             $table->boolean('amici');
             $table->year('anno');
             $table->integer('privilegi');   // ore gratis
-            $table->date('certificato');
+            $table->date('certificato')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(['nome', 'cognome', 'anno']);
         });
     }
 

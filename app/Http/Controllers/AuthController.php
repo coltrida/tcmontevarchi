@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SignupRequest;
+use App\Http\Requests\UserRequest;
+use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -29,10 +32,20 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function signup(SignupRequest $request)
+    public function signup(UserRequest $request)
     {
-        User::create($request->all());
-        return $this->login($request);
+        $socio = Socio::where([
+            ['nome', $request->input('nome')],
+            ['cognome', $request->input('cognome')],
+            ['anno', $request->input('anno')]
+        ])->first();
+
+        if ($socio){
+            $user = User::create($request->all());
+            return response($user, Response::HTTP_CREATED);
+            //return $this->login($request);
+        }
+        return 'Errore - Socio non presente';
     }
 
     /**

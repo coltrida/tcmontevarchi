@@ -22,6 +22,8 @@ class CreateSociosTable extends Migration
             $table->char('status', 1)->default('0');   //normale = 0, gratis = 1, illimitato = 2
             $table->boolean('ricaricato')->default(false);
             $table->timestamps();
+
+            $table->index(['nome', 'cognome', 'anno']);
         });
     }
 
