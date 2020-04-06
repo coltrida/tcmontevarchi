@@ -16,15 +16,15 @@ class CreatePrenotazionesTable extends Migration
         Schema::create('prenotazioni', function (Blueprint $table) {
             $table->id();
             $table->string('username1');
-            $table->string('username2');
-            $table->string('username3');
-            $table->string('username4');
+            $table->string('username2')->nullable();
+            $table->string('username3')->nullable();
+            $table->string('username4')->nullable();
             $table->string('campo');
-            $table->date('dataprentazione');
-            $table->time('oraon');
-            $table->time('oraoff');
+            $table->date('dataprenotazione');
+            $table->tinyInteger('oraon');
             $table->boolean('doppio');
             $table->timestamps();
+
         });
     }
 

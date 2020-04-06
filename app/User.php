@@ -27,7 +27,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'password', 'remember_token',
     ];
 
     /**
@@ -59,14 +59,4 @@ class User extends Authenticatable implements JWTSubject
         $this->attributes['password'] = bcrypt($value);
     }
 
-    /*public function setCertificatoAttribute($value)
-    {
-        if ($value instanceof Carbon){
-            $this->attributes['certificato'] = $value->format('d-m-Y');
-        }else{
-            $value2 = Carbon::parse($value);
-            $this->attributes['certificato'] = $value2->format('d-m-Y');
-        };
-
-    }*/
 }

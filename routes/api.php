@@ -4,17 +4,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+Route::apiResource('/prenotazioni', 'PrenotazioniController');
+Route::post('/prenotazionispecifiche', 'PrenotazioniController@index')->name('prenotazioni.index');
 Route::apiResource('/soci', 'SociController');
+
 
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::get('users', 'AuthController@index')->name('users');
+    Route::post('login', 'AuthController@login')->name('login');
+    Route::post('signup', 'AuthController@signup')->name('signup');
+    Route::post('logout', 'AuthController@logout')->name('logout');
+    Route::post('refresh', 'AuthController@refresh')->name('refresh');
+    Route::post('me', 'AuthController@me')->name('me');
 
-    Route::post('payload', 'AuthController@payload');
+    Route::post('payload', 'AuthController@payload')->name('payload');
 
 });

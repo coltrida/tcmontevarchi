@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\UserResource;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,12 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['login', 'signup']]);
+        $this->middleware('JWT', ['except' => ['login', 'signup', 'index']]);
+    }
+
+    public function index()
+    {
+        return UserResource::collection(User::latest()->get());
     }
 
     /**
@@ -94,5 +100,10 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+    }
+
+    public function payload()
+    {
+        return auth()->payload();
     }
 }
