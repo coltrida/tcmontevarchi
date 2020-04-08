@@ -1,8 +1,18 @@
 <template>
     <v-row>
         <v-col>
-            <v-btn style="height: 70px" color="green" @click="visualizzaPrenotazioni">{{ dataOggi }}</v-btn>
-            <v-btn style="height: 70px" color="green" @click="visualizzaPrenotazioni">{{ piuuno }}</v-btn>
+            <router-link
+                    :to="linkdata"
+            >
+                <v-btn style="height: 70px" color="green">{{ dataOggi }}</v-btn>
+            </router-link>
+
+            <router-link
+                    :to="linkuno"
+            >
+                <v-btn style="height: 70px" color="green">{{ piuuno }}</v-btn>
+            </router-link>
+
         </v-col>
     </v-row>
 </template>
@@ -17,6 +27,8 @@
                 piutre: null,
                 piuquattro: null,
                 piucinque: null,
+                linkdata: null,
+                linkuno: null,
             }
         },
 
@@ -32,11 +44,14 @@
             let val = this.layoutgiorno(today);
             let val2 = this.layoutgiorno(tomorrow);
 
-            today = val[0] + '/' + val[1] + '/' + val[2];
-            tomorrow = val2[0] + '/' + val2[1] + '/' + val2[2];
+            today = val[2] + '-' + val[1] + '-' + val[0];
+            tomorrow = val2[2] + '-' + val2[1] + '-' + val2[0];
 
             this.dataOggi = today;
             this.piuuno = tomorrow;
+
+            this.linkdata = "/prenotazioni/"+this.dataOggi
+            this.linkuno = "/prenotazioni/"+this.piuuno
 
         },
 

@@ -11,8 +11,14 @@
     import AppFooter from './AppFooter'
     export default {
         components: {toolbar, AppFooter},
-        mounted() {
-
-        }
+        /*created() {
+            document.addEventListener('beforeunload', this.handler)
+        },
+        methods: {
+            handler: function handler(event) {
+                alert('ciao')
+                User.logout()
+            }
+        }*/
     }
 </script>
