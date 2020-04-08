@@ -14,7 +14,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione titolo="Campo 1"></prenotazione>
+                    <prenotazione1 titolo="Campo1" :giorno="gior"></prenotazione1>
                 </v-card>
             </v-col>
 
@@ -24,7 +24,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione titolo="Campo 2"></prenotazione>
+                    <prenotazione2 titolo="Campo2" :giorno="gior"></prenotazione2>
                 </v-card>
             </v-col>
 
@@ -34,7 +34,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione titolo="Campo 3"></prenotazione>
+                    <prenotazione3 titolo="Campo3" :giorno="gior"></prenotazione3>
                 </v-card>
             </v-col>
 
@@ -44,7 +44,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione titolo="Campo 4"></prenotazione>
+                    <prenotazione4 titolo="Campo4" :giorno="gior"></prenotazione4>
                 </v-card>
             </v-col>
         </v-row>
@@ -52,7 +52,10 @@
 </template>
 
 <script>
-    import Prenotazione from './Prenotazioni'
+    import Prenotazione1 from './Prenotazioni1'
+    import Prenotazione2 from './Prenotazioni2'
+    import Prenotazione3 from './Prenotazioni3'
+    import Prenotazione4 from './Prenotazioni4'
     export default {
         name: "PrenotazioniCampi",
 
@@ -62,7 +65,7 @@
             }
         },
 
-        components:{Prenotazione}
+        components:{Prenotazione1, Prenotazione2, Prenotazione3, Prenotazione4}
     }
 </script>
 

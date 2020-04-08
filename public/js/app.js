@@ -2219,10 +2219,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2261,12 +2261,331 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titolo'],
+  props: ['titolo', 'giorno'],
   data: function data() {
     return {
-      settings: []
+      prenotazioni: {}
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/api/prenotazionispecifiche', {
+      dataprenotazione: this.giorno,
+      campo: 'campo1'
+    }).then(function (res) {
+      _this.prenotazioni = res.data.data; //   console.log(this.prenotazioni)
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['titolo', 'giorno'],
+  data: function data() {
+    return {
+      prenotazioni: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/api/prenotazionispecifiche', {
+      dataprenotazione: this.giorno,
+      campo: 'campo2'
+    }).then(function (res) {
+      _this.prenotazioni = res.data.data; // console.log(this.prenotazioni)
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['titolo', 'giorno'],
+  data: function data() {
+    return {
+      prenotazioni: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/api/prenotazionispecifiche', {
+      dataprenotazione: this.giorno,
+      campo: 'campo3'
+    }).then(function (res) {
+      _this.prenotazioni = res.data.data; // console.log(this.prenotazioni)
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['titolo', 'giorno'],
+  data: function data() {
+    return {
+      prenotazioni: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/api/prenotazionispecifiche', {
+      dataprenotazione: this.giorno,
+      campo: 'campo4'
+    }).then(function (res) {
+      _this.prenotazioni = res.data.data; //console.log(this.prenotazioni)
+    });
   }
 });
 
@@ -2281,7 +2600,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Prenotazioni__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni */ "./resources/js/Components/prenotazioni/Prenotazioni.vue");
+/* harmony import */ var _Prenotazioni1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni1 */ "./resources/js/Components/prenotazioni/Prenotazioni1.vue");
+/* harmony import */ var _Prenotazioni2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni2 */ "./resources/js/Components/prenotazioni/Prenotazioni2.vue");
+/* harmony import */ var _Prenotazioni3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Prenotazioni3 */ "./resources/js/Components/prenotazioni/Prenotazioni3.vue");
+/* harmony import */ var _Prenotazioni4__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Prenotazioni4 */ "./resources/js/Components/prenotazioni/Prenotazioni4.vue");
 //
 //
 //
@@ -2336,6 +2658,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PrenotazioniCampi",
   data: function data() {
@@ -2344,7 +2669,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    Prenotazione: _Prenotazioni__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Prenotazione1: _Prenotazioni1__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Prenotazione2: _Prenotazioni2__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Prenotazione3: _Prenotazioni3__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Prenotazione4: _Prenotazioni4__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 });
 
@@ -38352,10 +38680,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38373,7 +38701,7 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "teal", dark: "" } },
+        { attrs: { color: "red", dark: "" } },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -38381,49 +38709,664 @@ var render = function() {
       _c(
         "v-list",
         { attrs: { "two-line": "", subheader: "" } },
-        [
-          _c(
-            "v-list-item",
+        _vm._l(15, function(n) {
+          return _c(
+            "div",
             [
               _c(
-                "v-list-item-content",
+                "v-list-item",
                 [
-                  _c("v-list-item-title", [_vm._v("Profile photo")]),
-                  _vm._v(" "),
-                  _c("v-list-item-subtitle", [
-                    _vm._v("Change your Google+ profile photo")
-                  ])
+                  _c(
+                    "v-list-item-content",
+                    { staticStyle: { height: "80px" } },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { color: "green" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.prenotazioni, function(prenotazione) {
+                        return _c("div", [
+                          prenotazione.oraon == n + 8
+                            ? _c(
+                                "div",
+                                [
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "justify-content": "space-between"
+                                      }
+                                    },
+                                    [
+                                      _c("div", [
+                                        prenotazione.username1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username1)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username2
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username2)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username3
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username3)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username4
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username4)
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        prenotazione.username1 ||
+                                        prenotazione.username2 ||
+                                        prenotazione.username3 ||
+                                        prenotazione.username4
+                                          ? _c(
+                                              "span",
+                                              [
+                                                _c(
+                                                  "v-chip",
+                                                  {
+                                                    staticClass:
+                                                      "ml-0 mb-2 black--text",
+                                                    attrs: {
+                                                      color: "red",
+                                                      label: "",
+                                                      small: ""
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                          " +
+                                                        _vm._s(
+                                                          prenotazione.doppio
+                                                        ) +
+                                                        "\n                                    "
+                                                    )
+                                                  ]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e()
+                                      ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-divider"),
-          _vm._v(" "),
-          _c(
-            "v-list-item",
-            [
-              _c(
-                "v-list-item-content",
-                [
-                  _c("v-list-item-title", [_vm._v("Show your status")]),
-                  _vm._v(" "),
-                  _c("v-list-item-subtitle", [
-                    _vm._v("Your status is visible to everyone")
-                  ])
-                ],
-                1
-              )
+              ),
+              _vm._v(" "),
+              _c("v-divider")
             ],
             1
           )
-        ],
+        }),
+        0
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { staticClass: "mx-auto", attrs: { "max-width": "475" } },
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { color: "red", dark: "" } },
+        [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
       _vm._v(" "),
-      _c("v-divider")
+      _c(
+        "v-list",
+        { attrs: { "two-line": "", subheader: "" } },
+        _vm._l(15, function(n) {
+          return _c(
+            "div",
+            [
+              _c(
+                "v-list-item",
+                [
+                  _c(
+                    "v-list-item-content",
+                    { staticStyle: { height: "80px" } },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { color: "green" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.prenotazioni, function(prenotazione) {
+                        return _c("div", [
+                          prenotazione.oraon == n + 8
+                            ? _c(
+                                "div",
+                                [
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "justify-content": "space-between"
+                                      }
+                                    },
+                                    [
+                                      _c("div", [
+                                        prenotazione.username1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username1)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username2
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username2)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username3
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username3)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username4
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username4)
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _c(
+                                          "span",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value:
+                                                  prenotazione.username1 ||
+                                                  prenotazione.username2 ||
+                                                  prenotazione.username3 ||
+                                                  prenotazione.username4,
+                                                expression:
+                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
+                                              }
+                                            ]
+                                          },
+                                          [
+                                            _c(
+                                              "v-chip",
+                                              {
+                                                staticClass:
+                                                  "ml-0 mb-2 black--text",
+                                                attrs: {
+                                                  color: "red",
+                                                  label: "",
+                                                  small: ""
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                          " +
+                                                    _vm._s(
+                                                      prenotazione.doppio
+                                                    ) +
+                                                    "\n                                    "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider")
+            ],
+            1
+          )
+        }),
+        0
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { staticClass: "mx-auto", attrs: { "max-width": "475" } },
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { color: "red", dark: "" } },
+        [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-list",
+        { attrs: { "two-line": "", subheader: "" } },
+        _vm._l(15, function(n) {
+          return _c(
+            "div",
+            [
+              _c(
+                "v-list-item",
+                [
+                  _c(
+                    "v-list-item-content",
+                    { staticStyle: { height: "80px" } },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { color: "green" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.prenotazioni, function(prenotazione) {
+                        return _c("div", [
+                          prenotazione.oraon == n + 8
+                            ? _c(
+                                "div",
+                                [
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "justify-content": "space-between"
+                                      }
+                                    },
+                                    [
+                                      _c("div", [
+                                        prenotazione.username1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username1)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username2
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username2)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username3
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username3)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username4
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username4)
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _c(
+                                          "span",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value:
+                                                  prenotazione.username1 ||
+                                                  prenotazione.username2 ||
+                                                  prenotazione.username3 ||
+                                                  prenotazione.username4,
+                                                expression:
+                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
+                                              }
+                                            ]
+                                          },
+                                          [
+                                            _c(
+                                              "v-chip",
+                                              {
+                                                staticClass:
+                                                  "ml-0 mb-2 black--text",
+                                                attrs: {
+                                                  color: "red",
+                                                  label: "",
+                                                  small: ""
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                          " +
+                                                    _vm._s(
+                                                      prenotazione.doppio
+                                                    ) +
+                                                    "\n                                    "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider")
+            ],
+            1
+          )
+        }),
+        0
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { staticClass: "mx-auto", attrs: { "max-width": "475" } },
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { color: "red", dark: "" } },
+        [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-list",
+        { attrs: { "two-line": "", subheader: "" } },
+        _vm._l(15, function(n) {
+          return _c(
+            "div",
+            [
+              _c(
+                "v-list-item",
+                [
+                  _c(
+                    "v-list-item-content",
+                    { staticStyle: { height: "80px" } },
+                    [
+                      _c(
+                        "v-btn",
+                        { attrs: { color: "green" } },
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.prenotazioni, function(prenotazione) {
+                        return _c("div", [
+                          prenotazione.oraon == n + 8
+                            ? _c(
+                                "div",
+                                [
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    {
+                                      staticStyle: {
+                                        display: "flex",
+                                        "justify-content": "space-between"
+                                      }
+                                    },
+                                    [
+                                      _c("div", [
+                                        prenotazione.username1
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username1)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username2
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username2)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username3
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username3)
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        prenotazione.username4
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(prenotazione.username4)
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _c(
+                                          "span",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value:
+                                                  prenotazione.username1 ||
+                                                  prenotazione.username2 ||
+                                                  prenotazione.username3 ||
+                                                  prenotazione.username4,
+                                                expression:
+                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
+                                              }
+                                            ]
+                                          },
+                                          [
+                                            _c(
+                                              "v-chip",
+                                              {
+                                                staticClass:
+                                                  "ml-0 mb-2 black--text",
+                                                attrs: {
+                                                  color: "red",
+                                                  label: "",
+                                                  small: ""
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                          " +
+                                                    _vm._s(
+                                                      prenotazione.doppio
+                                                    ) +
+                                                    "\n                                    "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider")
+            ],
+            1
+          )
+        }),
+        0
+      )
     ],
     1
   )
@@ -38470,7 +39413,11 @@ var render = function() {
               _c(
                 "v-card",
                 { staticClass: "pa-2", attrs: { tile: "", outlined: "" } },
-                [_c("prenotazione", { attrs: { titolo: "Campo 1" } })],
+                [
+                  _c("prenotazione1", {
+                    attrs: { titolo: "Campo1", giorno: _vm.gior }
+                  })
+                ],
                 1
               )
             ],
@@ -38483,7 +39430,11 @@ var render = function() {
               _c(
                 "v-card",
                 { staticClass: "pa-2", attrs: { tile: "", outlined: "" } },
-                [_c("prenotazione", { attrs: { titolo: "Campo 2" } })],
+                [
+                  _c("prenotazione2", {
+                    attrs: { titolo: "Campo2", giorno: _vm.gior }
+                  })
+                ],
                 1
               )
             ],
@@ -38496,7 +39447,11 @@ var render = function() {
               _c(
                 "v-card",
                 { staticClass: "pa-2", attrs: { tile: "", outlined: "" } },
-                [_c("prenotazione", { attrs: { titolo: "Campo 3" } })],
+                [
+                  _c("prenotazione3", {
+                    attrs: { titolo: "Campo3", giorno: _vm.gior }
+                  })
+                ],
                 1
               )
             ],
@@ -38509,7 +39464,11 @@ var render = function() {
               _c(
                 "v-card",
                 { staticClass: "pa-2", attrs: { tile: "", outlined: "" } },
-                [_c("prenotazione", { attrs: { titolo: "Campo 4" } })],
+                [
+                  _c("prenotazione4", {
+                    attrs: { titolo: "Campo4", giorno: _vm.gior }
+                  })
+                ],
                 1
               )
             ],
@@ -95833,17 +96792,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Components/prenotazioni/Prenotazioni.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/Components/prenotazioni/Prenotazioni.vue ***!
-  \***************************************************************/
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni1.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni1.vue ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true& */ "./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true&");
-/* harmony import */ var _Prenotazioni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true& */ "./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true&");
+/* harmony import */ var _Prenotazioni1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni1.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -95853,50 +96812,257 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Prenotazioni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Prenotazioni1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "187586f4",
+  "13762d26",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/Components/prenotazioni/Prenotazioni.vue"
+component.options.__file = "resources/js/Components/prenotazioni/Prenotazioni1.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni1.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true& ***!
+  \***********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni.vue?vue&type=template&id=187586f4&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni1.vue?vue&type=template&id=13762d26&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni_vue_vue_type_template_id_187586f4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni1_vue_vue_type_template_id_13762d26_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni2.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni2.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true& */ "./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true&");
+/* harmony import */ var _Prenotazioni2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni2.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Prenotazioni2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1359fe24",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/prenotazioni/Prenotazioni2.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni2.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni2.vue?vue&type=template&id=1359fe24&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni2_vue_vue_type_template_id_1359fe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni3.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni3.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true& */ "./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true&");
+/* harmony import */ var _Prenotazioni3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni3.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Prenotazioni3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "133dcf22",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/prenotazioni/Prenotazioni3.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni3.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni3_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni3.vue?vue&type=template&id=133dcf22&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni3_vue_vue_type_template_id_133dcf22_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni4.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni4.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true& */ "./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true&");
+/* harmony import */ var _Prenotazioni4_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni4.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Prenotazioni4_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1321a020",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/prenotazioni/Prenotazioni4.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni4_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni4.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni4_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/Prenotazioni4.vue?vue&type=template&id=1321a020&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prenotazioni4_vue_vue_type_template_id_1321a020_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -96221,13 +97387,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
-
-/*import Signup from '../components/login/signup'
-import Forum from '../components/forum/Forum'
-
-import Read from '../components/forum/read'
-import Create from '../components/forum/create'
-import CreateCategory from '../Components/category/CreateCategory'*/
+ //import Sicuro from '../components/prenotazioni/Sicuro'
 
 var routes = [{
   path: '/',
@@ -96241,11 +97401,7 @@ var routes = [{
 }, {
   path: '/prenotazioni/:giorno',
   component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
-}
-/* { path: '/forum', component: Forum, name: 'forum' },
- { path: '/ask', component: Create },
- { path: '/question/:slug', component: Read, name: 'read' },
- { path: '/category', component: CreateCategory },*/
+} //  { path: '/prenotazioni/:giorno/:ora/:campo', component: Sicuro },
 ];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,

@@ -5,25 +5,16 @@ Vue.use(VueRouter)
 
 import PrenotazioniCampi from '../Components/prenotazioni/PrenotazioniCampi'
 import HomePage from '../Components/HomePage'
-
 import Storia from '../components/storia/Storia'
 import Logout from '../components/login/Logout'
-/*import Signup from '../components/login/signup'
-import Forum from '../components/forum/Forum'
-
-import Read from '../components/forum/read'
-import Create from '../components/forum/create'
-import CreateCategory from '../Components/category/CreateCategory'*/
+//import Sicuro from '../components/prenotazioni/Sicuro'
 
 const routes = [
      { path: '/', component: HomePage },
      { path: '/storia', component: Storia },
      { path: '/logout', component: Logout },
      { path: '/prenotazioni/:giorno', component: PrenotazioniCampi },
-    /* { path: '/forum', component: Forum, name: 'forum' },
-     { path: '/ask', component: Create },
-     { path: '/question/:slug', component: Read, name: 'read' },
-     { path: '/category', component: CreateCategory },*/
+   //  { path: '/prenotazioni/:giorno/:ora/:campo', component: Sicuro },
 ]
 
 const router = new VueRouter({
