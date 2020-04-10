@@ -5,7 +5,6 @@
             tile
     >
         <v-toolbar color="red darken-4" dark>
-            <!--<v-app-bar-nav-icon></v-app-bar-nav-icon>-->
             <v-toolbar-title>
                 <router-link class="white--text" to="/">
                     <v-btn text>
@@ -14,8 +13,6 @@
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-
-            <!--<app-notification v-if="loggedIn"></app-notification>-->
 
             <router-link
                     v-for="item in items"
