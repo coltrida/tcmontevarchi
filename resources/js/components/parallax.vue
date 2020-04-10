@@ -7,7 +7,7 @@
         <v-row
                 justify="center"
         >
-            <v-col class="text-center" cols="8">
+            <v-col class="text-center" cols="12">
                 <h1 class="display-4 mb-4">
                     <pannello></pannello>
                 </h1>

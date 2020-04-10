@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+
         <v-row no-gutters>
             <template v-for="n in totSoci">
                 <v-col :key="n">
@@ -22,7 +22,7 @@
                 ></v-responsive>-->
             </template>
         </v-row>
-    </v-container>
+
 </template>
 
 <script>

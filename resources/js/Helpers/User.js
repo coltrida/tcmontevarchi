@@ -35,7 +35,7 @@ class User {
     }
 
     name(){
-        if(this.loggegIn()){
+        if(this.loggedIn()){
             return AppStorage.getUser()
         }
     }

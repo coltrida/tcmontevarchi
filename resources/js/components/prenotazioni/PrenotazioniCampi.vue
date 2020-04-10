@@ -1,5 +1,5 @@
 <template>
-    <v-container class="grey lighten-5">
+    <div class="ml-4 mr-4">
         <v-row>
             <v-col>Prenotazioni del giorno {{ gior }}</v-col>
         </v-row>
@@ -48,7 +48,7 @@
                 </v-card>
             </v-col>
         </v-row>
-    </v-container>
+    </div>
 </template>
 
 <script>

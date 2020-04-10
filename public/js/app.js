@@ -2222,6 +2222,143 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrenotazioneSingolo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrenotazioneSingolo */ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue");
+/* harmony import */ var _PrenotazioneDoppio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrenotazioneDoppio */ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Prenotazione",
+  components: {
+    PrenotazioneSingolo: _PrenotazioneSingolo__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PrenotazioneDoppio: _PrenotazioneDoppio__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: ['prenotazioni', 'orario'],
+  data: function data() {
+    return {
+      esiste: false
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2270,11 +2407,154 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Prenotazione",
-  props: ['prenotazioni', 'orario'],
+  name: "PrenotazioneDoppio"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PrenotazioneSingolo",
+  props: ['prenotazione'],
   data: function data() {
     return {
-      esiste: false
+      menu1: false,
+      menu2: false
     };
   }
 });
@@ -2347,6 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazione__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazione */ "./resources/js/Components/prenotazioni/Prenotazione.vue");
 //
 //
 //
@@ -2369,47 +2650,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titolo', 'giorno'],
+  components: {
+    Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       prenotazioni: {}
@@ -2816,6 +3062,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /*import AppNotification from './AppNotification'*/
 
@@ -2829,11 +3087,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       loggedIn: User.loggedIn(),
+      username: User.name(),
       items: [{
-        title: 'Prenotazioni',
-        to: '/prenotazioni',
-        show: true
-      }, {
         title: 'Storia',
         to: '/storia',
         show: true
@@ -38917,7 +39172,7 @@ var render = function() {
         "v-row",
         { attrs: { justify: "center" } },
         [
-          _c("v-col", { staticClass: "text-center", attrs: { cols: "8" } }, [
+          _c("v-col", { staticClass: "text-center", attrs: { cols: "12" } }, [
             _c("h1", { staticClass: "display-4 mb-4" }, [_c("pannello")], 1)
           ])
         ],
@@ -38957,7 +39212,7 @@ var render = function() {
         [
           _c(
             "v-list-item-content",
-            { staticStyle: { height: "80px" } },
+            { staticStyle: { height: "90px" } },
             [
               _c(
                 "v-btn",
@@ -38971,80 +39226,18 @@ var render = function() {
               ),
               _vm._v(" "),
               _vm._l(_vm.prenotazioni, function(prenotazione) {
-                return _c("div", [
+                return _c("div", { key: prenotazione.id }, [
                   prenotazione.oraon == _vm.orario
                     ? _c(
                         "div",
                         [
-                          _c(
-                            "v-list-item-subtitle",
-                            {
-                              staticStyle: {
-                                display: "flex",
-                                "justify-content": "space-between"
-                              }
-                            },
-                            [
-                              _c("div", [
-                                prenotazione.username1
-                                  ? _c("span", [
-                                      _vm._v(_vm._s(prenotazione.username1))
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                prenotazione.username2
-                                  ? _c("span", [
-                                      _vm._v(_vm._s(prenotazione.username2))
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                prenotazione.username3
-                                  ? _c("span", [
-                                      _vm._v(_vm._s(prenotazione.username3))
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                prenotazione.username4
-                                  ? _c("span", [
-                                      _vm._v(_vm._s(prenotazione.username4))
-                                    ])
-                                  : _vm._e()
-                              ]),
-                              _vm._v(" "),
-                              _c("div", [
-                                prenotazione.username1 ||
-                                prenotazione.username2 ||
-                                prenotazione.username3 ||
-                                prenotazione.username4
-                                  ? _c(
-                                      "span",
-                                      [
-                                        _c(
-                                          "v-chip",
-                                          {
-                                            staticClass:
-                                              "ml-0 mb-2 black&#45;&#45;text",
-                                            attrs: {
-                                              color: "red",
-                                              label: "",
-                                              small: ""
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                          " +
-                                                _vm._s(prenotazione.doppio) +
-                                                "\n                                    "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e()
-                              ])
-                            ]
-                          )
+                          prenotazione.doppio == "S"
+                            ? _c("prenotazione-singolo", {
+                                attrs: { prenotazione: prenotazione }
+                              })
+                            : _c("prenotazione-doppio", {
+                                attrs: { prenotazione: prenotazione }
+                              })
                         ],
                         1
                       )
@@ -39059,6 +39252,796 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("v-divider")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "v-list-item-subtitle",
+        {
+          staticStyle: { display: "flex", "justify-content": "space-between" }
+        },
+        [
+          _c("div", [
+            _vm.prenotazione.username1
+              ? _c(
+                  "span",
+                  [
+                    _c(
+                      "v-menu",
+                      {
+                        attrs: {
+                          bottom: "",
+                          right: "",
+                          transition: "scale-transition",
+                          origin: "top left"
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-chip",
+                                    _vm._g(
+                                      {
+                                        attrs: { color: "primary", label: "" }
+                                      },
+                                      on
+                                    ),
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        { attrs: { left: "" } },
+                                        [
+                                          _c("v-img", {
+                                            attrs: {
+                                              src:
+                                                "https://cdn.vuetifyjs.com/images/john.png"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(_vm.prenotazione.username1) +
+                                          "\n                  "
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          false,
+                          4155306137
+                        ),
+                        model: {
+                          value: _vm.menu,
+                          callback: function($$v) {
+                            _vm.menu = $$v
+                          },
+                          expression: "menu"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-card",
+                          { attrs: { width: "300" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { dark: "" } },
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-avatar",
+                                      [
+                                        _c("v-img", {
+                                          attrs: {
+                                            src:
+                                              "https://cdn.vuetifyjs.com/images/john.png"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("John Leider")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("john@vuetifyjs.com")
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-action",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { icon: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.menu = false
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-close-circle")
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  { on: { click: function() {} } },
+                                  [
+                                    _c(
+                                      "v-list-item-action",
+                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v("john@gmail.com")
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.prenotazione.username2
+              ? _c(
+                  "span",
+                  [
+                    _c(
+                      "v-menu",
+                      {
+                        attrs: {
+                          bottom: "",
+                          right: "",
+                          transition: "scale-transition",
+                          origin: "top left"
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-chip",
+                                    _vm._g(
+                                      { attrs: { color: "red", label: "" } },
+                                      on
+                                    ),
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        { attrs: { left: "" } },
+                                        [
+                                          _c("v-img", {
+                                            attrs: {
+                                              src:
+                                                "https://cdn.vuetifyjs.com/images/john.png"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(_vm.prenotazione.username2) +
+                                          "\n                  "
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          false,
+                          1497746373
+                        ),
+                        model: {
+                          value: _vm.menu,
+                          callback: function($$v) {
+                            _vm.menu = $$v
+                          },
+                          expression: "menu"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-card",
+                          { attrs: { width: "300" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { dark: "" } },
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-avatar",
+                                      [
+                                        _c("v-img", {
+                                          attrs: {
+                                            src:
+                                              "https://cdn.vuetifyjs.com/images/john.png"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("John Leider")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("john@vuetifyjs.com")
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-action",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { icon: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.menu = false
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-close-circle")
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  { on: { click: function() {} } },
+                                  [
+                                    _c(
+                                      "v-list-item-action",
+                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v("john@gmail.com")
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c(
+                "v-chip",
+                {
+                  staticClass: "ml-0 mb-2 black&#45;&#45;text",
+                  attrs: { color: "lime accent-3", label: "", small: "" }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.prenotazione.doppio) +
+                      "\n            "
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "v-list-item-subtitle",
+        {
+          staticStyle: { display: "flex", "justify-content": "space-between" }
+        },
+        [
+          _c("div", [
+            _vm.prenotazione.username1
+              ? _c(
+                  "span",
+                  [
+                    _c(
+                      "v-menu",
+                      {
+                        attrs: {
+                          bottom: "",
+                          right: "",
+                          transition: "scale-transition",
+                          origin: "top left"
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-chip",
+                                    _vm._g(
+                                      {
+                                        attrs: { color: "primary", label: "" }
+                                      },
+                                      on
+                                    ),
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        { attrs: { left: "" } },
+                                        [
+                                          _c("v-img", {
+                                            attrs: {
+                                              src:
+                                                "https://cdn.vuetifyjs.com/images/john.png"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(_vm.prenotazione.username1) +
+                                          "\n                  "
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          false,
+                          4155306137
+                        ),
+                        model: {
+                          value: _vm.menu1,
+                          callback: function($$v) {
+                            _vm.menu1 = $$v
+                          },
+                          expression: "menu1"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-card",
+                          { attrs: { width: "300" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { dark: "" } },
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-avatar",
+                                      [
+                                        _c("v-img", {
+                                          attrs: {
+                                            src:
+                                              "https://cdn.vuetifyjs.com/images/john.png"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("John Leider")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("john@vuetifyjs.com")
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-action",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { icon: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.menu = false
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-close-circle")
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  { on: { click: function() {} } },
+                                  [
+                                    _c(
+                                      "v-list-item-action",
+                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v("john@gmail.com")
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.prenotazione.username2
+              ? _c(
+                  "span",
+                  [
+                    _c(
+                      "v-menu",
+                      {
+                        attrs: {
+                          bottom: "",
+                          right: "",
+                          transition: "scale-transition",
+                          origin: "top left"
+                        },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function(ref) {
+                                var on = ref.on
+                                return [
+                                  _c(
+                                    "v-chip",
+                                    _vm._g(
+                                      { attrs: { color: "red", label: "" } },
+                                      on
+                                    ),
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        { attrs: { left: "" } },
+                                        [
+                                          _c("v-img", {
+                                            attrs: {
+                                              src:
+                                                "https://cdn.vuetifyjs.com/images/john.png"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(_vm.prenotazione.username2) +
+                                          "\n                  "
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
+                            }
+                          ],
+                          null,
+                          false,
+                          1497746373
+                        ),
+                        model: {
+                          value: _vm.menu2,
+                          callback: function($$v) {
+                            _vm.menu2 = $$v
+                          },
+                          expression: "menu2"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-card",
+                          { attrs: { width: "300" } },
+                          [
+                            _c(
+                              "v-list",
+                              { attrs: { dark: "" } },
+                              [
+                                _c(
+                                  "v-list-item",
+                                  [
+                                    _c(
+                                      "v-list-item-avatar",
+                                      [
+                                        _c("v-img", {
+                                          attrs: {
+                                            src:
+                                              "https://cdn.vuetifyjs.com/images/john.png"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("John Leider")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-list-item-subtitle", [
+                                          _vm._v("john@vuetifyjs.com")
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-action",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { icon: "" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.menu = false
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("v-icon", [
+                                              _vm._v("mdi-close-circle")
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  { on: { click: function() {} } },
+                                  [
+                                    _c(
+                                      "v-list-item-action",
+                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-list-item-subtitle", [
+                                      _vm._v("john@gmail.com")
+                                    ])
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c(
+                "v-chip",
+                {
+                  staticClass: "ml-0 mb-2 black&#45;&#45;text",
+                  attrs: { color: "lime accent-3", label: "", small: "" }
+                },
+                [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(_vm.prenotazione.doppio) +
+                      "\n            "
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ]
+      )
     ],
     1
   )
@@ -39148,141 +40131,12 @@ var render = function() {
         "v-list",
         { attrs: { "two-line": "", subheader: "" } },
         _vm._l(15, function(n) {
-          return _c(
-            "div",
-            [
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-content",
-                    { staticStyle: { height: "80px" } },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { color: "green" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.prenotazioni, function(prenotazione) {
-                        return _c("div", [
-                          prenotazione.oraon == n + 8
-                            ? _c(
-                                "div",
-                                [
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    {
-                                      staticStyle: {
-                                        display: "flex",
-                                        "justify-content": "space-between"
-                                      }
-                                    },
-                                    [
-                                      _c("div", [
-                                        prenotazione.username1
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username1)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username2
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username2)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username3
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username3)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username4
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username4)
-                                              )
-                                            ])
-                                          : _vm._e()
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _c(
-                                          "span",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "show",
-                                                rawName: "v-show",
-                                                value:
-                                                  prenotazione.username1 ||
-                                                  prenotazione.username2 ||
-                                                  prenotazione.username3 ||
-                                                  prenotazione.username4,
-                                                expression:
-                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
-                                              }
-                                            ]
-                                          },
-                                          [
-                                            _c(
-                                              "v-chip",
-                                              {
-                                                staticClass:
-                                                  "ml-0 mb-2 black--text",
-                                                attrs: {
-                                                  color: "red",
-                                                  label: "",
-                                                  small: ""
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                          " +
-                                                    _vm._s(
-                                                      prenotazione.doppio
-                                                    ) +
-                                                    "\n                                    "
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-divider")
-            ],
-            1
-          )
+          return _c("prenotazione", {
+            key: n,
+            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+          })
         }),
-        0
+        1
       )
     ],
     1
@@ -39665,8 +40519,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { staticClass: "grey lighten-5" },
+    "div",
+    { staticClass: "ml-4 mr-4" },
     [
       _c(
         "v-row",
@@ -39869,6 +40723,33 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("v-spacer"),
+          _vm._v(" "),
+          _vm.loggedIn
+            ? _c(
+                "div",
+                [
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: { color: "primary", label: "" }
+                    },
+                    [
+                      _c("v-icon", { attrs: { left: "" } }, [
+                        _vm._v("mdi-account-circle-outline")
+                      ]),
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(_vm.username) +
+                          "\n            "
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.items, function(item) {
             return item.show
@@ -40226,34 +41107,28 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
+    "v-row",
+    { attrs: { "no-gutters": "" } },
     [
-      _c(
-        "v-row",
-        { attrs: { "no-gutters": "" } },
-        [
-          _vm._l(_vm.totSoci, function(n) {
-            return [
+      _vm._l(_vm.totSoci, function(n) {
+        return [
+          _c(
+            "v-col",
+            { key: n },
+            [
               _c(
-                "v-col",
-                { key: n },
-                [
-                  _c(
-                    "v-card",
-                    { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
-                    [_c("socio", { attrs: { socio: _vm.soci[n - 1] } })],
-                    1
-                  )
-                ],
+                "v-card",
+                { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
+                [_c("socio", { attrs: { socio: _vm.soci[n - 1] } })],
                 1
               )
-            ]
-          })
-        ],
-        2
-      )
+            ],
+            1
+          )
+        ]
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -97386,6 +98261,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true& */ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true&");
+/* harmony import */ var _PrenotazioneDoppio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrenotazioneDoppio.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PrenotazioneDoppio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "a034667e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/prenotazioni/PrenotazioneDoppio.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneDoppio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrenotazioneDoppio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneDoppio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true& ***!
+  \****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue?vue&type=template&id=a034667e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneDoppio_vue_vue_type_template_id_a034667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true& */ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true&");
+/* harmony import */ var _PrenotazioneSingolo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrenotazioneSingolo.vue?vue&type=script&lang=js& */ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PrenotazioneSingolo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "8e6f6e3a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/prenotazioni/PrenotazioneSingolo.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneSingolo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrenotazioneSingolo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneSingolo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true& ***!
+  \*****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue?vue&type=template&id=8e6f6e3a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrenotazioneSingolo_vue_vue_type_template_id_8e6f6e3a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Components/prenotazioni/Prenotazioni1.vue":
 /*!****************************************************************!*\
   !*** ./resources/js/Components/prenotazioni/Prenotazioni1.vue ***!
@@ -97928,7 +98941,7 @@ var User = /*#__PURE__*/function () {
   }, {
     key: "name",
     value: function name() {
-      if (this.loggegIn()) {
+      if (this.loggedIn()) {
         return _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getUser();
       }
     }
@@ -98019,8 +99032,7 @@ var routes = [{
 }, {
   path: '/soci',
   component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_10__["default"]
-} //  { path: '/prenotazioni/:giorno/:ora/:campo', component: Sicuro },
-];
+}];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
   // short for `routes: routes`

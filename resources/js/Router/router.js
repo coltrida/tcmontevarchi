@@ -26,7 +26,6 @@ const routes = [
      { path: '/cancellaOra', component: CancellaOra },
      { path: '/cercaAmico', component: CercaAmico },
      { path: '/soci', component: Soci },
-   //  { path: '/prenotazioni/:giorno/:ora/:campo', component: Sicuro },
 
 ]
 

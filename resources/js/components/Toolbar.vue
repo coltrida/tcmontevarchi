@@ -14,6 +14,18 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
 
+            <div v-if="loggedIn">
+                <v-chip
+                        class="ma-2"
+                        color="primary"
+                        label
+                >
+                    <v-icon left>mdi-account-circle-outline</v-icon>
+                    {{ username }}
+                </v-chip>
+
+            </div>
+
             <router-link
                     v-for="item in items"
                     :key="item.title"
@@ -45,8 +57,8 @@
         data() {
             return {
                 loggedIn: User.loggedIn(),
+                username: User.name(),
                 items:[
-                    {title : 'Prenotazioni', to: '/prenotazioni', show: true},
                     {title : 'Storia', to: '/storia', show: true},
                     {title : 'Contatti', to: '/contatti', show: true},
                 ]
