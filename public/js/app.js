@@ -2406,8 +2406,131 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PrenotazioneDoppio"
+  name: "PrenotazioneDoppio",
+  props: ['prenotazione'],
+  data: function data() {
+    return {
+      menu1: false,
+      menu2: false,
+      menu3: false,
+      menu4: false
+    };
+  }
 });
 
 /***/ }),
@@ -2684,6 +2807,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazione__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazione */ "./resources/js/Components/prenotazioni/Prenotazione.vue");
 //
 //
 //
@@ -2706,51 +2830,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titolo', 'giorno'],
+  components: {
+    Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       prenotazioni: {}
@@ -2779,6 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prenotazione__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazione */ "./resources/js/Components/prenotazioni/Prenotazione.vue");
 //
 //
 //
@@ -2801,51 +2887,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titolo', 'giorno'],
+  components: {
+    Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       prenotazioni: {}
@@ -39212,11 +39259,11 @@ var render = function() {
         [
           _c(
             "v-list-item-content",
-            { staticStyle: { height: "90px" } },
+            { staticStyle: { height: "130px" } },
             [
               _c(
                 "v-btn",
-                { attrs: { color: "green" } },
+                { staticStyle: { height: "50px" }, attrs: { color: "green" } },
                 [
                   _c("v-list-item-title", [
                     _vm._v(_vm._s(_vm.orario) + " - " + _vm._s(_vm.orario + 1))
@@ -39281,372 +39328,768 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "v-list-item-subtitle",
-        {
-          staticStyle: { display: "flex", "justify-content": "space-between" }
-        },
-        [
-          _c("div", [
-            _vm.prenotazione.username1
-              ? _c(
-                  "span",
-                  [
-                    _c(
-                      "v-menu",
-                      {
-                        attrs: {
-                          bottom: "",
-                          right: "",
-                          transition: "scale-transition",
-                          origin: "top left"
-                        },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-chip",
-                                    _vm._g(
-                                      {
-                                        attrs: { color: "primary", label: "" }
-                                      },
-                                      on
-                                    ),
-                                    [
-                                      _c(
-                                        "v-avatar",
-                                        { attrs: { left: "" } },
-                                        [
-                                          _c("v-img", {
-                                            attrs: {
-                                              src:
-                                                "https://cdn.vuetifyjs.com/images/john.png"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(
-                                        "\n                    " +
-                                          _vm._s(_vm.prenotazione.username1) +
-                                          "\n                  "
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          false,
-                          4155306137
-                        ),
-                        model: {
-                          value: _vm.menu,
-                          callback: function($$v) {
-                            _vm.menu = $$v
-                          },
-                          expression: "menu"
-                        }
-                      },
-                      [
-                        _vm._v(" "),
-                        _c(
-                          "v-card",
-                          { attrs: { width: "300" } },
-                          [
-                            _c(
-                              "v-list",
-                              { attrs: { dark: "" } },
-                              [
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-avatar",
-                                      [
-                                        _c("v-img", {
-                                          attrs: {
-                                            src:
-                                              "https://cdn.vuetifyjs.com/images/john.png"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("John Leider")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v("john@vuetifyjs.com")
-                                        ])
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-action",
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: { icon: "" },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.menu = false
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("v-icon", [
-                                              _vm._v("mdi-close-circle")
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-list",
-                              [
-                                _c(
-                                  "v-list-item",
-                                  { on: { click: function() {} } },
-                                  [
-                                    _c(
-                                      "v-list-item-action",
-                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("v-list-item-subtitle", [
-                                      _vm._v("john@gmail.com")
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.prenotazione.username2
-              ? _c(
-                  "span",
-                  [
-                    _c(
-                      "v-menu",
-                      {
-                        attrs: {
-                          bottom: "",
-                          right: "",
-                          transition: "scale-transition",
-                          origin: "top left"
-                        },
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-chip",
-                                    _vm._g(
-                                      { attrs: { color: "red", label: "" } },
-                                      on
-                                    ),
-                                    [
-                                      _c(
-                                        "v-avatar",
-                                        { attrs: { left: "" } },
-                                        [
-                                          _c("v-img", {
-                                            attrs: {
-                                              src:
-                                                "https://cdn.vuetifyjs.com/images/john.png"
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(
-                                        "\n                    " +
-                                          _vm._s(_vm.prenotazione.username2) +
-                                          "\n                  "
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ]
-                              }
-                            }
-                          ],
-                          null,
-                          false,
-                          1497746373
-                        ),
-                        model: {
-                          value: _vm.menu,
-                          callback: function($$v) {
-                            _vm.menu = $$v
-                          },
-                          expression: "menu"
-                        }
-                      },
-                      [
-                        _vm._v(" "),
-                        _c(
-                          "v-card",
-                          { attrs: { width: "300" } },
-                          [
-                            _c(
-                              "v-list",
-                              { attrs: { dark: "" } },
-                              [
-                                _c(
-                                  "v-list-item",
-                                  [
-                                    _c(
-                                      "v-list-item-avatar",
-                                      [
-                                        _c("v-img", {
-                                          attrs: {
-                                            src:
-                                              "https://cdn.vuetifyjs.com/images/john.png"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("John Leider")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-subtitle", [
-                                          _vm._v("john@vuetifyjs.com")
-                                        ])
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-action",
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: { icon: "" },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.menu = false
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("v-icon", [
-                                              _vm._v("mdi-close-circle")
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-list",
-                              [
-                                _c(
-                                  "v-list-item",
-                                  { on: { click: function() {} } },
-                                  [
-                                    _c(
-                                      "v-list-item-action",
-                                      [_c("v-icon", [_vm._v("mdi-briefcase")])],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("v-list-item-subtitle", [
-                                      _vm._v("john@gmail.com")
-                                    ])
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
+      _c("v-list-item-subtitle", [
+        _c(
+          "div",
+          {
+            staticStyle: { display: "flex", "justify-content": "space-between" }
+          },
+          [
+            _c("div", [
               _c(
-                "v-chip",
+                "div",
                 {
-                  staticClass: "ml-0 mb-2 black&#45;&#45;text",
-                  attrs: { color: "lime accent-3", label: "", small: "" }
+                  staticStyle: {
+                    display: "flex",
+                    "justify-content": "space-between"
+                  }
                 },
                 [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.prenotazione.doppio) +
-                      "\n            "
-                  )
+                  _vm.prenotazione.username1
+                    ? _c(
+                        "span",
+                        [
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                bottom: "",
+                                right: "",
+                                transition: "scale-transition",
+                                origin: "top left"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-chip",
+                                          _vm._g(
+                                            {
+                                              attrs: {
+                                                color: "primary",
+                                                label: ""
+                                              }
+                                            },
+                                            on
+                                          ),
+                                          [
+                                            _c(
+                                              "v-avatar",
+                                              { attrs: { left: "" } },
+                                              [
+                                                _c("v-img", {
+                                                  attrs: {
+                                                    src:
+                                                      "https://cdn.vuetifyjs.com/images/john.png"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(
+                                              "\n                    " +
+                                                _vm._s(
+                                                  _vm.prenotazione.username1
+                                                ) +
+                                                "\n                  "
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                4155306137
+                              ),
+                              model: {
+                                value: _vm.menu1,
+                                callback: function($$v) {
+                                  _vm.menu1 = $$v
+                                },
+                                expression: "menu1"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c(
+                                "v-card",
+                                { attrs: { width: "300" } },
+                                [
+                                  _c(
+                                    "v-list",
+                                    { attrs: { dark: "" } },
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-list-item-avatar",
+                                            [
+                                              _c("v-img", {
+                                                attrs: {
+                                                  src:
+                                                    "https://cdn.vuetifyjs.com/images/john.png"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-content",
+                                            [
+                                              _c("v-list-item-title", [
+                                                _vm._v("John Leider")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("v-list-item-subtitle", [
+                                                _vm._v("john@vuetifyjs.com")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: { icon: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.menu = false
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("mdi-close-circle")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list",
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        { on: { click: function() {} } },
+                                        [
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-briefcase")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("v-list-item-subtitle", [
+                                            _vm._v("john@gmail.com")
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.prenotazione.username2
+                    ? _c(
+                        "span",
+                        [
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                bottom: "",
+                                right: "",
+                                transition: "scale-transition",
+                                origin: "top left"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-chip",
+                                          _vm._g(
+                                            {
+                                              attrs: { color: "red", label: "" }
+                                            },
+                                            on
+                                          ),
+                                          [
+                                            _c(
+                                              "v-avatar",
+                                              { attrs: { left: "" } },
+                                              [
+                                                _c("v-img", {
+                                                  attrs: {
+                                                    src:
+                                                      "https://cdn.vuetifyjs.com/images/john.png"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(
+                                              "\n                    " +
+                                                _vm._s(
+                                                  _vm.prenotazione.username2
+                                                ) +
+                                                "\n                  "
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                1497746373
+                              ),
+                              model: {
+                                value: _vm.menu2,
+                                callback: function($$v) {
+                                  _vm.menu2 = $$v
+                                },
+                                expression: "menu2"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c(
+                                "v-card",
+                                { attrs: { width: "300" } },
+                                [
+                                  _c(
+                                    "v-list",
+                                    { attrs: { dark: "" } },
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-list-item-avatar",
+                                            [
+                                              _c("v-img", {
+                                                attrs: {
+                                                  src:
+                                                    "https://cdn.vuetifyjs.com/images/john.png"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-content",
+                                            [
+                                              _c("v-list-item-title", [
+                                                _vm._v("John Leider")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("v-list-item-subtitle", [
+                                                _vm._v("john@vuetifyjs.com")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: { icon: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.menu = false
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("mdi-close-circle")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list",
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        { on: { click: function() {} } },
+                                        [
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-briefcase")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("v-list-item-subtitle", [
+                                            _vm._v("john@gmail.com")
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    display: "flex",
+                    "justify-content": "space-between"
+                  }
+                },
+                [
+                  _vm.prenotazione.username3
+                    ? _c(
+                        "span",
+                        [
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                bottom: "",
+                                right: "",
+                                transition: "scale-transition",
+                                origin: "top left"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-chip",
+                                          _vm._g(
+                                            {
+                                              attrs: {
+                                                color: "primary",
+                                                label: ""
+                                              }
+                                            },
+                                            on
+                                          ),
+                                          [
+                                            _c(
+                                              "v-avatar",
+                                              { attrs: { left: "" } },
+                                              [
+                                                _c("v-img", {
+                                                  attrs: {
+                                                    src:
+                                                      "https://cdn.vuetifyjs.com/images/john.png"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(
+                                              "\n                    " +
+                                                _vm._s(
+                                                  _vm.prenotazione.username3
+                                                ) +
+                                                "\n                  "
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                2592888923
+                              ),
+                              model: {
+                                value: _vm.menu3,
+                                callback: function($$v) {
+                                  _vm.menu3 = $$v
+                                },
+                                expression: "menu3"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c(
+                                "v-card",
+                                { attrs: { width: "300" } },
+                                [
+                                  _c(
+                                    "v-list",
+                                    { attrs: { dark: "" } },
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-list-item-avatar",
+                                            [
+                                              _c("v-img", {
+                                                attrs: {
+                                                  src:
+                                                    "https://cdn.vuetifyjs.com/images/john.png"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-content",
+                                            [
+                                              _c("v-list-item-title", [
+                                                _vm._v("John Leider")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("v-list-item-subtitle", [
+                                                _vm._v("john@vuetifyjs.com")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: { icon: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.menu = false
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("mdi-close-circle")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list",
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        { on: { click: function() {} } },
+                                        [
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-briefcase")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("v-list-item-subtitle", [
+                                            _vm._v("john@gmail.com")
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.prenotazione.username4
+                    ? _c(
+                        "span",
+                        [
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                bottom: "",
+                                right: "",
+                                transition: "scale-transition",
+                                origin: "top left"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-chip",
+                                          _vm._g(
+                                            {
+                                              attrs: { color: "red", label: "" }
+                                            },
+                                            on
+                                          ),
+                                          [
+                                            _c(
+                                              "v-avatar",
+                                              { attrs: { left: "" } },
+                                              [
+                                                _c("v-img", {
+                                                  attrs: {
+                                                    src:
+                                                      "https://cdn.vuetifyjs.com/images/john.png"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(
+                                              "\n                    " +
+                                                _vm._s(
+                                                  _vm.prenotazione.username4
+                                                ) +
+                                                "\n                  "
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                3785937155
+                              ),
+                              model: {
+                                value: _vm.menu4,
+                                callback: function($$v) {
+                                  _vm.menu4 = $$v
+                                },
+                                expression: "menu4"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c(
+                                "v-card",
+                                { attrs: { width: "300" } },
+                                [
+                                  _c(
+                                    "v-list",
+                                    { attrs: { dark: "" } },
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        [
+                                          _c(
+                                            "v-list-item-avatar",
+                                            [
+                                              _c("v-img", {
+                                                attrs: {
+                                                  src:
+                                                    "https://cdn.vuetifyjs.com/images/john.png"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-content",
+                                            [
+                                              _c("v-list-item-title", [
+                                                _vm._v("John Leider")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("v-list-item-subtitle", [
+                                                _vm._v("john@vuetifyjs.com")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: { icon: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.menu = false
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("v-icon", [
+                                                    _vm._v("mdi-close-circle")
+                                                  ])
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list",
+                                    [
+                                      _c(
+                                        "v-list-item",
+                                        { on: { click: function() {} } },
+                                        [
+                                          _c(
+                                            "v-list-item-action",
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-briefcase")
+                                              ])
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("v-list-item-subtitle", [
+                                            _vm._v("john@gmail.com")
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ]
               )
-            ],
-            1
-          )
-        ]
-      )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                [
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ml-0 mb-2 black&#45;&#45;text",
+                      attrs: { color: "lime accent-3", label: "", large: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.prenotazione.doppio) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ])
     ],
     1
   )
@@ -39779,11 +40222,11 @@ var render = function() {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("John Leider")
+                                          _vm._v("John Leider1")
                                         ]),
                                         _vm._v(" "),
                                         _c("v-list-item-subtitle", [
-                                          _vm._v("john@vuetifyjs.com")
+                                          _vm._v("john1@vuetifyjs.com")
                                         ])
                                       ],
                                       1
@@ -39833,7 +40276,7 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _c("v-list-item-subtitle", [
-                                      _vm._v("john@gmail.com")
+                                      _vm._v("john1@gmail.com")
                                     ])
                                   ],
                                   1
@@ -39946,11 +40389,11 @@ var render = function() {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("John Leider")
+                                          _vm._v("John Leider2")
                                         ]),
                                         _vm._v(" "),
                                         _c("v-list-item-subtitle", [
-                                          _vm._v("john@vuetifyjs.com")
+                                          _vm._v("john2@vuetifyjs.com")
                                         ])
                                       ],
                                       1
@@ -40000,7 +40443,7 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _c("v-list-item-subtitle", [
-                                      _vm._v("john@gmail.com")
+                                      _vm._v("john2@gmail.com")
                                     ])
                                   ],
                                   1
@@ -40027,7 +40470,7 @@ var render = function() {
                 "v-chip",
                 {
                   staticClass: "ml-0 mb-2 black&#45;&#45;text",
-                  attrs: { color: "lime accent-3", label: "", small: "" }
+                  attrs: { color: "lime accent-3", label: "", large: "" }
                 },
                 [
                   _vm._v(
@@ -40179,141 +40622,12 @@ var render = function() {
         "v-list",
         { attrs: { "two-line": "", subheader: "" } },
         _vm._l(15, function(n) {
-          return _c(
-            "div",
-            [
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-content",
-                    { staticStyle: { height: "80px" } },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { color: "green" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.prenotazioni, function(prenotazione) {
-                        return _c("div", [
-                          prenotazione.oraon == n + 8
-                            ? _c(
-                                "div",
-                                [
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    {
-                                      staticStyle: {
-                                        display: "flex",
-                                        "justify-content": "space-between"
-                                      }
-                                    },
-                                    [
-                                      _c("div", [
-                                        prenotazione.username1
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username1)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username2
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username2)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username3
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username3)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username4
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username4)
-                                              )
-                                            ])
-                                          : _vm._e()
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _c(
-                                          "span",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "show",
-                                                rawName: "v-show",
-                                                value:
-                                                  prenotazione.username1 ||
-                                                  prenotazione.username2 ||
-                                                  prenotazione.username3 ||
-                                                  prenotazione.username4,
-                                                expression:
-                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
-                                              }
-                                            ]
-                                          },
-                                          [
-                                            _c(
-                                              "v-chip",
-                                              {
-                                                staticClass:
-                                                  "ml-0 mb-2 black--text",
-                                                attrs: {
-                                                  color: "red",
-                                                  label: "",
-                                                  small: ""
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                          " +
-                                                    _vm._s(
-                                                      prenotazione.doppio
-                                                    ) +
-                                                    "\n                                    "
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-divider")
-            ],
-            1
-          )
+          return _c("prenotazione", {
+            key: n,
+            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+          })
         }),
-        0
+        1
       )
     ],
     1
@@ -40356,141 +40670,12 @@ var render = function() {
         "v-list",
         { attrs: { "two-line": "", subheader: "" } },
         _vm._l(15, function(n) {
-          return _c(
-            "div",
-            [
-              _c(
-                "v-list-item",
-                [
-                  _c(
-                    "v-list-item-content",
-                    { staticStyle: { height: "80px" } },
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { color: "green" } },
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v(_vm._s(n + 8) + " - " + _vm._s(n + 8 + 1))
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.prenotazioni, function(prenotazione) {
-                        return _c("div", [
-                          prenotazione.oraon == n + 8
-                            ? _c(
-                                "div",
-                                [
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    {
-                                      staticStyle: {
-                                        display: "flex",
-                                        "justify-content": "space-between"
-                                      }
-                                    },
-                                    [
-                                      _c("div", [
-                                        prenotazione.username1
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username1)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username2
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username2)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username3
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username3)
-                                              )
-                                            ])
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        prenotazione.username4
-                                          ? _c("span", [
-                                              _vm._v(
-                                                _vm._s(prenotazione.username4)
-                                              )
-                                            ])
-                                          : _vm._e()
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _c(
-                                          "span",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "show",
-                                                rawName: "v-show",
-                                                value:
-                                                  prenotazione.username1 ||
-                                                  prenotazione.username2 ||
-                                                  prenotazione.username3 ||
-                                                  prenotazione.username4,
-                                                expression:
-                                                  "prenotazione.username1\n                                    || prenotazione.username2\n                                    || prenotazione.username3\n                                    || prenotazione.username4"
-                                              }
-                                            ]
-                                          },
-                                          [
-                                            _c(
-                                              "v-chip",
-                                              {
-                                                staticClass:
-                                                  "ml-0 mb-2 black--text",
-                                                attrs: {
-                                                  color: "red",
-                                                  label: "",
-                                                  small: ""
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                          " +
-                                                    _vm._s(
-                                                      prenotazione.doppio
-                                                    ) +
-                                                    "\n                                    "
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ])
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-divider")
-            ],
-            1
-          )
+          return _c("prenotazione", {
+            key: n,
+            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+          })
         }),
-        0
+        1
       )
     ],
     1
