@@ -2,19 +2,19 @@
     <v-container>
         <v-row>
             <v-col>
-                <v-btn color="blue" @click="modificaDati">Modifica Dati</v-btn>
+                <router-link to="modifica"><v-btn color="blue"  >Modifica Dati</v-btn></router-link>
             </v-col>
             <v-col>
-                <v-btn color="blue" @click="caricaFoto">Carica Foto</v-btn>
+                <router-link to="caricaFoto"><v-btn color="blue"  >Carica Foto</v-btn></router-link>
             </v-col>
             <v-col>
-                <v-btn color="blue" @click="cancellaOra">Cancella Ora</v-btn>
+                <router-link to="cancellaOra"><v-btn color="blue"  >Cancella Ora</v-btn></router-link>
             </v-col>
             <v-col>
-                <v-btn color="blue" @click="cercaAmico">Cerca un amico</v-btn>
+                <router-link to="cercaAmico"><v-btn color="blue"  >Cerca un amico</v-btn></router-link>
             </v-col>
             <v-col>
-                <v-btn color="blue" @click="listaSoci">Soci</v-btn>
+                <router-link to="soci"><v-btn color="blue" >Soci</v-btn></router-link>
             </v-col>
             <!--<v-col>
                 <v-btn color="blue" @click="info">Info Utente</v-btn>
@@ -38,25 +38,7 @@
         components:{Calendario},
 
         methods:{
-            modificaDati(){
-
-            },
-
-            caricaFoto(){
-
-            },
-
-            cancellaOra(){
-
-            },
-
-            cercaAmico(){
-
-            },
-
-            listaSoci(){
-
-            }
+               
         }
     }
 </script>
