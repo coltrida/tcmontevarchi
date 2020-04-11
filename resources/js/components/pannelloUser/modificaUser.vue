@@ -98,10 +98,10 @@
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
     }),
-    create:{
-        lettura(){
+    created(){
+        
         axios.post("/api/auth/me").then(res => {this.form.nome = res.data.nome})
-    }
+    
     },
     methods: {
       submit () {

@@ -3579,14 +3579,12 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  create: {
-    lettura: function lettura() {
-      var _this = this;
+  created: function created() {
+    var _this = this;
 
-      axios.post("/api/auth/me").then(function (res) {
-        _this.form.nome = res.data.nome;
-      });
-    }
+    axios.post("/api/auth/me").then(function (res) {
+      _this.form.nome = res.data.nome;
+    });
   },
   methods: {
     submit: function submit() {
