@@ -131,8 +131,8 @@ class DatabaseSeeder extends Seeder
         Prenotazione::create([
             'username1' => 'cacao',
             'username2' => 'cacao',
-            'username3' => 'cacao',
-            'username4' => 'cacao',
+            'username3' => 'cacao2',
+            'username4' => 'cacao2',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,

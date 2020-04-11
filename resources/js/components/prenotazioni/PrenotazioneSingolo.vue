@@ -29,8 +29,8 @@
                             <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
-                            <v-list-item-title>John Leider</v-list-item-title>
-                            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
+                            <v-list-item-title>John Leider1</v-list-item-title>
+                            <v-list-item-subtitle>john1@vuetifyjs.com</v-list-item-subtitle>
                           </v-list-item-content>
                           <v-list-item-action>
                             <v-btn
@@ -47,7 +47,7 @@
                           <v-list-item-action>
                             <v-icon>mdi-briefcase</v-icon>
                           </v-list-item-action>
-                          <v-list-item-subtitle>john@gmail.com</v-list-item-subtitle>
+                          <v-list-item-subtitle>john1@gmail.com</v-list-item-subtitle>
                         </v-list-item>
                       </v-list>
                     </v-card>
@@ -81,8 +81,8 @@
                             <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
-                            <v-list-item-title>John Leider</v-list-item-title>
-                            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
+                            <v-list-item-title>John Leider2</v-list-item-title>
+                            <v-list-item-subtitle>john2@vuetifyjs.com</v-list-item-subtitle>
                           </v-list-item-content>
                           <v-list-item-action>
                             <v-btn
@@ -99,7 +99,7 @@
                           <v-list-item-action>
                             <v-icon>mdi-briefcase</v-icon>
                           </v-list-item-action>
-                          <v-list-item-subtitle>john@gmail.com</v-list-item-subtitle>
+                          <v-list-item-subtitle>john2@gmail.com</v-list-item-subtitle>
                         </v-list-item>
                       </v-list>
                     </v-card>
@@ -112,7 +112,7 @@
                         color="lime accent-3"
                         class="ml-0 mb-2 black&#45;&#45;text"
                         label
-                        small
+                        large
                 >
                       {{prenotazione.doppio}}
                 </v-chip>
