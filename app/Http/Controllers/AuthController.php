@@ -61,7 +61,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(new UserResource(auth()->user()));
     }
 
     /**
@@ -106,5 +106,11 @@ class AuthController extends Controller
     public function payload()
     {
         return auth()->payload();
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->update($request->all());
+        return response($user, Response::HTTP_ACCEPTED);
     }
 }

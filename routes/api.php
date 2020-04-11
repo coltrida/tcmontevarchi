@@ -18,6 +18,7 @@ Route::group([
     Route::post('logout', 'AuthController@logout')->name('logout');
     Route::post('refresh', 'AuthController@refresh')->name('refresh');
     Route::post('me', 'AuthController@me')->name('me');
+    Route::patch('update/{user}', 'AuthController@update')->name('update');
 
     Route::post('payload', 'AuthController@payload')->name('payload');
 
