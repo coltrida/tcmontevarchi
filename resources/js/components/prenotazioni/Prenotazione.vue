@@ -51,7 +51,7 @@
                     oraon: this.orario,
                     doppio: 0,
                 })
-                    .then(res => this.$router.push(`/`))
+                    .then(res => location.reload())
             }
         }
     }

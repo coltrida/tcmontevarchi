@@ -2268,8 +2268,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     prenota: function prenota() {
-      var _this = this;
-
       axios.post('/api/prenotazioni', {
         username: User.name(),
         campo: this.campo,
@@ -2277,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
         oraon: this.orario,
         doppio: 0
       }).then(function (res) {
-        return _this.$router.push("/");
+        return location.reload();
       });
     }
   }
@@ -99575,7 +99573,8 @@ var routes = [{
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/prenotazioni/:giorno',
-  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"],
+  name: 'pren'
 }, {
   path: '/modifica',
   component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_6__["default"]

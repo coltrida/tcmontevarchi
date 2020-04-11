@@ -19,7 +19,7 @@ const routes = [
      { path: '/', component: HomePage },
      { path: '/storia', component: Storia },
      { path: '/logout', component: Logout },
-     { path: '/prenotazioni/:giorno', component: PrenotazioniCampi },
+     { path: '/prenotazioni/:giorno', component: PrenotazioniCampi, name: 'pren' },
 
      { path: '/modifica', component: Modifica },
      { path: '/caricaFoto', component: CaricaFoto },
