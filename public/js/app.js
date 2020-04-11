@@ -2265,6 +2265,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       esiste: false
     };
+  },
+  methods: {
+    prenota: function prenota() {
+      axios.post('/api/prenotazioni');
+    }
   }
 });
 
@@ -39263,7 +39268,11 @@ var render = function() {
             [
               _c(
                 "v-btn",
-                { staticStyle: { height: "50px" }, attrs: { color: "green" } },
+                {
+                  staticStyle: { height: "50px" },
+                  attrs: { color: "green" },
+                  on: { click: _vm.prenota }
+                },
                 [
                   _c("v-list-item-title", [
                     _vm._v(_vm._s(_vm.orario) + " - " + _vm._s(_vm.orario + 1))

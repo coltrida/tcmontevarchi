@@ -2,7 +2,7 @@
     <div>
         <v-list-item>
             <v-list-item-content style="height: 130px">
-                <v-btn color="green" style="height: 50px">
+                <v-btn color="green" @click="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -41,6 +41,12 @@
                 esiste: false,
             }
         },
+
+        methods:{
+            prenota(){
+                axios.post('/api/prenotazioni')
+            }
+        }
     }
 </script>
 
