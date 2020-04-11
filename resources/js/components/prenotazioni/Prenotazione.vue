@@ -34,7 +34,7 @@
 
         components:{PrenotazioneSingolo, PrenotazioneDoppio},
 
-        props: ['prenotazioni', 'orario'],
+        props: ['prenotazioni', 'orario', 'campo', 'giorno'],
 
         data(){
             return {
@@ -44,7 +44,14 @@
 
         methods:{
             prenota(){
-                axios.post('/api/prenotazioni')
+                axios.post('/api/prenotazioni',{
+                    username: User.name(),
+                    campo: this.campo,
+                    dataprenotazione: this.giorno,
+                    oraon: this.orario,
+                    doppio: 0,
+                })
+                    .then(res => this.$router.push(`/`))
             }
         }
     }
