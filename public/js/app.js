@@ -3577,14 +3577,13 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  create: {
-    lettura: function lettura() {
-      var _this = this;
+  created: function created() {
+    var _this = this;
 
-      axios.post("/api/auth/me").then(function (res) {
-        _this.form.nome = res.data.nome;
-      });
-    }
+    axios.post("/api/auth/me").then(function (res) {
+      console.log('2');
+      _this.form.nome = res.data.nome;
+    });
   },
   methods: {
     submit: function submit() {
@@ -41662,7 +41661,17 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { staticClass: "mr-4 success", on: { click: _vm.submit } },
+            [_vm._v("Invia")]
+          ),
+          _vm._v(" "),
+          _c("v-btn", { staticClass: "primary", on: { click: _vm.clear } }, [
+            _vm._v("Cancella")
+          ])
         ],
         1
       )
@@ -100553,8 +100562,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

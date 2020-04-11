@@ -74,8 +74,8 @@
           ></v-text-field>
         </v-col>
       </v-row>
-        <!-- <v-btn class="mr-4" @click="submit">Invia</v-btn>
-        <v-btn @click="clear">Cancella</v-btn> -->
+         <v-btn class="mr-4 success" @click="submit">Invia</v-btn>
+        <v-btn class="primary" @click="clear">Cancella</v-btn>
 
     </v-container>
   </v-form>
@@ -98,10 +98,12 @@
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
     }),
-    create:{
-        lettura(){
-        axios.post("/api/auth/me").then(res => {this.form.nome = res.data.nome})
-    }
+    created(){
+        axios.post("/api/auth/me").then(res => {
+            console.log('2')
+            this.form.nome = res.data.nome
+        })
+
     },
     methods: {
       submit () {
