@@ -42,6 +42,10 @@
             }
         },
 
+        created(){
+         console.log(this.prenotazioni)
+        },
+
         methods:{
             prenota(){
                 axios.post('/api/prenotazioni',{
@@ -52,6 +56,10 @@
                     doppio: 0,
                 })
                     .then(res => location.reload())
+            },
+
+            possoPrenotare(){
+                //this.prenotazioni.forEach(prenot => console.log(prenot))
             }
         }
     }
