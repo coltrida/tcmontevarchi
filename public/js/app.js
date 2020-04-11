@@ -3464,8 +3464,115 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "modificaUser"
+  data: function data() {
+    return {
+      valid: false,
+      nome: '',
+      cognome: '',
+      username: '',
+      password: '',
+      telefono: '',
+      email: '',
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+/.test(v) || 'E-mail must be valid';
+      }],
+      methods: {
+        submit: function submit() {
+          this.$v.$touch();
+        },
+        clear: function clear() {
+          this.$v.$reset();
+          this.nome = '';
+          this.cognome = '';
+          this.username = '';
+          this.password = '';
+          this.telefono = '';
+          this.email = '';
+        }
+      }
+    };
+  }
 });
 
 /***/ }),
@@ -41347,7 +41454,180 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("ciao")])
+  return _c(
+    "v-form",
+    {
+      model: {
+        value: _vm.valid,
+        callback: function($$v) {
+          _vm.valid = $$v
+        },
+        expression: "valid"
+      }
+    },
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Nome", required: "" },
+                    model: {
+                      value: _vm.nome,
+                      callback: function($$v) {
+                        _vm.nome = $$v
+                      },
+                      expression: "nome"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Cognome", required: "" },
+                    model: {
+                      value: _vm.cognome,
+                      callback: function($$v) {
+                        _vm.cognome = $$v
+                      },
+                      expression: "cognome"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Username", required: "" },
+                    model: {
+                      value: _vm.username,
+                      callback: function($$v) {
+                        _vm.username = $$v
+                      },
+                      expression: "username"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Password", required: "" },
+                    model: {
+                      value: _vm.password,
+                      callback: function($$v) {
+                        _vm.password = $$v
+                      },
+                      expression: "password"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Telefono", required: "" },
+                    model: {
+                      value: _vm.telefono,
+                      callback: function($$v) {
+                        _vm.telefono = $$v
+                      },
+                      expression: "telefono"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", md: "4" } },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.emailRules,
+                      label: "E-mail",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.email,
+                      callback: function($$v) {
+                        _vm.email = $$v
+                      },
+                      expression: "email"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-btn", { staticClass: "mr-4", on: { click: _vm.submit } }, [
+            _vm._v("Invia")
+          ]),
+          _vm._v(" "),
+          _c("v-btn", { on: { click: _vm.clear } }, [_vm._v("Cancella")])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -100183,8 +100463,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
