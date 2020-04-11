@@ -3574,29 +3574,31 @@ __webpack_require__.r(__webpack_exports__);
         return !!v || 'E-mail is required';
       }, function (v) {
         return /.+@.+/.test(v) || 'E-mail must be valid';
-      }],
-      create: {
-        lettura: function lettura() {
-          axios.post("/api/auth/me").then(function (res) {
-            console.log(res.data.nome);
-          });
-        }
-      },
-      methods: {
-        submit: function submit() {
-          this.$v.$touch();
-        },
-        clear: function clear() {
-          this.$v.$reset();
-          this.nome = '';
-          this.cognome = '';
-          this.username = '';
-          this.password = '';
-          this.telefono = '';
-          this.email = '';
-        }
-      }
+      }]
     };
+  },
+  create: {
+    lettura: function lettura() {
+      var _this = this;
+
+      axios.post("/api/auth/me").then(function (res) {
+        _this.form.nome = res.data.nome;
+      });
+    }
+  },
+  methods: {
+    submit: function submit() {
+      this.$v.$touch();
+    },
+    clear: function clear() {
+      this.$v.$reset();
+      this.nome = '';
+      this.cognome = '';
+      this.username = '';
+      this.password = '';
+      this.telefono = '';
+      this.email = '';
+    }
   }
 });
 
@@ -100551,8 +100553,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

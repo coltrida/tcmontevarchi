@@ -97,10 +97,12 @@
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
+    }),
     create:{
         lettura(){
-        axios.post("/api/auth/me").then(res => {console.log(res.data.nome)})
-    }},
+        axios.post("/api/auth/me").then(res => {this.form.nome = res.data.nome})
+    }
+    },
     methods: {
       submit () {
         this.$v.$touch()
@@ -113,8 +115,8 @@
         this.password = ''
         this.telefono = ''
         this.email = ''
-      },
+      }
     }
-    }),
-  }
+    }
+  
 </script>
