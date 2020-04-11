@@ -7,7 +7,7 @@
           md="4"
         >
           <v-text-field
-            v-model="nome"
+            v-model="form.nome"
             label="Nome"
             required
           ></v-text-field>
@@ -19,7 +19,7 @@
           md="4"
         >
           <v-text-field
-            v-model="cognome"
+            v-model="form.cognome"
             label="Cognome"
             required
           ></v-text-field>
@@ -31,7 +31,7 @@
           md="4"
         >
           <v-text-field
-            v-model="username"
+            v-model="form.username"
             label="Username"
             required
           ></v-text-field>
@@ -43,7 +43,7 @@
           md="4"
         >
           <v-text-field
-            v-model="password"
+            v-model="form.password"
             label="Password"
             required
           ></v-text-field>
@@ -55,7 +55,7 @@
           md="4"
         >
           <v-text-field
-            v-model="telefono"
+            v-model="form.telefono"
             label="Telefono"
             required
           ></v-text-field>
@@ -67,15 +67,15 @@
           md="4"
         >
           <v-text-field
-            v-model="email"
+            v-model="form.email"
             :rules="emailRules"
             label="E-mail"
             required
           ></v-text-field>
         </v-col>
       </v-row>
-        <v-btn class="mr-4" @click="submit">Invia</v-btn>
-        <v-btn @click="clear">Cancella</v-btn>
+        <!-- <v-btn class="mr-4" @click="submit">Invia</v-btn>
+        <v-btn @click="clear">Cancella</v-btn> -->
 
     </v-container>
   </v-form>
@@ -85,17 +85,23 @@
   export default {
     data: () => ({
       valid: false,
+      form:{
       nome: '',
       cognome: '',
       username: '',
       password: '',
       telefono: '',
       email: '',
+      },
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
-          methods: {
+    create:{
+        lettura(){
+        axios.post("/api/auth/me").then(res => {console.log(res.data.nome)})
+    }},
+    methods: {
       submit () {
         this.$v.$touch()
       },

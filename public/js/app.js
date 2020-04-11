@@ -3546,17 +3546,26 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       valid: false,
-      nome: '',
-      cognome: '',
-      username: '',
-      password: '',
-      telefono: '',
-      email: '',
+      form: {
+        nome: '',
+        cognome: '',
+        username: '',
+        password: '',
+        telefono: '',
+        email: ''
+      },
       emailRules: [function (v) {
         return !!v || 'E-mail is required';
       }, function (v) {
         return /.+@.+/.test(v) || 'E-mail must be valid';
       }],
+      create: {
+        lettura: function lettura() {
+          axios.post("/api/auth/me").then(function (res) {
+            console.log(res.data.nome);
+          });
+        }
+      },
       methods: {
         submit: function submit() {
           this.$v.$touch();
@@ -41479,11 +41488,11 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: { label: "Nome", required: "" },
                     model: {
-                      value: _vm.nome,
+                      value: _vm.form.nome,
                       callback: function($$v) {
-                        _vm.nome = $$v
+                        _vm.$set(_vm.form, "nome", $$v)
                       },
-                      expression: "nome"
+                      expression: "form.nome"
                     }
                   })
                 ],
@@ -41503,11 +41512,11 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: { label: "Cognome", required: "" },
                     model: {
-                      value: _vm.cognome,
+                      value: _vm.form.cognome,
                       callback: function($$v) {
-                        _vm.cognome = $$v
+                        _vm.$set(_vm.form, "cognome", $$v)
                       },
-                      expression: "cognome"
+                      expression: "form.cognome"
                     }
                   })
                 ],
@@ -41527,11 +41536,11 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: { label: "Username", required: "" },
                     model: {
-                      value: _vm.username,
+                      value: _vm.form.username,
                       callback: function($$v) {
-                        _vm.username = $$v
+                        _vm.$set(_vm.form, "username", $$v)
                       },
-                      expression: "username"
+                      expression: "form.username"
                     }
                   })
                 ],
@@ -41551,11 +41560,11 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: { label: "Password", required: "" },
                     model: {
-                      value: _vm.password,
+                      value: _vm.form.password,
                       callback: function($$v) {
-                        _vm.password = $$v
+                        _vm.$set(_vm.form, "password", $$v)
                       },
-                      expression: "password"
+                      expression: "form.password"
                     }
                   })
                 ],
@@ -41575,11 +41584,11 @@ var render = function() {
                   _c("v-text-field", {
                     attrs: { label: "Telefono", required: "" },
                     model: {
-                      value: _vm.telefono,
+                      value: _vm.form.telefono,
                       callback: function($$v) {
-                        _vm.telefono = $$v
+                        _vm.$set(_vm.form, "telefono", $$v)
                       },
-                      expression: "telefono"
+                      expression: "form.telefono"
                     }
                   })
                 ],
@@ -41603,11 +41612,11 @@ var render = function() {
                       required: ""
                     },
                     model: {
-                      value: _vm.email,
+                      value: _vm.form.email,
                       callback: function($$v) {
-                        _vm.email = $$v
+                        _vm.$set(_vm.form, "email", $$v)
                       },
-                      expression: "email"
+                      expression: "form.email"
                     }
                   })
                 ],
@@ -41615,13 +41624,7 @@ var render = function() {
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("v-btn", { staticClass: "mr-4", on: { click: _vm.submit } }, [
-            _vm._v("Invia")
-          ]),
-          _vm._v(" "),
-          _c("v-btn", { on: { click: _vm.clear } }, [_vm._v("Cancella")])
+          )
         ],
         1
       )
