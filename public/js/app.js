@@ -2266,6 +2266,9 @@ __webpack_require__.r(__webpack_exports__);
       esiste: false
     };
   },
+  created: function created() {
+    console.log(this.prenotazioni);
+  },
   methods: {
     prenota: function prenota() {
       axios.post('/api/prenotazioni', {
@@ -2277,6 +2280,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         return location.reload();
       });
+    },
+    possoPrenotare: function possoPrenotare() {//this.prenotazioni.forEach(prenot => console.log(prenot))
     }
   }
 });
