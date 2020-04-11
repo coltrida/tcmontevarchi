@@ -43,8 +43,8 @@
           md="4"
         >
           <v-text-field
-            v-model="form.password"
-            label="Password"
+            v-model="form.amici"
+            label="Amici"
             required
           ></v-text-field>
         </v-col>
@@ -74,8 +74,8 @@
           ></v-text-field>
         </v-col>
       </v-row>
-        <!-- <v-btn class="mr-4" @click="submit">Invia</v-btn>
-        <v-btn @click="clear">Cancella</v-btn> -->
+         <v-btn class="mr-4 success" @click="submit">Invia</v-btn>
+        <v-btn class="primary" @click="clear">Cancella</v-btn>
 
     </v-container>
   </v-form>
@@ -89,7 +89,7 @@
       nome: '',
       cognome: '',
       username: '',
-      password: '',
+      amici: '',
       telefono: '',
       email: '',
       },
@@ -99,22 +99,27 @@
       ],
     }),
     created(){
-        
-        axios.post("/api/auth/me").then(res => {this.form.nome = res.data.nome})
-    
+        axios.post("/api/auth/me").then(res => {
+            console.log(res.data);
+            this.form = res.data
+        })
+
     },
     methods: {
       submit () {
-        this.$v.$touch()
+        //this.$v.$touch()
+        axios.post("/api/auth/update/id",this.form).then(res =>{
+            console.log(res.data);
+        })
       },
       clear () {
-        this.$v.$reset()
-        this.nome = ''
-        this.cognome = ''
-        this.username = ''
-        this.password = ''
-        this.telefono = ''
-        this.email = ''
+       // this.form.$v.$reset()
+        this.form.nome = ''
+        this.form.cognome = ''
+        this.form.username = ''
+        this.form.amici = ''
+        this.form.telefono = ''
+        this.form.email = ''
       }
     }
     }

@@ -2268,8 +2268,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     prenota: function prenota() {
-      var _this = this;
-
       axios.post('/api/prenotazioni', {
         username: User.name(),
         campo: this.campo,
@@ -2277,7 +2275,7 @@ __webpack_require__.r(__webpack_exports__);
         oraon: this.orario,
         doppio: 0
       }).then(function (res) {
-        return _this.$router.push("/");
+        return location.reload();
       });
     }
   }
@@ -3568,7 +3566,7 @@ __webpack_require__.r(__webpack_exports__);
         nome: '',
         cognome: '',
         username: '',
-        password: '',
+        amici: '',
         telefono: '',
         email: ''
       },
@@ -3583,21 +3581,25 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post("/api/auth/me").then(function (res) {
-      _this.form.nome = res.data.nome;
+      console.log(res.data);
+      _this.form = res.data;
     });
   },
   methods: {
     submit: function submit() {
-      this.$v.$touch();
+      //this.$v.$touch()
+      axios.post("/api/auth/update/id", this.form).then(function (res) {
+        console.log(res.data);
+      });
     },
     clear: function clear() {
-      this.$v.$reset();
-      this.nome = '';
-      this.cognome = '';
-      this.username = '';
-      this.password = '';
-      this.telefono = '';
-      this.email = '';
+      // this.form.$v.$reset()
+      this.form.nome = '';
+      this.form.cognome = '';
+      this.form.username = '';
+      this.form.amici = '';
+      this.form.telefono = '';
+      this.form.email = '';
     }
   }
 });
@@ -41596,13 +41598,13 @@ var render = function() {
                 { attrs: { cols: "12", md: "4" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "Password", required: "" },
+                    attrs: { label: "Amici", required: "" },
                     model: {
-                      value: _vm.form.password,
+                      value: _vm.form.amici,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "password", $$v)
+                        _vm.$set(_vm.form, "amici", $$v)
                       },
-                      expression: "form.password"
+                      expression: "form.amici"
                     }
                   })
                 ],
@@ -41662,7 +41664,17 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { staticClass: "mr-4 success", on: { click: _vm.submit } },
+            [_vm._v("Invia")]
+          ),
+          _vm._v(" "),
+          _c("v-btn", { staticClass: "primary", on: { click: _vm.clear } }, [
+            _vm._v("Cancella")
+          ])
         ],
         1
       )
@@ -99575,7 +99587,8 @@ var routes = [{
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/prenotazioni/:giorno',
-  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"],
+  name: 'pren'
 }, {
   path: '/modifica',
   component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_6__["default"]
