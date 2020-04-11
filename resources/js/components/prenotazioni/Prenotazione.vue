@@ -2,7 +2,7 @@
     <div>
         <v-list-item>
             <v-list-item-content style="height: 130px">
-                <v-btn color="green" style="height: 50px">
+                <v-btn color="green" @click="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -34,13 +34,26 @@
 
         components:{PrenotazioneSingolo, PrenotazioneDoppio},
 
-        props: ['prenotazioni', 'orario'],
+        props: ['prenotazioni', 'orario', 'campo', 'giorno'],
 
         data(){
             return {
                 esiste: false,
             }
         },
+
+        methods:{
+            prenota(){
+                axios.post('/api/prenotazioni',{
+                    username: User.name(),
+                    campo: this.campo,
+                    dataprenotazione: this.giorno,
+                    oraon: this.orario,
+                    doppio: 0,
+                })
+                    .then(res => this.$router.push(`/`))
+            }
+        }
     }
 </script>
 

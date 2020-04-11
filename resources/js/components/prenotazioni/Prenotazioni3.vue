@@ -12,6 +12,8 @@
                     v-for="n in 15"
                     :orario='n+8'
                     :prenotazioni="prenotazioni"
+                    campo="campo3"
+                    :giorno="giorno"
                     :key="n"
             ></prenotazione>
 

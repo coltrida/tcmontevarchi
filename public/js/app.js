@@ -2260,11 +2260,26 @@ __webpack_require__.r(__webpack_exports__);
     PrenotazioneSingolo: _PrenotazioneSingolo__WEBPACK_IMPORTED_MODULE_0__["default"],
     PrenotazioneDoppio: _PrenotazioneDoppio__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ['prenotazioni', 'orario'],
+  props: ['prenotazioni', 'orario', 'campo', 'giorno'],
   data: function data() {
     return {
       esiste: false
     };
+  },
+  methods: {
+    prenota: function prenota() {
+      var _this = this;
+
+      axios.post('/api/prenotazioni', {
+        username: User.name(),
+        campo: this.campo,
+        dataprenotazione: this.giorno,
+        oraon: this.orario,
+        doppio: 0
+      }).then(function (res) {
+        return _this.$router.push("/");
+      });
+    }
   }
 });
 
@@ -2716,6 +2731,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titolo', 'giorno'],
@@ -2751,6 +2768,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Prenotazione__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazione */ "./resources/js/Components/prenotazioni/Prenotazione.vue");
+//
+//
 //
 //
 //
@@ -2830,6 +2849,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['titolo', 'giorno'],
@@ -2865,6 +2886,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Prenotazione__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prenotazione */ "./resources/js/Components/prenotazioni/Prenotazione.vue");
+//
+//
 //
 //
 //
@@ -39381,7 +39404,11 @@ var render = function() {
             [
               _c(
                 "v-btn",
-                { staticStyle: { height: "50px" }, attrs: { color: "green" } },
+                {
+                  staticStyle: { height: "50px" },
+                  attrs: { color: "green" },
+                  on: { click: _vm.prenota }
+                },
                 [
                   _c("v-list-item-title", [
                     _vm._v(_vm._s(_vm.orario) + " - " + _vm._s(_vm.orario + 1))
@@ -40646,7 +40673,12 @@ var render = function() {
         _vm._l(15, function(n) {
           return _c("prenotazione", {
             key: n,
-            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+            attrs: {
+              orario: n + 8,
+              prenotazioni: _vm.prenotazioni,
+              campo: "campo1",
+              giorno: _vm.giorno
+            }
           })
         }),
         1
@@ -40694,7 +40726,12 @@ var render = function() {
         _vm._l(15, function(n) {
           return _c("prenotazione", {
             key: n,
-            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+            attrs: {
+              orario: n + 8,
+              prenotazioni: _vm.prenotazioni,
+              campo: "campo2",
+              giorno: _vm.giorno
+            }
           })
         }),
         1
@@ -40742,7 +40779,12 @@ var render = function() {
         _vm._l(15, function(n) {
           return _c("prenotazione", {
             key: n,
-            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+            attrs: {
+              orario: n + 8,
+              prenotazioni: _vm.prenotazioni,
+              campo: "campo3",
+              giorno: _vm.giorno
+            }
           })
         }),
         1
@@ -40790,7 +40832,12 @@ var render = function() {
         _vm._l(15, function(n) {
           return _c("prenotazione", {
             key: n,
-            attrs: { orario: n + 8, prenotazioni: _vm.prenotazioni }
+            attrs: {
+              orario: n + 8,
+              prenotazioni: _vm.prenotazioni,
+              campo: "campo4",
+              giorno: _vm.giorno
+            }
           })
         }),
         1
@@ -99275,6 +99322,50 @@ var AppStorage = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/js/Helpers/Exception.js":
+/*!*******************************************!*\
+  !*** ./resources/js/Helpers/Exception.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User */ "./resources/js/Helpers/User.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Exception = /*#__PURE__*/function () {
+  function Exception() {
+    _classCallCheck(this, Exception);
+  }
+
+  _createClass(Exception, [{
+    key: "handle",
+    value: function handle(error) {
+      this.isExpired(error.response.data.error);
+    }
+  }, {
+    key: "isExpired",
+    value: function isExpired(error) {
+      if (error == 'Token is expired' || error == 'Token is invalid') {
+        _User__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+      }
+    }
+  }]);
+
+  return Exception;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Exception = new Exception());
+
+/***/ }),
+
 /***/ "./resources/js/Helpers/Token.js":
 /*!***************************************!*\
   !*** ./resources/js/Helpers/Token.js ***!
@@ -99527,7 +99618,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Helpers_User_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Helpers/User.js */ "./resources/js/Helpers/User.js");
-/* harmony import */ var _Router_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Router/router */ "./resources/js/Router/router.js");
+/* harmony import */ var _Helpers_Exception__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Helpers/Exception */ "./resources/js/Helpers/Exception.js");
+/* harmony import */ var _Router_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Router/router */ "./resources/js/Router/router.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -99541,6 +99633,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 window.User = _Helpers_User_js__WEBPACK_IMPORTED_MODULE_2__["default"];
+
+window.Exception = _Helpers_Exception__WEBPACK_IMPORTED_MODULE_3__["default"];
 window.EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /**
  * The following block of code may be used to automatically register your
@@ -99563,7 +99657,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('AppHome', __webpack_requir
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_1___default.a(),
-  router: _Router_router__WEBPACK_IMPORTED_MODULE_3__["default"]
+  router: _Router_router__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
@@ -99596,7 +99690,8 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+var JWtToken = "Bearer ".concat(localStorage.getItem('token'));
+window.axios.defaults.headers.common['Authorization'] = JWtToken;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -100459,8 +100554,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
