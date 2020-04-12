@@ -52,10 +52,11 @@
 </template>
 
 <script>
-    import Prenotazione1 from './Prenotazioni1'
-    import Prenotazione2 from './Prenotazioni2'
-    import Prenotazione3 from './Prenotazioni3'
-    import Prenotazione4 from './Prenotazioni4'
+ //   import Prenotazione1 from './Prenotazioni1'
+    import Prenotazione1 from './Prenotazioni1new'
+    import Prenotazione2 from './Prenotazioni2new'
+    import Prenotazione3 from './Prenotazioni3new'
+    import Prenotazione4 from './Prenotazioni4new'
     export default {
         name: "PrenotazioniCampi",
 

@@ -140,7 +140,10 @@
 
         created() {
             if (this.prenotazione.username1 && this.prenotazione.username2){
-                EventBus.$emit('full')
+                EventBus.$emit('prenotazioneFull', false)
+                //console.log('full')
+            } else {
+                EventBus.$emit('prenotazioneFull', true)
             }
         }
 

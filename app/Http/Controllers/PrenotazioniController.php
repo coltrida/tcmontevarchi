@@ -27,6 +27,21 @@ class PrenotazioniController extends Controller
         ])->get());
     }
 
+    public function indexnew(Request $request)
+    {
+        $pren = Prenotazione::where([
+            ['dataprenotazione', $request->input('dataprenotazione')],
+            ['campo', $request->input('campo')],
+            ['oraon', $request->input('oraon')],
+        ])->first();
+        //dd($pren);
+        if($pren){
+            return new PrenotazioniResource($pren);
+        } else{
+            return null;
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *

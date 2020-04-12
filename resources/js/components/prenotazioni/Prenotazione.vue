@@ -2,7 +2,7 @@
     <div>
         <v-list-item>
             <v-list-item-content style="height: 130px">
-                <v-btn :disabled="full" color="green" @click="prenota" style="height: 50px">
+                <v-btn :disabled="!esiste" color="green" @click="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -38,22 +38,17 @@
 
         data(){
             return {
-                full: false,
+                esiste: false,
             }
         },
 
         created(){
-            this.listen()
-            console.log(this.full)
+            EventBus.$on('prenotazioneFull', (pieno) => {
+                this.esiste = pieno
+            })
         },
 
         methods:{
-            listen(){
-                EventBus.$on('full', () => {
-                    this.full = true
-                })
-            },
-
             prenota(){
                 axios.post('/api/prenotazioni',{
                     username: User.name(),
@@ -64,6 +59,10 @@
                 })
                     .then(res => location.reload())
             },
+
+            possoPrenotare(){
+                //this.prenotazioni.forEach(prenot => console.log(prenot))
+            }
         }
     }
 </script>

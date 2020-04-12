@@ -90,6 +90,7 @@
       cognome: '',
       username: '',
       amici: '',
+      certificato: '',
       telefono: '',
       email: '',
       },
@@ -100,7 +101,6 @@
     }),
     created(){
         axios.post("/api/auth/me").then(res => {
-            console.log(res.data);
             this.form = res.data
         })
 
@@ -108,10 +108,8 @@
     methods: {
       submit () {
         //this.$v.$touch()
-        axios.patch("/api/auth/update/id",
-         this.form,
-        {User: 'this.form.id',
-         })
+        axios.patch("/api/auth/update/"+this.form.id,
+         this.form)
         .then(res =>{
             console.log(res.data);
         })
