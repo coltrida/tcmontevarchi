@@ -2263,13 +2263,20 @@ __webpack_require__.r(__webpack_exports__);
   props: ['prenotazioni', 'orario', 'campo', 'giorno'],
   data: function data() {
     return {
-      esiste: false
+      full: false
     };
   },
   created: function created() {
-    console.log(this.prenotazioni);
+    this.listen();
   },
   methods: {
+    listen: function listen() {
+      var _this = this;
+
+      EventBus.$on('full', function () {
+        _this.full = true;
+      });
+    },
     prenota: function prenota() {
       axios.post('/api/prenotazioni', {
         username: User.name(),
@@ -2280,8 +2287,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         return location.reload();
       });
-    },
-    possoPrenotare: function possoPrenotare() {//this.prenotazioni.forEach(prenot => console.log(prenot))
     }
   }
 });
@@ -2697,6 +2702,11 @@ __webpack_require__.r(__webpack_exports__);
       menu1: false,
       menu2: false
     };
+  },
+  created: function created() {
+    if (this.prenotazione.username1 && this.prenotazione.username2) {
+      EventBus.$emit('full');
+    }
   }
 });
 
@@ -2754,7 +2764,7 @@ __webpack_require__.r(__webpack_exports__);
       dataprenotazione: this.giorno,
       campo: 'campo1'
     }).then(function (res) {
-      _this.prenotazioni = res.data.data; //   console.log(this.prenotazioni)
+      _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni)
     });
   }
 });

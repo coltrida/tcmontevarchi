@@ -136,6 +136,12 @@
                 menu1: false,
                 menu2: false,
             }
+        },
+
+        created() {
+            if (this.prenotazione.username1 && this.prenotazione.username2){
+                EventBus.$emit('full')
+            }
         }
 
     }

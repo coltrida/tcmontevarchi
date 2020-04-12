@@ -38,15 +38,21 @@
 
         data(){
             return {
-                esiste: false,
+                full: false,
             }
         },
 
         created(){
-         console.log(this.prenotazioni)
+            this.listen()
         },
 
         methods:{
+            listen(){
+                EventBus.$on('full', () => {
+                    this.full = true
+                })
+            },
+
             prenota(){
                 axios.post('/api/prenotazioni',{
                     username: User.name(),
@@ -57,10 +63,6 @@
                 })
                     .then(res => location.reload())
             },
-
-            possoPrenotare(){
-                //this.prenotazioni.forEach(prenot => console.log(prenot))
-            }
         }
     }
 </script>

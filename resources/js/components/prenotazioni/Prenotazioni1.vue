@@ -31,7 +31,7 @@
 
         data() {
             return {
-                prenotazioni: {}
+                prenotazioni:{}
             }
         },
 
@@ -41,8 +41,8 @@
                 campo: 'campo1'
             })
                 .then(res => {
-                    this.prenotazioni = res.data.data
-                 //   console.log(this.prenotazioni)
+                    this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
+                    //console.log(this.prenotazioni)
                 })
         }
     }
