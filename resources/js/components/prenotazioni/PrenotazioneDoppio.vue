@@ -2,7 +2,7 @@
     <div>
         <v-list-item-subtitle >
             <div style="display: flex; justify-content: space-between">
-                <div>
+                <div style="flex-grow:1">
                     <div style="display: flex; justify-content: space-between">
                 <span v-if="prenotazione.username1">
                      <v-menu
@@ -17,6 +17,7 @@
                               color="primary"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -69,6 +70,7 @@
                               color="red"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -122,6 +124,7 @@
                               color="primary"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -174,6 +177,7 @@
                               color="red"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>

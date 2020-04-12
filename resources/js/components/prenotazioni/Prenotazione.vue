@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-list-item>
-            <v-list-item-content style="height: 130px">
-                <v-btn :disabled="!esiste" color="green" @click="prenota" style="height: 50px">
+            <v-list-item-content style="height: 130px; align-items: start">
+                <v-btn :disabled="full" color="green" @click.prevent="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -38,14 +38,21 @@
 
         data(){
             return {
-                esiste: false,
+                full: false,
             }
         },
 
         created(){
-            EventBus.$on('prenotazioneFull', (pieno) => {
+            /*EventBus.$on('prenotazioneFull', (pieno) => {
+                console.log(pieno)
                 this.esiste = pieno
+            })*/
+            /*axios.post('/api/full',{
+                campo: this.campo,
+                dataprenotazione: this.giorno,
+                oraon: this.orario,
             })
+                .then(res => location.reload())*/
         },
 
         methods:{
@@ -59,10 +66,6 @@
                 })
                     .then(res => location.reload())
             },
-
-            possoPrenotare(){
-                //this.prenotazioni.forEach(prenot => console.log(prenot))
-            }
         }
     }
 </script>

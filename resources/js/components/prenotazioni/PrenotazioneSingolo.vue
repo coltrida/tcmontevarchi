@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-list-item-subtitle style="display: flex; justify-content: space-between">
-            <div>
+            <div style="flex-grow:1; display: flex; justify-content: space-between">
                 <span v-if="prenotazione.username1">
                      <v-menu
                              v-model="menu1"
@@ -15,6 +15,7 @@
                               color="primary"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -67,6 +68,7 @@
                               color="red"
                               label
                               v-on="on"
+                              style="width: 138px"
                       >
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
@@ -139,12 +141,13 @@
         },
 
         created() {
-            if (this.prenotazione.username1 && this.prenotazione.username2){
-                EventBus.$emit('prenotazioneFull', false)
+            EventBus.$emit('prenotazioneFull', this.prenotazione.username1)
+            /*if (this.prenotazione.username1 && this.prenotazione.username2){
+                EventBus.$emit('prenotazioneFull', this.prenotazione.id)
                 //console.log('full')
             } else {
                 EventBus.$emit('prenotazioneFull', true)
-            }
+            }*/
         }
 
     }
