@@ -2268,6 +2268,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.listen();
+    console.log(this.full);
   },
   methods: {
     listen: function listen() {
@@ -39418,7 +39419,7 @@ var render = function() {
                 "v-btn",
                 {
                   staticStyle: { height: "50px" },
-                  attrs: { color: "green" },
+                  attrs: { disabled: _vm.full, color: "green" },
                   on: { click: _vm.prenota }
                 },
                 [

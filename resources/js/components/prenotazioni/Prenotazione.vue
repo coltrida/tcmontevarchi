@@ -2,7 +2,7 @@
     <div>
         <v-list-item>
             <v-list-item-content style="height: 130px">
-                <v-btn color="green" @click="prenota" style="height: 50px">
+                <v-btn :disabled="full" color="green" @click="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -44,6 +44,7 @@
 
         created(){
             this.listen()
+            console.log(this.full)
         },
 
         methods:{

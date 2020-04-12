@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="472754f2-8bd2-43ee-ad05-a6e7365737bc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Homestead.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Homestead.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+            <state relative-caret-position="340">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#v-btn#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -35,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
-              <caret line="142" column="44" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="44" />
+              <caret line="142" column="37" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#v-list-item-subtitle#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -192,9 +189,9 @@
         <option value="$PROJECT_DIR$/resources/js/components/pannelloUser/modificaUser.vue" />
         <option value="$PROJECT_DIR$/app/Http/Resources/UserResource.php" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" />
       </list>
     </option>
   </component>
@@ -371,14 +368,6 @@
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="prenotazioni" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -439,18 +428,17 @@
       <workItem from="1586329724358" duration="23396000" />
       <workItem from="1586456361694" duration="3325000" />
       <workItem from="1586501027710" duration="30435000" />
-      <workItem from="1586605187158" duration="19376000" />
+      <workItem from="1586605187158" duration="19669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131067000" />
+    <option name="totallyTimeSpent" value="131360000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2442953" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2442953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -465,7 +453,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.22905028" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.25279328" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -637,13 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-267">
           <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/login/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -821,23 +802,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/login/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#v-btn#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="351">
+          <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="142" column="44" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="44" />
+          <caret line="142" column="37" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#v-list-item-subtitle#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-btn#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
