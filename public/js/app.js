@@ -3582,7 +3582,7 @@ __webpack_require__.r(__webpack_exports__);
         nome: '',
         cognome: '',
         username: '',
-        password: '',
+        amici: '',
         telefono: '',
         email: ''
       },
@@ -3597,22 +3597,27 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post("/api/auth/me").then(function (res) {
-      console.log('2');
-      _this.form.nome = res.data.nome;
+      console.log(res.data);
+      _this.form = res.data;
     });
   },
   methods: {
     submit: function submit() {
-      this.$v.$touch();
+      //this.$v.$touch()
+      axios.patch("/api/auth/update/id", this.form, {
+        User: 'this.form.id'
+      }).then(function (res) {
+        console.log(res.data);
+      });
     },
     clear: function clear() {
-      this.$v.$reset();
-      this.nome = '';
-      this.cognome = '';
-      this.username = '';
-      this.password = '';
-      this.telefono = '';
-      this.email = '';
+      // this.form.$v.$reset()
+      this.form.nome = '';
+      this.form.cognome = '';
+      this.form.username = '';
+      this.form.amici = '';
+      this.form.telefono = '';
+      this.form.email = '';
     }
   }
 });
@@ -41611,13 +41616,13 @@ var render = function() {
                 { attrs: { cols: "12", md: "4" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "Password", required: "" },
+                    attrs: { label: "Amici", required: "" },
                     model: {
-                      value: _vm.form.password,
+                      value: _vm.form.amici,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "password", $$v)
+                        _vm.$set(_vm.form, "amici", $$v)
                       },
-                      expression: "form.password"
+                      expression: "form.amici"
                     }
                   })
                 ],
@@ -100578,8 +100583,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
