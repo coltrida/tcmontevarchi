@@ -2252,6 +2252,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2263,30 +2289,42 @@ __webpack_require__.r(__webpack_exports__);
   props: ['prenotazioni', 'orario', 'campo', 'giorno'],
   data: function data() {
     return {
-      full: false
+      full: false,
+      dialog: false,
+      pren: {},
+      scelta: 0
     };
   },
   created: function created() {
-    /*EventBus.$on('prenotazioneFull', (pieno) => {
-        console.log(pieno)
-        this.esiste = pieno
-    })*/
+    var _this = this;
 
-    /*axios.post('/api/full',{
-        campo: this.campo,
-        dataprenotazione: this.giorno,
-        oraon: this.orario,
-    })
-        .then(res => location.reload())*/
+    //console.log(this.campo)
+    //EventBus.$once('prenotazioneFull', (valore) => {
+    //console.log(this.orario+'-'+ this.campo +'-'+ this.giorno)
+    //this.full = true
+    //console.log(valore)
+    //})
+    axios.post('/api/full', {
+      dataprenotazione: this.giorno,
+      campo: this.campo,
+      oraon: this.orario
+    }).then(function (res) {
+      //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
+      if (res.data) {
+        _this.pren = res.data.data;
+      }
+    });
   },
   methods: {
-    prenota: function prenota() {
+    prenota: function prenota() {},
+    conferma: function conferma() {
+      this.dialog = false;
       axios.post('/api/prenotazioni', {
         username: User.name(),
         campo: this.campo,
         dataprenotazione: this.giorno,
         oraon: this.orario,
-        doppio: 0
+        doppio: this.pren.doppio ? this.pren.doppio : this.scelta
       }).then(function (res) {
         return location.reload();
       });
@@ -2713,13 +2751,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    EventBus.$emit('prenotazioneFull', this.prenotazione.username1);
-    /*if (this.prenotazione.username1 && this.prenotazione.username2){
-        EventBus.$emit('prenotazioneFull', this.prenotazione.id)
-        //console.log('full')
-    } else {
-        EventBus.$emit('prenotazioneFull', true)
+    //console.log('ciao')
+    //EventBus.$emit('prenotazioneFull', 'ciao')
+    if (this.prenotazione.username1 && this.prenotazione.username2) {
+      EventBus.$emit('prenotazioneFull', this.prenotazione.username1 + this.prenotazione.oraon + this.prenotazione.campo); //console.log('full')
+    }
+    /*else {
+      EventBus.$emit('prenotazioneFull')
     }*/
+
   }
 });
 
@@ -2773,6 +2813,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    //console.log('ciao')
     axios.post('/api/prenotazionispecifiche', {
       dataprenotazione: this.giorno,
       campo: 'campo1'
@@ -39420,21 +39461,159 @@ var render = function() {
             { staticStyle: { height: "130px", "align-items": "start" } },
             [
               _c(
-                "v-btn",
+                "v-dialog",
                 {
-                  staticStyle: { height: "50px" },
-                  attrs: { disabled: _vm.full, color: "green" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.prenota($event)
+                  attrs: { persistent: "", "max-width": "600px" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function(ref) {
+                        var on = ref.on
+                        return [
+                          _c(
+                            "v-btn",
+                            _vm._g(
+                              {
+                                staticStyle: { height: "50px" },
+                                attrs: { color: "green", dark: "" }
+                              },
+                              on
+                            ),
+                            [
+                              _vm._v(
+                                _vm._s(_vm.orario) +
+                                  " - " +
+                                  _vm._s(_vm.orario + 1)
+                              )
+                            ]
+                          )
+                        ]
+                      }
                     }
+                  ]),
+                  model: {
+                    value: _vm.dialog,
+                    callback: function($$v) {
+                      _vm.dialog = $$v
+                    },
+                    expression: "dialog"
                   }
                 },
                 [
-                  _c("v-list-item-title", [
-                    _vm._v(_vm._s(_vm.orario) + " - " + _vm._s(_vm.orario + 1))
-                  ])
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    [
+                      _vm.pren.doppio
+                        ? _c("v-card-title", [
+                            _c("span", { staticClass: "headline" }, [
+                              _vm._v(
+                                _vm._s(_vm.giorno) +
+                                  " - " +
+                                  _vm._s(_vm.campo) +
+                                  " - " +
+                                  _vm._s(_vm.orario) +
+                                  " - " +
+                                  _vm._s(_vm.pren.doppio)
+                              )
+                            ])
+                          ])
+                        : _c("v-card-title", [
+                            _c("span", { staticClass: "headline" }, [
+                              _vm._v(
+                                _vm._s(_vm.giorno) +
+                                  " - " +
+                                  _vm._s(_vm.campo) +
+                                  " - " +
+                                  _vm._s(_vm.orario)
+                              )
+                            ])
+                          ]),
+                      _vm._v(" "),
+                      !_vm.pren.doppio
+                        ? _c(
+                            "v-card-text",
+                            [
+                              _c(
+                                "v-container",
+                                [
+                                  _c(
+                                    "v-row",
+                                    [
+                                      _c(
+                                        "v-radio-group",
+                                        {
+                                          attrs: { row: "" },
+                                          model: {
+                                            value: _vm.scelta,
+                                            callback: function($$v) {
+                                              _vm.scelta = $$v
+                                            },
+                                            expression: "scelta"
+                                          }
+                                        },
+                                        [
+                                          _c("v-radio", {
+                                            attrs: {
+                                              label: "Singolo",
+                                              value: "0"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("v-radio", {
+                                            attrs: {
+                                              label: "Doppio",
+                                              value: "1"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("small", [_vm._v("*scelta obbligatoria")])
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", text: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.dialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("Annulla")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", text: "" },
+                              on: { click: _vm.conferma }
+                            },
+                            [_vm._v("Conferma")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -39691,7 +39870,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.prenotazione.username2
+                  _vm.prenotazione.username3
                     ? _c(
                         "span",
                         [
@@ -39737,7 +39916,7 @@ var render = function() {
                                             _vm._v(
                                               "\n                    " +
                                                 _vm._s(
-                                                  _vm.prenotazione.username2
+                                                  _vm.prenotazione.username3
                                                 ) +
                                                 "\n                  "
                                             )
@@ -39750,7 +39929,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                2035523764
+                                3677145557
                               ),
                               model: {
                                 value: _vm.menu2,
@@ -39878,7 +40057,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm.prenotazione.username3
+                  _vm.prenotazione.username2
                     ? _c(
                         "span",
                         [
@@ -39927,7 +40106,7 @@ var render = function() {
                                             _vm._v(
                                               "\n                    " +
                                                 _vm._s(
-                                                  _vm.prenotazione.username3
+                                                  _vm.prenotazione.username2
                                                 ) +
                                                 "\n                  "
                                             )
@@ -39940,7 +40119,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                1799243306
+                                3172356811
                               ),
                               model: {
                                 value: _vm.menu3,
@@ -100611,8 +100790,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

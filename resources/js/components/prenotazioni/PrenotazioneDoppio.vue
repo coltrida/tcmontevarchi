@@ -57,7 +57,7 @@
                   </v-menu>
 
                 </span>
-                        <span v-if="prenotazione.username2">
+                        <span v-if="prenotazione.username3">
                     <v-menu
                             v-model="menu2"
                             bottom
@@ -75,7 +75,7 @@
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                         </v-avatar>
-                        {{ prenotazione.username2 }}
+                        {{ prenotazione.username3 }}
                       </v-chip>
                     </template>
                     <v-card width="300">
@@ -111,7 +111,7 @@
                 </span>
                     </div>
                     <div style="display: flex; justify-content: space-between">
-                <span v-if="prenotazione.username3">
+                <span v-if="prenotazione.username2">
                      <v-menu
                              v-model="menu3"
                              bottom
@@ -129,7 +129,7 @@
                         <v-avatar left>
                           <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                         </v-avatar>
-                        {{ prenotazione.username3 }}
+                        {{ prenotazione.username2 }}
                       </v-chip>
                     </template>
                     <v-card width="300">

@@ -36,6 +36,7 @@
         },
 
         created() {
+            //console.log('ciao')
             axios.post('/api/prenotazionispecifiche', {
                 dataprenotazione: this.giorno,
                 campo: 'campo1'

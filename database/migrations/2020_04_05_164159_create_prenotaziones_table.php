@@ -25,6 +25,7 @@ class CreatePrenotazionesTable extends Migration
             $table->boolean('doppio');
             $table->timestamps();
 
+            $table->index(['dataprenotazione', 'campo', 'oraon']);
         });
     }
 

@@ -141,12 +141,13 @@
         },
 
         created() {
-            EventBus.$emit('prenotazioneFull', this.prenotazione.username1)
-            /*if (this.prenotazione.username1 && this.prenotazione.username2){
-                EventBus.$emit('prenotazioneFull', this.prenotazione.id)
+            //console.log('ciao')
+            //EventBus.$emit('prenotazioneFull', 'ciao')
+            if (this.prenotazione.username1 && this.prenotazione.username2){
+                EventBus.$emit('prenotazioneFull', this.prenotazione.username1+this.prenotazione.oraon+this.prenotazione.campo)
                 //console.log('full')
-            } else {
-                EventBus.$emit('prenotazioneFull', true)
+            } /*else {
+                EventBus.$emit('prenotazioneFull')
             }*/
         }
 
