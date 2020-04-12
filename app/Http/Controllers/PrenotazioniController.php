@@ -118,6 +118,8 @@ class PrenotazioniController extends Controller
      */
     public function destroy(Prenotazione $prenotazioni)
     {
+        $username = auth()->user()->username;
+        if($prenotazioni->username1 == $username && !$prenotazioni->username2)
         $prenotazioni->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }

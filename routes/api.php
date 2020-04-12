@@ -21,6 +21,8 @@ Route::group([
     Route::post('me', 'AuthController@me')->name('me');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
 
+    Route::get('prenotazioni', 'AuthController@prenotazioni');
+
     Route::post('payload', 'AuthController@payload')->name('payload');
 
 });
