@@ -108,7 +108,11 @@
     methods: {
       submit () {
         //this.$v.$touch()
-        axios.post("/api/auth/update/id",this.form).then(res =>{
+        axios.patch("/api/auth/update/id",
+         this.form,
+        {User: 'this.form.id',
+         })
+        .then(res =>{
             console.log(res.data);
         })
       },

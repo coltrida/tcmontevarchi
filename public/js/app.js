@@ -3593,7 +3593,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       //this.$v.$touch()
-      axios.post("/api/auth/update/id", this.form).then(function (res) {
+      axios.patch("/api/auth/update/id", this.form, {
+        User: 'this.form.id'
+      }).then(function (res) {
         console.log(res.data);
       });
     },
