@@ -100,20 +100,28 @@
     }),
     created(){
         axios.post("/api/auth/me").then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            
+            // this.form.cognome = res.data.cognome
+            // this.form.username = res.data.username
+            // this.form.amici = res.data.amici
+            // this.form.telefono = res.data.telefono
+            // this.form.email= res.data.email
             this.form = res.data
+            console.log(this.form);
+            
+            
         })
 
     },
     methods: {
       submit () {
         //this.$v.$touch()
-        axios.patch("/api/auth/update/id",
-         this.form,
-        {User: 'this.form.id',
-         })
+        axios.patch('/api/auth/update/'+this.form.id,
+         this.form
+        )
         .then(res =>{
-            console.log(res.data);
+         this.$router.push('/')   
         })
       },
       clear () {

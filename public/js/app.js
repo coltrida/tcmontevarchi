@@ -3586,17 +3586,23 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.post("/api/auth/me").then(function (res) {
-      console.log(res.data);
+      // console.log(res.data);
+      // this.form.cognome = res.data.cognome
+      // this.form.username = res.data.username
+      // this.form.amici = res.data.amici
+      // this.form.telefono = res.data.telefono
+      // this.form.email= res.data.email
       _this.form = res.data;
+      console.log(_this.form);
     });
   },
   methods: {
     submit: function submit() {
+      var _this2 = this;
+
       //this.$v.$touch()
-      axios.patch("/api/auth/update/id", this.form, {
-        User: 'this.form.id'
-      }).then(function (res) {
-        console.log(res.data);
+      axios.patch('/api/auth/update/' + this.form.id, this.form).then(function (res) {
+        _this2.$router.push('/');
       });
     },
     clear: function clear() {
