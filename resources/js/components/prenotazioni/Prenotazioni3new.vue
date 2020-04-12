@@ -9,12 +9,12 @@
 
         <v-list two-line subheader>
             <prenotazione
-                v-for="n in 15"
-                :orario='n+8'
-                :prenotazioni="prenotazioni"
-                campo="campo1"
-                :giorno="giorno"
-                :key="n"
+                    v-for="n in 15"
+                    :orario='n+8'
+
+                    campo="campo3"
+                    :giorno="giorno"
+                    :key="n"
             ></prenotazione>
 
         </v-list>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import Prenotazione from './Prenotazione'
+    import Prenotazione from './Prenotazionenew'
     export default {
         props: ['titolo', 'giorno'],
 
@@ -31,19 +31,19 @@
 
         data() {
             return {
-                prenotazioni:{}
+ /*               prenotazioni: {}*/
             }
         },
 
         created() {
-            axios.post('/api/prenotazionispecifiche', {
+/*            axios.post('/api/prenotazionispecifiche', {
                 dataprenotazione: this.giorno,
-                campo: 'campo1'
+                campo: 'campo3'
             })
                 .then(res => {
-                    this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
-                    //console.log(this.prenotazioni)
-                })
+                    this.prenotazioni = res.data.data
+                   // console.log(this.prenotazioni)
+                })*/
         }
     }
 </script>

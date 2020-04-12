@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index')->name('prenotazioni.index');
+Route::post('/prenotazionispecifiche2', 'PrenotazioniController@indexnew')->name('prenotazioni2.index');
 Route::apiResource('/soci', 'SociController');
 
 

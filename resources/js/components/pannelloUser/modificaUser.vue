@@ -90,6 +90,7 @@
       cognome: '',
       username: '',
       amici: '',
+      certificato: '',
       telefono: '',
       email: '',
       },
@@ -100,6 +101,7 @@
     }),
     created(){
         axios.post("/api/auth/me").then(res => {
+<<<<<<< HEAD
             // console.log(res.data);
             
             // this.form.cognome = res.data.cognome
@@ -107,6 +109,8 @@
             // this.form.amici = res.data.amici
             // this.form.telefono = res.data.telefono
             // this.form.email= res.data.email
+=======
+>>>>>>> 4d8c2d7e4e6325282496f41ca4465cb7af1347c1
             this.form = res.data
             console.log(this.form);
             
@@ -117,9 +121,14 @@
     methods: {
       submit () {
         //this.$v.$touch()
+<<<<<<< HEAD
         axios.patch('/api/auth/update/'+this.form.id,
          this.form
         )
+=======
+        axios.patch("/api/auth/update/"+this.form.id,
+         this.form)
+>>>>>>> 4d8c2d7e4e6325282496f41ca4465cb7af1347c1
         .then(res =>{
          this.$router.push('/')   
         })

@@ -2,7 +2,7 @@
     <div>
         <v-list-item>
             <v-list-item-content style="height: 130px">
-                <v-btn color="green" @click="prenota" style="height: 50px">
+                <v-btn :disabled="!esiste" color="green" @click="prenota" style="height: 50px">
                     <v-list-item-title>{{orario}} - {{orario+1}}</v-list-item-title>
                 </v-btn>
 
@@ -43,7 +43,9 @@
         },
 
         created(){
-         console.log(this.prenotazioni)
+            EventBus.$on('prenotazioneFull', (pieno) => {
+                this.esiste = pieno
+            })
         },
 
         methods:{
