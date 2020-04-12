@@ -1,7 +1,9 @@
 <template>
     <div class="ml-4 mr-4">
         <v-row>
-            <v-col>Prenotazioni del giorno {{ gior }}</v-col>
+            <v-col class="text-center"><v-btn @click="indietro" color="primary">freccia</v-btn></v-col>
+            <v-col class="text-center">Prenotazioni del giorno {{ gior }}</v-col>
+            <v-col class="text-center"><v-btn @click="avanti" color="primary">freccia</v-btn></v-col>
         </v-row>
         <v-row
                 class="mb-6"
@@ -52,11 +54,10 @@
 </template>
 
 <script>
- //   import Prenotazione1 from './Prenotazioni1'
-    import Prenotazione1 from './Prenotazioni1new'
-    import Prenotazione2 from './Prenotazioni2new'
-    import Prenotazione3 from './Prenotazioni3new'
-    import Prenotazione4 from './Prenotazioni4new'
+    import Prenotazione1 from './Prenotazioni1'
+    import Prenotazione2 from './Prenotazioni2'
+    import Prenotazione3 from './Prenotazioni3'
+    import Prenotazione4 from './Prenotazioni4'
     export default {
         name: "PrenotazioniCampi",
 
@@ -66,7 +67,17 @@
             }
         },
 
-        components:{Prenotazione1, Prenotazione2, Prenotazione3, Prenotazione4}
+        components:{Prenotazione1, Prenotazione2, Prenotazione3, Prenotazione4},
+
+        methods:{
+            indietro(){
+                console.log(Date.parse(this.gior))
+            },
+
+            avanti(){
+
+            }
+        }
     }
 </script>
 

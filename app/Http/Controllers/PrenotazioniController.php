@@ -27,7 +27,7 @@ class PrenotazioniController extends Controller
         ])->get());
     }
 
-    public function indexnew(Request $request)
+    public function full(Request $request)
     {
         $pren = Prenotazione::where([
             ['dataprenotazione', $request->input('dataprenotazione')],
