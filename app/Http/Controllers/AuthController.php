@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Prenotazione;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
@@ -112,5 +113,17 @@ class AuthController extends Controller
     {
         $user->update($request->all());
         return response($user, Response::HTTP_ACCEPTED);
+    }
+
+    public function prenotazioni()
+    {
+        $username = auth()->user()->username;
+        $prenotazioni = Prenotazione::where('username1', $username)->
+                                orWhere('username2', $username)->
+                                orWhere('username3', $username)->
+                                orWhere('username4', $username)
+
+            ->get();
+        return $prenotazioni;
     }
 }

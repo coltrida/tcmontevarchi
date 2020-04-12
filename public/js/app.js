@@ -2312,6 +2312,7 @@ __webpack_require__.r(__webpack_exports__);
       //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
       if (res.data) {
         _this.pren = res.data.data;
+        console.log(res.data.data.full);
       }
     });
   },

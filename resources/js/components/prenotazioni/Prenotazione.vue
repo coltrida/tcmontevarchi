@@ -88,6 +88,7 @@
                     //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
                     if(res.data){
                         this.pren = res.data.data
+                        console.log(res.data.data.full)
                     }
                 })
         },
