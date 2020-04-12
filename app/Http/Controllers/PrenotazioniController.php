@@ -70,9 +70,9 @@ class PrenotazioniController extends Controller
      * @param  \App\Models\Prenotazione  $prenotazione
      * @return \Illuminate\Http\Response
      */
-    public function show(Prenotazione $prenotazione)
+    public function show(Prenotazione $prenotazioni)
     {
-        //
+        return new PrenotazioniResource($prenotazioni);
     }
 
     /**
@@ -116,8 +116,9 @@ class PrenotazioniController extends Controller
      * @param  \App\Models\Prenotazione  $prenotazione
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prenotazione $prenotazione)
+    public function destroy(Prenotazione $prenotazioni)
     {
-        //
+        $prenotazioni->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
