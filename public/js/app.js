@@ -3482,7 +3482,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/soci").then(function (res) {
         _this.soci = res.data.data;
         _this.totSoci = res.data.data[0].totSoci;
-        console.log(_this.totSoci);
+        console.log(_this.soci);
       });
     }
   }
@@ -3495,9 +3495,119 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/modificaUser.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\resources\\js\\components\\pannelloUser\\modificaUser.vue: Unexpected token (104:0)\n\n\u001b[0m \u001b[90m 102 | \u001b[39m    created(){\u001b[0m\n\u001b[0m \u001b[90m 103 | \u001b[39m        axios\u001b[33m.\u001b[39mpost(\u001b[32m\"/api/auth/me\"\u001b[39m)\u001b[33m.\u001b[39mthen(res \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 104 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 105 | \u001b[39m            \u001b[90m// console.log(res.data);\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 106 | \u001b[39m            \u001b[0m\n\u001b[0m \u001b[90m 107 | \u001b[39m            \u001b[90m// this.form.cognome = res.data.cognome\u001b[39m\u001b[0m\n    at Parser._raise (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:742:17)\n    at Parser.raiseWithData (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.raise (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:729:17)\n    at Parser.unexpected (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:8757:16)\n    at Parser.parseExprAtom (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10052:20)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9602:23)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9452:23)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)\n    at Parser.parseMaybeAssign (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9380:21)\n    at Parser.parseExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9332:23)\n    at Parser.parseStatementContent (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11210:23)\n    at Parser.parseStatement (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11081:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11656:25)\n    at Parser.parseBlockBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11642:10)\n    at Parser.parseBlock (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11626:10)\n    at Parser.parseFunctionBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10634:24)\n    at Parser.parseArrowExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10603:10)\n    at Parser.parseExprAtom (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9900:18)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9602:23)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9452:23)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)\n    at Parser.parseMaybeAssign (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9380:21)\n    at Parser.parseExprListItem (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10718:18)\n    at Parser.parseCallExpressionArguments (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9790:22)\n    at Parser.parseSubscript (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9696:31)\n    at Parser.parseSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9625:19)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9608:17)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9452:23)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)\n    at Parser.parseMaybeAssign (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9380:21)\n    at Parser.parseExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9332:23)\n    at Parser.parseStatementContent (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11210:23)\n    at Parser.parseStatement (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11081:17)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      valid: false,
+      form: {
+        nome: '',
+        cognome: '',
+        username: '',
+        amici: '',
+        certificato: '',
+        telefono: ''
+      },
+      emailRules: [function (v) {
+        return !!v || 'E-mail is required';
+      }, function (v) {
+        return /.+@.+/.test(v) || 'E-mail must be valid';
+      }]
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post("/api/auth/me").then(function (res) {
+      _this.form = res.data;
+      console.log(_this.form);
+    });
+  },
+  methods: {
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.patch("/api/auth/update/" + this.form.id, this.form).then(function (res) {
+        _this2.$router.push('/');
+      });
+    },
+    clear: function clear() {}
+  }
+});
 
 /***/ }),
 
@@ -41510,42 +41620,10 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-row",
-            [
-              _c(
-                "v-col",
-                { attrs: { cols: "12", md: "4" } },
-                [
-                  _c("v-text-field", {
-                    attrs: {
-                      rules: _vm.emailRules,
-                      label: "E-mail",
-                      required: ""
-                    },
-                    model: {
-                      value: _vm.form.email,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "email", $$v)
-                      },
-                      expression: "form.email"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
             "v-btn",
             { staticClass: "mr-4 success", on: { click: _vm.submit } },
             [_vm._v("Invia")]
-          ),
-          _vm._v(" "),
-          _c("v-btn", { staticClass: "primary", on: { click: _vm.clear } }, [
-            _vm._v("Cancella")
-          ])
+          )
         ],
         1
       )

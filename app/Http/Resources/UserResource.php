@@ -26,11 +26,7 @@ class UserResource extends JsonResource
             'amici' => $this->amici,
             'anno' => $this->anno,
             'privilegi' => $this->privilegi,
-<<<<<<< HEAD
             // 'certificato' => Carbon::parse($this->certificato)->format('d/m/Y')
-=======
-         //   'certificato' => Carbon::parse($this->certificato)->format('d/m/Y')
->>>>>>> 4d8c2d7e4e6325282496f41ca4465cb7af1347c1
         ];
     }
 }
