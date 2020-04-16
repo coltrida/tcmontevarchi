@@ -1,21 +1,21 @@
 <template>
   <v-container>
       <v-row>
-      <singola-ora>
-          <div v-for="prenotazione in prenotazioni" :key="prenotazione.id"
+      <pippo
+           v-for="prenotazione in prenotazioni" :key="prenotazione.id"
               :passaggio = "prenotazione">
-          </div>
-
-      </singola-ora>
+        
+      </pippo>
       </v-row>
    </v-container>  
 </template>
 
 <script>
-import SingolaOra from "./singolaOra"
+import Pippo from "./singolaOra"
 export default {
-     components:{SingolaOra},
-    data:{
+     components:{Pippo},
+    data: function(){
+        return{
       prenotazioni:{
       username1: '',
       username2: '',
@@ -26,11 +26,10 @@ export default {
       oraon: '',
       full: '',
       doppio: ''
-        }  
+        }  }
     },
     created(){
         axios.get('/api/auth/prenotazioni').then(res =>{
-            
             this.prenotazioni = res.data
             
         })

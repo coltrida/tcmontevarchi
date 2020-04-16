@@ -3277,24 +3277,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SingolaOra: _singolaOra__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Pippo: _singolaOra__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  data: {
-    prenotazioni: {
-      username1: '',
-      username2: '',
-      username3: '',
-      username4: '',
-      campo: '',
-      dataprenotazione: '',
-      oraon: '',
-      full: '',
-      doppio: ''
-    }
+  data: function data() {
+    return {
+      prenotazioni: {
+        username1: '',
+        username2: '',
+        username3: '',
+        username4: '',
+        campo: '',
+        dataprenotazione: '',
+        oraon: '',
+        full: '',
+        doppio: ''
+      }
+    };
   },
   created: function created() {
     var _this = this;
@@ -3320,8 +3321,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [passaggio]
+  props: ['passaggio'],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    cancella: function cancella() {
+      var _this = this;
+
+      axios["delete"]('/api/prenotazioni/' + this.passaggio.id).then(function (res) {
+        _this.$router.push('/');
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -41467,18 +41512,12 @@ var render = function() {
     [
       _c(
         "v-row",
-        [
-          _c(
-            "singola-ora",
-            _vm._l(_vm.prenotazioni, function(prenotazione) {
-              return _c("div", {
-                key: prenotazione.id,
-                attrs: { passaggio: prenotazione }
-              })
-            }),
-            0
-          )
-        ],
+        _vm._l(_vm.prenotazioni, function(prenotazione) {
+          return _c("pippo", {
+            key: prenotazione.id,
+            attrs: { passaggio: prenotazione }
+          })
+        }),
         1
       )
     ],
@@ -41507,7 +41546,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-card",
+        { staticClass: "mx-auto", attrs: { "max-width": "600", outlined: "" } },
+        [
+          _c(
+            "v-list-item",
+            { attrs: { "three-line": "" } },
+            [
+              _c(
+                "v-list-item-content",
+                [
+                  _c("div", { staticClass: "overline mb-4" }, [
+                    _vm._v("Cancella")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
+                    _vm._v("data: " + _vm._s(_vm.passaggio.dataprenotazione))
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
+                    _vm._v("ora: " + _vm._s(_vm.passaggio.oraon))
+                  ]),
+                  _vm._v(" "),
+                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
+                    _vm._v("campo: " + _vm._s(_vm.passaggio.campo))
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-list-item-avatar", {
+                attrs: { tile: "", size: "80", color: "grey" }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c(
+                "v-btn",
+                { on: { click: _vm.cancella } },
+                [_c("v-icon", [_vm._v("fas fa-trash")])],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
