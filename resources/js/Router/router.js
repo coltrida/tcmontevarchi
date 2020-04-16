@@ -10,7 +10,7 @@ import Logout from '../components/login/Logout'
 
 import Modifica from '../components/pannelloUser/modificaUser'
 import CaricaFoto from '../components/pannelloUser/caricaFoto'
-import CancellaOra from '../components/pannelloUser/cancellaOra'
+import CancellaOra from '../components/cancella/moduloCancella'
 import CercaAmico from '../components/pannelloUser/cercaAmico'
 import Soci from '../components/pannelloUser/listaSoci/listaSoci'
 
