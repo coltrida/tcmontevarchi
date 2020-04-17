@@ -63,7 +63,7 @@
 
         data(){
             return{
-                gior:'2020-04-13'
+                gior:this.$route.params.giorno
             }
         },
 

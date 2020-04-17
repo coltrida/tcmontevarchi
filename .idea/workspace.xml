@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="472754f2-8bd2-43ee-ad05-a6e7365737bc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Homestead.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../Homestead.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/PrenotazioneEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/PrenotazioneEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +24,43 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+              <folding>
+                <element signature="e#40#73#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#v-btn#0;n#template#0;n#v-dialog#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#v-btn#1;n#template#0;n#v-dialog#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -107,14 +150,11 @@
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni3new.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni4new.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazionenew.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneSingolo.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneDoppio.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_05_164159_create_prenotaziones_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Toolbar.vue" />
         <option value="$PROJECT_DIR$/config/database.php" />
@@ -124,16 +164,19 @@
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/resources/js/components/pannelloUser/listaSoci/listaSoci.vue" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
         <option value="$PROJECT_DIR$/routes/channels.php" />
-        <option value="$PROJECT_DIR$/app/Events/PrenotazioneEvent.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/cancella/singolaOra.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/cancella/moduloCancella.vue" />
+        <option value="$PROJECT_DIR$/app/Events/PrenotazioneEvent.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue" />
       </list>
     </option>
   </component>
@@ -255,7 +298,7 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="1380" />
     <option name="height" value="745" />
@@ -279,7 +322,60 @@
             <path>
               <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
               <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="prenotazioni" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcmontevarchi2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcmontevarchi2" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="Router" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -290,7 +386,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../realtimeapp2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -347,15 +443,16 @@
       <workItem from="1586885438644" duration="663000" />
       <workItem from="1586933678656" duration="881000" />
       <workItem from="1587102256215" duration="664000" />
-      <workItem from="1587106557429" duration="12386000" />
+      <workItem from="1587106557429" duration="24295000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204038000" />
+    <option name="totallyTimeSpent" value="215947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21409395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -372,7 +469,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.19134079" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.21089385" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -434,16 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="26" column="93" selection-start-line="26" selection-start-column="93" selection-end-line="26" selection-end-column="93" />
-          <folding>
-            <element signature="e#38#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioneDoppio.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
@@ -487,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="56" column="18" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -516,13 +596,6 @@
         <state relative-caret-position="-369" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/.htaccess">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -540,16 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="63" column="22" lean-forward="true" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="99806" column="25" selection-start-line="99806" selection-start-column="25" selection-end-line="99806" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,27 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Router/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#78#154#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -679,16 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/PrenotazioneEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="e#30#58#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,16 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1045">
-          <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
-          <folding>
-            <element signature="e#40#73#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/cancella/singolaOra.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -754,6 +776,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182505">
+          <caret line="99806" column="25" selection-start-line="99806" selection-start-column="25" selection-end-line="99806" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Router/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#78#154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/PrenotazioniCampi.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="65" column="46" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+          <folding>
+            <element signature="e#1663#1706#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Events/PrenotazioneEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding>
+            <element signature="e#30#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrenotazioniController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+          <folding>
+            <element signature="e#40#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Resources/PrenotazioniResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <element signature="e#38#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazioni1.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/prenotazioni/Prenotazione.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-btn#0;n#template#0;n#v-dialog#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-btn#1;n#template#0;n#v-dialog#0;n#v-list-item-content#0;n#v-list-item#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

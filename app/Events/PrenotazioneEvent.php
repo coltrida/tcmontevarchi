@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Http\Resources\PrenotazioniResource;
 use App\Models\Prenotazione;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -15,16 +16,16 @@ class PrenotazioneEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $id;
+    public $prenotazione;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct(PrenotazioniResource $prenotazione)
     {
-        $this->id = $id;
+        $this->prenotazione = $prenotazione;
     }
 
     /**

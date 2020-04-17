@@ -58,12 +58,11 @@ class PrenotazioniController extends Controller
             ['oraon', $request->input('oraon')],
         ])->first();
         if($esistePrenotazione){
-            broadcast(new PrenotazioneEvent($esistePrenotazione->id))->toOthers();
             return $this->update($request, $esistePrenotazione);
         } else {
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
-            broadcast(new PrenotazioneEvent($prenotazione->id))->toOthers();
+            broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
             return response($prenotazione, Response::HTTP_CREATED);
         }
     }
@@ -112,6 +111,7 @@ class PrenotazioniController extends Controller
         }
 
         $prenotazione->save();
+        broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
         return response($prenotazione, Response::HTTP_ACCEPTED);
     }
 

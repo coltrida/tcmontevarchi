@@ -2315,6 +2315,27 @@ __webpack_require__.r(__webpack_exports__);
         _this.full = res.data.data.full;
       }
     });
+    Echo.channel('prenotazioneChannel').listen('PrenotazioneEvent', function (e) {
+      console.log(e);
+      /*let esiste = 0
+      console.log(e)
+      this.prenotazioni.forEach(element => {
+          if(element.id == e.prenotazione.id){
+              esiste = 1
+              element.username1 = e.prenotazione.username1
+              element.username2 = e.prenotazione.username2
+              element.username3 = e.prenotazione.username3
+              element.username4 = e.prenotazione.username4
+              element.full = e.prenotazione.full
+          }
+      });
+      if(esiste == 0) {
+          console.log('nuovo')
+          if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
+              this.prenotazioni.push(e.prenotazione)
+          }
+      }*/
+    });
   },
   methods: {
     conferma: function conferma() {
@@ -2818,8 +2839,30 @@ __webpack_require__.r(__webpack_exports__);
       dataprenotazione: this.giorno,
       campo: 'campo1'
     }).then(function (res) {
-      _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni)
+      _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni.forEach(element => console.log(element)))
     });
+    /*Echo.channel('prenotazioneChannel')
+        .listen('PrenotazioneEvent', (e) => {
+            //console.log(e.dataprenotazione)
+            let esiste = 0
+            console.log(e)
+            this.prenotazioni.forEach(element => {
+                if(element.id == e.prenotazione.id){
+                    esiste = 1
+                    element.username1 = e.prenotazione.username1
+                    element.username2 = e.prenotazione.username2
+                    element.username3 = e.prenotazione.username3
+                    element.username4 = e.prenotazione.username4
+                    element.full = e.prenotazione.full
+                }
+            });
+            if(esiste == 0) {
+                console.log('nuovo')
+                if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
+                    this.prenotazioni.push(e.prenotazione)
+                }
+            }
+        });*/
   }
 });
 
@@ -3078,7 +3121,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "PrenotazioniCampi",
   data: function data() {
     return {
-      gior: '2020-04-13'
+      gior: this.$route.params.giorno
     };
   },
   components: {
