@@ -3303,6 +3303,12 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/auth/prenotazioni').then(function (res) {
       _this.prenotazioni = res.data;
     });
+  },
+  mounted: function mounted() {
+    EventBus.$on('cancellazione', function (passaggio) {
+      // this.prenotazioni = passaggio.splice(passaggio.id,1)})
+      console.log(passaggio);
+    });
   }
 });
 
@@ -3360,11 +3366,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     cancella: function cancella() {
-      var _this = this;
-
-      axios["delete"]('/api/prenotazioni/' + this.passaggio.id).then(function (res) {
-        _this.$router.push('/');
-      });
+      axios["delete"]('/api/prenotazioni/' + this.passaggio.id).then(EventBus.$emit('cancellazione', passaggio.id));
     }
   }
 });
