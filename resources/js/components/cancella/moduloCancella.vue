@@ -30,8 +30,7 @@ export default {
         EventBus.$on('cancellazione', (passaggio) => {
             console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
              axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id).then(
-
-    this.prenotazioni = this.prenotazioni.splice(passaggio,1)
+ this.prenotazioni = this.prenotazioni.splice(passaggio,1)
         )}
         )
         }
