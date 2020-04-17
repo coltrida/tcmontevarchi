@@ -2297,6 +2297,7 @@ __webpack_require__.r(__webpack_exports__);
       full: false,
       dialog: false,
       pren: {},
+      sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
       scelta: 0
     };
   },
@@ -2318,6 +2319,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     conferma: function conferma() {
+      var _this2 = this;
+
       this.dialog = false;
       axios.post('/api/prenotazioni', {
         username: User.name(),
@@ -2326,8 +2329,14 @@ __webpack_require__.r(__webpack_exports__);
         oraon: this.orario,
         doppio: this.pren.doppio ? this.pren.doppio : this.scelta
       }).then(function (res) {
-        return location.reload();
+        _this2.playSound();
+
+        location.reload();
       });
+    },
+    playSound: function playSound() {
+      var alert = new Audio(this.sound);
+      alert.play();
     }
   }
 });
@@ -2818,7 +2827,31 @@ __webpack_require__.r(__webpack_exports__);
       dataprenotazione: this.giorno,
       campo: 'campo1'
     }).then(function (res) {
-      _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni)
+      _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni.forEach(element => console.log(element)))
+    });
+    Echo.channel('prenotazioneChannel').listen('PrenotazioneEvent', function (e) {
+      //console.log(e.dataprenotazione)
+      var esiste = 0;
+      console.log(e);
+
+      _this.prenotazioni.forEach(function (element) {
+        if (element.id == e.prenotazione.id) {
+          esiste = 1;
+          element.username1 = e.prenotazione.username1;
+          element.username2 = e.prenotazione.username2;
+          element.username3 = e.prenotazione.username3;
+          element.username4 = e.prenotazione.username4;
+          element.full = e.prenotazione.full;
+        }
+      });
+
+      if (esiste == 0) {
+        console.log('nuovo');
+
+        if (_this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
+          _this.prenotazioni.push(e.prenotazione);
+        }
+      }
     });
   }
 });
@@ -3078,7 +3111,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "PrenotazioniCampi",
   data: function data() {
     return {
-      gior: '2020-04-13'
+      gior: this.$route.params.giorno
     };
   },
   components: {
@@ -3297,6 +3330,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3333,6 +3391,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50543,7 +50607,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50596,7 +50666,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50649,7 +50725,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgb(21,27,189) 0%, rgb(122,130,209) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50702,7 +50784,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgb(21,27,189) 0%, rgb(122,130,209) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -51075,79 +51163,8 @@ var staticRenderFns = []
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-list-item",
-    [
-      _c(
-        "v-row",
-        {
-          staticStyle: { border: "1px solid black" },
-          attrs: { "auto-grow": "", "justify-content:": "", "flex-start": "" }
-        },
-        [
-          _c("v-col", [
-            _vm._v(
-              " \r\n           \r\n    data: " +
-                _vm._s(_vm.passaggio.dataprenotazione) +
-                "\r\n      \r\n    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("v-col", [
-            _vm._v(
-              "     \r\n    ora: " + _vm._s(_vm.passaggio.oraon) + "\r\n    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("v-col", [
-            _vm._v(
-              " \r\n    campo: " + _vm._s(_vm.passaggio.campo) + "\r\n    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("v-col", [
-            _vm._v(
-              "\r\n    utenti: " +
-                _vm._s(_vm.passaggio.username2) +
-                "\r\n          " +
-                _vm._s(_vm.passaggio.username3) +
-                " " +
-                _vm._s(_vm.passaggio.username4) +
-                "\r\n          "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            [
-              _c(
-                "v-card-actions",
-                [
-                  _c(
-                    "v-btn",
-                    { on: { click: _vm.cancella } },
-                    [_c("v-icon", [_vm._v("fas fa-trash")])],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 

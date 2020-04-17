@@ -1,5 +1,6 @@
 <template>
   <v-container>
+<<<<<<< HEAD
 <v-row    
   justify-content: flex-start>
          
@@ -19,6 +20,30 @@
     utenti: 
           </v-col>
       
+=======
+      <v-row auto-grow >
+
+          <v-col>
+
+              data:
+
+          </v-col>
+          <v-col>
+              ora:
+          </v-col>
+          <v-col>
+              campo:
+          </v-col>
+          <v-col>
+              utenti:
+          </v-col>
+          <v-col>
+              Azione
+          </v-col>
+
+
+      </v-row>
+>>>>>>> 70ee0d58297052e39fed576f586828fb7a6f05e5
       <v-row>
       <pippo
            v-for="(prenotazione,i) in prenotazioni" :key="prenotazione.id"

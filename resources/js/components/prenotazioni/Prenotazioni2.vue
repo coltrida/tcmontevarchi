@@ -3,7 +3,7 @@
             max-width="475"
             class="mx-auto"
     >
-        <v-toolbar color="red" dark>
+        <v-toolbar style="background: linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%);" dark>
             <v-toolbar-title>{{titolo}}</v-toolbar-title>
         </v-toolbar>
 

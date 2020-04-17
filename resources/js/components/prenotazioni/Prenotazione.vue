@@ -72,6 +72,7 @@
                 full: false,
                 dialog: false,
                 pren: {},
+                sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
                 scelta: 0
             }
         },
@@ -103,8 +104,16 @@
                     oraon: this.orario,
                     doppio: this.pren.doppio ? this.pren.doppio : this.scelta,
                 })
-                    .then(res => location.reload())
-            }
+                    .then(res => {
+                        this.playSound()
+                        location.reload()
+                    })
+            },
+
+            playSound(){
+                let alert = new Audio(this.sound)
+                alert.play()
+            },
         }
     }
 </script>
