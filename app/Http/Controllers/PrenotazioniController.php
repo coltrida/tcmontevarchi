@@ -58,18 +58,14 @@ class PrenotazioniController extends Controller
             ['oraon', $request->input('oraon')],
         ])->first();
         if($esistePrenotazione){
-            $passaprenotazione = $esistePrenotazione;
+            broadcast(new PrenotazioneEvent($esistePrenotazione->id))->toOthers();
             return $this->update($request, $esistePrenotazione);
         } else {
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
-            $passaprenotazione = $prenotazione;
+            broadcast(new PrenotazioneEvent($prenotazione->id))->toOthers();
             return response($prenotazione, Response::HTTP_CREATED);
         }
-
-
-
-        broadcast(new PrenotazioneEvent($passaprenotazione->id));
     }
 
     /**
