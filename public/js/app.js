@@ -3292,7 +3292,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/auth/prenotazioni').then(function (res) {
-      _this.prenotazioni = res.data; //console.log(this.prenotazioni);
+      _this.prenotazioni = res.data;
     });
   },
   mounted: function mounted() {
@@ -3300,7 +3300,13 @@ __webpack_require__.r(__webpack_exports__);
 
     EventBus.$on('cancellazione', function (passaggio) {
       console.log('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id);
-      axios["delete"]('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id).then(_this2.prenotazioni = _this2.prenotazioni.splice(passaggio, 1));
+      axios["delete"]('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id).then(function () {
+        return (//this.prenotazioni = this.prenotazioni.splice(passaggio,1)
+          axios.get('/api/auth/prenotazioni').then(function (res) {
+            _this2.prenotazioni = res.data;
+          })
+        );
+      });
     });
   }
 });
