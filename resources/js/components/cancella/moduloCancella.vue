@@ -23,7 +23,7 @@ export default {
     created(){
         axios.get('/api/auth/prenotazioni').then(res =>{
             this.prenotazioni = res.data
-            //console.log(this.prenotazioni);
+            
         })
 
         EventBus.$on('cancellazione', (passaggio) => {

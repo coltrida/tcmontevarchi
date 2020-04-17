@@ -3335,7 +3335,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/auth/prenotazioni').then(function (res) {
-      _this.prenotazioni = res.data; //console.log(this.prenotazioni);
+      _this.prenotazioni = res.data;
     });
     EventBus.$on('cancellazione', function (passaggio) {
       console.log('/api/prenotazioni/' + _this.prenotazioni[passaggio].id);
@@ -3393,10 +3393,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['passaggio', 'indice'],
   data: function data() {
     return {};
+  },
+  created: function created() {
+    console.log(this.passaggio);
   },
   methods: {
     cancella: function cancella() {
@@ -51087,52 +51123,57 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
+    "v-list-item",
     [
       _c(
-        "v-card",
-        { staticClass: "mx-auto", attrs: { "max-width": "600", outlined: "" } },
+        "v-row",
+        { attrs: { "auto-grow": "" } },
         [
-          _c(
-            "v-list-item",
-            { attrs: { "three-line": "" } },
-            [
-              _c(
-                "v-list-item-content",
-                [
-                  _c("div", { staticClass: "overline mb-4" }, [
-                    _vm._v("Cancella")
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("data: " + _vm._s(_vm.passaggio.dataprenotazione))
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("ora: " + _vm._s(_vm.passaggio.oraon))
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("campo: " + _vm._s(_vm.passaggio.campo))
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-list-item-avatar", {
-                attrs: { tile: "", size: "80", color: "grey" }
-              })
-            ],
-            1
-          ),
+          _c("v-col", [
+            _vm._v(
+              " \r\n           \r\n    data: " +
+                _vm._s(_vm.passaggio.dataprenotazione) +
+                "\r\n      \r\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              "     \r\n    ora: " + _vm._s(_vm.passaggio.oraon) + "\r\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              " \r\n    campo: " + _vm._s(_vm.passaggio.campo) + "\r\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              "\r\n    utenti: " +
+                _vm._s(_vm.passaggio.username2) +
+                "\r\n          " +
+                _vm._s(_vm.passaggio.username3) +
+                " " +
+                _vm._s(_vm.passaggio.username4) +
+                "\r\n          "
+            )
+          ]),
           _vm._v(" "),
           _c(
-            "v-card-actions",
+            "v-col",
             [
               _c(
-                "v-btn",
-                { on: { click: _vm.cancella } },
-                [_c("v-icon", [_vm._v("fas fa-trash")])],
+                "v-card-actions",
+                [
+                  _c(
+                    "v-btn",
+                    { on: { click: _vm.cancella } },
+                    [_c("v-icon", [_vm._v("fas fa-trash")])],
+                    1
+                  )
+                ],
                 1
               )
             ],
@@ -110601,8 +110642,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
