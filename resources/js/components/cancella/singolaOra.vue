@@ -45,9 +45,7 @@ export default {
       methods:{
           cancella:function(){
             console.log(this.indice)
-             
-              
-               EventBus.$emit('cancellazione', this.indice 
+              EventBus.$emit('cancellazione', this.indice 
                )
           
       }
