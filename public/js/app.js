@@ -3297,7 +3297,7 @@ __webpack_require__.r(__webpack_exports__);
     EventBus.$on('cancellazione', function (passaggio) {
       console.log('/api/prenotazioni/' + _this.prenotazioni[passaggio].id);
       axios["delete"]('/api/prenotazioni/' + _this.prenotazioni[passaggio].id).then(function () {
-        _this.prenotazioni = _this.prenotazioni.splice(passaggio, 1);
+        _this.prenotazioni.splice(passaggio, 1);
       });
     });
   }
