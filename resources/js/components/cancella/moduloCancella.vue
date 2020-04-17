@@ -37,6 +37,7 @@ export default {
     mounted(){
         EventBus.$on('cancellazione', (passaggio) => {
         // this.prenotazioni = passaggio.splice(passaggio.id,1)})
+        
         console.log(passaggio);
     })
     }
