@@ -1,36 +1,69 @@
 <template>
+<v-list-item>
+   
+<v-row auto-grow>
+         
+         
+    <v-col> 
+           
+    data: {{passaggio.dataprenotazione}}
+      
+    </v-col>
+    <v-col>     
+    ora: {{passaggio.oraon}}
+    </v-col>
+    <v-col> 
+    campo: {{passaggio.campo}}
+    </v-col>
+    <v-col>
+    utenti: {{passaggio.username2}}
+          {{passaggio.username3}} {{passaggio.username4}}
+          </v-col>
+       <v-col>
+          <v-card-actions >
+      <v-btn @click="cancella">
+          <v-icon>fas fa-trash</v-icon>
+      </v-btn>
+       
+    </v-card-actions>
+       </v-col>
+          
+         
+</v-row>
 
-<v-container>
-    <v-card
+</v-list-item>
+<!-- <div>
+  <div class="float-left">
+  <v-card
     class="mx-auto"
-    max-width="600"
+    width="333"
     outlined
   >
-    <v-list-item three-line>
+  <v-list-item three-line >
       <v-list-item-content>
-        <div class="overline mb-4">Cancella</div>
-        <v-list-item-title class="headline mb-1">data: {{passaggio.dataprenotazione}}</v-list-item-title>
-        <v-list-item-title class="headline mb-1">ora: {{passaggio.oraon}}</v-list-item-title>
-        <v-list-item-title class="headline mb-1">campo: {{passaggio.campo}}</v-list-item-title>
-         
+        <div class="title mb-4">Cancella</div>
+        <v-list-item-title class="title mb-1">data: {{passaggio.dataprenotazione}}</v-list-item-title>
+        <v-list-item-title class="title mb-1">ora: {{passaggio.oraon}}</v-list-item-title>
+        <v-list-item-title class="title mb-1">campo: {{passaggio.campo}}</v-list-item-title>
+        <v-list-item-title class="title mb-1">utenti: {{passaggio.username2}}
+          {{passaggio.username3}} {{passaggio.username4}} </v-list-item-title>
       </v-list-item-content>
-
       <v-list-item-avatar
         tile
         size="80"
         color="grey"
       ></v-list-item-avatar>
     </v-list-item>
-
     <v-card-actions>
       <v-btn @click="cancella">
           <v-icon>fas fa-trash</v-icon>
       </v-btn>
        
     </v-card-actions>
-  </v-card>
-        
-</v-container>
+      
+      </v-card>
+      </div>
+   </div> -->
     
 </template>
 
@@ -41,6 +74,9 @@ export default {
       return{
           
       }
+      },
+      created(){
+        console.log(this.passaggio);
       },
       methods:{
           cancella:function(){
