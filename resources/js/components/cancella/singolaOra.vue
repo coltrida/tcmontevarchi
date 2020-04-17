@@ -46,6 +46,7 @@ export default {
           cancella:function(){
             console.log(this.indice)
               EventBus.$emit('cancellazione', this.indice 
+              
                )
           
       }
