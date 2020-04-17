@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PrenotazioneEvent;
 use App\Http\Resources\PrenotazioniResource;
 use App\Models\Prenotazione;
 use Illuminate\Http\Request;
@@ -57,12 +58,18 @@ class PrenotazioniController extends Controller
             ['oraon', $request->input('oraon')],
         ])->first();
         if($esistePrenotazione){
+            $passaprenotazione = $esistePrenotazione;
             return $this->update($request, $esistePrenotazione);
         } else {
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
+            $passaprenotazione = $prenotazione;
             return response($prenotazione, Response::HTTP_CREATED);
         }
+
+
+
+        broadcast(new PrenotazioneEvent($passaprenotazione->id));
     }
 
     /**

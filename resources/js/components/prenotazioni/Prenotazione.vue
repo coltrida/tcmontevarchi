@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-list-item>
-            <v-list-item-content style="height: 130px; align-items: start">
+            <v-list-item-content style="height: 150px; align-items: start">
                 <v-dialog v-model="dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on }">
 
