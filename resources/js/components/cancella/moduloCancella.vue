@@ -34,5 +34,11 @@ export default {
             
         })
     },
+
+    mounted() {
+        EventBus.$on('cancellazione', (passaggio) => {
+            console.log(passaggio)
+        })
+    }
 }
 </script>
