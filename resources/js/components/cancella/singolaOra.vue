@@ -1,27 +1,26 @@
 <template>
 <v-list-item>
    
-<v-row auto-grow>
-         
-         
-    <v-col> 
+<v-row auto-grow style="border: 1px solid gray; display: flex; align-items: center">
+
+    <v-col>
            
-    data: {{passaggio.dataprenotazione}}
+     {{passaggio.dataprenotazione}}
       
     </v-col>
     <v-col>     
-    ora: {{passaggio.oraon}}
+     {{passaggio.oraon}}
     </v-col>
     <v-col> 
-    campo: {{passaggio.campo}}
+     {{passaggio.campo}}
     </v-col>
     <v-col>
-    utenti: {{passaggio.username2}}
+        {{passaggio.username1}} {{passaggio.username2}}
           {{passaggio.username3}} {{passaggio.username4}}
           </v-col>
        <v-col>
           <v-card-actions >
-      <v-btn @click="cancella">
+      <v-btn @click="cancella" color="red">
           <v-icon>fas fa-trash</v-icon>
       </v-btn>
        

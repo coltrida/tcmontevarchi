@@ -3,7 +3,7 @@
             max-width="475"
             class="mx-auto"
     >
-        <v-toolbar color="red" dark>
+        <v-toolbar style="background: linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%);" dark>
             <v-toolbar-title>{{titolo}}</v-toolbar-title>
         </v-toolbar>
 
@@ -46,7 +46,7 @@
                     //console.log(this.prenotazioni.forEach(element => console.log(element)))
                 })
 
-            /*Echo.channel('prenotazioneChannel')
+            Echo.channel('prenotazioneChannel')
                 .listen('PrenotazioneEvent', (e) => {
                     //console.log(e.dataprenotazione)
                     let esiste = 0
@@ -67,7 +67,7 @@
                             this.prenotazioni.push(e.prenotazione)
                         }
                     }
-                });*/
+                });
         }
     }
 </script>

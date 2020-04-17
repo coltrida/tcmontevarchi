@@ -2297,6 +2297,7 @@ __webpack_require__.r(__webpack_exports__);
       full: false,
       dialog: false,
       pren: {},
+      sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
       scelta: 0
     };
   },
@@ -2315,30 +2316,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.full = res.data.data.full;
       }
     });
-    Echo.channel('prenotazioneChannel').listen('PrenotazioneEvent', function (e) {
-      console.log(e);
-      /*let esiste = 0
-      console.log(e)
-      this.prenotazioni.forEach(element => {
-          if(element.id == e.prenotazione.id){
-              esiste = 1
-              element.username1 = e.prenotazione.username1
-              element.username2 = e.prenotazione.username2
-              element.username3 = e.prenotazione.username3
-              element.username4 = e.prenotazione.username4
-              element.full = e.prenotazione.full
-          }
-      });
-      if(esiste == 0) {
-          console.log('nuovo')
-          if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
-              this.prenotazioni.push(e.prenotazione)
-          }
-      }*/
-    });
   },
   methods: {
     conferma: function conferma() {
+      var _this2 = this;
+
       this.dialog = false;
       axios.post('/api/prenotazioni', {
         username: User.name(),
@@ -2347,8 +2329,14 @@ __webpack_require__.r(__webpack_exports__);
         oraon: this.orario,
         doppio: this.pren.doppio ? this.pren.doppio : this.scelta
       }).then(function (res) {
-        return location.reload();
+        _this2.playSound();
+
+        location.reload();
       });
+    },
+    playSound: function playSound() {
+      var alert = new Audio(this.sound);
+      alert.play();
     }
   }
 });
@@ -2841,28 +2829,30 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (res) {
       _this.prenotazioni = JSON.parse(JSON.stringify(res.data.data)); //console.log(this.prenotazioni.forEach(element => console.log(element)))
     });
-    /*Echo.channel('prenotazioneChannel')
-        .listen('PrenotazioneEvent', (e) => {
-            //console.log(e.dataprenotazione)
-            let esiste = 0
-            console.log(e)
-            this.prenotazioni.forEach(element => {
-                if(element.id == e.prenotazione.id){
-                    esiste = 1
-                    element.username1 = e.prenotazione.username1
-                    element.username2 = e.prenotazione.username2
-                    element.username3 = e.prenotazione.username3
-                    element.username4 = e.prenotazione.username4
-                    element.full = e.prenotazione.full
-                }
-            });
-            if(esiste == 0) {
-                console.log('nuovo')
-                if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
-                    this.prenotazioni.push(e.prenotazione)
-                }
-            }
-        });*/
+    Echo.channel('prenotazioneChannel').listen('PrenotazioneEvent', function (e) {
+      //console.log(e.dataprenotazione)
+      var esiste = 0;
+      console.log(e);
+
+      _this.prenotazioni.forEach(function (element) {
+        if (element.id == e.prenotazione.id) {
+          esiste = 1;
+          element.username1 = e.prenotazione.username1;
+          element.username2 = e.prenotazione.username2;
+          element.username3 = e.prenotazione.username3;
+          element.username4 = e.prenotazione.username4;
+          element.full = e.prenotazione.full;
+        }
+      });
+
+      if (esiste == 0) {
+        console.log('nuovo');
+
+        if (_this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
+          _this.prenotazioni.push(e.prenotazione);
+        }
+      }
+    });
   }
 });
 
@@ -3321,6 +3311,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3357,7 +3369,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -50565,7 +50576,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50618,7 +50635,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50671,7 +50694,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgb(21,27,189) 0%, rgb(122,130,209) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -50724,7 +50753,13 @@ var render = function() {
     [
       _c(
         "v-toolbar",
-        { attrs: { color: "red", dark: "" } },
+        {
+          staticStyle: {
+            background:
+              "linear-gradient(90deg, rgb(21,27,189) 0%, rgb(122,130,209) 25%, rgba(255,255,255,1) 100%)"
+          },
+          attrs: { dark: "" }
+        },
         [_c("v-toolbar-title", [_vm._v(_vm._s(_vm.titolo))])],
         1
       ),
@@ -51088,6 +51123,23 @@ var render = function() {
     [
       _c(
         "v-row",
+        { attrs: { "auto-grow": "" } },
+        [
+          _c("v-col", [_vm._v("\n\n            data:\n\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            ora:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            campo:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            utenti:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            Azione\n        ")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
         _vm._l(_vm.prenotazioni, function(prenotazione, i) {
           return _c("pippo", {
             key: prenotazione.id,
@@ -51127,31 +51179,36 @@ var render = function() {
     [
       _c(
         "v-row",
-        { attrs: { "auto-grow": "" } },
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
         [
           _c("v-col", [
             _vm._v(
-              " \r\n           \r\n    data: " +
+              "\r\n           \r\n     " +
                 _vm._s(_vm.passaggio.dataprenotazione) +
                 "\r\n      \r\n    "
             )
           ]),
           _vm._v(" "),
           _c("v-col", [
-            _vm._v(
-              "     \r\n    ora: " + _vm._s(_vm.passaggio.oraon) + "\r\n    "
-            )
+            _vm._v("     \r\n     " + _vm._s(_vm.passaggio.oraon) + "\r\n    ")
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(" \r\n     " + _vm._s(_vm.passaggio.campo) + "\r\n    ")
           ]),
           _vm._v(" "),
           _c("v-col", [
             _vm._v(
-              " \r\n    campo: " + _vm._s(_vm.passaggio.campo) + "\r\n    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("v-col", [
-            _vm._v(
-              "\r\n    utenti: " +
+              "\r\n        " +
+                _vm._s(_vm.passaggio.username1) +
+                " " +
                 _vm._s(_vm.passaggio.username2) +
                 "\r\n          " +
                 _vm._s(_vm.passaggio.username3) +
@@ -51169,7 +51226,7 @@ var render = function() {
                 [
                   _c(
                     "v-btn",
-                    { on: { click: _vm.cancella } },
+                    { attrs: { color: "red" }, on: { click: _vm.cancella } },
                     [_c("v-icon", [_vm._v("fas fa-trash")])],
                     1
                   )
@@ -110642,8 +110699,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
