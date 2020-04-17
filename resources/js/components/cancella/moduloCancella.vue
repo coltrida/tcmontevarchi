@@ -2,8 +2,9 @@
   <v-container>
       <v-row>
       <pippo
-           v-for="prenotazione in prenotazioni" :key="prenotazione.id"
-              :passaggio = "prenotazione">
+           v-for="(prenotazione,i) in prenotazioni" :key="prenotazione.id"
+              :passaggio = "prenotazione"
+              :indice = i >
         
       </pippo>
       </v-row>
@@ -17,28 +18,24 @@ export default {
     data: function(){
         return{
       prenotazioni:{
-      username1: '',
-      username2: '',
-      username3: '',
-      username4: '',
-      campo: '',
-      dataprenotazione: '',
-      oraon: '',
-      full: '',
-      doppio: ''
-        }  }
+         }  }
     },
     created(){
         axios.get('/api/auth/prenotazioni').then(res =>{
             this.prenotazioni = res.data
-            
+            //console.log(this.prenotazioni);
         })
     },
     mounted(){
         EventBus.$on('cancellazione', (passaggio) => {
-        // this.prenotazioni = passaggio.splice(passaggio.id,1)})
-        console.log(passaggio);
-    })
-    }
+            console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
+             axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id).then(
+
+    this.prenotazioni = this.prenotazioni.splice(passaggio,1)
+        )}
+        )
+        }
+     
+    
 }
 </script>

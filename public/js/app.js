@@ -3277,6 +3277,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3284,30 +3285,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      prenotazioni: {
-        username1: '',
-        username2: '',
-        username3: '',
-        username4: '',
-        campo: '',
-        dataprenotazione: '',
-        oraon: '',
-        full: '',
-        doppio: ''
-      }
+      prenotazioni: {}
     };
   },
   created: function created() {
     var _this = this;
 
     axios.get('/api/auth/prenotazioni').then(function (res) {
-      _this.prenotazioni = res.data;
+      _this.prenotazioni = res.data; //console.log(this.prenotazioni);
     });
   },
   mounted: function mounted() {
+    var _this2 = this;
+
     EventBus.$on('cancellazione', function (passaggio) {
-      // this.prenotazioni = passaggio.splice(passaggio.id,1)})
-      console.log(passaggio);
+      console.log('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id);
+      axios["delete"]('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id).then(_this2.prenotazioni = _this2.prenotazioni.splice(passaggio, 1));
     });
   }
 });
@@ -3360,13 +3353,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['passaggio'],
+  props: ['passaggio', 'indice'],
   data: function data() {
     return {};
   },
   methods: {
     cancella: function cancella() {
-      axios["delete"]('/api/prenotazioni/' + this.passaggio.id).then(EventBus.$emit('cancellazione', passaggio.id));
+      console.log(this.indice);
+      EventBus.$emit('cancellazione', this.indice);
     }
   }
 });
@@ -41514,10 +41508,10 @@ var render = function() {
     [
       _c(
         "v-row",
-        _vm._l(_vm.prenotazioni, function(prenotazione) {
+        _vm._l(_vm.prenotazioni, function(prenotazione, i) {
           return _c("pippo", {
             key: prenotazione.id,
-            attrs: { passaggio: prenotazione }
+            attrs: { passaggio: prenotazione, indice: i }
           })
         }),
         1

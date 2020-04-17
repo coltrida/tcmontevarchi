@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  props:['passaggio'],
+  props:['passaggio','indice'],
   data:function(){
       return{
           
@@ -44,9 +44,11 @@ export default {
       },
       methods:{
           cancella:function(){
-              axios.delete('/api/prenotazioni/'+this.passaggio.id)
+            console.log(this.indice)
+             
               
-               .then(EventBus.$emit('cancellazione', passaggio.id))
+               EventBus.$emit('cancellazione', this.indice 
+               )
           
       }
   }  
