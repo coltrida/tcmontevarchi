@@ -45,6 +45,7 @@ export default {
       methods:{
           cancella:function(){
               axios.delete('/api/prenotazioni/'+this.passaggio.id)
+              
                .then(EventBus.$emit('cancellazione', passaggio.id))
           
       }
