@@ -47,8 +47,9 @@
                     .then(res => {
                         this.soci = res.data.data
                         this.totSoci = res.data.data[0].totSoci
-                        console.log(this.soci)
+                        //console.log(this.soci)
                     })
+                    .catch(err => consolo.log(err))
             }
         }
 

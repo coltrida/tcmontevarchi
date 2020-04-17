@@ -15,7 +15,7 @@ class CreatePrenotazionesTable extends Migration
     {
         Schema::create('prenotazioni', function (Blueprint $table) {
             $table->id();
-            $table->string('username1');
+            $table->string('username1')->nullable();
             $table->string('username2')->nullable();
             $table->string('username3')->nullable();
             $table->string('username4')->nullable();

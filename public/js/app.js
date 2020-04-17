@@ -2278,6 +2278,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2298,12 +2303,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    //console.log(this.campo)
-    //EventBus.$once('prenotazioneFull', (valore) => {
-    //console.log(this.orario+'-'+ this.campo +'-'+ this.giorno)
-    //this.full = true
-    //console.log(valore)
-    //})
     axios.post('/api/full', {
       dataprenotazione: this.giorno,
       campo: this.campo,
@@ -2311,13 +2310,13 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (res) {
       //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
       if (res.data) {
-        _this.pren = res.data.data;
-        console.log(res.data.data.full);
+        _this.pren = res.data.data; //console.log(res.data.data.full)
+
+        _this.full = res.data.data.full;
       }
     });
   },
   methods: {
-    prenota: function prenota() {},
     conferma: function conferma() {
       this.dialog = false;
       axios.post('/api/prenotazioni', {
@@ -3079,7 +3078,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "PrenotazioniCampi",
   data: function data() {
     return {
-      gior: this.$route.params.giorno
+      gior: '2020-04-13'
     };
   },
   components: {
@@ -3090,7 +3089,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     indietro: function indietro() {
-      console.log(Date.parse(this.gior));
+      this.$router.push('/prenotazioni/2020-04-12');
+      location.reload(); //this.gior = '2020-04-12'
     },
     avanti: function avanti() {}
   }
@@ -3535,8 +3535,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/soci").then(function (res) {
         _this.soci = res.data.data;
-        _this.totSoci = res.data.data[0].totSoci;
-        console.log(_this.soci);
+        _this.totSoci = res.data.data[0].totSoci; //console.log(this.soci)
+      })["catch"](function (err) {
+        return consolo.log(err);
       });
     }
   }
@@ -39471,23 +39472,38 @@ var render = function() {
                       fn: function(ref) {
                         var on = ref.on
                         return [
-                          _c(
-                            "v-btn",
-                            _vm._g(
-                              {
-                                staticStyle: { height: "50px" },
-                                attrs: { color: "green", dark: "" }
-                              },
-                              on
-                            ),
-                            [
-                              _vm._v(
-                                _vm._s(_vm.orario) +
-                                  " - " +
-                                  _vm._s(_vm.orario + 1)
+                          !_vm.full
+                            ? _c(
+                                "v-btn",
+                                _vm._g(
+                                  {
+                                    staticStyle: { height: "50px" },
+                                    attrs: { color: "green", dark: "" }
+                                  },
+                                  on
+                                ),
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.orario) +
+                                      " - " +
+                                      _vm._s(_vm.orario + 1)
+                                  )
+                                ]
                               )
-                            ]
-                          )
+                            : _c(
+                                "v-btn",
+                                {
+                                  staticStyle: { height: "50px" },
+                                  attrs: { color: "orange accent-2", dark: "" }
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.orario) +
+                                      " - " +
+                                      _vm._s(_vm.orario + 1)
+                                  )
+                                ]
+                              )
                         ]
                       }
                     }
@@ -99813,8 +99829,7 @@ var routes = [{
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/prenotazioni/:giorno',
-  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"],
-  name: 'pren'
+  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/modifica',
   component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -99829,6 +99844,9 @@ var routes = [{
   component: _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   path: '/soci',
+  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_10__["default"]
+}, {
+  path: '/contatti',
   component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_10__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({

@@ -19,13 +19,14 @@ const routes = [
      { path: '/', component: HomePage },
      { path: '/storia', component: Storia },
      { path: '/logout', component: Logout },
-     { path: '/prenotazioni/:giorno', component: PrenotazioniCampi, name: 'pren' },
+     { path: '/prenotazioni/:giorno', component: PrenotazioniCampi },
 
      { path: '/modifica', component: Modifica },
      { path: '/caricaFoto', component: CaricaFoto },
      { path: '/cancellaOra', component: CancellaOra },
      { path: '/cercaAmico', component: CercaAmico },
      { path: '/soci', component: Soci },
+     { path: '/contatti', component: Soci },
 
 ]
 
