@@ -1,10 +1,15 @@
 <template>
     <div>
         <v-list-item>
-            <v-list-item-content style="height: 130px; align-items: start">
+            <v-list-item-content style="height: 150px; align-items: start">
                 <v-dialog v-model="dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on }">
-                        <v-btn color="green" dark v-on="on" style="height: 50px">{{orario}} - {{orario+1}}</v-btn>
+
+                            <v-btn v-if="!full" color="green" dark v-on="on" style="height: 50px">{{orario}} - {{orario+1}}</v-btn>
+
+                            <v-btn v-else color="orange accent-2" dark style="height: 50px">{{orario}} - {{orario+1}}</v-btn>
+
+
                     </template>
                     <v-card>
                         <v-card-title v-if="pren.doppio">
@@ -72,13 +77,6 @@
         },
 
         created(){
-            //console.log(this.campo)
-            //EventBus.$once('prenotazioneFull', (valore) => {
-                //console.log(this.orario+'-'+ this.campo +'-'+ this.giorno)
-                //this.full = true
-                //console.log(valore)
-            //})
-
             axios.post('/api/full', {
                 dataprenotazione: this.giorno,
                 campo: this.campo,
@@ -88,16 +86,14 @@
                     //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
                     if(res.data){
                         this.pren = res.data.data
-                        console.log(res.data.data.full)
+                        //console.log(res.data.data.full)
+                        this.full = res.data.data.full
+
                     }
                 })
         },
 
         methods:{
-            prenota(){
-
-            },
-
             conferma(){
                 this.dialog = false
                 axios.post('/api/prenotazioni',{

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $dataoggi = Carbon::now()->format('y-m-d');
+        $dataoggi = Carbon::now()->addHour(3)->format('y-m-d');
 
         Socio::truncate();
         User::truncate();
@@ -137,6 +137,105 @@ class DatabaseSeeder extends Seeder
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
             'oraon' => 10
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'campo' => 'campo3',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 15
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'username4' => 'cacao2',
+            'campo' => 'campo1',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 11
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'username4' => 'cacao2',
+            'campo' => 'campo1',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 12
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username4' => 'cacao2',
+            'campo' => 'campo4',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 13
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'campo' => 'campo4',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 14
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'campo' => 'campo4',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 15
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'campo' => 'campo4',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 0,
+            'oraon' => 16
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'campo' => 'campo4',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 17
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username2' => 'cacao',
+            'username3' => 'cacao2',
+            'campo' => 'campo3',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 18
+        ]);
+
+        Prenotazione::create([
+            'username1' => 'cacao',
+            'username3' => 'cacao2',
+            'campo' => 'campo1',
+            'dataprenotazione' => $dataoggi,
+            'doppio' => 1,
+            'oraon' => 14
         ]);
     }
 }

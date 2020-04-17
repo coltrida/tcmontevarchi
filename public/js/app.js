@@ -2278,6 +2278,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2298,12 +2303,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    //console.log(this.campo)
-    //EventBus.$once('prenotazioneFull', (valore) => {
-    //console.log(this.orario+'-'+ this.campo +'-'+ this.giorno)
-    //this.full = true
-    //console.log(valore)
-    //})
     axios.post('/api/full', {
       dataprenotazione: this.giorno,
       campo: this.campo,
@@ -2311,13 +2310,13 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (res) {
       //this.prenotazioni = JSON.parse(JSON.stringify(res.data.data))
       if (res.data) {
-        _this.pren = res.data.data;
-        console.log(res.data.data.full);
+        _this.pren = res.data.data; //console.log(res.data.data.full)
+
+        _this.full = res.data.data.full;
       }
     });
   },
   methods: {
-    prenota: function prenota() {},
     conferma: function conferma() {
       this.dialog = false;
       axios.post('/api/prenotazioni', {
@@ -3079,7 +3078,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "PrenotazioniCampi",
   data: function data() {
     return {
-      gior: this.$route.params.giorno
+      gior: '2020-04-13'
     };
   },
   components: {
@@ -3090,7 +3089,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     indietro: function indietro() {
-      console.log(Date.parse(this.gior));
+      this.$router.push('/prenotazioni/2020-04-12');
+      location.reload(); //this.gior = '2020-04-12'
     },
     avanti: function avanti() {}
   }
@@ -3260,116 +3260,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/cancella/moduloCancella.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _singolaOra__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./singolaOra */ "./resources/js/components/cancella/singolaOra.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    Pippo: _singolaOra__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      prenotazioni: {}
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('/api/auth/prenotazioni').then(function (res) {
-      _this.prenotazioni = res.data;
-    });
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    EventBus.$on('cancellazione', function (passaggio) {
-      console.log('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id);
-      axios["delete"]('/api/prenotazioni/' + _this2.prenotazioni[passaggio].id).then(function () {
-        return (//this.prenotazioni = this.prenotazioni.splice(passaggio,1)
-          axios.get('/api/auth/prenotazioni').then(function (res) {
-            _this2.prenotazioni = res.data;
-          })
-        );
-      });
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['passaggio', 'indice'],
-  data: function data() {
-    return {};
-  },
-  methods: {
-    cancella: function cancella() {
-      console.log(this.indice);
-      EventBus.$emit('cancellazione', this.indice);
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\resources\\js\\components\\cancella\\moduloCancella.vue: Unexpected token (31:2)\n\n\u001b[0m \u001b[90m 29 | \u001b[39m        \u001b[33mEventBus\u001b[39m\u001b[33m.\u001b[39m$on(\u001b[32m'cancellazione'\u001b[39m\u001b[33m,\u001b[39m (passaggio) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 30 | \u001b[39m            console\u001b[33m.\u001b[39mlog(\u001b[32m'/api/prenotazioni/'\u001b[39m\u001b[33m+\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprenotazioni[passaggio]\u001b[33m.\u001b[39mid)\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 32 | \u001b[39m             axios\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(\u001b[32m'/api/prenotazioni/'\u001b[39m\u001b[33m+\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprenotazioni[passaggio]\u001b[33m.\u001b[39mid)\u001b[33m.\u001b[39mthen(() \u001b[33m=>\u001b[39m \u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m \u001b[90m//this.prenotazioni = this.prenotazioni.splice(passaggio,1)\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 | \u001b[39m            axios\u001b[33m.\u001b[39mget(\u001b[32m'/api/auth/prenotazioni'\u001b[39m)\u001b[33m.\u001b[39mthen(res \u001b[33m=>\u001b[39m{\u001b[0m\n    at Parser._raise (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:742:17)\n    at Parser.raiseWithData (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:735:17)\n    at Parser.raise (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:729:17)\n    at Parser.unexpected (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:8757:16)\n    at Parser.parseExprAtom (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10052:20)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9602:23)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOpBaseRightExpr (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9545:34)\n    at Parser.parseExprOpRightExpr (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9538:21)\n    at Parser.parseExprOp (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9504:27)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9462:17)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)\n    at Parser.parseMaybeAssign (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9380:21)\n    at Parser.parseExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9332:23)\n    at Parser.parseStatementContent (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11210:23)\n    at Parser.parseStatement (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11081:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11656:25)\n    at Parser.parseBlockBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11642:10)\n    at Parser.parseBlock (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:11626:10)\n    at Parser.parseFunctionBody (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10634:24)\n    at Parser.parseArrowExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10603:10)\n    at Parser.parseParenAndDistinguishExpression (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10221:12)\n    at Parser.parseExprAtom (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9947:21)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9602:23)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9452:23)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)\n    at Parser.parseMaybeAssign (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9380:21)\n    at Parser.parseExprListItem (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:10718:18)\n    at Parser.parseCallExpressionArguments (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9790:22)\n    at Parser.parseSubscript (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9696:31)\n    at Parser.parseSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9625:19)\n    at Parser.parseExprSubscripts (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9608:17)\n    at Parser.parseMaybeUnary (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9582:21)\n    at Parser.parseExprOps (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9452:23)\n    at Parser.parseMaybeConditional (C:\\Users\\coltr\\Documents\\progetti\\laravel\\laraproject\\tcmontevarchi2\\node_modules\\@babel\\parser\\lib\\index.js:9425:23)");
 
 /***/ }),
 
@@ -3636,8 +3529,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/soci").then(function (res) {
         _this.soci = res.data.data;
-        _this.totSoci = res.data.data[0].totSoci;
-        console.log(_this.soci);
+        _this.totSoci = res.data.data[0].totSoci; //console.log(this.soci)
+      })["catch"](function (err) {
+        return consolo.log(err);
       });
     }
   }
@@ -39560,7 +39454,7 @@ var render = function() {
         [
           _c(
             "v-list-item-content",
-            { staticStyle: { height: "130px", "align-items": "start" } },
+            { staticStyle: { height: "150px", "align-items": "start" } },
             [
               _c(
                 "v-dialog",
@@ -39572,23 +39466,38 @@ var render = function() {
                       fn: function(ref) {
                         var on = ref.on
                         return [
-                          _c(
-                            "v-btn",
-                            _vm._g(
-                              {
-                                staticStyle: { height: "50px" },
-                                attrs: { color: "green", dark: "" }
-                              },
-                              on
-                            ),
-                            [
-                              _vm._v(
-                                _vm._s(_vm.orario) +
-                                  " - " +
-                                  _vm._s(_vm.orario + 1)
+                          !_vm.full
+                            ? _c(
+                                "v-btn",
+                                _vm._g(
+                                  {
+                                    staticStyle: { height: "50px" },
+                                    attrs: { color: "green", dark: "" }
+                                  },
+                                  on
+                                ),
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.orario) +
+                                      " - " +
+                                      _vm._s(_vm.orario + 1)
+                                  )
+                                ]
                               )
-                            ]
-                          )
+                            : _c(
+                                "v-btn",
+                                {
+                                  staticStyle: { height: "50px" },
+                                  attrs: { color: "orange accent-2", dark: "" }
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.orario) +
+                                      " - " +
+                                      _vm._s(_vm.orario + 1)
+                                  )
+                                ]
+                              )
                         ]
                       }
                     }
@@ -41520,87 +41429,6 @@ var render = function() {
             attrs: { passaggio: prenotazione, indice: i }
           })
         }),
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4& ***!
-  \**********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-container",
-    [
-      _c(
-        "v-card",
-        { staticClass: "mx-auto", attrs: { "max-width": "600", outlined: "" } },
-        [
-          _c(
-            "v-list-item",
-            { attrs: { "three-line": "" } },
-            [
-              _c(
-                "v-list-item-content",
-                [
-                  _c("div", { staticClass: "overline mb-4" }, [
-                    _vm._v("Cancella")
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("data: " + _vm._s(_vm.passaggio.dataprenotazione))
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("ora: " + _vm._s(_vm.passaggio.oraon))
-                  ]),
-                  _vm._v(" "),
-                  _c("v-list-item-title", { staticClass: "headline mb-1" }, [
-                    _vm._v("campo: " + _vm._s(_vm.passaggio.campo))
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-list-item-avatar", {
-                attrs: { tile: "", size: "80", color: "grey" }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-card-actions",
-            [
-              _c(
-                "v-btn",
-                { on: { click: _vm.cancella } },
-                [_c("v-icon", [_vm._v("fas fa-trash")])],
-                1
-              )
-            ],
-            1
-          )
-        ],
         1
       )
     ],
@@ -100010,8 +99838,7 @@ var routes = [{
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/prenotazioni/:giorno',
-  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"],
-  name: 'pren'
+  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/modifica',
   component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -100026,6 +99853,9 @@ var routes = [{
   component: _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, {
   path: '/soci',
+  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_10__["default"]
+}, {
+  path: '/contatti',
   component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_10__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -100100,9 +99930,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'laravel-echo'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -100131,14 +99964,15 @@ window.axios.defaults.headers.common['Authorization'] = JWtToken;
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+
+
+window.Pusher = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'pusher-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+window.Echo = new !(function webpackMissingModule() { var e = new Error("Cannot find module 'laravel-echo'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())({
+  broadcaster: 'pusher',
+  key: 'b4944002b07ba338bbdd',
+  cluster: 'eu',
+  encrypted: true
+});
 
 /***/ }),
 
@@ -100413,75 +100247,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancella_vue_vue_type_template_id_5b7a77aa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancella_vue_vue_type_template_id_5b7a77aa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/cancella/singolaOra.vue":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/cancella/singolaOra.vue ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./singolaOra.vue?vue&type=template&id=74d650e4& */ "./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4&");
-/* harmony import */ var _singolaOra_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./singolaOra.vue?vue&type=script&lang=js& */ "./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _singolaOra_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/cancella/singolaOra.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_singolaOra_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./singolaOra.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cancella/singolaOra.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_singolaOra_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4& ***!
-  \****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./singolaOra.vue?vue&type=template&id=74d650e4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cancella/singolaOra.vue?vue&type=template&id=74d650e4&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_singolaOra_vue_vue_type_template_id_74d650e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

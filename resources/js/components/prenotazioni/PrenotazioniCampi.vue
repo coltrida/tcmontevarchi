@@ -63,7 +63,7 @@
 
         data(){
             return{
-                gior:this.$route.params.giorno
+                gior:'2020-04-13'
             }
         },
 
@@ -71,7 +71,9 @@
 
         methods:{
             indietro(){
-                console.log(Date.parse(this.gior))
+                this.$router.push('/prenotazioni/2020-04-12')
+                location.reload()
+                //this.gior = '2020-04-12'
             },
 
             avanti(){

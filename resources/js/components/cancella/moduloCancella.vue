@@ -25,10 +25,10 @@ export default {
             this.prenotazioni = res.data
             
         })
-    },
-    mounted(){
+
         EventBus.$on('cancellazione', (passaggio) => {
             console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
+<<<<<<< HEAD
              axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id).then(() => 
  //this.prenotazioni = this.prenotazioni.splice(passaggio,1)
             axios.get('/api/auth/prenotazioni').then(res =>{
@@ -41,5 +41,13 @@ export default {
         }
      
     
+=======
+            axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id).then(
+                () => {
+                    this.prenotazioni = this.prenotazioni.splice(passaggio,1)
+                })
+        })
+    },
+>>>>>>> 83be90f53574f4dc67101f103d58abe00137274c
 }
 </script>

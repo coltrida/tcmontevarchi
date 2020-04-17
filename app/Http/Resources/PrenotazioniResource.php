@@ -23,7 +23,8 @@ class PrenotazioniResource extends JsonResource
             'campo' => $this->campo,
             'dataprenotazione' => Carbon::parse($this->dataprenotazione)->format('d/m/Y'),
             'oraon' => $this->oraon,
-            'full' => $this->username1 && $this->username2 ? true : false,
+            'full' => ($this->username1 && $this->username2 && $this->doppio == 0) ||
+                ($this->username1 && $this->username2 && $this->username3 && $this->username4 && $this->doppio == 1) ? true : false,
             'doppio' => $this->doppio == 0 ? 'S' : 'D'
         ];
     }
