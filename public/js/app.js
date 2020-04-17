@@ -3278,6 +3278,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3314,6 +3333,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -51036,29 +51057,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-container",
-    [
-      _c(
-        "v-row",
-        _vm._l(_vm.prenotazioni, function(prenotazione, i) {
-          return _c("pippo", {
-            key: prenotazione.id,
-            attrs: { passaggio: prenotazione, indice: i }
-          })
-        }),
-        1
-      )
-    ],
-    1
-  )
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 
@@ -51084,7 +51084,10 @@ var render = function() {
     [
       _c(
         "v-row",
-        { attrs: { "auto-grow": "" } },
+        {
+          staticStyle: { border: "1px solid black" },
+          attrs: { "auto-grow": "", "justify-content:": "", "flex-start": "" }
+        },
         [
           _c("v-col", [
             _vm._v(
