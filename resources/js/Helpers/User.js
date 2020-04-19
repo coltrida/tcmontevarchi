@@ -10,9 +10,17 @@ class User {
 
     responseAfterLogin(res){
         const access_token = res.data.access_token
+        console.log(access_token)
         const username = res.data.user
+        const nome = res.data.nome
+        const cognome = res.data.cognome
+        const credito = res.data.credito
+        const privilegi = res.data.privilegi
+        const certificato = res.data.certificato
+        const email = res.data.email
+        const anno = res.data.anno
         if(Token.isValid(access_token)){
-            AppStorage.store(username, access_token)
+            AppStorage.store(username, access_token, nome, cognome, credito, privilegi, certificato, email, anno)
             window.location = '/'
         }
     }
@@ -37,6 +45,48 @@ class User {
     name(){
         if(this.loggedIn()){
             return AppStorage.getUser()
+        }
+    }
+
+    nome(){
+        if(this.loggedIn()){
+            return AppStorage.getNome()
+        }
+    }
+
+    cognome(){
+        if(this.loggedIn()){
+            return AppStorage.getCognome()
+        }
+    }
+
+    credito(){
+        if(this.loggedIn()){
+            return AppStorage.getCredito()
+        }
+    }
+
+    privilegi(){
+        if(this.loggedIn()){
+            return AppStorage.getPrivilegi()
+        }
+    }
+
+    certificato(){
+        if(this.loggedIn()){
+            return AppStorage.getCertificato()
+        }
+    }
+
+    email(){
+        if(this.loggedIn()){
+            return AppStorage.getEmail()
+        }
+    }
+
+    anno(){
+        if(this.loggedIn()){
+            return AppStorage.getAnno()
         }
     }
 

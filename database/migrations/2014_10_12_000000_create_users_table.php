@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('cognome');
             $table->string('username')->unique();
             $table->string('telefono');
-            $table->float('credito', 8, 2);
-            $table->boolean('amici');
+            $table->float('credito', 8, 2)->default(0);
+            $table->boolean('amici')->default(1);
             $table->year('anno');
-            $table->integer('privilegi');   // ore gratis
+            $table->integer('privilegi')->default(0);   // ore gratis
             $table->date('certificato')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

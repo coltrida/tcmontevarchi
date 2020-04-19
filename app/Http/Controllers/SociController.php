@@ -15,10 +15,29 @@ class SociController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($valore='')
     {
-        return SociResource::collection(Socio::latest()->paginate(10));
+        //dd($valore);
+        if($valore){
+            //dd('qui');
+            return SociResource::collection(Socio::where('nome', 'like', "%$valore%")
+                ->orWhere('cognome', 'like', "%$valore%")
+                ->latest()
+                ->paginate(10));
+        }else{
+            //dd('qui');
+            return SociResource::collection(Socio::latest()->paginate(10));
+        }
+
     }
+
+   /* public function visualizzazioneDinamica($string)
+    {
+        return SociResource::collection(Socio::where('nome', 'like', "%$string%")
+            ->orWhere('cognome', 'like', "%$string%")
+            ->latest()
+            ->paginate(10));
+    }*/
 
 
     /**

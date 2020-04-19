@@ -12,6 +12,7 @@
                 v-for="n in 15"
                 :orario='n+8'
                 :prenotazioni="prenotazioni"
+                :prenotazioneremota="prenotazioneremota"
                 campo="campo1"
                 :giorno="giorno"
                 :key="n"
@@ -31,7 +32,8 @@
 
         data() {
             return {
-                prenotazioni:{}
+                prenotazioni:{},
+                prenotazioneremota:{}
             }
         },
 
@@ -50,7 +52,7 @@
                 .listen('PrenotazioneEvent', (e) => {
                     //console.log(e.dataprenotazione)
                     let esiste = 0
-                    console.log(e)
+                    //console.log(e)
                     this.prenotazioni.forEach(element => {
                         if(element.id == e.prenotazione.id){
                             esiste = 1
@@ -62,9 +64,10 @@
                         }
                     });
                     if(esiste == 0) {
-                        console.log('nuovo')
+                        //console.log('nuovo')
                         if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo1') {
                             this.prenotazioni.push(e.prenotazione)
+                            this.prenotazioneremota = e.prenotazione
                         }
                     }
                 });
