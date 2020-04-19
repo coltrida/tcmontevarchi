@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
+/*Route::get('/reimposta/{indirizzo}', 'AuthController@reimposta');*/
+Route::post('/reimposta', 'AuthController@reimposta');
+Route::post('/salvareimpostazioni', 'AuthController@salvareimpostazioni')->name('reimposta');
 
 // per le spa bisogno mettere questo
 Route::view('/{any}', 'home');

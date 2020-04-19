@@ -1,10 +1,27 @@
 <template>
     <div class="ml-4 mr-4">
         <v-row>
-            <v-col class="text-center"><v-btn @click="indietro" color="primary">freccia</v-btn></v-col>
-            <v-col class="text-center">Prenotazioni del giorno {{ gior }}</v-col>
-            <v-col class="text-center"><v-btn @click="avanti" color="primary">freccia</v-btn></v-col>
+            <v-col class="text-center">
+                    <v-btn @click="linkindietro" color="primary">
+                        <v-icon dark left>mdi-arrow-left</v-icon>Indietro
+                    </v-btn>
+            </v-col>
+            <v-col class="text-center">Prenotazioni del giorno
+                <v-chip
+                        class="mx-2 shadow-lg"
+                        color="orange"
+                >
+                {{ reversedGiorno }}
+                </v-chip>
+            </v-col>
+            <v-col class="text-center">
+                    <v-btn @click="linkavanti" color="primary">
+                        <v-icon dark left>mdi-arrow-right</v-icon>Avanti
+                    </v-btn>
+            </v-col>
         </v-row>
+
+
         <v-row
                 class="mb-6"
                 no-gutters
@@ -12,7 +29,7 @@
 
             <v-col>
                 <v-card
-                        class="pa-2"
+
                         tile
                         outlined
                 >
@@ -22,7 +39,7 @@
 
             <v-col>
                 <v-card
-                        class="pa-2"
+
                         tile
                         outlined
                 >
@@ -32,7 +49,7 @@
 
             <v-col>
                 <v-card
-                        class="pa-2"
+
                         tile
                         outlined
                 >
@@ -42,7 +59,7 @@
 
             <v-col>
                 <v-card
-                        class="pa-2"
+
                         tile
                         outlined
                 >
@@ -63,21 +80,50 @@
 
         data(){
             return{
-                gior:this.$route.params.giorno
+                gior:this.$route.params.giorno,
+                avanti:'',
+                indietro:'',
             }
         },
 
         components:{Prenotazione1, Prenotazione2, Prenotazione3, Prenotazione4},
 
-        methods:{
-            indietro(){
-                this.$router.push('/prenotazioni/2020-04-12')
-                location.reload()
-                //this.gior = '2020-04-12'
+        computed: {
+            reversedGiorno: function () {
+                return this.gior.split('-').reverse().join('-')
             },
 
-            avanti(){
+        },
 
+        created(){
+            let domani = new Date(this.gior);
+            domani.setDate(domani.getDate() + 1)
+            let val1 = this.layoutgiorno(domani);
+            this.avanti = '/prenotazioni/' + val1[2] + '-' + val1[1] + '-' + val1[0];
+
+            let ieri = new Date(this.gior);
+            ieri.setDate(ieri.getDate() - 1)
+            let val2 = this.layoutgiorno(ieri);
+            this.indietro = '/prenotazioni/' + val2[2] + '-' + val2[1] + '-' + val2[0];
+
+        },
+
+        methods:{
+            linkindietro(){
+                this.$router.push(this.indietro)
+                this.$router.go()
+            },
+
+            linkavanti(){
+                this.$router.push(this.avanti)
+                this.$router.go()
+            },
+
+            layoutgiorno(giorno){
+                let dd = String(giorno.getDate()).padStart(2, '0');
+                let mm = String(giorno.getMonth() + 1).padStart(2, '0'); //January is 0!
+                let yyyy = giorno.getFullYear();
+                return [dd, mm, yyyy]
             }
         }
     }

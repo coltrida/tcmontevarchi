@@ -125,10 +125,6 @@
         },
 
         methods:{
-            visualizzaPrenotazioni(){
-
-            },
-
             layoutgiorno(giorno){
                 let dd = String(giorno.getDate()).padStart(2, '0');
                 let mm = String(giorno.getMonth() + 1).padStart(2, '0'); //January is 0!
