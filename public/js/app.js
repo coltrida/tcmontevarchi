@@ -4062,11 +4062,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.isLoading) return;
       this.isLoading = true; // Lazily load input items
 
-      axios.get('/api/soci') //.then(res => {//res.json()
+      axios.get('/api/soci/visualizza' + this.search) //.then(res => {//res.json()
       //console.log(res)})
       .then(function (res) {
         //si catturano i dati e si mettono nell'array
-        _this3.valori = res.data.data; //console.log(this.valori[0].nome)
+        _this3.valori = res.data.data;
+        console.log(_this3.valori);
       })["catch"](function (err) {
         console.log(err);
       })["finally"](function () {

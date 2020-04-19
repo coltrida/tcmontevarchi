@@ -92,6 +92,7 @@ export default {
   },
  watch: {
     search (val) {
+      
       // Items have already been loaded
       if (this.items.length > 0) return
 
@@ -101,14 +102,15 @@ export default {
       this.isLoading = true
 
       // Lazily load input items
-      axios.get('/api/soci')
+      axios.get('/api/soci/visualizza'+this.search)
         //.then(res => {//res.json()
          //console.log(res)})
         .then(res => {
            
           //si catturano i dati e si mettono nell'array
           this.valori = res.data.data
-          //console.log(this.valori[0].nome)
+          
+          console.log(this.valori)
         })
         .catch(err => {
           console.log(err)
