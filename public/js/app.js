@@ -3333,28 +3333,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3391,14 +3369,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3613,11 +3583,123 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _listaSoci_Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listaSoci/Socio */ "./resources/js/components/pannelloUser/listaSoci/Socio.vue");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      descriptionLimit: 60,
+      valori: [],
+      isLoading: false,
+      model: null,
+      search: null,
+      soci: {},
+      totSoci: 0
+    };
+  },
+  //nella computed si gestisce l'input dei caretteri
+  computed: {
+    fields: function fields() {
+      var _this = this;
+
+      if (!this.model) return [];
+      return Object.keys(this.model).map(function (key) {
+        return {
+          key: key,
+          value: _this.model[key] || 'n/a'
+        };
+      });
+    },
+    //dentro items si controlla l'input dell'utente
+    items: function items() {
+      var _this2 = this;
+
+      return this.valori.map(function (entry) {
+        var cognome = entry.cognome.length > _this2.descriptionLimit ? entry.cognome.slice(0, _this2.descriptionLimit) + '...' : entry.cognome;
+        return Object.assign({}, entry, {
+          cognome: cognome
+        });
+      });
+    }
+  },
+  watch: {
+    search: function search(val) {
+      var _this3 = this;
+
+      // Items have already been loaded
+      if (this.items.length > 0) return; // Items have already been requested
+
+      if (this.isLoading) return;
+      this.isLoading = true; // Lazily load input items
+
+      axios.get('/api/soci') //.then(res => {//res.json()
+      //console.log(res)})
+      .then(function (res) {
+        //si catturano i dati e si mettono nell'array
+        _this3.valori = res.data.data; //console.log(this.valori[0].nome)
+      })["catch"](function (err) {
+        console.log(err);
+      })["finally"](function () {
+        return _this3.isLoading = false;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -3749,7 +3831,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/soci").then(function (res) {
         _this.soci = res.data.data;
-        _this.totSoci = res.data.data[0].totSoci; //console.log(this.soci)
+        _this.totSoci = res.data.data[0].totSoci; //console.log(res.data)
       })["catch"](function (err) {
         return consolo.log(err);
       });
@@ -51145,8 +51227,46 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-row",
+        { attrs: { "auto-grow": "" } },
+        [
+          _c("v-col", [_vm._v("\n\n            data:\n\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            ora:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            campo:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            utenti:\n        ")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("\n            Azione\n        ")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        _vm._l(_vm.prenotazioni, function(prenotazione, i) {
+          return _c("pippo", {
+            key: prenotazione.id,
+            attrs: { passaggio: prenotazione, indice: i }
+          })
+        }),
+        1
+      )
+    ],
+    1
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -51163,8 +51283,81 @@ var staticRenderFns = []
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-list-item",
+    [
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c("v-col", [
+            _vm._v(
+              "\r\n           \r\n     " +
+                _vm._s(_vm.passaggio.dataprenotazione) +
+                "\r\n      \r\n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v("     \r\n     " + _vm._s(_vm.passaggio.oraon) + "\r\n    ")
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(" \r\n     " + _vm._s(_vm.passaggio.campo) + "\r\n    ")
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              "\r\n        " +
+                _vm._s(_vm.passaggio.username1) +
+                " " +
+                _vm._s(_vm.passaggio.username2) +
+                "\r\n          " +
+                _vm._s(_vm.passaggio.username3) +
+                " " +
+                _vm._s(_vm.passaggio.username4) +
+                "\r\n          "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            [
+              _c(
+                "v-card-actions",
+                [
+                  _c(
+                    "v-btn",
+                    { attrs: { color: "red" }, on: { click: _vm.cancella } },
+                    [_c("v-icon", [_vm._v("fas fa-trash")])],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -51338,7 +51531,126 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("amico")])
+  return _c(
+    "v-card",
+    [
+      _c("v-card-title", [_vm._v("\n      Cerca un Socio\n    ")]),
+      _vm._v(" "),
+      _c("v-card-text", [
+        _vm._v(
+          "\n      Scrivi il nome o cognome nel campo di ricerca qui sotto\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-card-text",
+        [
+          _c("v-autocomplete", {
+            attrs: {
+              items: _vm.items,
+              loading: _vm.isLoading,
+              "search-input": _vm.search,
+              color: "white",
+              "hide-no-data": "",
+              "hide-selected": "",
+              "item-text": "cognome",
+              "item-value": "cognome",
+              placeholder: "Inserisci nome/cognome",
+              "return-object": ""
+            },
+            on: {
+              "update:searchInput": function($event) {
+                _vm.search = $event
+              },
+              "update:search-input": function($event) {
+                _vm.search = $event
+              }
+            },
+            model: {
+              value: _vm.model,
+              callback: function($$v) {
+                _vm.model = $$v
+              },
+              expression: "model"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("v-divider"),
+      _vm._v(" "),
+      _c(
+        "v-expand-transition-group",
+        [
+          _vm.model
+            ? _c(
+                "v-list",
+                { staticClass: "red lighten-3" },
+                _vm._l(_vm.valori, function(field, i) {
+                  return _c(
+                    "v-list-item",
+                    { key: i },
+                    [
+                      _c(
+                        "socio",
+                        [
+                          _c(
+                            "v-list-item-content",
+                            [
+                              _c("v-list-item-title", {
+                                domProps: { textContent: _vm._s(field.nome) }
+                              }),
+                              _vm._v(" "),
+                              _c("v-list-item-subtitle", {
+                                domProps: { textContent: _vm._s(field.cognome) }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card-actions",
+        [
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              attrs: { disabled: !_vm.model, color: "grey darken-3" },
+              on: {
+                click: function($event) {
+                  _vm.model = null
+                }
+              }
+            },
+            [
+              _vm._v("\n        Clear\n        "),
+              _c("v-icon", { attrs: { right: "" } }, [
+                _vm._v("mdi-close-circle")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -2,17 +2,9 @@
    
 <v-list-item>
    
-<<<<<<< HEAD
-<v-row auto-grow style="border: 1px solid black"
-  justify-content: flex-start>
-         
-         
-    <v-col > 
-=======
 <v-row auto-grow style="border: 1px solid gray; display: flex; align-items: center">
 
     <v-col>
->>>>>>> 70ee0d58297052e39fed576f586828fb7a6f05e5
            
      {{passaggio.dataprenotazione}}
       
