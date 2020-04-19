@@ -49,10 +49,12 @@ class AuthController extends Controller
 
         if ($socio){
             $user = User::create($request->all());
-            return response($user, Response::HTTP_CREATED);
+            $socio->username = $request->input('username');
+            $socio->save();
+            //return response('creato', Response::HTTP_CREATED);
             //return $this->login($request);
         }
-        return 'Errore - Socio non presente';
+        return $this->login($request);
     }
 
     /**
@@ -100,7 +102,14 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->username
+            'user' => auth()->user()->username,
+            'nome' => auth()->user()->nome,
+            'cognome' => auth()->user()->cognome,
+            'credito' => auth()->user()->credito,
+            'privilegi' => auth()->user()->privilegi,
+            'certificato' => auth()->user()->certificato,
+            'email' => auth()->user()->email,
+            'anno' => auth()->user()->anno,
         ]);
     }
 
@@ -125,5 +134,10 @@ class AuthController extends Controller
 
             ->get();
         return $prenotazioni;
+    }
+
+    public function foto(Request $request)
+    {
+        dd($request);
     }
 }

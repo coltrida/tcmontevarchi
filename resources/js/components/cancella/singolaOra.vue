@@ -75,11 +75,11 @@ export default {
       }
       },
       created(){
-        console.log(this.passaggio);
+        //console.log(this.passaggio);
       },
       methods:{
           cancella:function(){
-            console.log(this.indice)
+            //console.log(this.indice)
               EventBus.$emit('cancellazione', this.indice 
               
                )

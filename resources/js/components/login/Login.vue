@@ -21,11 +21,15 @@
                 >
                     <v-text-field
                             dark
+                            :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
                             v-model="form.password"
                             label="Password"
-                            type="password"
+                            :type="show2 ? 'text' : 'password'"
+                            @click:append="show2 = !show2"
                             required
                     ></v-text-field>
+                    <span class="red--white caption" style="padding:0; margin:0">Password Dimenticata</span>
+
                 </v-col>
 
                 <v-btn
@@ -36,7 +40,17 @@
                     Login
                 </v-btn>
 
+                <router-link to="/registrati">
+                    <v-btn
+                            color="indigo"
+                            class="mt-3 ml-2"
+                    >
+                        Registrati
+                    </v-btn>
+                </router-link>
+
             </v-row>
+
         </v-container>
     </v-form>
 </template>
@@ -46,22 +60,22 @@
         name: "Login",
         data(){
             return {
+                show2: false,
+                dimenticata: 'www.example.com/page',
                 form: {
                     email:null,
                     password:null
                 },
             }
-        }
-
-        /*created(){
-            if(User.loggedIn()){
-                this.$router.push('/')
-            }
-        }*/,
+        },
 
         methods:{
             login(){
                User.login(this.form)
+            },
+
+            passwordDimenticata(){
+                console.log('ciao')
             }
         }
     }

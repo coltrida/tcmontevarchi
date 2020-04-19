@@ -8,7 +8,7 @@ Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
 Route::post('/full', 'PrenotazioniController@full');
 Route::apiResource('/soci', 'SociController');
-
+Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.index');
 
 Route::group([
     'prefix' => 'auth'
@@ -19,6 +19,7 @@ Route::group([
     Route::post('logout', 'AuthController@logout')->name('logout');
     Route::post('refresh', 'AuthController@refresh')->name('refresh');
     Route::post('me', 'AuthController@me')->name('me');
+    Route::post('foto', 'AuthController@foto')->name('foto');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
 
     Route::get('prenotazioni', 'AuthController@prenotazioni');

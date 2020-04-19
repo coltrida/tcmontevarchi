@@ -7,6 +7,7 @@ import PrenotazioniCampi from '../Components/prenotazioni/PrenotazioniCampi'
 import HomePage from '../Components/HomePage'
 import Storia from '../components/storia/Storia'
 import Logout from '../components/login/Logout'
+import Registrati from '../components/login/Registrati'
 
 import Modifica from '../components/pannelloUser/modificaUser'
 import CaricaFoto from '../components/pannelloUser/caricaFoto'
@@ -18,6 +19,7 @@ import Soci from '../components/pannelloUser/listaSoci/listaSoci'
 const routes = [
      { path: '/', component: HomePage },
      { path: '/storia', component: Storia },
+     { path: '/registrati', component: Registrati },
      { path: '/logout', component: Logout },
      { path: '/prenotazioni/:giorno', component: PrenotazioniCampi },
 

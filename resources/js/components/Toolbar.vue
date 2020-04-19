@@ -4,7 +4,7 @@
             flat
             tile
     >
-        <v-toolbar color="red darken-4" dark>
+        <v-toolbar color="red darken-4" dark class="pt-4" style="height: 100px">
             <v-toolbar-title>
                 <router-link class="white--text" to="/">
                     <v-btn text>
@@ -15,14 +15,59 @@
             <v-spacer></v-spacer>
 
             <div v-if="loggedIn">
-                <v-chip
-                        class="ma-2"
-                        color="primary"
-                        label
+
+                <v-menu
+                        v-model="menu"
+                        bottom
+                        right
+                        transition="scale-transition"
+                        origin="top left"
                 >
-                    <v-icon left>mdi-account-circle-outline</v-icon>
-                    {{ username }}
-                </v-chip>
+                    <template v-slot:activator="{ on }">
+                        <v-chip
+                                color="primary"
+                                label
+                                v-on="on"
+                                style="width: 138px"
+                        >
+                            <!--<v-avatar left>
+                                <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            </v-avatar>-->
+                            <v-icon left>mdi-account-circle-outline</v-icon>
+                            {{ nome }}
+                        </v-chip>
+                    </template>
+                    <v-card width="300">
+                        <v-list dark>
+                            <v-list-item>
+                                <v-list-item-avatar>
+                                    <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                                </v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title>{{nome}} {{cognome}}</v-list-item-title>
+                                    <v-list-item-subtitle>{{email}}</v-list-item-subtitle>
+                                </v-list-item-content>
+                                <v-list-item-action>
+                                    <v-btn
+                                            icon
+                                            @click="menu = false"
+                                    >
+                                        <v-icon>mdi-close-circle</v-icon>
+                                    </v-btn>
+                                </v-list-item-action>
+                            </v-list-item>
+                        </v-list>
+                        <v-list>
+                            <v-list-item>
+                                <!--<v-list-item-action>
+                                    <v-icon>mdi-briefcase</v-icon>
+                                </v-list-item-action>-->
+                                <v-list-item-subtitle>{{email}}</v-list-item-subtitle>
+                                <v-list-item-subtitle>Credito: € {{credito}}</v-list-item-subtitle>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
+                </v-menu>
 
             </div>
 
@@ -56,8 +101,13 @@
 
         data() {
             return {
+                menu: false,
                 loggedIn: User.loggedIn(),
                 username: User.name(),
+                nome: User.nome(),
+                cognome: User.cognome(),
+                email: User.email(),
+                credito: User.credito(),
                 items:[
                     {title : 'Storia', to: '/storia', show: true},
                     {title : 'Contatti', to: '/contatti', show: true},

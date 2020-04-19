@@ -12,6 +12,7 @@
                     v-for="n in 15"
                     :orario='n+8'
                     :prenotazioni="prenotazioni"
+                    :prenotazioneremota="prenotazioneremota"
                     campo="campo4"
                     :giorno="giorno"
                     :key="n"
@@ -31,7 +32,8 @@
 
         data() {
             return {
-                prenotazioni: {}
+                prenotazioni: {},
+                prenotazioneremota:{}
             }
         },
 
@@ -44,6 +46,30 @@
                     this.prenotazioni = res.data.data
                     //console.log(this.prenotazioni)
                 })
+
+            Echo.channel('prenotazioneChannel')
+                .listen('PrenotazioneEvent', (e) => {
+                    //console.log(e.dataprenotazione)
+                    let esiste = 0
+                    //console.log(e)
+                    this.prenotazioni.forEach(element => {
+                        if(element.id == e.prenotazione.id){
+                            esiste = 1
+                            element.username1 = e.prenotazione.username1
+                            element.username2 = e.prenotazione.username2
+                            element.username3 = e.prenotazione.username3
+                            element.username4 = e.prenotazione.username4
+                            element.full = e.prenotazione.full
+                        }
+                    });
+                    if(esiste == 0) {
+                        //console.log('nuovo')
+                        if (this.giorno == e.prenotazione.datapren && e.prenotazione.campo == 'campo4') {
+                            this.prenotazioni.push(e.prenotazione)
+                            this.prenotazioneremota = e.prenotazione
+                        }
+                    }
+                });
         }
     }
 </script>

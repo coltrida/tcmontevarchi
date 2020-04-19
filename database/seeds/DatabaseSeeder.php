@@ -16,22 +16,24 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $dataoggi = Carbon::now()->addHour(3)->format('y-m-d');
+        $dataoggi = Carbon::now()->addHour(2)->format('y-m-d');
 
         Socio::truncate();
         User::truncate();
         Prenotazione::truncate();
 
         Socio::create([
-            'nome' => 'cacao',
-            'cognome' => 'pippo',
+            'nome' => 'Davide',
+            'cognome' => 'Coltrioliiiii',
+            'username' => 'cacao2',
             'anno' => 2000,
             'status' => 0
         ]);
 
         Socio::create([
-            'nome' => 'cacao2',
-            'cognome' => 'pippo2',
+            'nome' => 'Marco',
+            'cognome' => 'Cataniaaaaaa',
+            'username' => 'cacao',
             'anno' => 2000,
             'status' => 1
         ]);
@@ -51,9 +53,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nome' => 'cacao',
-            'cognome' => 'pippo',
-            'username' => 'cacao',
+            'nome' => 'Davide',
+            'cognome' => 'Coltrioliiiii',
+            'username' => 'cacao2',
             'credito' => 0,
             'telefono' => 123456,
             'amici' => 1,
@@ -65,9 +67,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nome' => 'cacao2',
-            'cognome' => 'pippo2',
-            'username' => 'cacao2',
+            'nome' => 'Marco',
+            'cognome' => 'Cataniaaaaaa',
+            'username' => 'cacao',
             'credito' => 0,
             'telefono' => 123456,
             'amici' => 1,
@@ -93,7 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
+            'username1' => 'Cataniaaaaaa',
             'campo' => 'campo1',
             'dataprenotazione' => $dataoggi,
             'doppio' => 0,
@@ -101,8 +103,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Coltrioliiiii',
             'campo' => 'campo2',
             'dataprenotazione' => $dataoggi,
             'doppio' => 0,
@@ -110,8 +112,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Coltrioliiiii',
             'campo' => 'campo2',
             'dataprenotazione' => $dataoggi,
             'doppio' => 0,
@@ -119,9 +121,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Cataniaaaaaa',
             'campo' => 'campo3',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -129,10 +131,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
-            'username4' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
+            'username4' => 'Coltrioliiiii',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -140,8 +142,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
             'campo' => 'campo3',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -149,10 +151,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
-            'username4' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
+            'username4' => 'Coltrioliiiii',
             'campo' => 'campo1',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -160,10 +162,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
-            'username4' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
+            'username4' => 'Coltrioliiiii',
             'campo' => 'campo1',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -171,9 +173,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username4' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username4' => 'Coltrioliiiii',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -181,9 +183,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -191,9 +193,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -201,8 +203,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 0,
@@ -210,9 +212,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
             'campo' => 'campo4',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -220,9 +222,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username2' => 'cacao',
-            'username3' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username2' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
             'campo' => 'campo3',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
@@ -230,8 +232,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Prenotazione::create([
-            'username1' => 'cacao',
-            'username3' => 'cacao2',
+            'username1' => 'Cataniaaaaaa',
+            'username3' => 'Coltrioliiiii',
             'campo' => 'campo1',
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,

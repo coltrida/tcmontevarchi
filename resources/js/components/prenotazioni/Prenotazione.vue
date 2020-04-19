@@ -65,7 +65,7 @@
 
         components:{PrenotazioneSingolo, PrenotazioneDoppio},
 
-        props: ['prenotazioni', 'orario', 'campo', 'giorno'],
+        props: ['prenotazioni', 'orario', 'campo', 'giorno', 'prenotazioneremota'],
 
         data(){
             return {
@@ -92,13 +92,23 @@
 
                     }
                 })
+
+            Echo.channel('prenotazioneChannel')
+                .listen('PrenotazioneEvent', (e) => {
+                    //console.log(e.dataprenotazione)
+                        if (this.giorno == e.prenotazione.datapren && this.campo == e.prenotazione.campo && this.orario == e.prenotazione.oraon) {
+                            this.pren = e.prenotazione
+                            this.full = e.prenotazione.full
+                        }
+
+                });
         },
 
         methods:{
             conferma(){
                 this.dialog = false
                 axios.post('/api/prenotazioni',{
-                    username: User.name(),
+                    username: User.cognome(),
                     campo: this.campo,
                     dataprenotazione: this.giorno,
                     oraon: this.orario,
