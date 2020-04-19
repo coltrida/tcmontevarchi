@@ -1,6 +1,6 @@
 <template>
     <v-card
-            max-width="475"
+            max-width="470"
             class="mx-auto"
     >
         <v-toolbar style="background: linear-gradient(90deg, rgba(189,17,17,1) 0%, rgba(209,0,0,1) 25%, rgba(255,255,255,1) 100%);" dark>

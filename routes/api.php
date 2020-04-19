@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/dimenticata/{indirizzo}', 'MailController@dimenticata');
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
 Route::post('/full', 'PrenotazioniController@full');

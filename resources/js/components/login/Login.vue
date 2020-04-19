@@ -18,6 +18,7 @@
                 <v-col
                         cols="12"
                         md="4"
+                        id="input-usage"
                 >
                     <v-text-field
                             dark
@@ -28,7 +29,29 @@
                             @click:append="show2 = !show2"
                             required
                     ></v-text-field>
-                    <span class="red--white caption" style="padding:0; margin:0">Password Dimenticata</span>
+
+                    <span style="padding:0; margin:0">
+                        <v-dialog v-model="dialog" persistent max-width="430">
+                          <template v-slot:activator="{ on }">
+                            <div color="primary" dark v-on="on" style="font-size: 10px; cursor: pointer; ">Password dimenticata</div>
+                          </template>
+                          <v-card>
+                            <v-card-title class="headline">Inserisci la tua e-mail:</v-card-title>
+                            <v-card-text>Ti invieremo un link in posta per re-impostare la password</v-card-text>
+                              <v-col>
+                                  <v-text-field
+                                          placeholder="Placeholder"
+                                          v-model="inviamail"
+                                  ></v-text-field>
+                                </v-col>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn color="green darken-1" text @click="dialog = false">Chiudi</v-btn>
+                              <v-btn color="green darken-1" text @click="passwordDimenticata">Invia</v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                    </span>
 
                 </v-col>
 
@@ -61,7 +84,9 @@
         data(){
             return {
                 show2: false,
+                dialog: false,
                 dimenticata: 'www.example.com/page',
+                inviamail:'',
                 form: {
                     email:null,
                     password:null
@@ -75,12 +100,22 @@
             },
 
             passwordDimenticata(){
-                console.log('ciao')
+                this.dialog = false
+                axios.get('/api/dimenticata/'+this.inviamail)
+                    .then(() => {
+                        this.inviamail = ''
+                        alert('posta inviata')
+                    })
             }
         }
     }
 </script>
 
-<style scoped>
-
+<style>
+    .theme--dark.v-messages {
+        display:none !important;
+    }
+    .v-text-field__details{
+        display:none !important;
+    }
 </style>

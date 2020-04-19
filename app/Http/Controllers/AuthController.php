@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReimpostaRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
@@ -15,7 +16,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['login', 'signup', 'index']]);
+        $this->middleware('JWT', ['except' => ['login', 'signup', 'index', 'reimposta', 'salvareimpostazioni']]);
     }
 
     public function index()
@@ -139,5 +140,27 @@ class AuthController extends Controller
     public function foto(Request $request)
     {
         dd($request);
+    }
+
+    public function reimposta(Request $request)
+    {
+        //dd($request);
+        $indirizzo = $request->input('indirizzo');
+        //dd($indirizzo);
+        return view('reimposta', compact('indirizzo'));
+    }
+
+    public function salvareimpostazioni(ReimpostaRequest $request)
+    {
+        //dd($request);
+        $indirizzo = $request->input('indirizzo');
+        $password = $request->input('password');
+        $user = User::where('email', $indirizzo)->firstOrFail();
+        //dd($user);
+        $user->password = $password;
+        $user->save();
+        $messaggio = 'password reimpostata';
+        session()->flash('message', $messaggio);
+        return redirect()->back();
     }
 }
