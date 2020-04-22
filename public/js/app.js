@@ -1922,13 +1922,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [{
-        src: 'http://tcmontevarchi2.local/img/01.jpg'
+        src: 'http://tcmontevarchi.altervista.org/img/01.jpg'
       }, {
-        src: 'http://tcmontevarchi2.local/img/02.jpg'
+        src: 'http://tcmontevarchi.altervista.org/img/02.jpg'
       }, {
-        src: 'http://tcmontevarchi2.local/img/03.jpg'
+        src: 'http://tcmontevarchi.altervista.org/img/03.jpg'
       }, {
-        src: 'http://tcmontevarchi2.local/img/04.jpg'
+        src: 'http://tcmontevarchi.altervista.org/img/04.jpg'
       }]
     };
   }
@@ -2059,6 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -2108,6 +2109,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2135,12 +2137,14 @@ __webpack_require__.r(__webpack_exports__);
     var tomorrow5 = new Date(today);
     var tomorrow6 = new Date(today);
     var tomorrow7 = new Date(today);
+    var limite = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
     tomorrow3.setDate(tomorrow.getDate() + 1);
     tomorrow4.setDate(tomorrow.getDate() + 2);
     tomorrow5.setDate(tomorrow.getDate() + 3);
     tomorrow6.setDate(tomorrow.getDate() + 4);
     tomorrow7.setDate(tomorrow.getDate() + 5);
+    limite.setDate(tomorrow.getDate() + 6);
     /*let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = today.getFullYear();*/
@@ -2151,7 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
     var val4 = this.layoutgiorno(tomorrow4);
     var val5 = this.layoutgiorno(tomorrow5);
     var val6 = this.layoutgiorno(tomorrow6);
-    var val7 = this.layoutgiorno(tomorrow7); // console.log(val6)
+    var val7 = this.layoutgiorno(tomorrow7);
+    var limit = this.layoutgiorno(limite); // console.log(val6)
 
     today = val[2] + '-' + val[1] + '-' + val[0];
     tomorrow = val2[2] + '-' + val2[1] + '-' + val2[0];
@@ -2160,6 +2165,8 @@ __webpack_require__.r(__webpack_exports__);
     tomorrow5 = val5[2] + '-' + val5[1] + '-' + val5[0];
     tomorrow6 = val6[2] + '-' + val6[1] + '-' + val6[0];
     tomorrow7 = val7[2] + '-' + val7[1] + '-' + val7[0];
+    limite = limit[2] + limit[1] + limit[0];
+    _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].storeLimite(limite);
     this.dataOggi = val[0] + '-' + val[1] + '-' + val[2];
     this.piuuno = val2[0] + '-' + val2[1] + '-' + val2[2];
     this.piudue = val3[0] + '-' + val3[1] + '-' + val3[2];
@@ -2290,6 +2297,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PrenotazioneSingolo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrenotazioneSingolo */ "./resources/js/Components/prenotazioni/PrenotazioneSingolo.vue");
 /* harmony import */ var _PrenotazioneDoppio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrenotazioneDoppio */ "./resources/js/Components/prenotazioni/PrenotazioneDoppio.vue");
+/* harmony import */ var _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Helpers/Prenotazioni */ "./resources/js/Helpers/Prenotazioni.js");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -2349,6 +2358,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2357,15 +2399,25 @@ __webpack_require__.r(__webpack_exports__);
     PrenotazioneSingolo: _PrenotazioneSingolo__WEBPACK_IMPORTED_MODULE_0__["default"],
     PrenotazioneDoppio: _PrenotazioneDoppio__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: ['prenotazioni', 'orario', 'campo', 'giorno', 'prenotazioneremota'],
+  props: ['prenotazioni', 'orario', 'campo', 'giorno', 'prenotazioneremota', 'possoPrenotare'],
   data: function data() {
     return {
       full: false,
       dialog: false,
+      credito: User.credito(),
+      eta: User.eta(),
+      stato: User.stato(),
+      privilegi: User.privilegi(),
+      id: User.id(),
       pren: {},
       sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
       scelta: 0
     };
+  },
+  computed: {
+    reversedGiorno: function reversedGiorno() {
+      return this.giorno.split('-').reverse().join('-');
+    }
   },
   created: function created() {
     var _this = this;
@@ -2395,17 +2447,118 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.dialog = false;
-      axios.post('/api/prenotazioni', {
-        username: User.cognome(),
-        campo: this.campo,
-        dataprenotazione: this.giorno,
-        oraon: this.orario,
-        doppio: this.pren.doppio ? this.pren.doppio : this.scelta
-      }).then(function (res) {
-        _this2.playSound();
+      var tipoPrenotazione = this.pren.doppio ? this.pren.doppio : this.scelta;
+      var costoPrenotazione = 0;
+      /* ------------ ILLIMITATI ---------------*/
 
-        location.reload();
-      });
+      if (this.stato == 'illimitati') {
+        axios.post('/api/prenotazioni', {
+          username: User.cognome(),
+          campo: this.campo,
+          dataprenotazione: this.giorno,
+          oraon: this.orario,
+          doppio: tipoPrenotazione
+        }).then(function (res) {
+          _this2.playSound();
+
+          location.reload();
+        });
+      } else
+        /* ------------ GRATIS ---------------*/
+        if (this.stato == 'gratis') {
+          /* ------------ PAGA CON I PRIVILEGI ---------------*/
+          if (this.privilegi > 0) {
+            this.privilegi--;
+            _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(this.privilegi);
+            axios.post('/api/prenotazioni2/' + this.id, {
+              username: User.cognome(),
+              campo: this.campo,
+              dataprenotazione: this.giorno,
+              oraon: this.orario,
+              doppio: tipoPrenotazione,
+              privilegi: this.privilegi,
+              credito: this.credito
+            }).then(function (res) {
+              _this2.playSound();
+
+              location.reload();
+            });
+          } else {
+            /* ------------ PAGA CON I SOLDI ---------------*/
+
+            /* ------------ UNDER ---------------*/
+            if (this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
+              costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
+            } else
+              /* ------------ OVER ---------------*/
+              if (this.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaOver()) {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoOver();
+              } else
+                /* ------------ SINGOLO ---------------*/
+                if (tipoPrenotazione == 0 || tipoPrenotazione == 'S') {
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardSingolo();
+                } else if (tipoPrenotazione == 1 || tipoPrenotazione == 'D') {
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
+                }
+
+            if (this.credito >= costoPrenotazione) {
+              this.credito = parseFloat(this.credito - costoPrenotazione);
+              _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
+              axios.post('/api/prenotazioni2/' + this.id, {
+                username: User.cognome(),
+                campo: this.campo,
+                dataprenotazione: this.giorno,
+                oraon: this.orario,
+                doppio: tipoPrenotazione,
+                privilegi: this.privilegi,
+                credito: this.credito
+              }).then(function (res) {
+                _this2.playSound();
+
+                location.reload();
+              });
+            } else {
+              alert('Credito Insufficiente');
+            }
+          }
+        } else
+          /* ------------ STANDARD ---------------*/
+          if (this.stato == 'normale') {
+            /* ------------ UNDER ---------------*/
+            if (this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
+              costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
+            } else
+              /* ------------ OVER ---------------*/
+              if (this.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaOver()) {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoOver();
+              } else
+                /* ------------ SINGOLO ---------------*/
+                if (tipoPrenotazione == 0 || tipoPrenotazione == 'S') {
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardSingolo();
+                } else if (tipoPrenotazione == 1 || tipoPrenotazione == 'D') {
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
+                }
+
+            if (this.credito >= costoPrenotazione) {
+              this.credito = parseFloat(this.credito - costoPrenotazione);
+              _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
+              axios.post('/api/prenotazioni2/' + this.id, {
+                username: User.cognome(),
+                campo: this.campo,
+                dataprenotazione: this.giorno,
+                oraon: this.orario,
+                doppio: tipoPrenotazione,
+                privilegi: this.privilegi,
+                credito: this.credito
+              }).then(function (res) {
+                _this2.playSound();
+
+                location.reload();
+              });
+            } else {
+              alert('Credito Insufficiente');
+            }
+          }
     },
     playSound: function playSound() {
       var alert = new Audio(this.sound);
@@ -2882,9 +3035,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titolo', 'giorno'],
+  props: ['titolo', 'giorno', 'possoPrenotare'],
   components: {
     Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2968,9 +3122,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titolo', 'giorno'],
+  props: ['titolo', 'giorno', 'possoPrenotare'],
   components: {
     Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -3053,9 +3208,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titolo', 'giorno'],
+  props: ['titolo', 'giorno', 'possoPrenotare'],
   components: {
     Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -3138,9 +3294,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titolo', 'giorno'],
+  props: ['titolo', 'giorno', 'possoPrenotare'],
   components: {
     Prenotazione: _Prenotazione__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -3201,6 +3358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Prenotazioni2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prenotazioni2 */ "./resources/js/Components/prenotazioni/Prenotazioni2.vue");
 /* harmony import */ var _Prenotazioni3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Prenotazioni3 */ "./resources/js/Components/prenotazioni/Prenotazioni3.vue");
 /* harmony import */ var _Prenotazioni4__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Prenotazioni4 */ "./resources/js/Components/prenotazioni/Prenotazioni4.vue");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -3273,6 +3431,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 
@@ -3282,8 +3443,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       gior: this.$route.params.giorno,
+      limite: _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_4__["default"].getLimite(),
       avanti: '',
-      indietro: ''
+      indietro: '',
+      possoPrenotare: true
     };
   },
   components: {
@@ -3295,6 +3458,16 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     reversedGiorno: function reversedGiorno() {
       return this.gior.split('-').reverse().join('-');
+    },
+    giornoSelezionato: function giornoSelezionato() {
+      return this.gior.split('-').join('');
+    }
+  },
+  mounted: function mounted() {
+    if (this.limite - this.giornoSelezionato > 0) {
+      this.possoPrenotare = true;
+    } else {
+      this.possoPrenotare = false;
     }
   },
   created: function created() {
@@ -3495,6 +3668,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /*import AppNotification from './AppNotification'*/
 
@@ -3514,6 +3688,8 @@ __webpack_require__.r(__webpack_exports__);
       cognome: User.cognome(),
       email: User.email(),
       credito: User.credito(),
+      privilegi: User.privilegi(),
+      stato: User.stato(),
       items: [{
         title: 'Storia',
         to: '/storia',
@@ -4000,22 +4176,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      name: '',
-      rules: [function (value) {
-        return !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!';
-      }]
+      nome: {},
+      caricato: false
+      /*rules: [
+          value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
+      ],*/
+
     };
   },
   methods: {
     invia: function invia() {
-      var _this = this;
+      console.log(this.nome); //let formData = new FormData();
+      //formData.append('nome', this.nome);
+      //console.log(formData)
 
-      axios.post('/api/auth/foto', this.name).then(function (res) {
-        return _this.$router.push('/');
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      axios.post('/api/auth/foto', this.nome).then(function (data) {//console.log(data.data);
       });
+    },
+    carica: function carica() {
+      this.caricato = true;
     }
   }
 });
@@ -50240,7 +50448,7 @@ var render = function() {
     {
       attrs: {
         dark: "",
-        src: "http://tcmontevarchi2.local/img/01.jpg",
+        src: "http://tcmontevarchi.altervista.org/img/01.jpg",
         height: "700"
       }
     },
@@ -50295,7 +50503,7 @@ var render = function() {
               _c(
                 "v-dialog",
                 {
-                  attrs: { persistent: "", "max-width": "600px" },
+                  attrs: { persistent: "", "max-width": "500px" },
                   scopedSlots: _vm._u([
                     {
                       key: "activator",
@@ -50348,71 +50556,130 @@ var render = function() {
                 },
                 [
                   _vm._v(" "),
-                  _c(
-                    "v-card",
-                    [
-                      _vm.pren.doppio
-                        ? _c("v-card-title", [
-                            _c("span", { staticClass: "headline" }, [
-                              _vm._v(
-                                _vm._s(_vm.giorno) +
-                                  " - " +
-                                  _vm._s(_vm.campo) +
-                                  " - " +
-                                  _vm._s(_vm.orario) +
-                                  " - " +
-                                  _vm._s(_vm.pren.doppio)
-                              )
-                            ])
-                          ])
-                        : _c("v-card-title", [
-                            _c("span", { staticClass: "headline" }, [
-                              _vm._v(
-                                _vm._s(_vm.giorno) +
-                                  " - " +
-                                  _vm._s(_vm.campo) +
-                                  " - " +
-                                  _vm._s(_vm.orario)
-                              )
-                            ])
-                          ]),
-                      _vm._v(" "),
-                      !_vm.pren.doppio
-                        ? _c(
-                            "v-card-text",
-                            [
-                              _c(
-                                "v-container",
+                  _vm.possoPrenotare ||
+                  _vm.stato == "illimitati" ||
+                  _vm.stato == "special"
+                    ? _c(
+                        "v-card",
+                        [
+                          _vm.pren.doppio
+                            ? _c(
+                                "v-card-title",
                                 [
                                   _c(
-                                    "v-row",
+                                    "v-list-item",
                                     [
                                       _c(
-                                        "v-radio-group",
-                                        {
-                                          attrs: { row: "" },
-                                          model: {
-                                            value: _vm.scelta,
-                                            callback: function($$v) {
-                                              _vm.scelta = $$v
-                                            },
-                                            expression: "scelta"
-                                          }
-                                        },
+                                        "v-list-item-content",
                                         [
-                                          _c("v-radio", {
-                                            attrs: {
-                                              label: "Singolo",
-                                              value: "0"
-                                            }
-                                          }),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Prenotazione per il: " +
+                                                  _vm._s(_vm.reversedGiorno)
+                                              )
+                                            ]
+                                          ),
                                           _vm._v(" "),
-                                          _c("v-radio", {
-                                            attrs: {
-                                              label: "Doppio",
-                                              value: "1"
-                                            }
-                                          })
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Alle ore: " +
+                                                  _vm._s(_vm.orario)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Nel: " + _vm._s(_vm.campo)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [_vm._v(_vm._s(_vm.pren.doppio))]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Il tuo credito: € " +
+                                                  _vm._s(_vm.credito)
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            : _c(
+                                "v-card-title",
+                                [
+                                  _c(
+                                    "v-list-item",
+                                    [
+                                      _c(
+                                        "v-list-item-content",
+                                        [
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Prenotazione per il: " +
+                                                  _vm._s(_vm.reversedGiorno)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Alle ore: " +
+                                                  _vm._s(_vm.orario)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Nel: " + _vm._s(_vm.campo)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item-title",
+                                            { staticClass: "headline" },
+                                            [
+                                              _vm._v(
+                                                "Il tuo credito: € " +
+                                                  _vm._s(_vm.credito)
+                                              )
+                                            ]
+                                          )
                                         ],
                                         1
                                       )
@@ -50422,45 +50689,145 @@ var render = function() {
                                 ],
                                 1
                               ),
+                          _vm._v(" "),
+                          !_vm.pren.doppio
+                            ? _c(
+                                "v-card-text",
+                                [
+                                  _c(
+                                    "v-container",
+                                    [
+                                      _c(
+                                        "v-row",
+                                        [
+                                          _c(
+                                            "v-radio-group",
+                                            {
+                                              attrs: { row: "" },
+                                              model: {
+                                                value: _vm.scelta,
+                                                callback: function($$v) {
+                                                  _vm.scelta = $$v
+                                                },
+                                                expression: "scelta"
+                                              }
+                                            },
+                                            [
+                                              _c("v-radio", {
+                                                attrs: {
+                                                  label: "Singolo",
+                                                  value: "0"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("v-radio", {
+                                                attrs: {
+                                                  label: "Doppio",
+                                                  value: "1"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("small", [_vm._v("*scelta obbligatoria")])
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-actions",
+                            [
+                              _c("v-spacer"),
                               _vm._v(" "),
-                              _c("small", [_vm._v("*scelta obbligatoria")])
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", text: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.dialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Annulla")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", text: "" },
+                                  on: { click: _vm.conferma }
+                                },
+                                [_vm._v("Conferma")]
+                              )
                             ],
                             1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-spacer"),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "blue darken-1", text: "" },
-                              on: {
-                                click: function($event) {
-                                  _vm.dialog = false
-                                }
-                              }
-                            },
-                            [_vm._v("Annulla")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "blue darken-1", text: "" },
-                              on: { click: _vm.conferma }
-                            },
-                            [_vm._v("Conferma")]
                           )
                         ],
                         1
                       )
-                    ],
-                    1
-                  )
+                    : _c(
+                        "v-card",
+                        [
+                          _c(
+                            "v-card-title",
+                            [
+                              _c(
+                                "v-list-item",
+                                [
+                                  _c(
+                                    "v-list-item-content",
+                                    [
+                                      _c(
+                                        "v-list-item-title",
+                                        { staticClass: "headline" },
+                                        [
+                                          _vm._v(
+                                            "Non puoi prenotare in questa data"
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-actions",
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "blue darken-1", text: "" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.dialog = false
+                                    }
+                                  }
+                                },
+                                [_vm._v("Ok")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                 ],
                 1
               ),
@@ -51757,6 +52124,7 @@ var render = function() {
               orario: n + 8,
               prenotazioni: _vm.prenotazioni,
               prenotazioneremota: _vm.prenotazioneremota,
+              possoPrenotare: _vm.possoPrenotare,
               campo: "campo1",
               giorno: _vm.giorno
             }
@@ -51817,6 +52185,7 @@ var render = function() {
               orario: n + 8,
               prenotazioni: _vm.prenotazioni,
               prenotazioneremota: _vm.prenotazioneremota,
+              possoPrenotare: _vm.possoPrenotare,
               campo: "campo2",
               giorno: _vm.giorno
             }
@@ -51877,6 +52246,7 @@ var render = function() {
               orario: n + 8,
               prenotazioni: _vm.prenotazioni,
               prenotazioneremota: _vm.prenotazioneremota,
+              possoPrenotare: _vm.possoPrenotare,
               campo: "campo3",
               giorno: _vm.giorno
             }
@@ -51937,6 +52307,7 @@ var render = function() {
               orario: n + 8,
               prenotazioni: _vm.prenotazioni,
               prenotazioneremota: _vm.prenotazioneremota,
+              possoPrenotare: _vm.possoPrenotare,
               campo: "campo4",
               giorno: _vm.giorno
             }
@@ -51976,6 +52347,7 @@ var render = function() {
     [
       _c(
         "v-row",
+        { staticStyle: { margin: "50px 0" } },
         [
           _c(
             "v-col",
@@ -51984,7 +52356,7 @@ var render = function() {
               _c(
                 "v-btn",
                 {
-                  attrs: { color: "primary" },
+                  attrs: { "x-large": "", color: "primary" },
                   on: { click: _vm.linkindietro }
                 },
                 [
@@ -52003,10 +52375,14 @@ var render = function() {
             "v-col",
             { staticClass: "text-center" },
             [
-              _vm._v("Prenotazioni del giorno\n            "),
+              _c("h1", [_vm._v("Prenotazioni del giorno")]),
+              _vm._v(" "),
               _c(
                 "v-chip",
-                { staticClass: "mx-2 shadow-lg", attrs: { color: "orange" } },
+                {
+                  staticClass: "mx-2 shadow-lg px-lg-5",
+                  attrs: { color: "orange", "x-large": "", shadow: "" }
+                },
                 [
                   _vm._v(
                     "\n            " +
@@ -52025,7 +52401,10 @@ var render = function() {
             [
               _c(
                 "v-btn",
-                { attrs: { color: "primary" }, on: { click: _vm.linkavanti } },
+                {
+                  attrs: { "x-large": "", color: "primary" },
+                  on: { click: _vm.linkavanti }
+                },
                 [
                   _c("v-icon", { attrs: { dark: "", left: "" } }, [
                     _vm._v("mdi-arrow-right")
@@ -52053,7 +52432,11 @@ var render = function() {
                 { attrs: { tile: "", outlined: "" } },
                 [
                   _c("prenotazione1", {
-                    attrs: { titolo: "Campo1", giorno: _vm.gior }
+                    attrs: {
+                      titolo: "Campo1",
+                      giorno: _vm.gior,
+                      possoPrenotare: _vm.possoPrenotare
+                    }
                   })
                 ],
                 1
@@ -52070,7 +52453,11 @@ var render = function() {
                 { attrs: { tile: "", outlined: "" } },
                 [
                   _c("prenotazione2", {
-                    attrs: { titolo: "Campo2", giorno: _vm.gior }
+                    attrs: {
+                      titolo: "Campo2",
+                      giorno: _vm.gior,
+                      possoPrenotare: _vm.possoPrenotare
+                    }
                   })
                 ],
                 1
@@ -52087,7 +52474,11 @@ var render = function() {
                 { attrs: { tile: "", outlined: "" } },
                 [
                   _c("prenotazione3", {
-                    attrs: { titolo: "Campo3", giorno: _vm.gior }
+                    attrs: {
+                      titolo: "Campo3",
+                      giorno: _vm.gior,
+                      possoPrenotare: _vm.possoPrenotare
+                    }
                   })
                 ],
                 1
@@ -52104,7 +52495,11 @@ var render = function() {
                 { attrs: { tile: "", outlined: "" } },
                 [
                   _c("prenotazione4", {
-                    attrs: { titolo: "Campo4", giorno: _vm.gior }
+                    attrs: {
+                      titolo: "Campo4",
+                      giorno: _vm.gior,
+                      possoPrenotare: _vm.possoPrenotare
+                    }
                   })
                 ],
                 1
@@ -52378,9 +52773,17 @@ var render = function() {
                               _c(
                                 "v-list-item",
                                 [
-                                  _c("v-list-item-subtitle", [
-                                    _vm._v(_vm._s(_vm.email))
-                                  ]),
+                                  _vm.stato == "gratis"
+                                    ? _c("v-list-item-subtitle", [
+                                        _vm._v(
+                                          "Ore gratis: " + _vm._s(_vm.privilegi)
+                                        )
+                                      ])
+                                    : _vm.stato == "illimitati"
+                                    ? _c("v-list-item-subtitle", [
+                                        _vm._v("Ore gratis: illimitate")
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c("v-list-item-subtitle", [
                                     _vm._v("Credito: € " + _vm._s(_vm.credito))
@@ -53055,32 +53458,65 @@ var render = function() {
     "v-container",
     [
       _c(
-        "v-form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.invia($event)
-            }
-          }
-        },
+        "v-row",
         [
-          _c("v-file-input", {
-            attrs: {
-              rules: _vm.rules,
-              accept: "image/png, image/jpeg, image/bmp",
-              placeholder: "Pick an avatar",
-              "prepend-icon": "mdi-camera",
-              label: "Avatar"
-            },
-            model: {
-              value: _vm.name,
-              callback: function($$v) {
-                _vm.name = $$v
-              },
-              expression: "name"
-            }
-          })
+          _c(
+            "v-col",
+            { attrs: { cols: "5" } },
+            [
+              _c(
+                "v-form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.invia($event)
+                    }
+                  }
+                },
+                [
+                  _c("v-file-input", {
+                    attrs: {
+                      label: "Immagine",
+                      "prepend-icon": "mdi-camera",
+                      placeholder: "Seleziona un'immagine",
+                      accept: "image/jpeg"
+                    },
+                    on: { change: _vm.carica },
+                    model: {
+                      value: _vm.nome,
+                      callback: function($$v) {
+                        _vm.nome = $$v
+                      },
+                      expression: "nome"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-btn", { attrs: { color: "green", type: "submit" } }, [
+                    _vm._v("\n                    Invia\n                ")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "5" } },
+            [
+              _vm.caricato
+                ? _c("v-img", {
+                    attrs: {
+                      src: "https://picsum.photos/510/300?random",
+                      "aspect-ratio": "1.7"
+                    }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
         ],
         1
       )
@@ -111068,6 +111504,16 @@ var AppStorage = /*#__PURE__*/function () {
       localStorage.setItem('credito', credito);
     }
   }, {
+    key: "storeStato",
+    value: function storeStato(stato) {
+      localStorage.setItem('stato', stato);
+    }
+  }, {
+    key: "storeEta",
+    value: function storeEta(eta) {
+      localStorage.setItem('eta', eta);
+    }
+  }, {
     key: "storePrivilegi",
     value: function storePrivilegi(privilegi) {
       localStorage.setItem('privilegi', privilegi);
@@ -111088,8 +111534,13 @@ var AppStorage = /*#__PURE__*/function () {
       localStorage.setItem('anno', anno);
     }
   }, {
+    key: "storeLimite",
+    value: function storeLimite(limite) {
+      localStorage.setItem('limite', limite);
+    }
+  }, {
     key: "store",
-    value: function store(user, token, nome, cognome, credito, privilegi, certificato, email, anno) {
+    value: function store(user, token, nome, cognome, credito, privilegi, certificato, email, anno, eta, stato) {
       this.storeToken(token);
       this.storeUser(user);
       this.storeNome(nome);
@@ -111099,6 +111550,8 @@ var AppStorage = /*#__PURE__*/function () {
       this.storeCertificato(certificato);
       this.storeEmail(email);
       this.storeAnno(anno);
+      this.storeStato(stato);
+      this.storeEta(eta);
     }
   }, {
     key: "clear",
@@ -111132,6 +111585,16 @@ var AppStorage = /*#__PURE__*/function () {
       return localStorage.getItem('credito');
     }
   }, {
+    key: "getStato",
+    value: function getStato() {
+      return localStorage.getItem('stato');
+    }
+  }, {
+    key: "getEta",
+    value: function getEta() {
+      return localStorage.getItem('eta');
+    }
+  }, {
     key: "getPrivilegi",
     value: function getPrivilegi() {
       return localStorage.getItem('privilegi');
@@ -111150,6 +111613,11 @@ var AppStorage = /*#__PURE__*/function () {
     key: "getAnno",
     value: function getAnno() {
       return localStorage.getItem('anno');
+    }
+  }, {
+    key: "getLimite",
+    value: function getLimite() {
+      return localStorage.getItem('limite');
     }
   }]);
 
@@ -111201,6 +111669,73 @@ var Exception = /*#__PURE__*/function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (Exception = new Exception());
+
+/***/ }),
+
+/***/ "./resources/js/Helpers/Prenotazioni.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Helpers/Prenotazioni.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User */ "./resources/js/Helpers/User.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Prenotazioni = /*#__PURE__*/function () {
+  function Prenotazioni() {
+    _classCallCheck(this, Prenotazioni);
+  }
+
+  _createClass(Prenotazioni, [{
+    key: "etaUnder",
+    value: function etaUnder() {
+      return 18;
+    }
+  }, {
+    key: "etaOver",
+    value: function etaOver() {
+      return 60;
+    }
+  }, {
+    key: "prezzoStandardSingolo",
+    value: function prezzoStandardSingolo() {
+      return 5.5;
+    }
+  }, {
+    key: "prezzoStandardDoppio",
+    value: function prezzoStandardDoppio() {
+      return 4;
+    }
+  }, {
+    key: "prezzoUnder",
+    value: function prezzoUnder() {
+      return 3;
+    }
+  }, {
+    key: "prezzoOver",
+    value: function prezzoOver() {
+      return 5;
+    }
+  }, {
+    key: "prezzoNonSocio",
+    value: function prezzoNonSocio() {
+      return 10;
+    }
+  }]);
+
+  return Prenotazioni;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Prenotazioni = new Prenotazioni());
 
 /***/ }),
 
@@ -111317,9 +111852,11 @@ var User = /*#__PURE__*/function () {
       var certificato = res.data.certificato;
       var email = res.data.email;
       var anno = res.data.anno;
+      var eta = res.data.eta;
+      var stato = res.data.stato;
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(username, access_token, nome, cognome, credito, privilegi, certificato, email, anno);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(username, access_token, nome, cognome, credito, privilegi, certificato, email, anno, eta, stato);
         window.location = '/';
       }
     }
@@ -111374,6 +111911,13 @@ var User = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "stato",
+    value: function stato() {
+      if (this.loggedIn()) {
+        return _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getStato();
+      }
+    }
+  }, {
     key: "privilegi",
     value: function privilegi() {
       if (this.loggedIn()) {
@@ -111418,6 +111962,13 @@ var User = /*#__PURE__*/function () {
     key: "admin",
     value: function admin() {
       return this.id() == 16;
+    }
+  }, {
+    key: "eta",
+    value: function eta() {
+      var today = new Date();
+      var yyyy = today.getFullYear();
+      return yyyy - this.anno();
     }
   }]);
 

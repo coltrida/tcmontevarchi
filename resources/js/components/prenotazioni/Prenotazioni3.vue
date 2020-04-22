@@ -13,6 +13,7 @@
                     :orario='n+8'
                     :prenotazioni="prenotazioni"
                     :prenotazioneremota="prenotazioneremota"
+                    :possoPrenotare="possoPrenotare"
                     campo="campo3"
                     :giorno="giorno"
                     :key="n"
@@ -26,7 +27,7 @@
 <script>
     import Prenotazione from './Prenotazione'
     export default {
-        props: ['titolo', 'giorno'],
+        props: ['titolo', 'giorno', 'possoPrenotare'],
 
         components:{Prenotazione},
 

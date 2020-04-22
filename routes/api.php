@@ -8,6 +8,7 @@ Route::get('/dimenticata/{indirizzo}', 'MailController@dimenticata');
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
 Route::post('/full', 'PrenotazioniController@full');
+Route::post('/prenotazioni2/{user}', 'PrenotazioniController@store2');
 Route::apiResource('/soci', 'SociController');
 Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.index');
 

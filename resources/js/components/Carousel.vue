@@ -14,16 +14,16 @@
             return {
                 items: [
                     {
-                        src: 'http://tcmontevarchi2.local/img/01.jpg',
+                        src: 'http://tcmontevarchi.altervista.org/img/01.jpg',
                     },
                     {
-                        src: 'http://tcmontevarchi2.local/img/02.jpg',
+                        src: 'http://tcmontevarchi.altervista.org/img/02.jpg',
                     },
                     {
-                        src: 'http://tcmontevarchi2.local/img/03.jpg',
+                        src: 'http://tcmontevarchi.altervista.org/img/03.jpg',
                     },
                     {
-                        src: 'http://tcmontevarchi2.local/img/04.jpg',
+                        src: 'http://tcmontevarchi.altervista.org/img/04.jpg',
                     },
                 ],
             }

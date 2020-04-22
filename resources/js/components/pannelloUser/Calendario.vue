@@ -48,6 +48,8 @@
 </template>
 
 <script>
+    import AppStorage from "../../Helpers/AppStorage";
+
     export default {
         data(){
             return{
@@ -77,6 +79,7 @@
             let tomorrow5 = new Date(today)
             let tomorrow6 = new Date(today)
             let tomorrow7 = new Date(today)
+            let limite = new Date(today)
 
             tomorrow.setDate(tomorrow.getDate() + 1)
             tomorrow3.setDate(tomorrow.getDate() + 1)
@@ -84,6 +87,7 @@
             tomorrow5.setDate(tomorrow.getDate() + 3)
             tomorrow6.setDate(tomorrow.getDate() + 4)
             tomorrow7.setDate(tomorrow.getDate() + 5)
+            limite.setDate(tomorrow.getDate() + 6)
 
             /*let dd = String(today.getDate()).padStart(2, '0');
             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -96,6 +100,7 @@
             let val5 = this.layoutgiorno(tomorrow5);
             let val6 = this.layoutgiorno(tomorrow6);
             let val7 = this.layoutgiorno(tomorrow7);
+            let limit = this.layoutgiorno(limite);
            // console.log(val6)
 
             today = val[2] + '-' + val[1] + '-' + val[0];
@@ -105,6 +110,8 @@
             tomorrow5 = val5[2] + '-' + val5[1] + '-' + val5[0];
             tomorrow6 = val6[2] + '-' + val6[1] + '-' + val6[0];
             tomorrow7 = val7[2] + '-' + val7[1] + '-' + val7[0];
+            limite = limit[2]+limit[1]+limit[0];
+            AppStorage.storeLimite(limite)
 
             this.dataOggi = val[0] + '-' + val[1] + '-' + val[2];
             this.piuuno = val2[0] + '-' + val2[1] + '-' + val2[2];

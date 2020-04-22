@@ -1,21 +1,23 @@
 <template>
     <div class="ml-4 mr-4">
-        <v-row>
+        <v-row style="margin: 50px 0">
             <v-col class="text-center">
-                    <v-btn @click="linkindietro" color="primary">
+                    <v-btn x-large @click="linkindietro" color="primary">
                         <v-icon dark left>mdi-arrow-left</v-icon>Indietro
                     </v-btn>
             </v-col>
-            <v-col class="text-center">Prenotazioni del giorno
+            <v-col class="text-center"><h1>Prenotazioni del giorno</h1>
                 <v-chip
-                        class="mx-2 shadow-lg"
+                        class="mx-2 shadow-lg px-lg-5"
                         color="orange"
+                        x-large
+                        shadow
                 >
                 {{ reversedGiorno }}
                 </v-chip>
             </v-col>
             <v-col class="text-center">
-                    <v-btn @click="linkavanti" color="primary">
+                    <v-btn x-large @click="linkavanti" color="primary">
                         <v-icon dark left>mdi-arrow-right</v-icon>Avanti
                     </v-btn>
             </v-col>
@@ -33,7 +35,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione1 titolo="Campo1" :giorno="gior"></prenotazione1>
+                    <prenotazione1 titolo="Campo1" :giorno="gior" :possoPrenotare="possoPrenotare"></prenotazione1>
                 </v-card>
             </v-col>
 
@@ -43,7 +45,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione2 titolo="Campo2" :giorno="gior"></prenotazione2>
+                    <prenotazione2 titolo="Campo2" :giorno="gior" :possoPrenotare="possoPrenotare"></prenotazione2>
                 </v-card>
             </v-col>
 
@@ -53,7 +55,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione3 titolo="Campo3" :giorno="gior"></prenotazione3>
+                    <prenotazione3 titolo="Campo3" :giorno="gior" :possoPrenotare="possoPrenotare"></prenotazione3>
                 </v-card>
             </v-col>
 
@@ -63,7 +65,7 @@
                         tile
                         outlined
                 >
-                    <prenotazione4 titolo="Campo4" :giorno="gior"></prenotazione4>
+                    <prenotazione4 titolo="Campo4" :giorno="gior" :possoPrenotare="possoPrenotare"></prenotazione4>
                 </v-card>
             </v-col>
         </v-row>
@@ -75,14 +77,17 @@
     import Prenotazione2 from './Prenotazioni2'
     import Prenotazione3 from './Prenotazioni3'
     import Prenotazione4 from './Prenotazioni4'
+    import AppStorage from "../../Helpers/AppStorage";
     export default {
         name: "PrenotazioniCampi",
 
         data(){
             return{
                 gior:this.$route.params.giorno,
+                limite: AppStorage.getLimite(),
                 avanti:'',
                 indietro:'',
+                possoPrenotare: true
             }
         },
 
@@ -93,6 +98,18 @@
                 return this.gior.split('-').reverse().join('-')
             },
 
+            giornoSelezionato: function () {
+                return this.gior.split('-').join('')
+            },
+
+        },
+
+        mounted(){
+            if (this.limite - this.giornoSelezionato > 0){
+                this.possoPrenotare = true
+            } else {
+                this.possoPrenotare = false
+            }
         },
 
         created(){
