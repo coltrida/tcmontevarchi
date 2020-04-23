@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dimenticata/{indirizzo}', 'MailController@dimenticata');
+Route::post('/prenotazioni/{user}', 'PrenotazioniController@store')->name('prenotazioni.store');
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
 Route::post('/full', 'PrenotazioniController@full');
-Route::post('/prenotazioni2/{user}', 'PrenotazioniController@store2');
 Route::apiResource('/soci', 'SociController');
 Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.index');
 
@@ -23,9 +23,8 @@ Route::group([
     Route::post('me', 'AuthController@me')->name('me');
     Route::post('foto', 'AuthController@foto')->name('foto');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
-
     Route::get('prenotazioni', 'AuthController@prenotazioni');
-
     Route::post('payload', 'AuthController@payload')->name('payload');
+    Route::post('inviaNews', 'NewsController@invia');
 
 });

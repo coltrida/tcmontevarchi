@@ -9,7 +9,7 @@
         >
             <v-col class="text-center" cols="12">
                 <h1 class="display-4 mb-4">
-                    
+
                     <pannello-admin v-if="prova === 'admin'"></pannello-admin>
                     <pannello v-else></pannello>
                 </h1>

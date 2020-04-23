@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->year('anno');
             $table->integer('privilegi')->default(0);   // ore gratis
             $table->date('certificato')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
