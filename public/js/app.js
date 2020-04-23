@@ -2451,7 +2451,7 @@ __webpack_require__.r(__webpack_exports__);
       var costoPrenotazione = 0;
       /* ------------ ILLIMITATI ---------------*/
 
-      if (this.stato == 'illimitati') {
+      if (this.stato == 'illimitati' || this.stato == 'admin') {
         axios.post('/api/prenotazioni', {
           username: User.cognome(),
           campo: this.campo,
@@ -2484,9 +2484,11 @@ __webpack_require__.r(__webpack_exports__);
               location.reload();
             });
           } else {
+            alert('Hai finito le ore gratis');
             /* ------------ PAGA CON I SOLDI ---------------*/
 
             /* ------------ UNDER ---------------*/
+
             if (this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
               costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
             } else
@@ -3966,6 +3968,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   data: function data() {
@@ -3974,6 +3980,7 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       dimenticata: 'www.example.com/page',
       inviamail: '',
+      errors: null,
       form: {
         email: null,
         password: null
@@ -3982,14 +3989,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     login: function login() {
-      User.login(this.form);
+      var _this = this;
+
+      //User.login(this.form)
+      axios.post('/api/auth/login', this.form).then(function (res) {
+        return User.responseAfterLogin(res);
+      })["catch"](function (error) {
+        return _this.errors = error.response.data;
+      }); //this.errors = error.response.data
     },
     passwordDimenticata: function passwordDimenticata() {
-      var _this = this;
+      var _this2 = this;
 
       this.dialog = false;
       axios.get('/api/dimenticata/' + this.inviamail).then(function () {
-        _this.inviamail = '';
+        _this2.inviamail = '';
         alert('posta inviata');
       });
     }
@@ -50558,7 +50572,8 @@ var render = function() {
                   _vm._v(" "),
                   _vm.possoPrenotare ||
                   _vm.stato == "illimitati" ||
-                  _vm.stato == "special"
+                  _vm.stato == "special" ||
+                  _vm.stato == "admin"
                     ? _c(
                         "v-card",
                         [
@@ -53036,7 +53051,24 @@ var render = function() {
                       },
                       expression: "form.email"
                     }
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm.errors
+                    ? _c(
+                        "span",
+                        { staticStyle: { padding: "0", margin: "0" } },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticStyle: { "font-size": "12px" },
+                              attrs: { color: "primary" }
+                            },
+                            [_vm._v(_vm._s(_vm.errors.error))]
+                          )
+                        ]
+                      )
+                    : _vm._e()
                 ],
                 1
               ),
