@@ -4253,11 +4253,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cancella/moduloCancella */ "./resources/js/components/cancella/moduloCancella.vue");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Cancella: _cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
 
 /***/ }),
 
@@ -50900,7 +50906,7 @@ var render = function() {
             _c(
               "h1",
               { staticClass: "display-4 mb-4" },
-              [_vm.prova === "gratis" ? _c("pannello") : _c("pannello-admin")],
+              [_vm.prova === "admin" ? _c("pannello-admin") : _c("pannello")],
               1
             )
           ])
@@ -53922,7 +53928,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("ciao")])
+  return _c("cancella")
 }
 var staticRenderFns = []
 render._withStripped = true

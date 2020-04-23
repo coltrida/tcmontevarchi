@@ -9,9 +9,9 @@
         >
             <v-col class="text-center" cols="12">
                 <h1 class="display-4 mb-4">
-                    <pannello v-if="prova === 'gratis'"></pannello>
-                    <pannello-admin v-else></pannello-admin>
                     
+                    <pannello-admin v-if="prova === 'admin'"></pannello-admin>
+                    <pannello v-else></pannello>
                 </h1>
             </v-col>
         </v-row>
