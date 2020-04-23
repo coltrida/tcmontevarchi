@@ -45,6 +45,7 @@ export default {
     created(){
         axios.get('/api/auth/prenotazioni').then(res =>{
             this.prenotazioni = res.data
+            console.log(this.prenotazioni)
             
         })
 
@@ -55,6 +56,7 @@ export default {
                     this.prenotazioni.splice(passaggio,1)
                 })
         })
+        
     },
 }
 </script>

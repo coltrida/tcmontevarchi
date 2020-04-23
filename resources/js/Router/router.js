@@ -11,7 +11,7 @@ import Registrati from '../components/login/Registrati'
 
 import Modifica from '../components/pannelloUser/modificaUser'
 import CaricaFoto from '../components/pannelloUser/caricaFoto'
-import CancellaOra from '../components/cancella/moduloCancella'
+import CancellaOra from '../components/pannelloUser/cancella/moduloCancella'
 import CercaAmico from '../components/pannelloUser/cercaAmico'
 import Soci from '../components/pannelloUser/listaSoci/listaSoci'
 import PrenSpeciali from '../components/pannelloAdmin/prenSpeciali'
