@@ -157,12 +157,15 @@
 
                 /* ------------ ILLIMITATI ---------------*/
                 if(this.stato == 'illimitati' || this.stato == 'admin'){
-                    axios.post('/api/prenotazioni',{
+                    axios.post('/api/prenotazioni'+this.id,{
                         username: User.cognome(),
                         campo: this.campo,
                         dataprenotazione: this.giorno,
+                        datamessaggio: this.giorno.split('-').reverse().join('-'),
                         oraon: this.orario,
                         doppio: tipoPrenotazione,
+                        privilegi: this.privilegi,
+                        credito: this.credito,
                     })
                         .then(res => {
                             this.playSound()
@@ -175,10 +178,11 @@
                         if (this.privilegi > 0){
                             this.privilegi--
                             AppStorage.storePrivilegi(this.privilegi)
-                            axios.post('/api/prenotazioni2/'+this.id,{
+                            axios.post('/api/prenotazioni/'+this.id,{
                                 username: User.cognome(),
                                 campo: this.campo,
                                 dataprenotazione: this.giorno,
+                                datamessaggio: this.giorno.split('-').reverse().join('-'),
                                 oraon: this.orario,
                                 doppio: tipoPrenotazione,
                                 privilegi: this.privilegi,
@@ -209,10 +213,11 @@
                             if (this.credito >= costoPrenotazione){
                                 this.credito = parseFloat(this.credito - costoPrenotazione)
                                 AppStorage.storeCredito(this.credito)
-                                axios.post('/api/prenotazioni2/'+this.id,{
+                                axios.post('/api/prenotazioni/'+this.id,{
                                     username: User.cognome(),
                                     campo: this.campo,
                                     dataprenotazione: this.giorno,
+                                    datamessaggio: this.giorno.split('-').reverse().join('-'),
                                     oraon: this.orario,
                                     doppio: tipoPrenotazione,
                                     privilegi: this.privilegi,
@@ -247,10 +252,11 @@
                         if (this.credito >= costoPrenotazione){
                             this.credito = parseFloat(this.credito - costoPrenotazione)
                             AppStorage.storeCredito(this.credito)
-                            axios.post('/api/prenotazioni2/'+this.id,{
+                            axios.post('/api/prenotazioni/'+this.id,{
                                 username: User.cognome(),
                                 campo: this.campo,
                                 dataprenotazione: this.giorno,
+                                datamessaggio: this.giorno.split('-').reverse().join('-'),
                                 oraon: this.orario,
                                 doppio: tipoPrenotazione,
                                 privilegi: this.privilegi,

@@ -129,7 +129,7 @@ class AuthController extends Controller
 
     public function prenotazioni()
     {
-        $username = auth()->user()->username;
+        $username = auth()->user()->cognome;
         $prenotazioni = Prenotazione::where('username1', $username)->
                                 orWhere('username2', $username)->
                                 orWhere('username3', $username)->

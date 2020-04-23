@@ -2526,12 +2526,15 @@ __webpack_require__.r(__webpack_exports__);
       /* ------------ ILLIMITATI ---------------*/
 
       if (this.stato == 'illimitati' || this.stato == 'admin') {
-        axios.post('/api/prenotazioni', {
+        axios.post('/api/prenotazioni' + this.id, {
           username: User.cognome(),
           campo: this.campo,
           dataprenotazione: this.giorno,
+          datamessaggio: this.giorno.split('-').reverse().join('-'),
           oraon: this.orario,
-          doppio: tipoPrenotazione
+          doppio: tipoPrenotazione,
+          privilegi: this.privilegi,
+          credito: this.credito
         }).then(function (res) {
           _this2.playSound();
 
@@ -2544,10 +2547,11 @@ __webpack_require__.r(__webpack_exports__);
           if (this.privilegi > 0) {
             this.privilegi--;
             _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(this.privilegi);
-            axios.post('/api/prenotazioni2/' + this.id, {
+            axios.post('/api/prenotazioni/' + this.id, {
               username: User.cognome(),
               campo: this.campo,
               dataprenotazione: this.giorno,
+              datamessaggio: this.giorno.split('-').reverse().join('-'),
               oraon: this.orario,
               doppio: tipoPrenotazione,
               privilegi: this.privilegi,
@@ -2580,10 +2584,11 @@ __webpack_require__.r(__webpack_exports__);
             if (this.credito >= costoPrenotazione) {
               this.credito = parseFloat(this.credito - costoPrenotazione);
               _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
-              axios.post('/api/prenotazioni2/' + this.id, {
+              axios.post('/api/prenotazioni/' + this.id, {
                 username: User.cognome(),
                 campo: this.campo,
                 dataprenotazione: this.giorno,
+                datamessaggio: this.giorno.split('-').reverse().join('-'),
                 oraon: this.orario,
                 doppio: tipoPrenotazione,
                 privilegi: this.privilegi,
@@ -2618,10 +2623,11 @@ __webpack_require__.r(__webpack_exports__);
             if (this.credito >= costoPrenotazione) {
               this.credito = parseFloat(this.credito - costoPrenotazione);
               _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
-              axios.post('/api/prenotazioni2/' + this.id, {
+              axios.post('/api/prenotazioni/' + this.id, {
                 username: User.cognome(),
                 campo: this.campo,
                 dataprenotazione: this.giorno,
+                datamessaggio: this.giorno.split('-').reverse().join('-'),
                 oraon: this.orario,
                 doppio: tipoPrenotazione,
                 privilegi: this.privilegi,
@@ -4267,28 +4273,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../cancella/moduloCancella */ "./resources/js/components/cancella/moduloCancella.vue");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
 
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Cancella: _cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
 
 /***/ }),
 
@@ -4306,6 +4304,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      testo: ''
+    };
+  },
+  methods: {
+    inviaNews: function inviaNews() {
+      var _this = this;
+
+      axios.post('/api/auth/inviaNews', {
+        testo: this.testo
+      }).then(function () {
+        _this.testo = '';
+        alert('messaggio inviato');
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -53954,31 +54006,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("ciao")])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b&":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b& ***!
-  \************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("cao")])
+  return _c("div", [_c("cancella")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54003,6 +54031,65 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("p", [_vm._v("miao")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.inviaNews($event)
+            }
+          }
+        },
+        [
+          _c("v-text-field", {
+            attrs: { label: "testo messaggio", required: "" },
+            model: {
+              value: _vm.testo,
+              callback: function($$v) {
+                _vm.testo = $$v
+              },
+              expression: "testo"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { staticClass: "mt-3", attrs: { color: "green", type: "submit" } },
+            [_vm._v("\n            Invia\n        ")]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -112808,7 +112895,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/pannelloAdmin/sociAdmin */ "./resources/js/components/pannelloAdmin/sociAdmin.vue");
 /* harmony import */ var _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito.vue");
 /* harmony import */ var _components_pannelloAdmin_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/pannelloAdmin/ricaricaCredito */ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue");
-/* harmony import */ var _components_pannelloAdmin_insNews__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/pannelloAdmin/insNews */ "./resources/js/components/pannelloAdmin/insNews.vue");
+/* harmony import */ var _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/pannelloAdmin/news/insNews */ "./resources/js/components/pannelloAdmin/news/insNews.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -112832,7 +112919,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 var routes = [{
   path: '/',
-  component: _Components_HomePage__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _Components_HomePage__WEBPACK_IMPORTED_MODULE_3__["default"],
+  name: 'home'
 }, {
   path: '/storia',
   component: _components_storia_Storia__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -112844,55 +112932,107 @@ var routes = [{
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/prenotazioni/:giorno',
-  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _Components_prenotazioni_PrenotazioniCampi__WEBPACK_IMPORTED_MODULE_2__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/modifica',
-  component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_7__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/caricaFoto',
-  component: _components_pannelloUser_caricaFoto__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_pannelloUser_caricaFoto__WEBPACK_IMPORTED_MODULE_8__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cancellaOra',
-  component: _components_cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _components_cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_9__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cercaAmico',
-  component: _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_10__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/soci',
-  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/contatti',
-  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/prenSpeciali',
-  component: _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__["default"]
+  component: _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/cancSpeciali',
-  component: _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__["default"]
+  component: _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
-  path: '/cancOraSocio',
-  component: _components_pannelloAdmin_cancellaOraSocio__WEBPACK_IMPORTED_MODULE_14__["default"]
+  path: '/cancellaOraSocio',
+  component: _components_pannelloAdmin_cancellaOraSocio__WEBPACK_IMPORTED_MODULE_14__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/inserisciSocio',
-  component: _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__["default"]
+  component: _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/sociAdmin',
-  component: _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__["default"]
+  component: _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/stornaCredito',
-  component: _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__["default"]
+  component: _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/ricaricaCredito',
-  component: _components_pannelloAdmin_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__["default"]
+  component: _components_pannelloAdmin_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }, {
   path: '/insNews',
-  component: _components_pannelloAdmin_insNews__WEBPACK_IMPORTED_MODULE_19__["default"]
+  component: _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_19__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
   // short for `routes: routes`
   hasbang: false,
   mode: 'history'
+});
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(function (r) {
+    return r.meta.requiresAuth;
+  }) && !User.loggedIn()) {
+    window.location = '/';
+    return;
+  }
+
+  next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
@@ -113715,75 +113855,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/insNews.vue":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/insNews.vue ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./insNews.vue?vue&type=template&id=3477094b& */ "./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b&");
-/* harmony import */ var _insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./insNews.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/insNews.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./insNews.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b& ***!
-  \******************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./insNews.vue?vue&type=template&id=3477094b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/insNews.vue?vue&type=template&id=3477094b&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_3477094b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/pannelloAdmin/inserisciSocio.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/components/pannelloAdmin/inserisciSocio.vue ***!
@@ -113848,6 +113919,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/news/insNews.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/news/insNews.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./insNews.vue?vue&type=template&id=21a390ab& */ "./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab&");
+/* harmony import */ var _insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./insNews.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pannelloAdmin/news/insNews.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./insNews.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./insNews.vue?vue&type=template&id=21a390ab& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/news/insNews.vue?vue&type=template&id=21a390ab&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_insNews_vue_vue_type_template_id_21a390ab___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

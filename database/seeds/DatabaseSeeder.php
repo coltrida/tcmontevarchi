@@ -84,6 +84,7 @@ class DatabaseSeeder extends Seeder
             'amici' => 1,
             'privilegi' => 0,
             'certificato' => '2020/01/01',
+            'user_id' => 1055651158,
             'email' => 'cacao@cacao.it',
             'password' => '12345678',
             'anno' => 2000
@@ -97,6 +98,7 @@ class DatabaseSeeder extends Seeder
             'telefono' => 123456,
             'amici' => 1,
             'privilegi' => 0,
+            'user_id' => 1190914722,
             'certificato' => '2020/01/01',
             'email' => 'cacao2@cacao.it',
             'password' => '12345678',
