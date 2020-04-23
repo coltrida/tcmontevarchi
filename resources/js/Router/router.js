@@ -14,6 +14,14 @@ import CaricaFoto from '../components/pannelloUser/caricaFoto'
 import CancellaOra from '../components/cancella/moduloCancella'
 import CercaAmico from '../components/pannelloUser/cercaAmico'
 import Soci from '../components/pannelloUser/listaSoci/listaSoci'
+import PrenSpeciali from '../components/pannelloAdmin/prenSpeciali'
+import CancSpeciali from '../components/pannelloAdmin/cancSpeciali'
+import CancellaOraSocio from '../components/pannelloAdmin/cancellaOraSocio'
+import InserisciSocio from '../components/pannelloAdmin/inserisciSocio'
+import SociAdmin from '../components/pannelloAdmin/sociAdmin'
+import StornaCredito from '../components/pannelloAdmin/stornaCredito'
+import RicaricaCredito from '../components/pannelloAdmin/ricaricaCredito'
+import InsNews from '../components/pannelloAdmin/insNews'
 
 
 const routes = [
@@ -29,7 +37,14 @@ const routes = [
      { path: '/cercaAmico', component: CercaAmico },
      { path: '/soci', component: Soci },
      { path: '/contatti', component: Soci },
-
+     { path: '/prenSpeciali', component: PrenSpeciali },
+     { path: '/cancSpeciali', component: CancSpeciali },
+     { path: '/cancOraSocio', component: CancellaOraSocio },
+     { path: '/inserisciSocio', component: InserisciSocio },
+     { path: '/sociAdmin', component: SociAdmin },
+     { path: '/stornaCredito', component: StornaCredito },
+     { path: '/ricaricaCredito', component: RicaricaCredito },
+     { path: '/insNews', component: InsNews },
 ]
 
 const router = new VueRouter({

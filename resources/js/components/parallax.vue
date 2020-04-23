@@ -9,7 +9,9 @@
         >
             <v-col class="text-center" cols="12">
                 <h1 class="display-4 mb-4">
-                    <pannello></pannello>
+                    <pannello v-if="prova === 'gratis'"></pannello>
+                    <pannello-admin v-else></pannello-admin>
+                    
                 </h1>
             </v-col>
         </v-row>
@@ -19,11 +21,20 @@
 <script>
 
     import Pannello from './pannelloUser/Pannello'
+    import PannelloAdmin from './pannelloAdmin/PannelloAdmin'
+
     export default {
         name: "parallax",
 
-        components: {Pannello},
-
+        components: {Pannello, PannelloAdmin},
+        data(){
+            return {
+                prova: User.stato()
+            }
+        },        
+        // created(){
+        //     console.log(this.prova);
+        // }
     }
 </script>
 

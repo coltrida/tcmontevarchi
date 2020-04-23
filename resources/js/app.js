@@ -13,7 +13,7 @@ Vue.use(Vuetify)
 
 import User from './Helpers/User.js'
 window.User = User
-
+// console.log(User.stato());
 import Exception from './Helpers/Exception'
 window.Exception = Exception
 
