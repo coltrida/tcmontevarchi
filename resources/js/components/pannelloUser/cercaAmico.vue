@@ -52,7 +52,7 @@ export default {
     filtraggio: function(){
       axios.post('/api/soci/visualizza/'+this.filtro).then(
         res => {this.prelevati= res.data.data
-        //console.log(this.prelevati)
+        console.log(this.prelevati)
         }
       )
     }

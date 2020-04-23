@@ -55,6 +55,7 @@ export default {
                     this.prenotazioni.splice(passaggio,1)
                 })
         })
+        
     },
 }
 </script>
