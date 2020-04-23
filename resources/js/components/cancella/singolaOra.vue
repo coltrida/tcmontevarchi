@@ -1,4 +1,5 @@
 <template>
+   
 <v-list-item>
    
 <v-row auto-grow style="border: 1px solid gray; display: flex; align-items: center">
@@ -28,9 +29,9 @@
        </v-col>
           
          
-</v-row>
+</v-row> 
 
-</v-list-item>
+</v-list-item> 
 <!-- <div>
   <div class="float-left">
   <v-card
