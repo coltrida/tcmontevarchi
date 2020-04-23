@@ -50914,7 +50914,7 @@ var render = function() {
             _c(
               "h1",
               { staticClass: "display-4 mb-4" },
-              [_vm.prova === "gratis" ? _c("pannello-admin") : _c("pannello")],
+              [_vm.prova === "admin" ? _c("pannello-admin") : _c("pannello")],
               1
             )
           ])
