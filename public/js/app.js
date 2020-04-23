@@ -4070,82 +4070,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Socio: _listaSoci_Socio__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      descriptionLimit: 60,
-      valori: [],
-      isLoading: false,
-      model: null,
-      search: null,
-      soci: {},
-      totSoci: 0
+      filtro: '',
+      prelevati: {}
     };
   },
-  //nella computed si gestisce l'input dei caretteri
-  computed: {
-    fields: function fields() {
+  created: function created() {
+    this.filtraggio();
+  },
+  methods: {
+    filtraggio: function filtraggio() {
       var _this = this;
 
-      if (!this.model) return [];
-      return Object.keys(this.model).map(function (key) {
-        return {
-          key: key,
-          value: _this.model[key] || 'n/a'
-        };
-      });
-    },
-    //dentro items si controlla l'input dell'utente
-    items: function items() {
-      var _this2 = this;
-
-      return this.valori.map(function (entry) {
-        var cognome = entry.cognome.length > _this2.descriptionLimit ? entry.cognome.slice(0, _this2.descriptionLimit) + '...' : entry.cognome;
-        return Object.assign({}, entry, {
-          cognome: cognome
-        });
-      });
-    }
-  },
-  watch: {
-    search: function search(val) {
-      var _this3 = this;
-
-      // Items have already been loaded
-      if (this.items.length > 0) return; // Items have already been requested
-
-      if (this.isLoading) return;
-      this.isLoading = true; // Lazily load input items
-
-      axios.get('/api/soci/visualizza' + this.search) //.then(res => {//res.json()
-      //console.log(res)})
-      .then(function (res) {
-        //si catturano i dati e si mettono nell'array
-        _this3.valori = res.data.data;
-        console.log(_this3.valori);
-      })["catch"](function (err) {
-        console.log(err);
-      })["finally"](function () {
-        return _this3.isLoading = false;
+      axios.post('/api/soci/visualizza/' + this.filtro).then(function (res) {
+        _this.prelevati = res.data.data; //console.log(this.prelevati)
       });
     }
   }
@@ -4219,6 +4163,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       show: false
     };
+  },
+  created: function created() {
+    console.log(this.socio);
   }
 });
 
@@ -53225,121 +53172,65 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "v-form",
     [
-      _c("v-card-title", [_vm._v("\n      Cerca un Socio\n    ")]),
-      _vm._v(" "),
-      _c("v-card-text", [
-        _vm._v(
-          "\n      Scrivi il nome o cognome nel campo di ricerca qui sotto\n    "
-        )
-      ]),
-      _vm._v(" "),
       _c(
-        "v-card-text",
+        "v-row",
         [
-          _c("v-autocomplete", {
-            attrs: {
-              items: _vm.items,
-              loading: _vm.isLoading,
-              "search-input": _vm.search,
-              color: "white",
-              "hide-no-data": "",
-              "hide-selected": "",
-              "item-text": "cognome",
-              "item-value": "cognome",
-              placeholder: "Inserisci nome/cognome",
-              "return-object": ""
-            },
-            on: {
-              "update:searchInput": function($event) {
-                _vm.search = $event
-              },
-              "update:search-input": function($event) {
-                _vm.search = $event
-              }
-            },
-            model: {
-              value: _vm.model,
-              callback: function($$v) {
-                _vm.model = $$v
-              },
-              expression: "model"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-divider"),
-      _vm._v(" "),
-      _c(
-        "v-expand-transition-group",
-        [
-          _vm.model
-            ? _c(
-                "v-list",
-                { staticClass: "red lighten-3" },
-                _vm._l(_vm.valori, function(field, i) {
-                  return _c(
-                    "v-list-item",
-                    { key: i },
-                    [
-                      _c(
-                        "socio",
-                        [
-                          _c(
-                            "v-list-item-content",
-                            [
-                              _c("v-list-item-title", {
-                                domProps: { textContent: _vm._s(field.nome) }
-                              }),
-                              _vm._v(" "),
-                              _c("v-list-item-subtitle", {
-                                domProps: { textContent: _vm._s(field.cognome) }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                }),
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-card-actions",
-        [
-          _c("v-spacer"),
-          _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              attrs: { disabled: !_vm.model, color: "grey darken-3" },
-              on: {
-                click: function($event) {
-                  _vm.model = null
-                }
-              }
-            },
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
             [
-              _vm._v("\n        Clear\n        "),
-              _c("v-icon", { attrs: { right: "" } }, [
-                _vm._v("mdi-close-circle")
-              ])
+              _c("v-text-field", {
+                attrs: { label: "Nome/Cognome", required: "" },
+                on: { keyup: _vm.filtraggio },
+                model: {
+                  value: _vm.filtro,
+                  callback: function($$v) {
+                    _vm.filtro = $$v
+                  },
+                  expression: "filtro"
+                }
+              })
             ],
             1
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          [
+            _c(
+              "v-col",
+              [
+                _c(
+                  "v-card",
+                  { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
+                  _vm._l(_vm.prelevati, function(socio) {
+                    return _c("socio", {
+                      key: socio.nome,
+                      attrs: { socio: socio }
+                    })
+                  }),
+                  1
+                )
+              ],
+              1
+            )
+          ]
+        ],
+        2
       )
     ],
     1

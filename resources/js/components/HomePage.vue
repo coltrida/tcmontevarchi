@@ -17,7 +17,8 @@
 
         data(){
             return {
-                loggedIn: User.loggedIn()
+                loggedIn: User.loggedIn(),
+                
             }
         }
     }

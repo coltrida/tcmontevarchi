@@ -57,6 +57,9 @@
         data: () => ({
             show: false,
         }),
+        created(){
+            console.log(this.socio);
+        }
     }
 </script>
 
