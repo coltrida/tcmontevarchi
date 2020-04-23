@@ -110,6 +110,8 @@ class AuthController extends Controller
             'privilegi' => auth()->user()->privilegi,
             'certificato' => auth()->user()->certificato,
             'email' => auth()->user()->email,
+            'stato' => auth()->user()->stato,
+            'eta' => auth()->user()->eta,
             'anno' => auth()->user()->anno,
         ]);
     }
@@ -139,7 +141,7 @@ class AuthController extends Controller
 
     public function foto(Request $request)
     {
-        dd($request);
+        dd('ciao');
     }
 
     public function reimposta(Request $request)

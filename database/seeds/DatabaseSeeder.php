@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'cognome' => 'Cataniaaaaaa',
             'username' => 'cacao',
             'anno' => 2000,
-            'status' => 1
+            'status' => 3
         ]);
 
         Socio::create([
@@ -49,7 +49,28 @@ class DatabaseSeeder extends Seeder
             'nome' => 'admin',
             'cognome' => 'admin',
             'anno' => 2000,
-            'status' => 3
+            'status' => 1
+        ]);
+
+        Socio::create([
+            'nome' => 'Franco',
+            'cognome' => 'Pippo',
+            'anno' => 2000,
+            'status' => 4
+        ]);
+
+        Socio::create([
+            'nome' => 'Gino',
+            'cognome' => 'Monorenne',
+            'anno' => 2010,
+            'status' => 0
+        ]);
+
+        Socio::create([
+            'nome' => 'Pino',
+            'cognome' => 'Over',
+            'anno' => 1930,
+            'status' => 0
         ]);
 
         User::create([

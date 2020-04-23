@@ -20,7 +20,7 @@ class SociResource extends JsonResource
             'cognome' => $this->cognome,
             'anno' => $this->anno,
             'status' => $this->tipo,
-            'foto' => 'http://tcmontevarchi2.local/storage/soci/'.$this->id.'.jpg',
+            'foto' => 'http://tcmontevarchi.altervista.org/storage/soci/'.$this->id.'.jpg',
             'totSoci' => Socio::count()
         ];
     }

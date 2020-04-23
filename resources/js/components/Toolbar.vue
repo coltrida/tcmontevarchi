@@ -62,7 +62,8 @@
                                 <!--<v-list-item-action>
                                     <v-icon>mdi-briefcase</v-icon>
                                 </v-list-item-action>-->
-                                <v-list-item-subtitle>{{email}}</v-list-item-subtitle>
+                                <v-list-item-subtitle v-if="stato=='gratis'">Ore gratis: {{privilegi}}</v-list-item-subtitle>
+                                <v-list-item-subtitle v-else-if="stato=='illimitati'">Ore gratis: illimitate</v-list-item-subtitle>
                                 <v-list-item-subtitle>Credito: € {{credito}}</v-list-item-subtitle>
                             </v-list-item>
                         </v-list>
@@ -108,6 +109,8 @@
                 cognome: User.cognome(),
                 email: User.email(),
                 credito: User.credito(),
+                privilegi: User.privilegi(),
+                stato:User.stato(),
                 items:[
                     {title : 'Storia', to: '/storia', show: true},
                     {title : 'Contatti', to: '/contatti', show: true},

@@ -19,8 +19,10 @@ class User {
         const certificato = res.data.certificato
         const email = res.data.email
         const anno = res.data.anno
+        const eta = res.data.eta
+        const stato = res.data.stato
         if(Token.isValid(access_token)){
-            AppStorage.store(username, access_token, nome, cognome, credito, privilegi, certificato, email, anno)
+            AppStorage.store(username, access_token, nome, cognome, credito, privilegi, certificato, email, anno, eta, stato)
             window.location = '/'
         }
     }
@@ -66,6 +68,12 @@ class User {
         }
     }
 
+    stato(){
+        if(this.loggedIn()){
+            return AppStorage.getStato()
+        }
+    }
+
     privilegi(){
         if(this.loggedIn()){
             return AppStorage.getPrivilegi()
@@ -103,6 +111,12 @@ class User {
 
     admin(){
         return this.id() == 16
+    }
+
+    eta(){
+        let today = new Date()
+        let yyyy = today.getFullYear();
+        return (yyyy - this.anno())
     }
 }
 

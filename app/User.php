@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Socio;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,9 +55,31 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function getEtaAttribute()
+    {
+        $annoAttuale = Carbon::now()->year;
+        return $annoAttuale - $this->anno;
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getStatoAttribute()
+    {
+        $stato = Socio::where('username', auth()->user()->username)->pluck('status');
+        if($stato[0] == 0){
+            return 'normale';
+        } elseif ($stato[0] == 1){
+            return 'admin';
+        } elseif ($stato[0] == 2){
+            return 'special';
+        } elseif ($stato[0] == 3){
+            return 'gratis';
+        } elseif ($stato[0] == 4){
+            return 'illimitati';
+        };
     }
 
 }

@@ -1,7 +1,7 @@
 <template>
     <v-parallax
             dark
-            src="http://tcmontevarchi2.local/img/01.jpg"
+            src="http://tcmontevarchi.altervista.org/img/01.jpg"
             height="700"
     >
         <v-row

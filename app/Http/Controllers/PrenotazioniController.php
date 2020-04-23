@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PrenotazioneEvent;
 use App\Http\Resources\PrenotazioniResource;
 use App\Models\Prenotazione;
+use App\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -51,7 +52,27 @@ class PrenotazioniController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        $esistePrenotazione = Prenotazione::where([
+            ['dataprenotazione', $request->input('dataprenotazione')],
+            ['campo', $request->input('campo')],
+            ['oraon', $request->input('oraon')],
+        ])->first();
+        if($esistePrenotazione){
+            return $this->update($request, $esistePrenotazione);
+        } else {
+            $request['username1'] = $request->input('username');
+            $prenotazione = Prenotazione::create($request->all());
+            broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
+            return response($prenotazione, Response::HTTP_CREATED);
+        }
+    }
+
+    public function store2(User $user, Request $request)
+    {
+        $user->update([
+            'privilegi' => $request->input('privilegi'),
+            'credito' => $request->input('credito'),
+        ]);
         $esistePrenotazione = Prenotazione::where([
             ['dataprenotazione', $request->input('dataprenotazione')],
             ['campo', $request->input('campo')],

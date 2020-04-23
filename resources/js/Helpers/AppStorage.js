@@ -19,6 +19,14 @@ class AppStorage {
         localStorage.setItem('credito', credito)
     }
 
+    storeStato(stato){
+        localStorage.setItem('stato', stato)
+    }
+
+    storeEta(eta){
+        localStorage.setItem('eta', eta)
+    }
+
     storePrivilegi(privilegi){
         localStorage.setItem('privilegi', privilegi)
     }
@@ -35,7 +43,11 @@ class AppStorage {
         localStorage.setItem('anno', anno)
     }
 
-    store(user, token, nome, cognome, credito, privilegi, certificato, email, anno){
+    storeLimite(limite){
+        localStorage.setItem('limite', limite)
+    }
+
+    store(user, token, nome, cognome, credito, privilegi, certificato, email, anno, eta, stato){
         this.storeToken(token)
         this.storeUser(user)
         this.storeNome(nome)
@@ -45,6 +57,8 @@ class AppStorage {
         this.storeCertificato(certificato)
         this.storeEmail(email)
         this.storeAnno(anno)
+        this.storeStato(stato)
+        this.storeEta(eta)
     }
 
     clear(){
@@ -72,6 +86,14 @@ class AppStorage {
         return localStorage.getItem('credito')
     }
 
+    getStato(){
+        return localStorage.getItem('stato')
+    }
+
+    getEta(){
+        return localStorage.getItem('eta')
+    }
+
     getPrivilegi(){
         return localStorage.getItem('privilegi')
     }
@@ -86,6 +108,10 @@ class AppStorage {
 
     getAnno(){
         return localStorage.getItem('anno')
+    }
+
+    getLimite(){
+        return localStorage.getItem('limite')
     }
 }
 
