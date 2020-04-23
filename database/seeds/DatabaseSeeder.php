@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         Socio::create([
             'nome' => 'cacao3',
             'cognome' => 'pippo3',
+            'username' => 'cacao3',
             'anno' => 2000,
             'status' => 2
         ]);
@@ -48,6 +49,7 @@ class DatabaseSeeder extends Seeder
         Socio::create([
             'nome' => 'admin',
             'cognome' => 'admin',
+            'username' => 'admin',
             'anno' => 2000,
             'status' => 1
         ]);

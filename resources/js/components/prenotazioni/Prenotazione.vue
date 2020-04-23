@@ -11,7 +11,7 @@
 
 
                     </template>
-                    <v-card v-if="(possoPrenotare || stato=='illimitati' || stato=='special')">
+                    <v-card v-if="(possoPrenotare || stato=='illimitati' || stato=='special' || stato=='admin')">
                         <v-card-title v-if="pren.doppio">
                             <v-list-item>
                                 <v-list-item-content>
@@ -156,7 +156,7 @@
                 let costoPrenotazione = 0
 
                 /* ------------ ILLIMITATI ---------------*/
-                if(this.stato == 'illimitati'){
+                if(this.stato == 'illimitati' || this.stato == 'admin'){
                     axios.post('/api/prenotazioni',{
                         username: User.cognome(),
                         campo: this.campo,
@@ -189,6 +189,7 @@
                                     location.reload()
                                 })
                         } else {
+                            alert('Hai finito le ore gratis')
                             /* ------------ PAGA CON I SOLDI ---------------*/
                             /* ------------ UNDER ---------------*/
                             if (this.eta <= CostiPrenotazioni.etaUnder() ){

@@ -13,6 +13,10 @@
                             type="email"
                             required
                     ></v-text-field>
+
+                    <span style="padding:0; margin:0" v-if="errors">
+                            <div color="primary" style="font-size: 12px;">{{errors.error}}</div>
+                    </span>
                 </v-col>
 
                 <v-col
@@ -87,6 +91,7 @@
                 dialog: false,
                 dimenticata: 'www.example.com/page',
                 inviamail:'',
+                errors:null,
                 form: {
                     email:null,
                     password:null
@@ -96,7 +101,11 @@
 
         methods:{
             login(){
-               User.login(this.form)
+               //User.login(this.form)
+                axios.post('/api/auth/login', this.form)
+                    .then(res => User.responseAfterLogin(res))
+                    .catch(error => this.errors = error.response.data)
+                //this.errors = error.response.data
             },
 
             passwordDimenticata(){
