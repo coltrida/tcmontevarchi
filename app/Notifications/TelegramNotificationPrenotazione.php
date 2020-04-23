@@ -51,20 +51,17 @@ class TelegramNotificationPrenotazione extends Notification
      */
     public function toTelegram($notifiable)
     {
-        /*if($this->campo == 'campo1' || $this->campo == 'campo2'){
-            $immagine = '/img/terra.jpg';
+        if($this->campo == 'campo1' || $this->campo == 'campo2'){
+            $immagine = 'http://tcmontevarchi.altervista.org/img/04.jpg';
         }else{
-            $immagine = '/img/sintetico.jpg';
-        }*/
+            $immagine = 'http://tcmontevarchi.altervista.org/img/03.jpg';
+        }
 
-        /*return TelegramFile::create()
-            ->to($this->id)
-            ->file('/img/terra.jpg', 'photo')
-            ->content('Prenotazione effettuata per il '.$this->campo.' alle ore '. $this->ora.' del giorno '. $this->giorno);*/
+        return TelegramFile::create()
+            ->to($this->id) // Optional
+            ->content('Prenotazione effettuata per il '.$this->campo.' alle ore '. $this->ora.' del giorno '. $this->giorno)
+            ->photo($immagine);
 
-        return TelegramMessage::create()
-            ->to($this->id)
-            ->content('Prenotazione effettuata per il '.$this->campo.' alle ore '. $this->ora.' del giorno '. $this->giorno);
     }
 
     /**
