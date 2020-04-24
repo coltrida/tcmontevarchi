@@ -20,9 +20,18 @@ class AuthController extends Controller
         $this->middleware('JWT', ['except' => ['login', 'signup', 'index', 'reimposta', 'salvareimpostazioni']]);
     }
 
-    public function index()
+    public function index($valore='')
     {
-        return User::latest()->get();
+        if($valore){
+            return User::where('nome', 'like', "%$valore%")
+                ->orWhere('cognome', 'like', "%$valore%")
+                ->latest()
+                ->get();
+        }else{
+            //dd('qui');
+            return "";
+        }
+
     }
 
     /**

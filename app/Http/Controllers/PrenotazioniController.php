@@ -156,7 +156,7 @@ class PrenotazioniController extends Controller
      */
     public function destroy(Prenotazione $prenotazioni)
     {
-        $username = auth()->user()->username;
+        $username = auth()->user()->id;
         //dd($username);
         if(
             ($prenotazioni->username1 == $username
