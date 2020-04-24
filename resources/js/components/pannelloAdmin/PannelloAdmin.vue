@@ -8,7 +8,7 @@
                 <router-link to="cancSpeciali"><v-btn color="blue"  >Cancellazioni Speciali</v-btn></router-link>
             </v-col>
             <v-col>
-                <router-link to="cancOraSocio"><v-btn color="blue"  >Cancella Ora</v-btn></router-link>
+                <router-link to="cancellaOraSocio"><v-btn color="blue"  >Cancella Ora</v-btn></router-link>
             </v-col>
             <v-col>
                 <router-link to="inserisciSocio"><v-btn color="blue"  >Inserisci Socio</v-btn></router-link>
