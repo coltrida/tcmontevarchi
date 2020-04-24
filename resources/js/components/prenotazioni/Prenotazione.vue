@@ -158,7 +158,7 @@
                 /* ------------ ILLIMITATI ---------------*/
                 if(this.stato == 'illimitati' || this.stato == 'admin'){
                     axios.post('/api/prenotazioni'+this.id,{
-                        username: User.cognome(),
+                        username: User.id(),
                         campo: this.campo,
                         dataprenotazione: this.giorno,
                         datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -179,7 +179,7 @@
                             this.privilegi--
                             AppStorage.storePrivilegi(this.privilegi)
                             axios.post('/api/prenotazioni/'+this.id,{
-                                username: User.cognome(),
+                                username: User.id(),
                                 campo: this.campo,
                                 dataprenotazione: this.giorno,
                                 datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -214,7 +214,7 @@
                                 this.credito = parseFloat(this.credito - costoPrenotazione)
                                 AppStorage.storeCredito(this.credito)
                                 axios.post('/api/prenotazioni/'+this.id,{
-                                    username: User.cognome(),
+                                    username: User.id(),
                                     campo: this.campo,
                                     dataprenotazione: this.giorno,
                                     datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -253,7 +253,7 @@
                             this.credito = parseFloat(this.credito - costoPrenotazione)
                             AppStorage.storeCredito(this.credito)
                             axios.post('/api/prenotazioni/'+this.id,{
-                                username: User.cognome(),
+                                username: User.id(),
                                 campo: this.campo,
                                 dataprenotazione: this.giorno,
                                 datamessaggio: this.giorno.split('-').reverse().join('-'),

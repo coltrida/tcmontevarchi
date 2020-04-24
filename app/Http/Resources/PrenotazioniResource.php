@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,10 +18,10 @@ class PrenotazioniResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'username1' => $this->username1,
-            'username2' => $this->username2,
-            'username3' => $this->username3,
-            'username4' => $this->username4,
+            'username1' => $this->username1 ? User::where('id', $this->username1)->pluck('cognome')[0] : '',
+            'username2' => $this->username2 ? User::where('id', $this->username2)->pluck('cognome')[0] : '',
+            'username3' => $this->username3 ? User::where('id', $this->username3)->pluck('cognome')[0] : '',
+            'username4' => $this->username4 ? User::where('id', $this->username4)->pluck('cognome')[0] : '',
             'campo' => $this->campo,
             'datapren' => $this->dataprenotazione,
             'dataprenotazione' => Carbon::parse($this->dataprenotazione)->format('d/m/Y'),

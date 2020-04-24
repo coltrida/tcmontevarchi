@@ -15,7 +15,7 @@ Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.in
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::get('users', 'AuthController@index')->name('users');
+    Route::get('users/{valore?}', 'AuthController@index')->name('users');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('signup', 'AuthController@signup')->name('signup');
     Route::post('logout', 'AuthController@logout')->name('logout');
@@ -24,6 +24,7 @@ Route::group([
     Route::post('foto', 'AuthController@foto')->name('foto');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
     Route::get('prenotazioni', 'AuthController@prenotazioni');
+    Route::post('prenotazioniUtenteSelezionato', 'AuthController@prenotazioniUtenteSelezionato');
     Route::post('payload', 'AuthController@payload')->name('payload');
     Route::post('inviaNews', 'NewsController@invia');
 

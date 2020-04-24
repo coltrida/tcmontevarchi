@@ -68,13 +68,13 @@ class PrenotazioniController extends Controller
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
             broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
-            $user->notify(
+            /*$user->notify(
                 new TelegramNotificationPrenotazione($request->input('campo'),
                                                     $request->input('oraon'),
                                                     $request->input('datamessaggio'),
                                                     $user->user_id
                 )
-            );
+            );*/
             return response($prenotazione, Response::HTTP_CREATED);
         }
     }
@@ -156,7 +156,7 @@ class PrenotazioniController extends Controller
      */
     public function destroy(Prenotazione $prenotazioni)
     {
-        $username = auth()->user()->username;
+        $username = auth()->user()->id;
         //dd($username);
         if(
             ($prenotazioni->username1 == $username

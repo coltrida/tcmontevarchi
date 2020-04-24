@@ -2527,7 +2527,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.stato == 'illimitati' || this.stato == 'admin') {
         axios.post('/api/prenotazioni' + this.id, {
-          username: User.cognome(),
+          username: User.id(),
           campo: this.campo,
           dataprenotazione: this.giorno,
           datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -2548,7 +2548,7 @@ __webpack_require__.r(__webpack_exports__);
             this.privilegi--;
             _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(this.privilegi);
             axios.post('/api/prenotazioni/' + this.id, {
-              username: User.cognome(),
+              username: User.id(),
               campo: this.campo,
               dataprenotazione: this.giorno,
               datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -2585,7 +2585,7 @@ __webpack_require__.r(__webpack_exports__);
               this.credito = parseFloat(this.credito - costoPrenotazione);
               _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
               axios.post('/api/prenotazioni/' + this.id, {
-                username: User.cognome(),
+                username: User.id(),
                 campo: this.campo,
                 dataprenotazione: this.giorno,
                 datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -2624,7 +2624,7 @@ __webpack_require__.r(__webpack_exports__);
               this.credito = parseFloat(this.credito - costoPrenotazione);
               _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
               axios.post('/api/prenotazioni/' + this.id, {
-                username: User.cognome(),
+                username: User.id(),
                 campo: this.campo,
                 dataprenotazione: this.giorno,
                 datamessaggio: this.giorno.split('-').reverse().join('-'),
@@ -4463,8 +4463,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/auth/prenotazioni').then(function (res) {
-      _this.prenotazioni = res.data;
-      console.log(_this.prenotazioni);
+      _this.prenotazioni = res.data.data; //console.log(res.data.data)
     });
     EventBus.$on('cancellazione', function (passaggio) {
       //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
@@ -115033,8 +115032,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
