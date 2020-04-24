@@ -28,7 +28,7 @@ class UserResource extends JsonResource
             'anno' => $this->anno,
             'privilegi' => $this->privilegi,
             'stato' => $this->stato,
-            'path' => asset('/storage/users/'.$this->id.'.jpg'),
+            //'path' => asset('/storage/users/'.$this->id.'.jpg'),
             // 'certificato' => Carbon::parse($this->certificato)->format('d/m/Y')
         ];
     }

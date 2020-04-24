@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Davide',
             'cognome' => 'Coltrioliiiii',
             'username' => 'cacao2',
-            'credito' => 0,
+            'credito' => 100,
             'telefono' => 123456,
             'amici' => 1,
             'privilegi' => 0,
@@ -94,10 +94,10 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Marco',
             'cognome' => 'Cataniaaaaaa',
             'username' => 'cacao',
-            'credito' => 0,
+            'credito' => 10,
             'telefono' => 123456,
             'amici' => 1,
-            'privilegi' => 0,
+            'privilegi' => 7,
             'user_id' => 1190914722,
             'certificato' => '2020/01/01',
             'email' => 'cacao2@cacao.it',
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
             'anno' => 2000
         ]);
 
-        Prenotazione::create([
+/*        Prenotazione::create([
             'username1' => 'Cataniaaaaaa',
             'campo' => 'campo1',
             'dataprenotazione' => $dataoggi,
@@ -263,6 +263,6 @@ class DatabaseSeeder extends Seeder
             'dataprenotazione' => $dataoggi,
             'doppio' => 1,
             'oraon' => 14
-        ]);
+        ]);*/
     }
 }

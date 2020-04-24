@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReimpostaRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\PrenotazioniResource;
 use App\Http\Resources\UserResource;
 use App\Models\Prenotazione;
 use App\Models\Socio;
@@ -21,7 +22,7 @@ class AuthController extends Controller
 
     public function index()
     {
-        return UserResource::collection(User::latest()->get());
+        return User::latest()->get();
     }
 
     /**
@@ -129,14 +130,26 @@ class AuthController extends Controller
 
     public function prenotazioni()
     {
-        $username = auth()->user()->cognome;
+        $username = auth()->user()->id;
         $prenotazioni = Prenotazione::where('username1', $username)->
                                 orWhere('username2', $username)->
                                 orWhere('username3', $username)->
                                 orWhere('username4', $username)
 
             ->get();
-        return $prenotazioni;
+        return PrenotazioniResource::collection($prenotazioni);
+    }
+
+    public function prenotazioniUtenteSelezionato(Request $request)
+    {
+        $username = $request->input('id');
+        $prenotazioni = Prenotazione::where('username1', $username)->
+        orWhere('username2', $username)->
+        orWhere('username3', $username)->
+        orWhere('username4', $username)
+
+            ->get();
+        return PrenotazioniResource::collection($prenotazioni);
     }
 
     public function foto(Request $request)

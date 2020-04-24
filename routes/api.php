@@ -24,6 +24,7 @@ Route::group([
     Route::post('foto', 'AuthController@foto')->name('foto');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
     Route::get('prenotazioni', 'AuthController@prenotazioni');
+    Route::post('prenotazioniUtenteSelezionato', 'AuthController@prenotazioni');
     Route::post('payload', 'AuthController@payload')->name('payload');
     Route::post('inviaNews', 'NewsController@invia');
 
