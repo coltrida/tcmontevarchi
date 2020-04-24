@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Marco',
             'cognome' => 'Cataniaaaaaa',
             'username' => 'cacao',
-            'credito' => 10,
+            'credito' => 100,
             'telefono' => 123456,
             'amici' => 1,
             'privilegi' => 7,
