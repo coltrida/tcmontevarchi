@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dimenticata/{indirizzo}', 'MailController@dimenticata');
+Route::delete('/prenotazioni/{prenotazioni}/{user}/{nuovocredito}/{nuoviprivilegi}', 'PrenotazioniController@destroy')->name('prenotazioni.destroy');
 Route::post('/prenotazioni/{user}', 'PrenotazioniController@store')->name('prenotazioni.store');
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
@@ -15,7 +16,7 @@ Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.in
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::get('users/{valore?}', 'AuthController@index')->name('users');
+    Route::post('users/{valore?}', 'AuthController@index')->name('users');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('signup', 'AuthController@signup')->name('signup');
     Route::post('logout', 'AuthController@logout')->name('logout');

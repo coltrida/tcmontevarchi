@@ -169,7 +169,7 @@
                     })
                         .then(res => {
                             this.playSound()
-                            location.reload()
+                            EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                         })
                 } else
                 /* ------------ GRATIS ---------------*/
@@ -190,7 +190,7 @@
                             })
                                 .then(res => {
                                     this.playSound()
-                                    location.reload()
+                                    EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                                 })
                         } else {
                             alert('Hai finito le ore gratis')
@@ -225,7 +225,7 @@
                                 })
                                     .then(res => {
                                         this.playSound()
-                                        location.reload()
+                                        EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                                     })
                             } else {
                                 alert('Credito Insufficiente')
@@ -264,7 +264,7 @@
                             })
                                 .then(res => {
                                     this.playSound()
-                                    location.reload()
+                                    EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                                 })
                         } else {
                             alert('Credito Insufficiente')

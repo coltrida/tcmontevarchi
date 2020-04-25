@@ -87,7 +87,8 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1055651158,
             'email' => 'cacao@cacao.it',
             'password' => '12345678',
-            'anno' => 2000
+            'anno' => 2000,
+            'status' => 0
         ]);
 
         User::create([
@@ -102,7 +103,8 @@ class DatabaseSeeder extends Seeder
             'certificato' => '2020/01/01',
             'email' => 'cacao2@cacao.it',
             'password' => '12345678',
-            'anno' => 2000
+            'anno' => 2000,
+            'status' => 3
         ]);
 
         User::create([
@@ -116,7 +118,8 @@ class DatabaseSeeder extends Seeder
             'certificato' => '2020/01/01',
             'email' => 'admin@admin.it',
             'password' => '12345678',
-            'anno' => 2000
+            'anno' => 2000,
+            'status' => 1
         ]);
 
 /*        Prenotazione::create([

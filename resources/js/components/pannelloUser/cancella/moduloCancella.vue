@@ -35,12 +35,19 @@
 
 <script>
 import Pippo from "./singolaOra"
+import CostiPrenotazioni from '../../../Helpers/Prenotazioni'
+import AppStorage from "../../../Helpers/AppStorage";
 export default {
      components:{Pippo},
     data: function(){
         return{
-      prenotazioni:{
-         }  }
+            credito: User.credito(),
+            eta: User.eta(),
+            stato: User.stato(),
+            privilegi: User.privilegi(),
+            id: User.id(),
+            prenotazioni:{}
+        }
     },
     created(){
         axios.get('/api/auth/prenotazioni').then(res =>{
@@ -49,11 +56,44 @@ export default {
             
         })
 
-        EventBus.$on('cancellazione', (passaggio) => {
+        EventBus.$on('cancellazioneOra', (passaggio) => {
+            //alert(this.prenotazioni[passaggio].doppio)
+            let costoPrenotazione = 0
+            if(this.stato == 'gratis'){
+                /* ------------ RICARICA  I PRIVILEGI ---------------*/
+                if (this.privilegi < 7){
+                    this.privilegi++
+                    AppStorage.storePrivilegi(this.privilegi)
+                }
+            } else
+            /* ------------ STANDARD ---------------*/
+            if(this.stato == 'normale'){
+                /* ------------ UNDER ---------------*/
+                if (this.eta <= CostiPrenotazioni.etaUnder() ){
+                    costoPrenotazione = CostiPrenotazioni.prezzoUnder()
+                } else
+                /* ------------ OVER ---------------*/
+                if (this.eta >= CostiPrenotazioni.etaOver() ){
+                    costoPrenotazione = CostiPrenotazioni.prezzoOver()
+                } else
+                /* ------------ SINGOLO ---------------*/
+                if (this.prenotazioni[passaggio].doppio == 'S'){
+                    costoPrenotazione = CostiPrenotazioni.prezzoStandardSingolo()
+                } else
+                if (this.prenotazioni[passaggio].doppio == 'D'){
+                    costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
+                }
+                    //alert(this.credito+' + '+costoPrenotazione)
+                    this.credito = parseFloat(parseFloat(this.credito) + parseFloat(costoPrenotazione)).toFixed(2)
+                    AppStorage.storeCredito(this.credito)
+            }
+
             //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
-            axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id).then(
-                () => {
-                    this.prenotazioni.splice(passaggio,1)
+            axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id+'/'+User.id()+'/'+this.credito+'/'+this.privilegi).then(
+                (res) => {
+                    //location.reload()
+                    this.prenotazioni.splice(passaggio, 1)
+                    EventBus.$emit('cancellazioneOraRicarica', this.credito, this.privilegi)
                 })
         })
         
