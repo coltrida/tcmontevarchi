@@ -2538,7 +2538,7 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           _this2.playSound();
 
-          location.reload();
+          EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
         });
       } else
         /* ------------ GRATIS ---------------*/
@@ -2559,7 +2559,7 @@ __webpack_require__.r(__webpack_exports__);
             }).then(function (res) {
               _this2.playSound();
 
-              location.reload();
+              EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
             });
           } else {
             alert('Hai finito le ore gratis');
@@ -2596,7 +2596,7 @@ __webpack_require__.r(__webpack_exports__);
               }).then(function (res) {
                 _this2.playSound();
 
-                location.reload();
+                EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
               });
             } else {
               alert('Credito Insufficiente');
@@ -2635,7 +2635,7 @@ __webpack_require__.r(__webpack_exports__);
               }).then(function (res) {
                 _this2.playSound();
 
-                location.reload();
+                EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
               });
             } else {
               alert('Credito Insufficiente');
@@ -3783,13 +3783,19 @@ __webpack_require__.r(__webpack_exports__);
         show: true
       }]
     };
-  }
-  /*created() {
-      EventBus.$on('logout', () => {
-          User.logout()
-      })
-  }*/
+  },
+  created: function created() {
+    var _this = this;
 
+    EventBus.$on('prenotazioneOra', function (credito, privilegi) {
+      _this.credito = credito;
+      _this.privilegi = privilegi;
+    });
+    EventBus.$on('cancellazioneOraRicarica', function (credito, privilegi) {
+      _this.credito = credito;
+      _this.privilegi = privilegi;
+    });
+  }
 });
 
 /***/ }),
@@ -4477,6 +4483,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _singolaOra__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./singolaOra */ "./resources/js/components/pannelloUser/cancella/singolaOra.vue");
+/* harmony import */ var _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Helpers/Prenotazioni */ "./resources/js/Helpers/Prenotazioni.js");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -4513,12 +4521,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Pippo: _singolaOra__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
+      credito: User.credito(),
+      eta: User.eta(),
+      stato: User.stato(),
+      privilegi: User.privilegi(),
+      id: User.id(),
       prenotazioni: {}
     };
   },
@@ -4528,10 +4543,45 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/auth/prenotazioni').then(function (res) {
       _this.prenotazioni = res.data.data; //console.log(res.data.data)
     });
-    EventBus.$on('cancellazione', function (passaggio) {
-      //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
-      axios["delete"]('/api/prenotazioni/' + _this.prenotazioni[passaggio].id).then(function () {
+    EventBus.$on('cancellazioneOra', function (passaggio) {
+      //alert(this.prenotazioni[passaggio].doppio)
+      var costoPrenotazione = 0;
+
+      if (_this.stato == 'gratis') {
+        /* ------------ RICARICA  I PRIVILEGI ---------------*/
+        if (_this.privilegi < 7) {
+          _this.privilegi++;
+          _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_2__["default"].storePrivilegi(_this.privilegi);
+        }
+      } else
+        /* ------------ STANDARD ---------------*/
+        if (_this.stato == 'normale') {
+          /* ------------ UNDER ---------------*/
+          if (_this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].etaUnder()) {
+            costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoUnder();
+          } else
+            /* ------------ OVER ---------------*/
+            if (_this.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].etaOver()) {
+              costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoOver();
+            } else
+              /* ------------ SINGOLO ---------------*/
+              if (_this.prenotazioni[passaggio].doppio == 'S') {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardSingolo();
+              } else if (_this.prenotazioni[passaggio].doppio == 'D') {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardDoppio();
+              } //alert(this.credito+' + '+costoPrenotazione)
+
+
+          _this.credito = parseFloat(parseFloat(_this.credito) + parseFloat(costoPrenotazione)).toFixed(2);
+          _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_2__["default"].storeCredito(_this.credito);
+        } //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
+
+
+      axios["delete"]('/api/prenotazioni/' + _this.prenotazioni[passaggio].id + '/' + User.id() + '/' + _this.credito + '/' + _this.privilegi).then(function (res) {
+        //location.reload()
         _this.prenotazioni.splice(passaggio, 1);
+
+        EventBus.$emit('cancellazioneOraRicarica', _this.credito, _this.privilegi);
       });
     });
   }
@@ -4627,7 +4677,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     cancella: function cancella() {
       //console.log(this.indice)
-      EventBus.$emit('cancellazione', this.indice);
+      EventBus.$emit('cancellazioneOra', this.indice);
     }
   }
 });
@@ -115312,8 +115362,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Prenotazione;
 use App\Models\Socio;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -139,12 +140,25 @@ class AuthController extends Controller
 
     public function prenotazioni()
     {
-        $username = auth()->user()->id;
-        $prenotazioni = Prenotazione::where('username1', $username)->
-                                orWhere('username2', $username)->
-                                orWhere('username3', $username)->
-                                orWhere('username4', $username)
+        $domani = Carbon::tomorrow()->format('Y-m-d');
 
+        $username = auth()->user()->id;
+        $prenotazioni = Prenotazione::where([
+            ['username1', $username],
+            ['dataprenotazione', '>', $domani],
+        ])->
+        orWhere([
+            ['username2', $username],
+            ['dataprenotazione', '>', $domani],
+        ])->
+        orWhere([
+            ['username3', $username],
+            ['dataprenotazione', '>', $domani],
+        ])->
+        orWhere([
+            ['username4', $username],
+            ['dataprenotazione', '>', $domani],
+        ])
             ->get();
         return PrenotazioniResource::collection($prenotazioni);
     }

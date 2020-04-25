@@ -67,7 +67,7 @@ class PrenotazioniController extends Controller
         } else {
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
-            broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
+            broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)));
             /*$user->notify(
                 new TelegramNotificationPrenotazione($request->input('campo'),
                                                     $request->input('oraon'),
@@ -144,7 +144,7 @@ class PrenotazioniController extends Controller
         }
 
         $prenotazione->save();
-        broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
+        broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)));
         return response($prenotazione, Response::HTTP_ACCEPTED);
     }
 
@@ -154,11 +154,14 @@ class PrenotazioniController extends Controller
      * @param  \App\Models\Prenotazione  $prenotazione
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prenotazione $prenotazioni)
+    public function destroy(Prenotazione $prenotazioni, User $user, $nuovocredito, $nuoviprivilegi)
     {
-        $username = auth()->user()->id;
-        $elimina = 0;
-        //dd($username);
+        $user->credito = $nuovocredito;
+        $user->privilegi = $nuoviprivilegi;
+        $user->save();
+
+        $username = $user->id;
+
         if(
             ($prenotazioni->username1 == $username
             && !$prenotazioni->username2
@@ -178,6 +181,7 @@ class PrenotazioniController extends Controller
                 && !$prenotazioni->username2
             )
         ) {
+            $elimina = 1;
             $prenotazioni->delete();
         } elseif($prenotazioni->username1 == $username) {
             $prenotazioni->username1 = null;
@@ -193,6 +197,6 @@ class PrenotazioniController extends Controller
             $prenotazioni->save();
         }
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return $elimina;
     }
 }

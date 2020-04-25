@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'nome', 'cognome', 'username', 'telefono', 'credito', 'amici', 'anno', 'privilegi', 'certificato', 'email', 'password', 'user_id',
+        'nome', 'cognome', 'username', 'telefono', 'credito', 'amici', 'anno', 'privilegi', 'certificato', 'email', 'password', 'user_id', 'stato',
     ];
 
     /**
@@ -68,16 +68,16 @@ class User extends Authenticatable implements JWTSubject
 
     public function getStatoAttribute()
     {
-        $stato = Socio::where('username', auth()->user()->username)->pluck('status');
-        if($stato[0] == 0){
+       // $stato = Socio::where('username', auth()->user()->username)->pluck('status');
+        if($this->status == 0){
             return 'normale';
-        } elseif ($stato[0] == 1){
+        } elseif ($this->status == 1){
             return 'admin';
-        } elseif ($stato[0] == 2){
+        } elseif ($this->status == 2){
             return 'special';
-        } elseif ($stato[0] == 3){
+        } elseif ($this->status == 3){
             return 'gratis';
-        } elseif ($stato[0] == 4){
+        } elseif ($this->status == 4){
             return 'illimitati';
         };
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dimenticata/{indirizzo}', 'MailController@dimenticata');
+Route::delete('/prenotazioni/{prenotazioni}/{user}/{nuovocredito}/{nuoviprivilegi}', 'PrenotazioniController@destroy')->name('prenotazioni.destroy');
 Route::post('/prenotazioni/{user}', 'PrenotazioniController@store')->name('prenotazioni.store');
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');

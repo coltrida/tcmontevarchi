@@ -117,11 +117,17 @@
                 ]
             }
         },
-        /*created() {
-            EventBus.$on('logout', () => {
-                User.logout()
+        created() {
+            EventBus.$on('prenotazioneOra', (credito, privilegi) => {
+                this.credito = credito
+                this.privilegi = privilegi
             })
-        }*/
+
+            EventBus.$on('cancellazioneOraRicarica', (credito, privilegi) => {
+                this.credito = credito
+                this.privilegi = privilegi
+            })
+        }
     }
 </script>
 

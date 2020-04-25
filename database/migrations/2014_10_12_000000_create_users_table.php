@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->float('credito', 8, 2)->default(0);
             $table->boolean('amici')->default(1);
             $table->year('anno');
+            $table->char('status', 1)->default('0');
             $table->integer('privilegi')->default(0);   // ore gratis
             $table->date('certificato')->nullable();
             $table->bigInteger('user_id')->nullable();
