@@ -4128,28 +4128,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['pren', 'indice'],
-  created: function created() {// console.log(this.pren);
-  },
+  created: function created() {},
   methods: {
     cancella: function cancella() {
       EventBus.$emit('cancellaPren', this.indice, this.pren.id);
@@ -4187,24 +4168,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['socio'],
   data: function data() {
@@ -4212,8 +4175,7 @@ __webpack_require__.r(__webpack_exports__);
       utente: []
     };
   },
-  created: function created() {//console.log(this.socio);
-  },
+  created: function created() {},
   methods: {
     listaOre: function listaOre() {
       EventBus.$emit('cancellazione', this.socio.id, false);
@@ -4234,6 +4196,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cancellaVisualizzaAdmin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaVisualizzaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue");
 /* harmony import */ var _cancellaPrenAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cancellaPrenAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue");
+/* harmony import */ var _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Helpers/Prenotazioni */ "./resources/js/Helpers/Prenotazioni.js");
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
 //
 //
 //
@@ -4286,6 +4250,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4299,7 +4265,12 @@ __webpack_require__.r(__webpack_exports__);
       filtro: '',
       prelevati: {},
       cambiaComponent: true,
-      idUtente: ''
+      idUtente: '',
+      credito: User.credito(),
+      eta: User.eta(),
+      stato: User.stato(),
+      privilegi: User.privilegi(),
+      id: User.id()
     };
   },
   methods: {
@@ -4323,7 +4294,38 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.prenotazioni = res.data.data;
       }, console.log(_this2.prenotazioni));
     }), EventBus.$on('cancellaPren', function (id, i) {
-      axios["delete"]('/api/prenotazioni/' + id + '/' + _this2.idUtente).then(function (i) {
+      var costoPrenotazione = 0;
+
+      if (_this2.stato == 'gratis') {
+        /* ------------ RICARICA  I PRIVILEGI ---------------*/
+        if (_this2.privilegi < 7) {
+          _this2.privilegi++;
+          _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(_this2.privilegi);
+        }
+      } else
+        /* ------------ STANDARD ---------------*/
+        if (_this2.stato == 'normale') {
+          /* ------------ UNDER ---------------*/
+          if (_this2.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
+            costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
+          } else
+            /* ------------ OVER ---------------*/
+            if (_this2.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaOver()) {
+              costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoOver();
+            } else
+              /* ------------ SINGOLO ---------------*/
+              if (_this2.prenotazioni[passaggio].doppio == 'S') {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardSingolo();
+              } else if (_this2.prenotazioni[passaggio].doppio == 'D') {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
+              } //alert(this.credito+' + '+costoPrenotazione)
+
+
+          _this2.credito = parseFloat(parseFloat(_this2.credito) + parseFloat(costoPrenotazione)).toFixed(2);
+          _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(_this2.credito);
+        }
+
+      axios["delete"]('/api/prenotazioni/' + id + '/' + _this2.idUtente + '/' + _this2.credito + '/' + _this2.privilegi).then(function (i) {
         _this2.prenotazioni.splice(i, 1);
       });
     });
@@ -54318,19 +54320,11 @@ var render = function() {
           attrs: { "auto-grow": "" }
         },
         [
-          _c("v-col", [
-            _vm._v(
-              "\n           \n     " +
-                _vm._s(_vm.pren.dataprenotazione) +
-                "\n      \n    "
-            )
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.pren.dataprenotazione))]),
           _vm._v(" "),
-          _c("v-col", [
-            _vm._v("     \n     " + _vm._s(_vm.pren.campo) + "\n    ")
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.pren.campo))]),
           _vm._v(" "),
-          _c("v-col", [_vm._v(" \n     " + _vm._s(_vm.pren.oraon) + "\n    ")]),
+          _c("v-col", [_vm._v(_vm._s(_vm.pren.oraon))]),
           _vm._v(" "),
           _c(
             "v-col",
@@ -54341,7 +54335,7 @@ var render = function() {
                   _c(
                     "v-btn",
                     { attrs: { color: "red" }, on: { click: _vm.cancella } },
-                    [_vm._v("\n            cancella\n      ")]
+                    [_vm._v("cancella")]
                   )
                 ],
                 1
@@ -54392,29 +54386,13 @@ var render = function() {
           attrs: { "auto-grow": "" }
         },
         [
-          _c("v-col", [
-            _vm._v(
-              "\r\n           \r\n     " +
-                _vm._s(_vm.socio.nome) +
-                "\r\n      \r\n    "
-            )
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.socio.nome))]),
           _vm._v(" "),
-          _c("v-col", [
-            _vm._v("     \r\n     " + _vm._s(_vm.socio.cognome) + "\r\n    ")
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.socio.cognome))]),
           _vm._v(" "),
-          _c("v-col", [
-            _vm._v(" \r\n     " + _vm._s(_vm.socio.credito) + "\r\n    ")
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.socio.credito))]),
           _vm._v(" "),
-          _c("v-col", [
-            _vm._v(
-              "\r\n        " +
-                _vm._s(_vm.socio.anno) +
-                " \r\n           \r\n          "
-            )
-          ]),
+          _c("v-col", [_vm._v(_vm._s(_vm.socio.anno))]),
           _vm._v(" "),
           _c(
             "v-col",
@@ -54425,7 +54403,7 @@ var render = function() {
                   _c(
                     "v-btn",
                     { attrs: { color: "red" }, on: { click: _vm.listaOre } },
-                    [_vm._v("\r\n           Lista\r\n      ")]
+                    [_vm._v("Lista")]
                   )
                 ],
                 1

@@ -53,7 +53,7 @@ export default {
         axios.get('/api/auth/prenotazioni').then(res =>{
             this.prenotazioni = res.data.data
             //console.log(res.data.data)
-            console.log(this.stato)
+            
             
         })
 

@@ -53,6 +53,9 @@
 <script>
 import CancVisualizzazioni from "./cancellaVisualizzaAdmin"
 import CancPrenotazioni from "./cancellaPrenAdmin"
+import CostiPrenotazioni from '../../../Helpers/Prenotazioni'
+import AppStorage from "../../../Helpers/AppStorage";
+
 export default {
      components:{CancVisualizzazioni, CancPrenotazioni},
     data: function(){
@@ -61,7 +64,12 @@ export default {
       filtro: '',
       prelevati: {},
       cambiaComponent: true,
-      idUtente: ''
+      idUtente: '',
+      credito: User.credito(),
+      eta: User.eta(),
+      stato: User.stato(),
+      privilegi: User.privilegi(),
+      id: User.id()
         }
     },
     methods:{
@@ -84,8 +92,37 @@ export default {
          )}
       ),
     EventBus.$on('cancellaPren', (id, i) => {
-             
-            axios.delete('/api/prenotazioni/'+id+'/'+this.idUtente).then(
+             let costoPrenotazione = 0
+            if(this.stato == 'gratis'){
+                /* ------------ RICARICA  I PRIVILEGI ---------------*/
+                if (this.privilegi < 7){
+                    this.privilegi++
+                    AppStorage.storePrivilegi(this.privilegi)
+                }
+            } else
+            /* ------------ STANDARD ---------------*/
+            if(this.stato == 'normale'){
+                /* ------------ UNDER ---------------*/
+                if (this.eta <= CostiPrenotazioni.etaUnder() ){
+                    costoPrenotazione = CostiPrenotazioni.prezzoUnder()
+                } else
+                /* ------------ OVER ---------------*/
+                if (this.eta >= CostiPrenotazioni.etaOver() ){
+                    costoPrenotazione = CostiPrenotazioni.prezzoOver()
+                } else
+                /* ------------ SINGOLO ---------------*/
+                if (this.prenotazioni[passaggio].doppio == 'S'){
+                    costoPrenotazione = CostiPrenotazioni.prezzoStandardSingolo()
+                } else
+                if (this.prenotazioni[passaggio].doppio == 'D'){
+                    costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
+                }
+                    //alert(this.credito+' + '+costoPrenotazione)
+                    this.credito = parseFloat(parseFloat(this.credito) + parseFloat(costoPrenotazione)).toFixed(2)
+                    AppStorage.storeCredito(this.credito)
+            }
+
+            axios.delete('/api/prenotazioni/'+id+'/'+this.idUtente+'/'+this.credito+'/'+this.privilegi).then(
                 (i) => {
                     this.prenotazioni.splice(i ,1)
                 })
