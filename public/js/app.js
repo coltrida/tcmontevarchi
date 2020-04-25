@@ -4215,10 +4215,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {//console.log(this.socio);
   },
   methods: {
-    cancella: function cancella() {
-      //console.log(this.indice)
-      EventBus.$emit('cancellazione', this.indice);
-    },
     listaOre: function listaOre() {
       EventBus.$emit('cancellazione', this.socio.id, false);
     }
@@ -4302,7 +4298,8 @@ __webpack_require__.r(__webpack_exports__);
       prenotazioni: {},
       filtro: '',
       prelevati: {},
-      cambiaComponent: true
+      cambiaComponent: true,
+      idUtente: ''
     };
   },
   methods: {
@@ -4319,13 +4316,14 @@ __webpack_require__.r(__webpack_exports__);
 
     EventBus.$on('cancellazione', function (id, change) {
       _this2.cambiaComponent = change;
+      _this2.idUtente = id;
       axios.post('/api/auth/prenotazioniUtenteSelezionato/', {
         utente: id
       }).then(function (res) {
         return _this2.prenotazioni = res.data.data;
       }, console.log(_this2.prenotazioni));
     }), EventBus.$on('cancellaPren', function (id, i) {
-      axios["delete"]('/api/prenotazioni/' + id).then(function (i) {
+      axios["delete"]('/api/prenotazioni/' + id + '/' + _this2.idUtente).then(function (i) {
         _this2.prenotazioni.splice(i, 1);
       });
     });
@@ -115362,8 +115360,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

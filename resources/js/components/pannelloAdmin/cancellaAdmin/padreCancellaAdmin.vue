@@ -60,7 +60,8 @@ export default {
       prenotazioni:{}, 
       filtro: '',
       prelevati: {},
-      cambiaComponent: true
+      cambiaComponent: true,
+      idUtente: ''
         }
     },
     methods:{
@@ -76,7 +77,7 @@ export default {
 
       EventBus.$on('cancellazione',(id,change) =>{
         this.cambiaComponent = change;
-        
+        this.idUtente= id;
         axios.post('/api/auth/prenotazioniUtenteSelezionato/', {utente: id} ).then(
               res => this.prenotazioni = res.data.data,
               console.log(this.prenotazioni)
@@ -84,7 +85,7 @@ export default {
       ),
     EventBus.$on('cancellaPren', (id, i) => {
              
-            axios.delete('/api/prenotazioni/'+id).then(
+            axios.delete('/api/prenotazioni/'+id+'/'+this.idUtente).then(
                 (i) => {
                     this.prenotazioni.splice(i ,1)
                 })
