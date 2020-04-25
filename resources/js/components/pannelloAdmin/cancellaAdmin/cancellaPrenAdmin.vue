@@ -5,7 +5,7 @@
 
     <v-col>
            
-     ciao{{pren.dataprenotazione}}
+     {{pren.dataprenotazione}}
       
     </v-col>
     <v-col>     

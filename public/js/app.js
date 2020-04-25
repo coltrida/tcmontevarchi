@@ -54081,7 +54081,7 @@ var render = function() {
         [
           _c("v-col", [
             _vm._v(
-              "\n           \n     ciao" +
+              "\n           \n     " +
                 _vm._s(_vm.pren.dataprenotazione) +
                 "\n      \n    "
             )
