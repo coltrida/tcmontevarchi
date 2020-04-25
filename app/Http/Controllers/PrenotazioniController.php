@@ -68,37 +68,10 @@ class PrenotazioniController extends Controller
             $request['username1'] = $request->input('username');
             $prenotazione = Prenotazione::create($request->all());
             broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)));
-            /*$user->notify(
-                new TelegramNotificationPrenotazione($request->input('campo'),
-                                                    $request->input('oraon'),
-                                                    $request->input('datamessaggio'),
-                                                    $user->user_id
-                )
-            );*/
+
             return response($prenotazione, Response::HTTP_CREATED);
         }
     }
-
-/*    public function store2(User $user, Request $request)
-    {
-        $user->update([
-            'privilegi' => $request->input('privilegi'),
-            'credito' => $request->input('credito'),
-        ]);
-        $esistePrenotazione = Prenotazione::where([
-            ['dataprenotazione', $request->input('dataprenotazione')],
-            ['campo', $request->input('campo')],
-            ['oraon', $request->input('oraon')],
-        ])->first();
-        if($esistePrenotazione){
-            return $this->update($request, $esistePrenotazione);
-        } else {
-            $request['username1'] = $request->input('username');
-            $prenotazione = Prenotazione::create($request->all());
-            broadcast(new PrenotazioneEvent(new PrenotazioniResource($prenotazione)))->toOthers();
-            return response($prenotazione, Response::HTTP_CREATED);
-        }
-    }*/
 
     /**
      * Display the specified resource.

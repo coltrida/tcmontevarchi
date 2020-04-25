@@ -80,7 +80,9 @@ export default {
                 if (this.prenotazioni[passaggio].doppio == 'S'){
                     costoPrenotazione = CostiPrenotazioni.prezzoStandardSingolo()
                 } else
+                /* ------------ DOPPIO ---------------*/
                 if (this.prenotazioni[passaggio].doppio == 'D'){
+                    console.log(this.prenotazioni[passaggio].id)
                     costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
                 }
                     //alert(this.credito+' + '+costoPrenotazione)
