@@ -30,3 +30,10 @@ Route::group([
     Route::post('inviaNews', 'NewsController@invia');
 
 });
+
+Route::group([
+    'prefix' => 'admin'
+], function () {
+    Route::post('ricaricaCredito/{user}', 'AdminController@ricaricaCredito');
+    Route::post('stornaCredito/{user}', 'AdminController@stornaCredito');
+});

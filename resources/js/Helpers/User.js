@@ -110,7 +110,7 @@ class User {
     }
 
     admin(){
-        return this.id() == 16
+        return this.stato() == 'admin'
     }
 
     eta(){
