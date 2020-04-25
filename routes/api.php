@@ -15,7 +15,7 @@ Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.in
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::get('users/{valore?}', 'AuthController@index')->name('users');
+    Route::post('users/{valore?}', 'AuthController@index')->name('users');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('signup', 'AuthController@signup')->name('signup');
     Route::post('logout', 'AuthController@logout')->name('logout');

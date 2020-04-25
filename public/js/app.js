@@ -3601,6 +3601,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppFooter"
 });
@@ -4097,10 +4098,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4139,69 +4140,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['passaggio', 'indice'],
-  data: function data() {
-    return {};
-  },
-  created: function created() {//console.log(this.passaggio);
+  props: ['pren', 'indice'],
+  created: function created() {// console.log(this.pren);
   },
   methods: {
     cancella: function cancella() {
-      //console.log(this.indice)
-      EventBus.$emit('cancellazione', this.indice);
+      EventBus.$emit('cancellaPren', this.indice, this.pren.id);
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cancellaOraAdmin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaOraAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue");
 //
 //
 //
@@ -4237,27 +4197,130 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['socio'],
+  data: function data() {
+    return {
+      utente: []
+    };
+  },
+  created: function created() {//console.log(this.socio);
+  },
+  methods: {
+    cancella: function cancella() {
+      //console.log(this.indice)
+      EventBus.$emit('cancellazione', this.indice);
+    },
+    listaOre: function listaOre() {
+      EventBus.$emit('cancellazione', this.socio.id, false);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cancellaVisualizzaAdmin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaVisualizzaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue");
+/* harmony import */ var _cancellaPrenAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cancellaPrenAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Pippo: _cancellaOraAdmin__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CancVisualizzazioni: _cancellaVisualizzaAdmin__WEBPACK_IMPORTED_MODULE_0__["default"],
+    CancPrenotazioni: _cancellaPrenAdmin__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      prenotazioni: {}
+      prenotazioni: {},
+      filtro: '',
+      prelevati: {},
+      cambiaComponent: true
     };
   },
-  created: function created() {
-    var _this = this;
+  methods: {
+    filtraggio: function filtraggio() {
+      var _this = this;
 
-    axios.get('/api/auth/users').then(function (res) {
-      _this.prenotazioni = res.data.data;
-      console.log(_this.prenotazioni);
-    });
-    EventBus.$on('cancellazione', function (passaggio) {
-      //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
-      axios["delete"]('/api/prenotazioni/' + _this.prenotazioni[passaggio].id).then(function () {
-        _this.prenotazioni.splice(passaggio, 1);
+      axios.post('/api/auth/users/' + this.filtro).then(function (res) {
+        _this.prelevati = res.data; //console.log(res.data)
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    EventBus.$on('cancellazione', function (id, change) {
+      _this2.cambiaComponent = change;
+      axios.post('/api/auth/prenotazioniUtenteSelezionato/', {
+        utente: id
+      }).then(function (res) {
+        return _this2.prenotazioni = res.data.data;
+      }, console.log(_this2.prenotazioni));
+    }), EventBus.$on('cancellaPren', function (id, i) {
+      axios["delete"]('/api/prenotazioni/' + id).then(function (i) {
+        _this2.prenotazioni.splice(i, 1);
       });
     });
   }
@@ -53987,10 +54050,84 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796&":
-/*!***********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796& ***!
-  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-list-item",
+    [
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c("v-col", [
+            _vm._v(
+              "\n           \n     ciao" +
+                _vm._s(_vm.pren.dataprenotazione) +
+                "\n      \n    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v("     \n     " + _vm._s(_vm.pren.campo) + "\n    ")
+          ]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v(" \n     " + _vm._s(_vm.pren.oraon) + "\n    ")]),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            [
+              _c(
+                "v-card-actions",
+                [
+                  _c(
+                    "v-btn",
+                    { attrs: { color: "red" }, on: { click: _vm.cancella } },
+                    [_vm._v("\n            cancella\n      ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54019,25 +54156,23 @@ var render = function() {
           _c("v-col", [
             _vm._v(
               "\r\n           \r\n     " +
-                _vm._s(_vm.passaggio.nome) +
+                _vm._s(_vm.socio.nome) +
                 "\r\n      \r\n    "
             )
           ]),
           _vm._v(" "),
           _c("v-col", [
-            _vm._v(
-              "     \r\n     " + _vm._s(_vm.passaggio.cognome) + "\r\n    "
-            )
+            _vm._v("     \r\n     " + _vm._s(_vm.socio.cognome) + "\r\n    ")
           ]),
           _vm._v(" "),
           _c("v-col", [
-            _vm._v(" \r\n     " + _vm._s(_vm.passaggio.credito) + "\r\n    ")
+            _vm._v(" \r\n     " + _vm._s(_vm.socio.credito) + "\r\n    ")
           ]),
           _vm._v(" "),
           _c("v-col", [
             _vm._v(
               "\r\n        " +
-                _vm._s(_vm.passaggio.anno) +
+                _vm._s(_vm.socio.anno) +
                 " \r\n           \r\n          "
             )
           ]),
@@ -54050,9 +54185,8 @@ var render = function() {
                 [
                   _c(
                     "v-btn",
-                    { attrs: { color: "red" }, on: { click: _vm.cancella } },
-                    [_c("v-icon", [_vm._v("fas fa-trash")])],
-                    1
+                    { attrs: { color: "red" }, on: { click: _vm.listaOre } },
+                    [_vm._v("\r\n           Lista\r\n      ")]
                   )
                 ],
                 1
@@ -54074,10 +54208,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9&":
-/*!*****************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54089,39 +54223,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-container",
-    [
-      _c(
-        "v-row",
-        { attrs: { "auto-grow": "" } },
-        [
-          _c("v-col", [_vm._v("\n\n            data:\n\n        ")]),
-          _vm._v(" "),
-          _c("v-col", [_vm._v("\n            ora:\n        ")]),
-          _vm._v(" "),
-          _c("v-col", [_vm._v("\n            campo:\n        ")]),
-          _vm._v(" "),
-          _c("v-col", [_vm._v("\n            utenti:\n        ")]),
-          _vm._v(" "),
-          _c("v-col", [_vm._v("\n            Azione\n        ")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-row",
-        _vm._l(_vm.prenotazioni, function(prenotazione, i) {
-          return _c("pippo", {
-            key: prenotazione.id,
-            attrs: { passaggio: prenotazione, indice: i }
-          })
-        }),
-        1
-      )
-    ],
-    1
-  )
+  return _c("v-container", [
+    _vm.cambiaComponent
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-form",
+              [
+                _c(
+                  "v-row",
+                  [
+                    _c(
+                      "v-col",
+                      { attrs: { cols: "12", md: "4" } },
+                      [
+                        _c("v-text-field", {
+                          attrs: { label: "Nome/Cognome", required: "" },
+                          on: { keyup: _vm.filtraggio },
+                          model: {
+                            value: _vm.filtro,
+                            callback: function($$v) {
+                              _vm.filtro = $$v
+                            },
+                            expression: "filtro"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-row",
+                  {
+                    staticStyle: {
+                      border: "1px solid gray",
+                      display: "flex",
+                      "align-items": "center"
+                    },
+                    attrs: { "auto-grow": "" }
+                  },
+                  [
+                    _c("v-col", [_vm._v("Nome:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Cognome:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Credito:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Anno:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Azione:")])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-row",
+                  {
+                    staticStyle: {
+                      border: "1px solid gray",
+                      display: "flex",
+                      "align-items": "center"
+                    },
+                    attrs: { "auto-grow": "" }
+                  },
+                  [
+                    _c(
+                      "v-col",
+                      _vm._l(_vm.prelevati, function(socio) {
+                        return _c("canc-visualizzazioni", {
+                          key: socio.id,
+                          attrs: { socio: socio }
+                        })
+                      }),
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      : _c(
+          "div",
+          [
+            _c(
+              "v-row",
+              [
+                _c(
+                  "v-col",
+                  _vm._l(_vm.prenotazioni, function(prenotazione, i) {
+                    return _c("canc-prenotazioni", {
+                      key: prenotazione.id,
+                      attrs: { pren: prenotazione, indice: i }
+                    })
+                  }),
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -113152,7 +113363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/pannelloUser/listaSoci/listaSoci */ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue");
 /* harmony import */ var _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/pannelloAdmin/prenSpeciali */ "./resources/js/components/pannelloAdmin/prenSpeciali.vue");
 /* harmony import */ var _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/pannelloAdmin/cancSpeciali */ "./resources/js/components/pannelloAdmin/cancSpeciali.vue");
-/* harmony import */ var _components_pannelloAdmin_cancellaAdmin_moduloCancellaOraSocio__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio */ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue");
+/* harmony import */ var _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue");
 /* harmony import */ var _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/pannelloAdmin/inserisciSocio */ "./resources/js/components/pannelloAdmin/inserisciSocio.vue");
 /* harmony import */ var _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/pannelloAdmin/sociAdmin */ "./resources/js/components/pannelloAdmin/sociAdmin.vue");
 /* harmony import */ var _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito.vue");
@@ -113248,7 +113459,7 @@ var routes = [{
   }
 }, {
   path: '/cancellaOraSocio',
-  component: _components_pannelloAdmin_cancellaAdmin_moduloCancellaOraSocio__WEBPACK_IMPORTED_MODULE_14__["default"],
+  component: _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__["default"],
   meta: {
     requiresAuth: true
   }
@@ -113910,17 +114121,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaOraAdmin.vue?vue&type=template&id=d54d8796& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796&");
-/* harmony import */ var _cancellaOraAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cancellaOraAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js&");
+/* harmony import */ var _cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0&");
+/* harmony import */ var _cancellaPrenAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cancellaPrenAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -113930,9 +114141,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _cancellaOraAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _cancellaPrenAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -113942,54 +114153,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue"
+component.options.__file = "resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaOraAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaOraAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaOraAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaPrenAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaPrenAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaPrenAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796&":
-/*!*****************************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796& ***!
-  \*****************************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0& ***!
+  \******************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaOraAdmin.vue?vue&type=template&id=d54d8796& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaOraAdmin.vue?vue&type=template&id=d54d8796&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaPrenAdmin.vue?vue&type=template&id=2afd1af0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaOraAdmin_vue_vue_type_template_id_d54d8796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaPrenAdmin_vue_vue_type_template_id_2afd1af0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue ***!
+  \*****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9&");
-/* harmony import */ var _moduloCancellaOraSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./moduloCancellaOraSocio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js&");
+/* harmony import */ var _cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63&");
+/* harmony import */ var _cancellaVisualizzaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cancellaVisualizzaAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -113999,9 +114210,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _moduloCancellaOraSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _cancellaVisualizzaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -114011,38 +114222,107 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue"
+component.options.__file = "resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancellaOraSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./moduloCancellaOraSocio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancellaOraSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaVisualizzaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaVisualizzaAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaVisualizzaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9&":
-/*!***********************************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9& ***!
-  \***********************************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63&":
+/*!************************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63& ***!
+  \************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/moduloCancellaOraSocio.vue?vue&type=template&id=22fa10a9&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/cancellaVisualizzaAdmin.vue?vue&type=template&id=31179d63&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_moduloCancellaOraSocio_vue_vue_type_template_id_22fa10a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cancellaVisualizzaAdmin_vue_vue_type_template_id_31179d63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./padreCancellaAdmin.vue?vue&type=template&id=1c04690f& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f&");
+/* harmony import */ var _padreCancellaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./padreCancellaAdmin.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _padreCancellaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_padreCancellaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./padreCancellaAdmin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_padreCancellaAdmin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./padreCancellaAdmin.vue?vue&type=template&id=1c04690f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue?vue&type=template&id=1c04690f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_padreCancellaAdmin_vue_vue_type_template_id_1c04690f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -115032,8 +115312,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
