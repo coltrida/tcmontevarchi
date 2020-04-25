@@ -4420,20 +4420,138 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Helpers_ImportiRicaricaStorno__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Helpers/ImportiRicaricaStorno */ "./resources/js/Helpers/ImportiRicaricaStorno.js");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['socio'],
+  data: function data() {
+    return {
+      select: 0,
+      importo: _Helpers_ImportiRicaricaStorno__WEBPACK_IMPORTED_MODULE_0__["default"].importi(),
+      utente: []
+    };
+  },
+  methods: {
+    ricarica: function ricarica() {
+      var _this = this;
+
+      axios.post("/api/admin/ricaricaCredito/".concat(this.socio.id), {
+        importo: this.select
+      }).then(function () {
+        _this.select = 0;
+        _this.socio.credito = parseFloat(parseFloat(_this.socio.credito) + parseFloat(_this.select)).toFixed(2);
+        alert('Socio Ricaricato');
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio */ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Socio: _Socio__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      filtro: '',
+      soci: {}
+    };
+  },
+  methods: {
+    filtraggio: function filtraggio() {
+      var _this = this;
+
+      axios.post('/api/auth/users/' + this.filtro).then(function (res) {
+        _this.soci = res.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4454,20 +4572,138 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Helpers_ImportiRicaricaStorno__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Helpers/ImportiRicaricaStorno */ "./resources/js/Helpers/ImportiRicaricaStorno.js");
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['socio'],
+  data: function data() {
+    return {
+      select: 0,
+      importo: _Helpers_ImportiRicaricaStorno__WEBPACK_IMPORTED_MODULE_0__["default"].importi(),
+      utente: []
+    };
+  },
+  methods: {
+    ricarica: function ricarica() {
+      var _this = this;
+
+      axios.post("/api/admin/stornaCredito/".concat(this.socio.id), {
+        importo: this.select
+      }).then(function () {
+        _this.select = 0;
+        _this.socio.credito = parseFloat(parseFloat(_this.socio.credito) - parseFloat(_this.select)).toFixed(2);
+        alert('Socio Stornato');
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio */ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Socio: _Socio__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      filtro: '',
+      soci: {}
+    };
+  },
+  methods: {
+    filtraggio: function filtraggio() {
+      var _this = this;
+
+      axios.post('/api/auth/users/' + this.filtro).then(function (res) {
+        _this.soci = res.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4623,58 +4859,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['passaggio', 'indice'],
   data: function data() {
     return {};
   },
-  created: function created() {//console.log(this.passaggio);
-  },
   methods: {
     cancella: function cancella() {
-      //console.log(this.indice)
       EventBus.$emit('cancellazioneOra', this.indice);
     }
   }
@@ -54496,10 +54687,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54511,7 +54702,180 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("via")])
+  return _c(
+    "v-form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.ricarica($event)
+        }
+      }
+    },
+    [
+      _c(
+        "v-list-item",
+        [
+          _c(
+            "v-row",
+            {
+              staticStyle: {
+                border: "1px solid gray",
+                display: "flex",
+                "align-items": "center"
+              },
+              attrs: { "auto-grow": "" }
+            },
+            [
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.nome) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.cognome) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.credito) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.anno) + " ")]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                [
+                  _c("v-select", {
+                    attrs: { items: _vm.importo, label: "importi" },
+                    model: {
+                      value: _vm.select,
+                      callback: function($$v) {
+                        _vm.select = $$v
+                      },
+                      expression: "select"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "mt-3",
+                      attrs: { color: "green", type: "submit" }
+                    },
+                    [_vm._v("\n                    Ricarica\n                ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Nome/Cognome", required: "" },
+                on: { keyup: _vm.filtraggio },
+                model: {
+                  value: _vm.filtro,
+                  callback: function($$v) {
+                    _vm.filtro = $$v
+                  },
+                  expression: "filtro"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c("v-col", [_vm._v("Nome:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Cognome:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Credito:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Anno:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Importo:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Azione:")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c(
+            "v-col",
+            _vm._l(_vm.soci, function(socio) {
+              return _c("socio", { key: socio.id, attrs: { socio: socio } })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54544,10 +54908,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e&":
-/*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e& ***!
-  \******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -54559,7 +54923,180 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("bee")])
+  return _c(
+    "v-form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.ricarica($event)
+        }
+      }
+    },
+    [
+      _c(
+        "v-list-item",
+        [
+          _c(
+            "v-row",
+            {
+              staticStyle: {
+                border: "1px solid gray",
+                display: "flex",
+                "align-items": "center"
+              },
+              attrs: { "auto-grow": "" }
+            },
+            [
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.nome) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.cognome) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.credito) + " ")]),
+              _vm._v(" "),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.anno) + " ")]),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                [
+                  _c("v-select", {
+                    attrs: { items: _vm.importo, label: "importi" },
+                    model: {
+                      value: _vm.select,
+                      callback: function($$v) {
+                        _vm.select = $$v
+                      },
+                      expression: "select"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "mt-3",
+                      attrs: { color: "green", type: "submit" }
+                    },
+                    [_vm._v("\n                    Storna\n                ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "4" } },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Nome/Cognome", required: "" },
+                on: { keyup: _vm.filtraggio },
+                model: {
+                  value: _vm.filtro,
+                  callback: function($$v) {
+                    _vm.filtro = $$v
+                  },
+                  expression: "filtro"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c("v-col", [_vm._v("Nome:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Cognome:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Credito:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Anno:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Importo:")]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v("Azione:")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          staticStyle: {
+            border: "1px solid gray",
+            display: "flex",
+            "align-items": "center"
+          },
+          attrs: { "auto-grow": "" }
+        },
+        [
+          _c(
+            "v-col",
+            _vm._l(_vm.soci, function(socio) {
+              return _c("socio", { key: socio.id, attrs: { socio: socio } })
+            }),
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54655,31 +55192,35 @@ var render = function() {
         [
           _c("v-col", [
             _vm._v(
-              "\r\n           \r\n     " +
+              "\n            " +
                 _vm._s(_vm.passaggio.dataprenotazione) +
-                "\r\n      \r\n    "
+                "\n        "
             )
           ]),
           _vm._v(" "),
           _c("v-col", [
-            _vm._v("     \r\n     " + _vm._s(_vm.passaggio.oraon) + "\r\n    ")
-          ]),
-          _vm._v(" "),
-          _c("v-col", [
-            _vm._v(" \r\n     " + _vm._s(_vm.passaggio.campo) + "\r\n    ")
+            _vm._v(
+              "\n            " + _vm._s(_vm.passaggio.oraon) + "\n        "
+            )
           ]),
           _vm._v(" "),
           _c("v-col", [
             _vm._v(
-              "\r\n        " +
+              "\n            " + _vm._s(_vm.passaggio.campo) + "\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              "\n            " +
                 _vm._s(_vm.passaggio.username1) +
                 " " +
                 _vm._s(_vm.passaggio.username2) +
-                "\r\n          " +
+                "\n            " +
                 _vm._s(_vm.passaggio.username3) +
                 " " +
                 _vm._s(_vm.passaggio.username4) +
-                "\r\n          "
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -113080,6 +113621,40 @@ var Exception = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/js/Helpers/ImportiRicaricaStorno.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/Helpers/ImportiRicaricaStorno.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ImportiRicaricaStorno = /*#__PURE__*/function () {
+  function ImportiRicaricaStorno() {
+    _classCallCheck(this, ImportiRicaricaStorno);
+  }
+
+  _createClass(ImportiRicaricaStorno, [{
+    key: "importi",
+    value: function importi() {
+      return [2, 5, 10, 15, 30, 50];
+    }
+  }]);
+
+  return ImportiRicaricaStorno;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (ImportiRicaricaStorno = new ImportiRicaricaStorno());
+
+/***/ }),
+
 /***/ "./resources/js/Helpers/Prenotazioni.js":
 /*!**********************************************!*\
   !*** ./resources/js/Helpers/Prenotazioni.js ***!
@@ -113369,7 +113944,7 @@ var User = /*#__PURE__*/function () {
   }, {
     key: "admin",
     value: function admin() {
-      return this.id() == 16;
+      return this.stato() == 'admin';
     }
   }, {
     key: "eta",
@@ -113414,8 +113989,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue");
 /* harmony import */ var _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/pannelloAdmin/inserisciSocio */ "./resources/js/components/pannelloAdmin/inserisciSocio.vue");
 /* harmony import */ var _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/pannelloAdmin/sociAdmin */ "./resources/js/components/pannelloAdmin/sociAdmin.vue");
-/* harmony import */ var _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito.vue");
-/* harmony import */ var _components_pannelloAdmin_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/pannelloAdmin/ricaricaCredito */ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue");
+/* harmony import */ var _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue");
+/* harmony import */ var _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/pannelloAdmin/ricaricaCredito/ricaricaCredito */ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue");
 /* harmony import */ var _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/pannelloAdmin/news/insNews */ "./resources/js/components/pannelloAdmin/news/insNews.vue");
 
 
@@ -113497,25 +114072,25 @@ var routes = [{
   path: '/prenSpeciali',
   component: _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/cancSpeciali',
   component: _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/cancellaOraSocio',
   component: _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/inserisciSocio',
   component: _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/sociAdmin',
@@ -113525,15 +114100,15 @@ var routes = [{
   }
 }, {
   path: '/stornaCredito',
-  component: _components_pannelloAdmin_stornaCredito__WEBPACK_IMPORTED_MODULE_17__["default"],
+  component: _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_17__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/ricaricaCredito',
-  component: _components_pannelloAdmin_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__["default"],
+  component: _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__["default"],
   meta: {
-    requiresAuth: true
+    requiresAdmin: true
   }
 }, {
   path: '/insNews',
@@ -113549,6 +114124,13 @@ router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (r) {
     return r.meta.requiresAuth;
   }) && !User.loggedIn()) {
+    window.location = '/';
+    return;
+  }
+
+  if (to.matched.some(function (r) {
+    return r.meta.requiresAdmin;
+  }) && !User.admin()) {
     window.location = '/';
     return;
   }
@@ -114583,18 +115165,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ricaricaCredito.vue?vue&type=template&id=1f1803f6& */ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6&");
-/* harmony import */ var _ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ricaricaCredito.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=f77d9f18& */ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18&");
+/* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -114603,9 +115185,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -114615,38 +115197,107 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/ricaricaCredito.vue"
+component.options.__file = "resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ricaricaCredito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18& ***!
+  \********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ricaricaCredito.vue?vue&type=template&id=1f1803f6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito.vue?vue&type=template&id=1f1803f6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=template&id=f77d9f18& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/Socio.vue?vue&type=template&id=f77d9f18&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_1f1803f6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_f77d9f18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ricaricaCredito.vue?vue&type=template&id=3c7f311a& */ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a&");
+/* harmony import */ var _ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ricaricaCredito.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ricaricaCredito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ricaricaCredito.vue?vue&type=template&id=3c7f311a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue?vue&type=template&id=3c7f311a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ricaricaCredito_vue_vue_type_template_id_3c7f311a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -114721,18 +115372,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/stornaCredito.vue":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/stornaCredito.vue ***!
-  \*****************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stornaCredito.vue?vue&type=template&id=94733e6e& */ "./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e&");
-/* harmony import */ var _stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stornaCredito.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=377d6307& */ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307&");
+/* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -114741,9 +115392,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -114753,38 +115404,107 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/stornaCredito.vue"
+component.options.__file = "resources/js/components/pannelloAdmin/stornaCredito/Socio.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./stornaCredito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307& ***!
+  \******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./stornaCredito.vue?vue&type=template&id=94733e6e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito.vue?vue&type=template&id=94733e6e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=template&id=377d6307& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/Socio.vue?vue&type=template&id=377d6307&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_94733e6e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_377d6307___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stornaCredito.vue?vue&type=template&id=8d1d21ce& */ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce&");
+/* harmony import */ var _stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stornaCredito.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./stornaCredito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./stornaCredito.vue?vue&type=template&id=8d1d21ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue?vue&type=template&id=8d1d21ce&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_stornaCredito_vue_vue_type_template_id_8d1d21ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
