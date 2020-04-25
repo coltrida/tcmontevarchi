@@ -2526,7 +2526,7 @@ __webpack_require__.r(__webpack_exports__);
       /* ------------ ILLIMITATI ---------------*/
 
       if (this.stato == 'illimitati' || this.stato == 'admin') {
-        axios.post('/api/prenotazioni' + this.id, {
+        axios.post('/api/prenotazioni/' + this.id, {
           username: User.id(),
           campo: this.campo,
           dataprenotazione: this.giorno,
@@ -4803,9 +4803,12 @@ __webpack_require__.r(__webpack_exports__);
               /* ------------ SINGOLO ---------------*/
               if (_this.prenotazioni[passaggio].doppio == 'S') {
                 costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardSingolo();
-              } else if (_this.prenotazioni[passaggio].doppio == 'D') {
-                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardDoppio();
-              } //alert(this.credito+' + '+costoPrenotazione)
+              } else
+                /* ------------ DOPPIO ---------------*/
+                if (_this.prenotazioni[passaggio].doppio == 'D') {
+                  console.log(_this.prenotazioni[passaggio].id);
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardDoppio();
+                } //alert(this.credito+' + '+costoPrenotazione)
 
 
           _this.credito = parseFloat(parseFloat(_this.credito) + parseFloat(costoPrenotazione)).toFixed(2);

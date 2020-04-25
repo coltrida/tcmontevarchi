@@ -157,7 +157,7 @@
 
                 /* ------------ ILLIMITATI ---------------*/
                 if(this.stato == 'illimitati' || this.stato == 'admin'){
-                    axios.post('/api/prenotazioni'+this.id,{
+                    axios.post('/api/prenotazioni/'+this.id,{
                         username: User.id(),
                         campo: this.campo,
                         dataprenotazione: this.giorno,
