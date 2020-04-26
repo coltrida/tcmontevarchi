@@ -16,10 +16,12 @@ class SociResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'nome' => $this->nome,
             'cognome' => $this->cognome,
             'anno' => $this->anno,
             'status' => $this->tipo,
+            'telegram' => $this->user_id,
             'foto' => 'http://tcmontevarchi.altervista.org/storage/soci/'.$this->id.'.jpg',
             'totSoci' => Socio::count()
         ];

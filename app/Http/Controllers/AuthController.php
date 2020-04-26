@@ -24,10 +24,10 @@ class AuthController extends Controller
     public function index($valore='')
     {
         if($valore){
-            return User::where('nome', 'like', "%$valore%")
+            return UserResource::collection(User::where('nome', 'like', "%$valore%")
                 ->orWhere('cognome', 'like', "%$valore%")
                 ->latest()
-                ->get();
+                ->get());
         }else{
             //dd('qui');
             return "";
@@ -60,6 +60,8 @@ class AuthController extends Controller
         ])->first();
 
         if ($socio){
+            //dd($socio->status);
+            $request['status'] = $socio->status;
             $user = User::create($request->all());
             $socio->username = $request->input('username');
             $socio->save();
@@ -163,9 +165,9 @@ class AuthController extends Controller
         return PrenotazioniResource::collection($prenotazioni);
     }
 
-    public function prenotazioniUtenteSelezionato(Request $request)
+    public function prenotazioniUtenteSelezionato($id)
     {
-        $username = $request->input('id');
+        $username = $id;
         $prenotazioni = Prenotazione::where('username1', $username)->
         orWhere('username2', $username)->
         orWhere('username3', $username)->
@@ -175,9 +177,10 @@ class AuthController extends Controller
         return PrenotazioniResource::collection($prenotazioni);
     }
 
-    public function foto(Request $request)
+    public function foto(User $user, Request $request)
     {
-        dd('ciao');
+        $imagename = $user->id.'.jpg';
+        $request->image->storeAs('soci', $imagename);
     }
 
     public function reimposta(Request $request)

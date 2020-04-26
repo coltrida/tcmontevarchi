@@ -10,8 +10,9 @@ Route::post('/prenotazioni/{user}', 'PrenotazioniController@store')->name('preno
 Route::apiResource('/prenotazioni', 'PrenotazioniController');
 Route::post('/prenotazionispecifiche', 'PrenotazioniController@index');
 Route::post('/full', 'PrenotazioniController@full');
+Route::post('/inviaMessaggioSocio/{user}', 'SociController@inviaTelegram');
+Route::get('/soci/visualizzaDinamica/{valore?}', 'SociController@index')->name('soci.index');
 Route::apiResource('/soci', 'SociController');
-Route::post('/soci/visualizza/{valore?}', 'SociController@index')->name('soci.index');
 
 Route::group([
     'prefix' => 'auth'
@@ -22,10 +23,10 @@ Route::group([
     Route::post('logout', 'AuthController@logout')->name('logout');
     Route::post('refresh', 'AuthController@refresh')->name('refresh');
     Route::post('me', 'AuthController@me')->name('me');
-    Route::post('foto', 'AuthController@foto')->name('foto');
+    Route::post('foto/{user}', 'AuthController@foto')->name('foto');
     Route::patch('update/{user}', 'AuthController@update')->name('update');
     Route::get('prenotazioni', 'AuthController@prenotazioni');
-    Route::post('prenotazioniUtenteSelezionato', 'AuthController@prenotazioniUtenteSelezionato');
+    Route::get('prenotazioniUtenteSelezionato/{id}', 'AuthController@prenotazioniUtenteSelezionato');
     Route::post('payload', 'AuthController@payload')->name('payload');
     Route::post('inviaNews', 'NewsController@invia');
 
@@ -36,4 +37,5 @@ Route::group([
 ], function () {
     Route::post('ricaricaCredito/{user}', 'AdminController@ricaricaCredito');
     Route::post('stornaCredito/{user}', 'AdminController@stornaCredito');
+    Route::post('inserisciSocio', 'AdminController@inserisciSocio');
 });

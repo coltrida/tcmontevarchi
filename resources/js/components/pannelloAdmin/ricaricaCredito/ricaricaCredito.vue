@@ -46,7 +46,7 @@
         methods:{
             filtraggio: function(){
                 axios.post('/api/auth/users/'+this.filtro)
-                    .then(res => {this.soci= res.data})
+                    .then(res => {this.soci= res.data.data})
             }
         },
 

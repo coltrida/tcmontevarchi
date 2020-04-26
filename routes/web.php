@@ -7,6 +7,8 @@ Route::view('/', 'home');
 Route::post('/reimposta', 'AuthController@reimposta');
 Route::post('/salvareimpostazioni', 'AuthController@salvareimpostazioni')->name('reimposta');
 
+Route::get('/caricaGratis', 'AdminController@caricaGratis');
+
 // per le spa bisogno mettere questo
 Route::view('/{any}', 'home');
 // e anche un secondo livello di rotta per il metodo show ad esempio

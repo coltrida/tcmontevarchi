@@ -159,15 +159,19 @@ class PrenotazioniController extends Controller
         } elseif($prenotazioni->username1 == $username) {
             $prenotazioni->username1 = null;
             $prenotazioni->save();
+            $elimina = 0;
         } elseif ($prenotazioni->username2 == $username) {
             $prenotazioni->username2 = null;
             $prenotazioni->save();
+            $elimina = 0;
         } elseif ($prenotazioni->username3 == $username) {
             $prenotazioni->username3 = null;
             $prenotazioni->save();
+            $elimina = 0;
         } elseif ($prenotazioni->username4 == $username) {
             $prenotazioni->username4 = null;
             $prenotazioni->save();
+            $elimina = 0;
         }
 
         return $elimina;

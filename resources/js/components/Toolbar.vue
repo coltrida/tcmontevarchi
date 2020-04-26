@@ -41,7 +41,7 @@
                         <v-list dark>
                             <v-list-item>
                                 <v-list-item-avatar>
-                                    <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                                    <v-img :src=foto></v-img>
                                 </v-list-item-avatar>
                                 <v-list-item-content>
                                     <v-list-item-title>{{nome}} {{cognome}}</v-list-item-title>
@@ -62,7 +62,7 @@
                                 <!--<v-list-item-action>
                                     <v-icon>mdi-briefcase</v-icon>
                                 </v-list-item-action>-->
-                                <v-list-item-subtitle v-if="stato=='gratis'">Ore gratis: {{privilegi}}</v-list-item-subtitle>
+                                <v-list-item-subtitle v-if="stato=='gratis' || stato=='illimitati'">Ore gratis: {{privilegi}}</v-list-item-subtitle>
                                 <v-list-item-subtitle v-else-if="stato=='illimitati'">Ore gratis: illimitate</v-list-item-subtitle>
                                 <v-list-item-subtitle>Credito: € {{credito}}</v-list-item-subtitle>
                             </v-list-item>
@@ -117,8 +117,16 @@
                 ]
             }
         },
+
+        computed:{
+            foto(){
+                return `http://tcmontevarchi.altervista.org/storage/soci/${User.id()}.jpg`
+            }
+        },
+
         created() {
             EventBus.$on('prenotazioneOra', (credito, privilegi) => {
+                //alert(credito+' - '+privilegi)
                 this.credito = credito
                 this.privilegi = privilegi
             })

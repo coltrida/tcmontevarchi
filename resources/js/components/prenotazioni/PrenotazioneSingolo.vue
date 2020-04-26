@@ -18,7 +18,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto1></v-img>
                         </v-avatar>
                         {{ prenotazione.username1 }}
                       </v-chip>
@@ -27,7 +27,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto1></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider1</v-list-item-title>
@@ -71,7 +71,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto2></v-img>
                         </v-avatar>
                         {{ prenotazione.username2 }}
                       </v-chip>
@@ -80,7 +80,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto2></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider2</v-list-item-title>
@@ -137,12 +137,19 @@
             return {
                 menu1: false,
                 menu2: false,
+                foto1:'',
+                foto2:''
             }
         },
 
         created() {
-            //console.log('ciao')
-            //EventBus.$emit('prenotazioneFull', 'ciao')
+            if(this.prenotazione.username1){
+                this.foto1 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id1}.jpg`
+            }
+            if(this.prenotazione.username2){
+                this.foto2 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id2}.jpg`
+            }
+
             if (this.prenotazione.username1 && this.prenotazione.username2){
                 EventBus.$emit('prenotazioneFull', this.prenotazione.username1+this.prenotazione.oraon+this.prenotazione.campo)
                 //console.log('full')
