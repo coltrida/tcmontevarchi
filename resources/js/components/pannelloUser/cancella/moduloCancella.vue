@@ -83,7 +83,6 @@ export default {
                 } else
                 /* ------------ DOPPIO ---------------*/
                 if (this.prenotazioni[passaggio].doppio == 'D'){
-                    console.log(this.prenotazioni[passaggio].id)
                     costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
                 }
                     //alert(this.credito+' + '+costoPrenotazione)
@@ -92,12 +91,18 @@ export default {
             }
 
             //console.log('/api/prenotazioni/'+this.prenotazioni[passaggio].id)
-            axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id+'/'+User.id()+'/'+this.credito+'/'+this.privilegi).then(
-                (res) => {
-                    //location.reload()
-                    this.prenotazioni.splice(passaggio, 1)
+            axios.delete('/api/prenotazioni/'+this.prenotazioni[passaggio].id+'/'+User.id()+'/'+this.credito+'/'+this.privilegi)
+                .then((res) => {
+                    /*if(res.data=1){
+                        this.prenotazioni.splice(passaggio, 1)
+                    } else {
+                        location.reload()
+                    }*/
+                    location.reload()
+                    alert('Prenotazione Eliminata')
                     EventBus.$emit('cancellazioneOraRicarica', this.credito, this.privilegi)
                 })
+                .catch(error => alert('Errore'))
         })
         
     },

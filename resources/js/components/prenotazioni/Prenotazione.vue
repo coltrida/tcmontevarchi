@@ -110,7 +110,7 @@
                 privilegi: User.privilegi(),
                 id: User.id(),
                 pren: {},
-                sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
+                sound: "http://tcmontevarchi.altervista.org/sound/shot.mp3",
                 scelta: 0
             }
         },
@@ -119,6 +119,14 @@
             reversedGiorno: function () {
                 return this.giorno.split('-').reverse().join('-')
             },
+
+            resultCredito(){
+                return AppStorage.getCredito()
+            },
+
+            resultPrivilegi(){
+                return AppStorage.getPrivilegi()
+            }
 
         },
 
@@ -154,9 +162,8 @@
                 this.dialog = false
                 let tipoPrenotazione = this.pren.doppio ? this.pren.doppio : this.scelta
                 let costoPrenotazione = 0
-
-                /* ------------ ILLIMITATI ---------------*/
-                if(this.stato == 'illimitati' || this.stato == 'admin'){
+                /* ------------ ADMIN ---------------*/
+                if(this.stato == 'admin'){
                     axios.post('/api/prenotazioni/'+this.id,{
                         username: User.id(),
                         campo: this.campo,
@@ -172,12 +179,54 @@
                             EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                         })
                 } else
+                /* ------------ ILLIMITATI ---------------*/
+                /*if(this.stato == 'illimitati'){
+                    /!* ------------ PAGA CON I PRIVILEGI ---------------*!/
+                    if (this.resultPrivilegi > 0){
+                        //console.log('prima '+this.privilegi)
+                        this.privilegi = this.resultPrivilegi - 1
+                        AppStorage.storePrivilegi(this.privilegi)
+                        //console.log('dopo '+this.privilegi)
+                        axios.post('/api/prenotazioni/'+this.id,{
+                            username: User.id(),
+                            campo: this.campo,
+                            dataprenotazione: this.giorno,
+                            datamessaggio: this.giorno.split('-').reverse().join('-'),
+                            oraon: this.orario,
+                            doppio: tipoPrenotazione,
+                            privilegi: this.privilegi,
+                            credito: this.credito,
+                        })
+                            .then(res => {
+                                this.playSound()
+                                EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
+                            })
+                    } else {
+                        /!* ------------ CONTINUA A PRENOTARE ANCHE CON PRIVILEGI 0 ---------------*!/
+                        axios.post('/api/prenotazioni/'+this.id,{
+                            username: User.id(),
+                            campo: this.campo,
+                            dataprenotazione: this.giorno,
+                            datamessaggio: this.giorno.split('-').reverse().join('-'),
+                            oraon: this.orario,
+                            doppio: tipoPrenotazione,
+                            privilegi: this.privilegi,
+                            credito: this.credito,
+                        })
+                            .then(res => {
+                                this.playSound()
+                                EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
+                            })
+                    }
+                } else*/
                 /* ------------ GRATIS ---------------*/
-                    if(this.stato == 'gratis'){
+                    if(this.stato == 'gratis' || this.stato=='illimitati'){
                         /* ------------ PAGA CON I PRIVILEGI ---------------*/
-                        if (this.privilegi > 0){
-                            this.privilegi--
+                        if (this.resultPrivilegi > 0){
+                            //console.log('prima '+this.privilegi)
+                            this.privilegi = this.resultPrivilegi - 1
                             AppStorage.storePrivilegi(this.privilegi)
+                            //console.log('dopo '+this.privilegi)
                             axios.post('/api/prenotazioni/'+this.id,{
                                 username: User.id(),
                                 campo: this.campo,
@@ -193,6 +242,7 @@
                                     EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                                 })
                         } else {
+                            if(this.stato=='gratis'){
                             alert('Hai finito le ore gratis')
                             /* ------------ PAGA CON I SOLDI ---------------*/
                             /* ------------ UNDER ---------------*/
@@ -210,8 +260,8 @@
                                         if (tipoPrenotazione == 1 || tipoPrenotazione == 'D'){
                                             costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
                                         }
-                            if (this.credito >= costoPrenotazione){
-                                this.credito = parseFloat(this.credito - costoPrenotazione)
+                            if (this.resultCredito >= costoPrenotazione){
+                                this.credito = parseFloat(this.resultCredito - costoPrenotazione)
                                 AppStorage.storeCredito(this.credito)
                                 axios.post('/api/prenotazioni/'+this.id,{
                                     username: User.id(),
@@ -220,17 +270,17 @@
                                     datamessaggio: this.giorno.split('-').reverse().join('-'),
                                     oraon: this.orario,
                                     doppio: tipoPrenotazione,
-                                    privilegi: this.privilegi,
+                                    privilegi: 0,
                                     credito: this.credito,
                                 })
                                     .then(res => {
                                         this.playSound()
-                                        EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
+                                        EventBus.$emit('prenotazioneOra', this.credito, 0)
                                     })
                             } else {
                                 alert('Credito Insufficiente')
                             }
-                        }
+                        }}
                 } else
                     /* ------------ STANDARD ---------------*/
                     if(this.stato == 'normale'){
@@ -249,8 +299,9 @@
                         if (tipoPrenotazione == 1 || tipoPrenotazione == 'D'){
                             costoPrenotazione = CostiPrenotazioni.prezzoStandardDoppio()
                         }
-                        if (this.credito >= costoPrenotazione){
-                            this.credito = parseFloat(this.credito - costoPrenotazione)
+                        if (this.resultCredito >= costoPrenotazione){
+                            //console.log('prima' + this.resultCredito + ' - ' + AppStorage.getCredito())
+                            this.credito = parseFloat(this.resultCredito - costoPrenotazione)
                             AppStorage.storeCredito(this.credito)
                             axios.post('/api/prenotazioni/'+this.id,{
                                 username: User.id(),
@@ -263,6 +314,7 @@
                                 credito: this.credito,
                             })
                                 .then(res => {
+                                    //console.log('dopo' + this.credito + ' - ' + AppStorage.getCredito())
                                     this.playSound()
                                     EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
                                 })

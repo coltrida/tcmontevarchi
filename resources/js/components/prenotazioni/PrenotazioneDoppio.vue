@@ -20,7 +20,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto1></v-img>
                         </v-avatar>
                         {{ prenotazione.username1 }}
                       </v-chip>
@@ -29,7 +29,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto1></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider</v-list-item-title>
@@ -73,7 +73,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto3></v-img>
                         </v-avatar>
                         {{ prenotazione.username3 }}
                       </v-chip>
@@ -82,7 +82,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto3></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider</v-list-item-title>
@@ -127,7 +127,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto2></v-img>
                         </v-avatar>
                         {{ prenotazione.username2 }}
                       </v-chip>
@@ -136,7 +136,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto2></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider</v-list-item-title>
@@ -180,7 +180,7 @@
                               style="width: 138px"
                       >
                         <v-avatar left>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                          <v-img :src=foto4></v-img>
                         </v-avatar>
                         {{ prenotazione.username4 }}
                       </v-chip>
@@ -189,7 +189,7 @@
                       <v-list dark>
                         <v-list-item>
                           <v-list-item-avatar>
-                            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                            <v-img :src=foto4></v-img>
                           </v-list-item-avatar>
                           <v-list-item-content>
                             <v-list-item-title>John Leider</v-list-item-title>
@@ -255,7 +255,27 @@
                 menu2: false,
                 menu3: false,
                 menu4: false,
+                foto1:'',
+                foto2:'',
+                foto3:'',
+                foto4:'',
             }
+        },
+
+        created() {
+            if(this.prenotazione.username1){
+                this.foto1 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id1}.jpg`
+            }
+            if(this.prenotazione.username2){
+                this.foto2 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id2}.jpg`
+            }
+            if(this.prenotazione.username3){
+                this.foto3 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id3}.jpg`
+            }
+            if(this.prenotazione.username4){
+                this.foto4 = `http://tcmontevarchi.altervista.org/storage/soci/${this.prenotazione.id4}.jpg`
+            }
+
         }
     }
 </script>

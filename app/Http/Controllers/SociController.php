@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SociRequest;
 use App\Http\Resources\SociResource;
 use App\Models\Socio;
+use App\Notifications\TelegramNotificationMessUser;
+use App\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,16 +19,15 @@ class SociController extends Controller
      */
     public function index($valore='')
     {
-        //dd($valore);
         if($valore){
             //dd('qui');
-            return SociResource::collection(Socio::where('nome', 'like', "%$valore%")
+            return SociResource::collection(User::where('nome', 'like', "%$valore%")
                 ->orWhere('cognome', 'like', "%$valore%")
-                ->latest()
+                ->orderBy('cognome', 'asc')
                 ->paginate(10));
         }else{
             //dd('qui');
-            return SociResource::collection(Socio::latest()->paginate(10));
+            return SociResource::collection(User::orderBy('cognome', 'asc')->paginate(10));
         }
 
     }
@@ -87,5 +88,10 @@ class SociController extends Controller
     {
         $soci->delete();
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function inviaTelegram(User $user, Request $request)
+    {
+        $user->notify(new TelegramNotificationMessUser($request->input('testo'), $user->user_id));
     }
 }

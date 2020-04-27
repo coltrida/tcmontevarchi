@@ -10,14 +10,14 @@ import Logout from '../components/login/Logout'
 import Registrati from '../components/login/Registrati'
 
 import Modifica from '../components/pannelloUser/modificaUser'
-import CaricaFoto from '../components/pannelloUser/caricaFoto'
+import CaricaFoto from '../components/pannelloUser/caricaFoto/caricaFoto'
 import CancellaOra from '../components/pannelloUser/cancella/moduloCancella'
-import CercaAmico from '../components/pannelloUser/cercaAmico'
-import Soci from '../components/pannelloUser/listaSoci/listaSoci'
+import CercaAmico from '../components/pannelloUser/cercaAmico/cercaAmico'
+//import Soci from '../components/pannelloUser/listaSoci/listaSoci'
 import PrenSpeciali from '../components/pannelloAdmin/prenSpeciali'
 import CancSpeciali from '../components/pannelloAdmin/cancSpeciali'
 import CancellaOraSocio from '../components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin'
-import InserisciSocio from '../components/pannelloAdmin/inserisciSocio'
+import InserisciSocio from '../components/pannelloAdmin/inserimentoSocio/inserisciSocio'
 import SociAdmin from '../components/pannelloAdmin/sociAdmin'
 import StornaCredito from '../components/pannelloAdmin/stornaCredito/stornaCredito'
 import RicaricaCredito from '../components/pannelloAdmin/ricaricaCredito/ricaricaCredito'
@@ -35,8 +35,8 @@ const routes = [
      { path: '/caricaFoto', component: CaricaFoto, meta: {requiresAuth: true} },
      { path: '/cancellaOra', component: CancellaOra, meta: {requiresAuth: true} },
      { path: '/cercaAmico', component: CercaAmico, meta: {requiresAuth: true} },
-     { path: '/soci', component: Soci, meta: {requiresAuth: true} },
-     { path: '/contatti', component: Soci, meta: {requiresAuth: true} },
+    // { path: '/soci', component: Soci, meta: {requiresAuth: true} },
+    // { path: '/contatti', component: Soci, meta: {requiresAuth: true} },
      { path: '/prenSpeciali', component: PrenSpeciali, meta: {requiresAdmin: true} },
      { path: '/cancSpeciali', component: CancSpeciali, meta: {requiresAdmin: true} },
      { path: '/cancellaOraSocio', component: CancellaOraSocio, meta: {requiresAdmin: true}},

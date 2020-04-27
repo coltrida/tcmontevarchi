@@ -4,7 +4,7 @@
             <v-row auto-grow style="border: 1px solid gray; display: flex; align-items: center">
                 <v-col> {{socio.nome}} </v-col>
                 <v-col> {{socio.cognome}} </v-col>
-                <v-col> {{socio.credito}} </v-col>
+                <v-col> {{socio.credito}}  </v-col>
                 <v-col> {{socio.anno}} </v-col>
                 <v-col>
                     <v-select
@@ -44,8 +44,9 @@
             ricarica(){
                 axios.post(`/api/admin/ricaricaCredito/${this.socio.id}`, {importo : this.select})
                     .then(() => {
-                        this.select = 0
+
                         this.socio.credito = parseFloat(parseFloat(this.socio.credito) + parseFloat(this.select)).toFixed(2)
+                        this.select = 0
                         alert('Socio Ricaricato')
                     })
                     .catch((error) => console.log(error))

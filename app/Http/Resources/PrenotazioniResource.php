@@ -18,6 +18,10 @@ class PrenotazioniResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'id1' => $this->username1,
+            'id2' => $this->username2,
+            'id3' => $this->username3,
+            'id4' => $this->username4,
             'username1' => $this->username1 ? User::where('id', $this->username1)->pluck('cognome')[0] : '',
             'username2' => $this->username2 ? User::where('id', $this->username2)->pluck('cognome')[0] : '',
             'username3' => $this->username3 ? User::where('id', $this->username3)->pluck('cognome')[0] : '',

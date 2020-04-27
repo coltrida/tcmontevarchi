@@ -44,8 +44,8 @@
             ricarica(){
                 axios.post(`/api/admin/stornaCredito/${this.socio.id}`, {importo : this.select})
                     .then(() => {
-                        this.select = 0
                         this.socio.credito = parseFloat(parseFloat(this.socio.credito) - parseFloat(this.select)).toFixed(2)
+                        this.select = 0
                         alert('Socio Stornato')
                     })
                     .catch((error) => console.log(error))

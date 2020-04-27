@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import Socio from './Socio'
+    import Socio from '../cercaAmico/Socio'
     export default {
         components:{Socio},
 

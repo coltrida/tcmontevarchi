@@ -2101,6 +2101,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2484,13 +2500,19 @@ __webpack_require__.r(__webpack_exports__);
       privilegi: User.privilegi(),
       id: User.id(),
       pren: {},
-      sound: "http://soundbible.com/mp3/9mm%20Glock%2017-SoundBible.com-1873916083.mp3",
+      sound: "http://tcmontevarchi.altervista.org/sound/shot.mp3",
       scelta: 0
     };
   },
   computed: {
     reversedGiorno: function reversedGiorno() {
       return this.giorno.split('-').reverse().join('-');
+    },
+    resultCredito: function resultCredito() {
+      return _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].getCredito();
+    },
+    resultPrivilegi: function resultPrivilegi() {
+      return _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].getPrivilegi();
     }
   },
   created: function created() {
@@ -2523,9 +2545,9 @@ __webpack_require__.r(__webpack_exports__);
       this.dialog = false;
       var tipoPrenotazione = this.pren.doppio ? this.pren.doppio : this.scelta;
       var costoPrenotazione = 0;
-      /* ------------ ILLIMITATI ---------------*/
+      /* ------------ ADMIN ---------------*/
 
-      if (this.stato == 'illimitati' || this.stato == 'admin') {
+      if (this.stato == 'admin') {
         axios.post('/api/prenotazioni/' + this.id, {
           username: User.id(),
           campo: this.campo,
@@ -2541,12 +2563,56 @@ __webpack_require__.r(__webpack_exports__);
           EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
         });
       } else
+        /* ------------ ILLIMITATI ---------------*/
+
+        /*if(this.stato == 'illimitati'){
+            /!* ------------ PAGA CON I PRIVILEGI ---------------*!/
+            if (this.resultPrivilegi > 0){
+                //console.log('prima '+this.privilegi)
+                this.privilegi = this.resultPrivilegi - 1
+                AppStorage.storePrivilegi(this.privilegi)
+                //console.log('dopo '+this.privilegi)
+                axios.post('/api/prenotazioni/'+this.id,{
+                    username: User.id(),
+                    campo: this.campo,
+                    dataprenotazione: this.giorno,
+                    datamessaggio: this.giorno.split('-').reverse().join('-'),
+                    oraon: this.orario,
+                    doppio: tipoPrenotazione,
+                    privilegi: this.privilegi,
+                    credito: this.credito,
+                })
+                    .then(res => {
+                        this.playSound()
+                        EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
+                    })
+            } else {
+                /!* ------------ CONTINUA A PRENOTARE ANCHE CON PRIVILEGI 0 ---------------*!/
+                axios.post('/api/prenotazioni/'+this.id,{
+                    username: User.id(),
+                    campo: this.campo,
+                    dataprenotazione: this.giorno,
+                    datamessaggio: this.giorno.split('-').reverse().join('-'),
+                    oraon: this.orario,
+                    doppio: tipoPrenotazione,
+                    privilegi: this.privilegi,
+                    credito: this.credito,
+                })
+                    .then(res => {
+                        this.playSound()
+                        EventBus.$emit('prenotazioneOra', this.credito, this.privilegi)
+                    })
+            }
+        } else*/
+
         /* ------------ GRATIS ---------------*/
-        if (this.stato == 'gratis') {
+        if (this.stato == 'gratis' || this.stato == 'illimitati') {
           /* ------------ PAGA CON I PRIVILEGI ---------------*/
-          if (this.privilegi > 0) {
-            this.privilegi--;
-            _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(this.privilegi);
+          if (this.resultPrivilegi > 0) {
+            //console.log('prima '+this.privilegi)
+            this.privilegi = this.resultPrivilegi - 1;
+            _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storePrivilegi(this.privilegi); //console.log('dopo '+this.privilegi)
+
             axios.post('/api/prenotazioni/' + this.id, {
               username: User.id(),
               campo: this.campo,
@@ -2562,44 +2628,46 @@ __webpack_require__.r(__webpack_exports__);
               EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
             });
           } else {
-            alert('Hai finito le ore gratis');
-            /* ------------ PAGA CON I SOLDI ---------------*/
+            if (this.stato == 'gratis') {
+              alert('Hai finito le ore gratis');
+              /* ------------ PAGA CON I SOLDI ---------------*/
 
-            /* ------------ UNDER ---------------*/
+              /* ------------ UNDER ---------------*/
 
-            if (this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
-              costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
-            } else
-              /* ------------ OVER ---------------*/
-              if (this.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaOver()) {
-                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoOver();
+              if (this.eta <= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaUnder()) {
+                costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoUnder();
               } else
-                /* ------------ SINGOLO ---------------*/
-                if (tipoPrenotazione == 0 || tipoPrenotazione == 'S') {
-                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardSingolo();
-                } else if (tipoPrenotazione == 1 || tipoPrenotazione == 'D') {
-                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
-                }
+                /* ------------ OVER ---------------*/
+                if (this.eta >= _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].etaOver()) {
+                  costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoOver();
+                } else
+                  /* ------------ SINGOLO ---------------*/
+                  if (tipoPrenotazione == 0 || tipoPrenotazione == 'S') {
+                    costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardSingolo();
+                  } else if (tipoPrenotazione == 1 || tipoPrenotazione == 'D') {
+                    costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
+                  }
 
-            if (this.credito >= costoPrenotazione) {
-              this.credito = parseFloat(this.credito - costoPrenotazione);
-              _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
-              axios.post('/api/prenotazioni/' + this.id, {
-                username: User.id(),
-                campo: this.campo,
-                dataprenotazione: this.giorno,
-                datamessaggio: this.giorno.split('-').reverse().join('-'),
-                oraon: this.orario,
-                doppio: tipoPrenotazione,
-                privilegi: this.privilegi,
-                credito: this.credito
-              }).then(function (res) {
-                _this2.playSound();
+              if (this.resultCredito >= costoPrenotazione) {
+                this.credito = parseFloat(this.resultCredito - costoPrenotazione);
+                _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
+                axios.post('/api/prenotazioni/' + this.id, {
+                  username: User.id(),
+                  campo: this.campo,
+                  dataprenotazione: this.giorno,
+                  datamessaggio: this.giorno.split('-').reverse().join('-'),
+                  oraon: this.orario,
+                  doppio: tipoPrenotazione,
+                  privilegi: 0,
+                  credito: this.credito
+                }).then(function (res) {
+                  _this2.playSound();
 
-                EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
-              });
-            } else {
-              alert('Credito Insufficiente');
+                  EventBus.$emit('prenotazioneOra', _this2.credito, 0);
+                });
+              } else {
+                alert('Credito Insufficiente');
+              }
             }
           }
         } else
@@ -2620,8 +2688,9 @@ __webpack_require__.r(__webpack_exports__);
                   costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_2__["default"].prezzoStandardDoppio();
                 }
 
-            if (this.credito >= costoPrenotazione) {
-              this.credito = parseFloat(this.credito - costoPrenotazione);
+            if (this.resultCredito >= costoPrenotazione) {
+              //console.log('prima' + this.resultCredito + ' - ' + AppStorage.getCredito())
+              this.credito = parseFloat(this.resultCredito - costoPrenotazione);
               _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(this.credito);
               axios.post('/api/prenotazioni/' + this.id, {
                 username: User.id(),
@@ -2633,6 +2702,7 @@ __webpack_require__.r(__webpack_exports__);
                 privilegi: this.privilegi,
                 credito: this.credito
               }).then(function (res) {
+                //console.log('dopo' + this.credito + ' - ' + AppStorage.getCredito())
                 _this2.playSound();
 
                 EventBus.$emit('prenotazioneOra', _this2.credito, _this2.privilegi);
@@ -2913,8 +2983,29 @@ __webpack_require__.r(__webpack_exports__);
       menu1: false,
       menu2: false,
       menu3: false,
-      menu4: false
+      menu4: false,
+      foto1: '',
+      foto2: '',
+      foto3: '',
+      foto4: ''
     };
+  },
+  created: function created() {
+    if (this.prenotazione.username1) {
+      this.foto1 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id1, ".jpg");
+    }
+
+    if (this.prenotazione.username2) {
+      this.foto2 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id2, ".jpg");
+    }
+
+    if (this.prenotazione.username3) {
+      this.foto3 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id3, ".jpg");
+    }
+
+    if (this.prenotazione.username4) {
+      this.foto4 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id4, ".jpg");
+    }
   }
 });
 
@@ -3064,12 +3155,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       menu1: false,
-      menu2: false
+      menu2: false,
+      foto1: '',
+      foto2: ''
     };
   },
   created: function created() {
-    //console.log('ciao')
-    //EventBus.$emit('prenotazioneFull', 'ciao')
+    if (this.prenotazione.username1) {
+      this.foto1 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id1, ".jpg");
+    }
+
+    if (this.prenotazione.username2) {
+      this.foto2 = "http://tcmontevarchi.altervista.org/storage/soci/".concat(this.prenotazione.id2, ".jpg");
+    }
+
     if (this.prenotazione.username1 && this.prenotazione.username2) {
       EventBus.$emit('prenotazioneFull', this.prenotazione.username1 + this.prenotazione.oraon + this.prenotazione.campo); //console.log('full')
     }
@@ -3784,10 +3883,16 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
+  computed: {
+    foto: function foto() {
+      return "http://tcmontevarchi.altervista.org/storage/soci/".concat(User.id(), ".jpg");
+    }
+  },
   created: function created() {
     var _this = this;
 
     EventBus.$on('prenotazioneOra', function (credito, privilegi) {
+      //alert(credito+' - '+privilegi)
       _this.credito = credito;
       _this.privilegi = privilegi;
     });
@@ -4342,6 +4447,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4426,10 +4538,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4439,7 +4551,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      Socio: {
+        nome: '',
+        cognome: '',
+        anno: '',
+        stato: ''
+      },
+      valori: [{
+        visualizza: 'normale',
+        valore: 0
+      }, {
+        visualizza: 'special',
+        valore: 2
+      }, {
+        visualizza: 'gratis',
+        valore: 3
+      }, {
+        visualizza: 'illimitati',
+        valore: 4
+      }]
+    };
+  },
+  methods: {
+    inserisci: function inserisci() {
+      var _this = this;
+
+      axios.post('/api/admin/inserisciSocio', this.Socio).then(function () {
+        _this.Socio = '';
+        alert('Socio inserito');
+      })["catch"](function (error) {
+        return alert('Errore');
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4660,8 +4866,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/admin/ricaricaCredito/".concat(this.socio.id), {
         importo: this.select
       }).then(function () {
-        _this.select = 0;
         _this.socio.credito = parseFloat(parseFloat(_this.socio.credito) + parseFloat(_this.select)).toFixed(2);
+        _this.select = 0;
         alert('Socio Ricaricato');
       })["catch"](function (error) {
         return console.log(error);
@@ -4731,7 +4937,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/api/auth/users/' + this.filtro).then(function (res) {
-        _this.soci = res.data;
+        _this.soci = res.data.data;
       });
     }
   }
@@ -4812,8 +5018,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/admin/stornaCredito/".concat(this.socio.id), {
         importo: this.select
       }).then(function () {
-        _this.select = 0;
         _this.socio.credito = parseFloat(parseFloat(_this.socio.credito) - parseFloat(_this.select)).toFixed(2);
+        _this.select = 0;
         alert('Socio Stornato');
       })["catch"](function (error) {
         return console.log(error);
@@ -4988,7 +5194,6 @@ __webpack_require__.r(__webpack_exports__);
               } else
                 /* ------------ DOPPIO ---------------*/
                 if (_this.prenotazioni[passaggio].doppio == 'D') {
-                  console.log(_this.prenotazioni[passaggio].id);
                   costoPrenotazione = _Helpers_Prenotazioni__WEBPACK_IMPORTED_MODULE_1__["default"].prezzoStandardDoppio();
                 } //alert(this.credito+' + '+costoPrenotazione)
 
@@ -4999,10 +5204,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
       axios["delete"]('/api/prenotazioni/' + _this.prenotazioni[passaggio].id + '/' + User.id() + '/' + _this.credito + '/' + _this.privilegi).then(function (res) {
-        //location.reload()
-        _this.prenotazioni.splice(passaggio, 1);
-
+        /*if(res.data=1){
+            this.prenotazioni.splice(passaggio, 1)
+        } else {
+            location.reload()
+        }*/
+        location.reload();
+        alert('Prenotazione Eliminata');
         EventBus.$emit('cancellazioneOraRicarica', _this.credito, _this.privilegi);
+      })["catch"](function (error) {
+        return alert('Errore');
       });
     });
   }
@@ -5060,29 +5271,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5109,45 +5306,39 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       nome: {},
+      id: User.id(),
+      selectedFile: null,
       caricato: false
-      /*rules: [
-          value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
-      ],*/
-
     };
   },
   methods: {
     invia: function invia() {
-      console.log(this.nome); //let formData = new FormData();
-      //formData.append('nome', this.nome);
-      //console.log(formData)
-
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      axios.post('/api/auth/foto', this.nome).then(function (data) {//console.log(data.data);
+      var fd = new FormData();
+      fd.append('image', this.selectedFile, this.selectedFile.name);
+      axios.post("/api/auth/foto/".concat(this.id), fd).then(function (res) {
+        alert('foto caricata');
       });
     },
     carica: function carica() {
       this.caricato = true;
+    },
+    onFileSelected: function onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _listaSoci_Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listaSoci/Socio */ "./resources/js/components/pannelloUser/listaSoci/Socio.vue");
 //
 //
 //
@@ -5158,70 +5349,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    Socio: _listaSoci_Socio__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      filtro: '',
-      prelevati: {}
-    };
-  },
-  created: function created() {
-    this.filtraggio();
-  },
-  methods: {
-    filtraggio: function filtraggio() {
-      var _this = this;
-
-      axios.post('/api/soci/visualizza/' + this.filtro).then(function (res) {
-        _this.prelevati = res.data.data;
-        console.log(_this.prelevati);
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5277,29 +5404,40 @@ __webpack_require__.r(__webpack_exports__);
   props: ['socio'],
   data: function data() {
     return {
-      show: false
+      dialog: false,
+      testoMessaggio: ''
     };
   },
   created: function created() {
     console.log(this.socio);
+  },
+  methods: {
+    invia: function invia() {
+      var _this = this;
+
+      axios.post("/api/inviaMessaggioSocio/".concat(this.socio.id), {
+        testo: this.testoMessaggio
+      }).then(function () {
+        _this.testoMessaggio = '';
+        _this.dialog = false;
+        alert('messaggio inviato');
+      });
+    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio */ "./resources/js/components/pannelloUser/listaSoci/Socio.vue");
-//
-//
-//
+/* harmony import */ var _Socio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio */ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue");
 //
 //
 //
@@ -5331,22 +5469,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      soci: {},
-      totSoci: 0
+      filtro: '',
+      prelevati: {}
     };
   },
   created: function created() {
-    this.getSoci();
+    this.filtraggio();
   },
   methods: {
-    getSoci: function getSoci() {
+    filtraggio: function filtraggio() {
       var _this = this;
 
-      axios.get("/api/soci").then(function (res) {
-        _this.soci = res.data.data;
-        _this.totSoci = res.data.data[0].totSoci; //console.log(res.data)
-      })["catch"](function (err) {
-        return consolo.log(err);
+      axios.get('/api/soci/visualizzaDinamica/' + this.filtro).then(function (res) {
+        _this.prelevati = res.data.data; //console.log(this.prelevati)
       });
     }
   }
@@ -51281,7 +51416,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "prenSpeciali" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Prenotazioni Speciali")
                   ])
                 ],
@@ -51298,7 +51433,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "cancSpeciali" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Cancellazioni Speciali")
                   ])
                 ],
@@ -51315,7 +51450,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "cancellaOraSocio" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Cancella Ora")
                   ])
                 ],
@@ -51332,8 +51467,32 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "inserisciSocio" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Inserisci Socio")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        { staticStyle: { "line-height": "30px !important" } },
+        [
+          _c(
+            "v-col",
+            [
+              _c(
+                "router-link",
+                { attrs: { to: "sociAdmin" } },
+                [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
+                    _vm._v("Calcetto")
                   ])
                 ],
                 1
@@ -51347,22 +51506,9 @@ var render = function() {
             [
               _c(
                 "router-link",
-                { attrs: { to: "sociAdmin" } },
-                [_c("v-btn", { attrs: { color: "blue" } }, [_vm._v("Soci")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            [
-              _c(
-                "router-link",
                 { attrs: { to: "stornaCredito" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Storna Credito")
                   ])
                 ],
@@ -51379,7 +51525,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "ricaricaCredito" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Ricarica Credito")
                   ])
                 ],
@@ -51396,7 +51542,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "insNews" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { width: "250px", color: "blue" } }, [
                     _vm._v("Inserimento News")
                   ])
                 ],
@@ -51574,7 +51720,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "modifica" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { color: "blue", width: "200px" } }, [
                     _vm._v("Modifica Dati")
                   ])
                 ],
@@ -51591,7 +51737,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "caricaFoto" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { color: "blue", width: "200px" } }, [
                     _vm._v("Carica Foto")
                   ])
                 ],
@@ -51608,7 +51754,7 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "cancellaOra" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
+                  _c("v-btn", { attrs: { color: "blue", width: "200px" } }, [
                     _vm._v("Cancella Ora")
                   ])
                 ],
@@ -51625,23 +51771,10 @@ var render = function() {
                 "router-link",
                 { attrs: { to: "cercaAmico" } },
                 [
-                  _c("v-btn", { attrs: { color: "blue" } }, [
-                    _vm._v("Cerca un amico")
+                  _c("v-btn", { attrs: { color: "blue", width: "200px" } }, [
+                    _vm._v("Cerca Socio")
                   ])
                 ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "soci" } },
-                [_c("v-btn", { attrs: { color: "blue" } }, [_vm._v("Soci")])],
                 1
               )
             ],
@@ -52184,10 +52317,7 @@ var render = function() {
                                               { attrs: { left: "" } },
                                               [
                                                 _c("v-img", {
-                                                  attrs: {
-                                                    src:
-                                                      "https://cdn.vuetifyjs.com/images/john.png"
-                                                  }
+                                                  attrs: { src: _vm.foto1 }
                                                 })
                                               ],
                                               1
@@ -52208,7 +52338,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                1725491304
+                                2861310095
                               ),
                               model: {
                                 value: _vm.menu1,
@@ -52235,10 +52365,7 @@ var render = function() {
                                             "v-list-item-avatar",
                                             [
                                               _c("v-img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://cdn.vuetifyjs.com/images/john.png"
-                                                }
+                                                attrs: { src: _vm.foto1 }
                                               })
                                             ],
                                             1
@@ -52360,10 +52487,7 @@ var render = function() {
                                               { attrs: { left: "" } },
                                               [
                                                 _c("v-img", {
-                                                  attrs: {
-                                                    src:
-                                                      "https://cdn.vuetifyjs.com/images/john.png"
-                                                  }
+                                                  attrs: { src: _vm.foto3 }
                                                 })
                                               ],
                                               1
@@ -52384,7 +52508,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                3677145557
+                                2698673200
                               ),
                               model: {
                                 value: _vm.menu2,
@@ -52411,10 +52535,7 @@ var render = function() {
                                             "v-list-item-avatar",
                                             [
                                               _c("v-img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://cdn.vuetifyjs.com/images/john.png"
-                                                }
+                                                attrs: { src: _vm.foto3 }
                                               })
                                             ],
                                             1
@@ -52550,10 +52671,7 @@ var render = function() {
                                               { attrs: { left: "" } },
                                               [
                                                 _c("v-img", {
-                                                  attrs: {
-                                                    src:
-                                                      "https://cdn.vuetifyjs.com/images/john.png"
-                                                  }
+                                                  attrs: { src: _vm.foto2 }
                                                 })
                                               ],
                                               1
@@ -52574,7 +52692,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                3172356811
+                                854580911
                               ),
                               model: {
                                 value: _vm.menu3,
@@ -52601,10 +52719,7 @@ var render = function() {
                                             "v-list-item-avatar",
                                             [
                                               _c("v-img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://cdn.vuetifyjs.com/images/john.png"
-                                                }
+                                                attrs: { src: _vm.foto2 }
                                               })
                                             ],
                                             1
@@ -52726,10 +52841,7 @@ var render = function() {
                                               { attrs: { left: "" } },
                                               [
                                                 _c("v-img", {
-                                                  attrs: {
-                                                    src:
-                                                      "https://cdn.vuetifyjs.com/images/john.png"
-                                                  }
+                                                  attrs: { src: _vm.foto4 }
                                                 })
                                               ],
                                               1
@@ -52750,7 +52862,7 @@ var render = function() {
                                 ],
                                 null,
                                 false,
-                                3526618866
+                                389159376
                               ),
                               model: {
                                 value: _vm.menu4,
@@ -52777,10 +52889,7 @@ var render = function() {
                                             "v-list-item-avatar",
                                             [
                                               _c("v-img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://cdn.vuetifyjs.com/images/john.png"
-                                                }
+                                                attrs: { src: _vm.foto4 }
                                               })
                                             ],
                                             1
@@ -52975,10 +53084,7 @@ var render = function() {
                                           { attrs: { left: "" } },
                                           [
                                             _c("v-img", {
-                                              attrs: {
-                                                src:
-                                                  "https://cdn.vuetifyjs.com/images/john.png"
-                                              }
+                                              attrs: { src: _vm.foto1 }
                                             })
                                           ],
                                           1
@@ -52997,7 +53103,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            1725491304
+                            2861310095
                           ),
                           model: {
                             value: _vm.menu1,
@@ -53024,10 +53130,7 @@ var render = function() {
                                         "v-list-item-avatar",
                                         [
                                           _c("v-img", {
-                                            attrs: {
-                                              src:
-                                                "https://cdn.vuetifyjs.com/images/john.png"
-                                            }
+                                            attrs: { src: _vm.foto1 }
                                           })
                                         ],
                                         1
@@ -53149,10 +53252,7 @@ var render = function() {
                                           { attrs: { left: "" } },
                                           [
                                             _c("v-img", {
-                                              attrs: {
-                                                src:
-                                                  "https://cdn.vuetifyjs.com/images/john.png"
-                                              }
+                                              attrs: { src: _vm.foto2 }
                                             })
                                           ],
                                           1
@@ -53171,7 +53271,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            2035523764
+                            1703984400
                           ),
                           model: {
                             value: _vm.menu2,
@@ -53198,10 +53298,7 @@ var render = function() {
                                         "v-list-item-avatar",
                                         [
                                           _c("v-img", {
-                                            attrs: {
-                                              src:
-                                                "https://cdn.vuetifyjs.com/images/john.png"
-                                            }
+                                            attrs: { src: _vm.foto2 }
                                           })
                                         ],
                                         1
@@ -53949,14 +54046,7 @@ var render = function() {
                                 [
                                   _c(
                                     "v-list-item-avatar",
-                                    [
-                                      _c("v-img", {
-                                        attrs: {
-                                          src:
-                                            "https://cdn.vuetifyjs.com/images/john.png"
-                                        }
-                                      })
-                                    ],
+                                    [_c("v-img", { attrs: { src: _vm.foto } })],
                                     1
                                   ),
                                   _vm._v(" "),
@@ -54014,7 +54104,8 @@ var render = function() {
                               _c(
                                 "v-list-item",
                                 [
-                                  _vm.stato == "gratis"
+                                  _vm.stato == "gratis" ||
+                                  _vm.stato == "illimitati"
                                     ? _c("v-list-item-subtitle", [
                                         _vm._v(
                                           "Ore gratis: " + _vm._s(_vm.privilegi)
@@ -54992,23 +55083,45 @@ var render = function() {
           "div",
           [
             _c(
-              "v-row",
+              "v-list-item",
               [
                 _c(
-                  "v-col",
-                  _vm._l(_vm.prenotazioni, function(prenotazione, i) {
-                    return _c("canc-prenotazioni", {
-                      key: prenotazione.id,
-                      attrs: { pren: prenotazione, indice: i }
-                    })
-                  }),
+                  "v-row",
+                  {
+                    staticStyle: {
+                      border: "1px solid gray",
+                      display: "flex",
+                      "align-items": "center"
+                    },
+                    attrs: { "auto-grow": "" }
+                  },
+                  [
+                    _c("v-col", [_vm._v("Data:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Campo:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Ora:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Tipo:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Partecipanti:")]),
+                    _vm._v(" "),
+                    _c("v-col", [_vm._v("Azione:")])
+                  ],
                   1
                 )
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.prenotazioni, function(prenotazione, i) {
+              return _c("canc-prenotazioni", {
+                key: prenotazione.id,
+                attrs: { pren: prenotazione, indice: i }
+              })
+            })
           ],
-          1
+          2
         )
   ])
 }
@@ -55019,10 +55132,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -55034,7 +55147,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("miao")])
+  return _c(
+    "v-container",
+    [
+      _c("v-row", [_c("v-col", [_c("h2", [_vm._v("Inserimento Socio")])])], 1),
+      _vm._v(" "),
+      _c(
+        "v-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.inserisci($event)
+            }
+          }
+        },
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Nome", required: "" },
+                model: {
+                  value: _vm.Socio.nome,
+                  callback: function($$v) {
+                    _vm.$set(_vm.Socio, "nome", $$v)
+                  },
+                  expression: "Socio.nome"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Cognome", required: "" },
+                model: {
+                  value: _vm.Socio.cognome,
+                  callback: function($$v) {
+                    _vm.$set(_vm.Socio, "cognome", $$v)
+                  },
+                  expression: "Socio.cognome"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
+            [
+              _c("v-text-field", {
+                attrs: { label: "Anno di nascita", required: "" },
+                model: {
+                  value: _vm.Socio.anno,
+                  callback: function($$v) {
+                    _vm.$set(_vm.Socio, "anno", $$v)
+                  },
+                  expression: "Socio.anno"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "6" } },
+            [
+              _c("v-select", {
+                attrs: {
+                  items: _vm.valori,
+                  "item-text": "visualizza",
+                  "item-value": "valore",
+                  label: "Tipo Socio"
+                },
+                model: {
+                  value: _vm.Socio.stato,
+                  callback: function($$v) {
+                    _vm.$set(_vm.Socio, "stato", $$v)
+                  },
+                  expression: "Socio.stato"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { staticClass: "mt-3", attrs: { color: "green", type: "submit" } },
+            [_vm._v("\n            Inserisci\n        ")]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55348,7 +55564,7 @@ var render = function() {
               _vm._v(" "),
               _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.cognome) + " ")]),
               _vm._v(" "),
-              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.credito) + " ")]),
+              _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.credito) + "  ")]),
               _vm._v(" "),
               _c("v-col", [_vm._v(" " + _vm._s(_vm.socio.anno) + " ")]),
               _vm._v(" "),
@@ -55873,10 +56089,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -55909,21 +56125,9 @@ var render = function() {
                   }
                 },
                 [
-                  _c("v-file-input", {
-                    attrs: {
-                      label: "Immagine",
-                      "prepend-icon": "mdi-camera",
-                      placeholder: "Seleziona un'immagine",
-                      accept: "image/jpeg"
-                    },
-                    on: { change: _vm.carica },
-                    model: {
-                      value: _vm.nome,
-                      callback: function($$v) {
-                        _vm.nome = $$v
-                      },
-                      expression: "nome"
-                    }
+                  _c("input", {
+                    attrs: { type: "file" },
+                    on: { change: _vm.onFileSelected }
                   }),
                   _vm._v(" "),
                   _c("v-btn", { attrs: { color: "green", type: "submit" } }, [
@@ -55965,10 +56169,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -55981,7 +56185,158 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-form",
+    "v-card",
+    { staticClass: "mx-auto mb-5", attrs: { "max-width": "250" } },
+    [
+      _c("v-img", {
+        attrs: { src: _vm.socio.foto, height: "250px", width: "250px" }
+      }),
+      _vm._v(" "),
+      _c("v-card-title", { staticStyle: { "font-size": "15px" } }, [
+        _vm._v(
+          "\n        " +
+            _vm._s(_vm.socio.cognome) +
+            " " +
+            _vm._s(_vm.socio.nome) +
+            "\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("v-card-subtitle", [
+        _vm._v(
+          "\n        Anno di nascita: " + _vm._s(_vm.socio.anno) + "\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-card-actions",
+        [
+          _c("v-btn", { attrs: { color: "purple", text: "" } }, [
+            _vm._v("\n            Invita\n        ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { persistent: "", "max-width": "600" },
+              scopedSlots: _vm._u([
+                {
+                  key: "activator",
+                  fn: function(ref) {
+                    var on = ref.on
+                    return [
+                      _vm.socio.telegram
+                        ? _c(
+                            "v-btn",
+                            _vm._g({ attrs: { text: "" } }, on),
+                            [
+                              _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                                _vm._v("mdi-telegram")
+                              ]),
+                              _vm._v("Telegram\n                ")
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ]
+                  }
+                }
+              ]),
+              model: {
+                value: _vm.dialog,
+                callback: function($$v) {
+                  _vm.dialog = $$v
+                },
+                expression: "dialog"
+              }
+            },
+            [
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", { staticClass: "headline" }, [
+                    _vm._v("Invia un messaggio")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-textarea", {
+                    staticClass: "mx-3",
+                    attrs: { solo: "", rows: "4", label: "Testo messaggio" },
+                    model: {
+                      value: _vm.testoMessaggio,
+                      callback: function($$v) {
+                        _vm.testoMessaggio = $$v
+                      },
+                      expression: "testoMessaggio"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "indigo", text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialog = false
+                            }
+                          }
+                        },
+                        [_vm._v("Cancella")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "green darken-1", text: "" },
+                          on: { click: _vm.invia }
+                        },
+                        [_vm._v("Invia")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
     [
       _c(
         "v-row",
@@ -56011,190 +56366,16 @@ var render = function() {
       _c(
         "v-row",
         {
-          staticStyle: {
-            border: "1px solid gray",
-            display: "flex",
-            "align-items": "center"
-          },
+          staticStyle: { display: "flex", "justify-content": "start" },
           attrs: { "auto-grow": "" }
         },
-        [
-          [
-            _c(
-              "v-col",
-              [
-                _c(
-                  "v-card",
-                  { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
-                  _vm._l(_vm.prelevati, function(socio) {
-                    return _c("socio", {
-                      key: socio.nome,
-                      attrs: { socio: socio }
-                    })
-                  }),
-                  1
-                )
-              ],
-              1
-            )
-          ]
-        ],
-        2
+        _vm._l(_vm.prelevati, function(socio) {
+          return _c("socio", { key: socio.nome, attrs: { socio: socio } })
+        }),
+        1
       )
     ],
     1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-card",
-    { staticClass: "mx-auto", attrs: { "max-width": "544" } },
-    [
-      _c("v-img", { attrs: { src: _vm.socio.foto, height: "400px" } }),
-      _vm._v(" "),
-      _c("v-card-title", [
-        _vm._v(
-          "\n        " +
-            _vm._s(_vm.socio.nome) +
-            " " +
-            _vm._s(_vm.socio.cognome) +
-            "\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("v-card-subtitle", [
-        _vm._v(
-          "\n        Anno di nascita: " + _vm._s(_vm.socio.anno) + "\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-card-actions",
-        [
-          _c("v-btn", { attrs: { text: "" } }, [_vm._v("Contatta")]),
-          _vm._v(" "),
-          _c("v-btn", { attrs: { color: "purple", text: "" } }, [
-            _vm._v("\n            Invita\n        ")
-          ]),
-          _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { icon: "" },
-              on: {
-                click: function($event) {
-                  _vm.show = !_vm.show
-                }
-              }
-            },
-            [
-              _c("v-icon", [
-                _vm._v(_vm._s(_vm.show ? "mdi-chevron-up" : "mdi-chevron-down"))
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-expand-transition", [
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.show,
-                expression: "show"
-              }
-            ]
-          },
-          [
-            _c("v-divider"),
-            _vm._v(" "),
-            _c("v-card-text", [
-              _vm._v(
-                "\n                I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.\n            "
-              )
-            ])
-          ],
-          1
-        )
-      ])
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-row",
-    { attrs: { "no-gutters": "" } },
-    [
-      _vm._l(_vm.totSoci, function(n) {
-        return [
-          _c(
-            "v-col",
-            { key: n },
-            [
-              _c(
-                "v-card",
-                { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
-                [_c("socio", { attrs: { socio: _vm.soci[n - 1] } })],
-                1
-              )
-            ],
-            1
-          )
-        ]
-      })
-    ],
-    2
   )
 }
 var staticRenderFns = []
@@ -114597,18 +114778,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/login/Logout */ "./resources/js/components/login/Logout.vue");
 /* harmony import */ var _components_login_Registrati__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/login/Registrati */ "./resources/js/components/login/Registrati.vue");
 /* harmony import */ var _components_pannelloUser_modificaUser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/pannelloUser/modificaUser */ "./resources/js/components/pannelloUser/modificaUser.vue");
-/* harmony import */ var _components_pannelloUser_caricaFoto__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/pannelloUser/caricaFoto */ "./resources/js/components/pannelloUser/caricaFoto.vue");
+/* harmony import */ var _components_pannelloUser_caricaFoto_caricaFoto__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/pannelloUser/caricaFoto/caricaFoto */ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue");
 /* harmony import */ var _components_pannelloUser_cancella_moduloCancella__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/pannelloUser/cancella/moduloCancella */ "./resources/js/components/pannelloUser/cancella/moduloCancella.vue");
-/* harmony import */ var _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/pannelloUser/cercaAmico */ "./resources/js/components/pannelloUser/cercaAmico.vue");
-/* harmony import */ var _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/pannelloUser/listaSoci/listaSoci */ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue");
-/* harmony import */ var _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/pannelloAdmin/prenSpeciali */ "./resources/js/components/pannelloAdmin/prenSpeciali.vue");
-/* harmony import */ var _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/pannelloAdmin/cancSpeciali */ "./resources/js/components/pannelloAdmin/cancSpeciali.vue");
-/* harmony import */ var _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue");
-/* harmony import */ var _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/pannelloAdmin/inserisciSocio */ "./resources/js/components/pannelloAdmin/inserisciSocio.vue");
-/* harmony import */ var _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/pannelloAdmin/sociAdmin */ "./resources/js/components/pannelloAdmin/sociAdmin.vue");
-/* harmony import */ var _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue");
-/* harmony import */ var _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/pannelloAdmin/ricaricaCredito/ricaricaCredito */ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue");
-/* harmony import */ var _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/pannelloAdmin/news/insNews */ "./resources/js/components/pannelloAdmin/news/insNews.vue");
+/* harmony import */ var _components_pannelloUser_cercaAmico_cercaAmico__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/pannelloUser/cercaAmico/cercaAmico */ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue");
+/* harmony import */ var _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/pannelloAdmin/prenSpeciali */ "./resources/js/components/pannelloAdmin/prenSpeciali.vue");
+/* harmony import */ var _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/pannelloAdmin/cancSpeciali */ "./resources/js/components/pannelloAdmin/cancSpeciali.vue");
+/* harmony import */ var _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin */ "./resources/js/components/pannelloAdmin/cancellaAdmin/padreCancellaAdmin.vue");
+/* harmony import */ var _components_pannelloAdmin_inserimentoSocio_inserisciSocio__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/pannelloAdmin/inserimentoSocio/inserisciSocio */ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue");
+/* harmony import */ var _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/pannelloAdmin/sociAdmin */ "./resources/js/components/pannelloAdmin/sociAdmin.vue");
+/* harmony import */ var _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/pannelloAdmin/stornaCredito/stornaCredito */ "./resources/js/components/pannelloAdmin/stornaCredito/stornaCredito.vue");
+/* harmony import */ var _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/pannelloAdmin/ricaricaCredito/ricaricaCredito */ "./resources/js/components/pannelloAdmin/ricaricaCredito/ricaricaCredito.vue");
+/* harmony import */ var _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/pannelloAdmin/news/insNews */ "./resources/js/components/pannelloAdmin/news/insNews.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -114620,7 +114800,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
-
+ //import Soci from '../components/pannelloUser/listaSoci/listaSoci'
 
 
 
@@ -114657,7 +114837,7 @@ var routes = [{
   }
 }, {
   path: '/caricaFoto',
-  component: _components_pannelloUser_caricaFoto__WEBPACK_IMPORTED_MODULE_8__["default"],
+  component: _components_pannelloUser_caricaFoto_caricaFoto__WEBPACK_IMPORTED_MODULE_8__["default"],
   meta: {
     requiresAuth: true
   }
@@ -114669,67 +114849,57 @@ var routes = [{
   }
 }, {
   path: '/cercaAmico',
-  component: _components_pannelloUser_cercaAmico__WEBPACK_IMPORTED_MODULE_10__["default"],
+  component: _components_pannelloUser_cercaAmico_cercaAmico__WEBPACK_IMPORTED_MODULE_10__["default"],
   meta: {
     requiresAuth: true
   }
-}, {
-  path: '/soci',
-  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"],
-  meta: {
-    requiresAuth: true
-  }
-}, {
-  path: '/contatti',
-  component: _components_pannelloUser_listaSoci_listaSoci__WEBPACK_IMPORTED_MODULE_11__["default"],
-  meta: {
-    requiresAuth: true
-  }
-}, {
+}, // { path: '/soci', component: Soci, meta: {requiresAuth: true} },
+// { path: '/contatti', component: Soci, meta: {requiresAuth: true} },
+{
   path: '/prenSpeciali',
-  component: _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_12__["default"],
+  component: _components_pannelloAdmin_prenSpeciali__WEBPACK_IMPORTED_MODULE_11__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/cancSpeciali',
-  component: _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_13__["default"],
+  component: _components_pannelloAdmin_cancSpeciali__WEBPACK_IMPORTED_MODULE_12__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/cancellaOraSocio',
-  component: _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_14__["default"],
+  component: _components_pannelloAdmin_cancellaAdmin_padreCancellaAdmin__WEBPACK_IMPORTED_MODULE_13__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/inserisciSocio',
-  component: _components_pannelloAdmin_inserisciSocio__WEBPACK_IMPORTED_MODULE_15__["default"],
+  component: _components_pannelloAdmin_inserimentoSocio_inserisciSocio__WEBPACK_IMPORTED_MODULE_14__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/sociAdmin',
-  component: _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_16__["default"],
+  component: _components_pannelloAdmin_sociAdmin__WEBPACK_IMPORTED_MODULE_15__["default"],
   meta: {
     requiresAuth: true
   }
 }, {
   path: '/stornaCredito',
-  component: _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_17__["default"],
+  component: _components_pannelloAdmin_stornaCredito_stornaCredito__WEBPACK_IMPORTED_MODULE_16__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/ricaricaCredito',
-  component: _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_18__["default"],
+  component: _components_pannelloAdmin_ricaricaCredito_ricaricaCredito__WEBPACK_IMPORTED_MODULE_17__["default"],
   meta: {
     requiresAdmin: true
   }
 }, {
   path: '/insNews',
-  component: _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_19__["default"]
+  component: _components_pannelloAdmin_news_insNews__WEBPACK_IMPORTED_MODULE_18__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
@@ -115593,18 +115763,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/inserisciSocio.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/inserisciSocio.vue ***!
-  \******************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inserisciSocio.vue?vue&type=template&id=0e7f51f0& */ "./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0&");
-/* harmony import */ var _inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inserisciSocio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inserisciSocio.vue?vue&type=template&id=13832051& */ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051&");
+/* harmony import */ var _inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inserisciSocio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -115614,8 +115784,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -115625,38 +115795,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloAdmin/inserisciSocio.vue"
+component.options.__file = "resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./inserisciSocio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./inserisciSocio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051& ***!
+  \******************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./inserisciSocio.vue?vue&type=template&id=0e7f51f0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserisciSocio.vue?vue&type=template&id=0e7f51f0&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./inserisciSocio.vue?vue&type=template&id=13832051& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloAdmin/inserimentoSocio/inserisciSocio.vue?vue&type=template&id=13832051&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_0e7f51f0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_inserisciSocio_vue_vue_type_template_id_13832051___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -116301,18 +116471,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/caricaFoto.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/caricaFoto.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./caricaFoto.vue?vue&type=template&id=09877d45& */ "./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45&");
-/* harmony import */ var _caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./caricaFoto.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./caricaFoto.vue?vue&type=template&id=ded523de& */ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de&");
+/* harmony import */ var _caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./caricaFoto.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -116322,8 +116492,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -116333,123 +116503,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloUser/caricaFoto.vue"
+component.options.__file = "resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./caricaFoto.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./caricaFoto.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./caricaFoto.vue?vue&type=template&id=09877d45& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto.vue?vue&type=template&id=09877d45&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./caricaFoto.vue?vue&type=template&id=ded523de& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/caricaFoto/caricaFoto.vue?vue&type=template&id=ded523de&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_09877d45___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_caricaFoto_vue_vue_type_template_id_ded523de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/cercaAmico.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/cercaAmico.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/Socio.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cercaAmico.vue?vue&type=template&id=4dfcb449& */ "./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449&");
-/* harmony import */ var _cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cercaAmico.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloUser/cercaAmico.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./cercaAmico.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449& ***!
-  \********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./cercaAmico.vue?vue&type=template&id=4dfcb449& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico.vue?vue&type=template&id=4dfcb449&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_4dfcb449___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/pannelloUser/listaSoci/Socio.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/Socio.vue ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=340a52a5&scoped=true& */ "./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true&");
-/* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Socio.vue?vue&type=template&id=67871687&scoped=true& */ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true&");
+/* harmony import */ var _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Socio.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -116460,65 +116561,65 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "340a52a5",
+  "67871687",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloUser/listaSoci/Socio.vue"
+component.options.__file = "resources/js/components/pannelloUser/cercaAmico/Socio.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true&":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true& ***!
-  \*************************************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true& ***!
+  \**************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=template&id=340a52a5&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/Socio.vue?vue&type=template&id=340a52a5&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Socio.vue?vue&type=template&id=67871687&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/Socio.vue?vue&type=template&id=67871687&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_340a52a5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Socio_vue_vue_type_template_id_67871687_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/listaSoci.vue ***!
-  \**********************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./listaSoci.vue?vue&type=template&id=26563886& */ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886&");
-/* harmony import */ var _listaSoci_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listaSoci.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js&");
+/* harmony import */ var _cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cercaAmico.vue?vue&type=template&id=2278b8de& */ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de&");
+/* harmony import */ var _cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cercaAmico.vue?vue&type=script&lang=js& */ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -116528,9 +116629,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _listaSoci_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -116540,38 +116641,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/pannelloUser/listaSoci/listaSoci.vue"
+component.options.__file = "resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_listaSoci_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./listaSoci.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_listaSoci_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cercaAmico.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886& ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./listaSoci.vue?vue&type=template&id=26563886& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/listaSoci/listaSoci.vue?vue&type=template&id=26563886&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cercaAmico.vue?vue&type=template&id=2278b8de& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pannelloUser/cercaAmico/cercaAmico.vue?vue&type=template&id=2278b8de&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_listaSoci_vue_vue_type_template_id_26563886___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cercaAmico_vue_vue_type_template_id_2278b8de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
