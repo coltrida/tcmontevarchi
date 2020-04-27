@@ -38,4 +38,14 @@ class AdminController extends Controller
             $utente->save();
         }
     }
+
+    public function prenotazioneParticolare(Request $request)
+    {
+
+    }
+
+    public function cancellazioneParticolare(Request $request)
+    {
+
+    }
 }

@@ -38,4 +38,6 @@ Route::group([
     Route::post('ricaricaCredito/{user}', 'AdminController@ricaricaCredito');
     Route::post('stornaCredito/{user}', 'AdminController@stornaCredito');
     Route::post('inserisciSocio', 'AdminController@inserisciSocio');
+    Route::post('prenParticolare', 'AdminController@prenotazioneParticolare');
+    Route::post('cancParticolare', 'AdminController@cancellazioneParticolare');
 });
