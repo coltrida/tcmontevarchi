@@ -7,12 +7,13 @@
         <label for="inizio">Da</label>
           <input type="date" id="inizio" v-model="calendInizio"
             min="2020-01-01" max="2020-12-31">
-        <label for="fine">Da</label>
-          <input type="date" id="fine" v-model="calendFine"
+        <label for="fine">A</label>
+          <input type="date" id="fine" v-model="calendFine" value="calendInizio"
             min="2020-01-01" max="2020-12-31">
         <v-row align="center">
           <v-col class="d-flex" cols="12" sm="6">
             <v-select 
+            @change="visulOra"
             v-model="selezionato"
             :items="campi"
             item-value="campo"
@@ -31,6 +32,9 @@
           label="ora"
           type="time"
           suffix=""
+          :step= 'minute'
+          min='09:00'
+          max='22:00'
           ></v-text-field>
         </v-col>
        </v-row>
@@ -40,10 +44,13 @@
       </v-col>
       <v-col cols="2">
         <v-text-field
-            v-model="oraOut"
+          v-model="oraOut"
           label="ora"
           type="time"
           suffix=""
+          :step= 'minute'
+          min='09:00'
+          max='22:00'
         ></v-text-field>
       </v-col>
     </v-row>
@@ -60,6 +67,7 @@
 <script>
 export default {
     data: () => ({
+        minute: 0,
         selezionato: '',
         calendInizio:'',
         calendFine:'',
@@ -87,14 +95,15 @@ export default {
               },],
     }),
     methods: {
-        prova (){
-            console.log(this.oraIn);
-        },
+        visulOra (){
+             if(this.selezionato == 'campo1' || this.selezionato == 'campo2' ){
+               this.minute = 3600
+             }else{ this.minute =1800}        },
   inviaForm () {
       
-    let data = { campo: this.selezionato, dataIn: this.calendInizio, dataOut: this.calendFine, 
+    let formData = { campo: this.selezionato, dataIn: this.calendInizio, dataOut: this.calendFine, 
                 oraIn : this.oraIn, oraOut : this.oraOut }
-    axios.post('api/admin/cancParticolare', data)
+    axios.post('api/admin/cancParticolare', formData)
     .then(function (response) {
        //console.log(response);
     })

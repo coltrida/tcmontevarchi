@@ -4260,9 +4260,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      minute: 0,
       selezionato: '',
       calendInizio: '',
       calendFine: '',
@@ -4280,8 +4288,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    prova: function prova() {
-      console.log(this.oraIn);
+    visulOra: function visulOra() {
+      if (this.selezionato == 'campo1' || this.selezionato == 'campo2') {
+        this.minute = 3600;
+      } else {
+        this.minute = 1800;
+      }
     },
     inviaForm: function inviaForm() {
       var data = {
@@ -4769,9 +4781,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      minute: 0,
       selezionato: '',
       calendInizio: '',
       calendFine: '',
@@ -4790,17 +4810,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     prova: function prova() {
-      console.log(this.oraIn);
+      $refs.inizio.value = '2020-06-01';
+    },
+    visulOra: function visulOra() {
+      if (this.selezionato == 'campo1' || this.selezionato == 'campo2') {
+        this.minute = 3600;
+      } else {
+        this.minute = 1800;
+      }
     },
     inviaForm: function inviaForm() {
-      var data = {
+      var formData = {
         campo: this.selezionato,
         dataIn: this.calendInizio,
         dataOut: this.calendFine,
         oraIn: this.oraIn,
         oraOut: this.oraOut
       };
-      axios.post('/api/admin/prenParticolare', data).then(function (response) {//console.log(response);
+      axios.post('/api/admin/prenParticolare', formData).then(function (response) {//console.log(response);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -54704,7 +54731,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("label", { attrs: { for: "fine" } }, [_vm._v("Da")]),
+          _c("label", { attrs: { for: "fine" } }, [_vm._v("A")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -54718,6 +54745,7 @@ var render = function() {
             attrs: {
               type: "date",
               id: "fine",
+              value: "calendInizio",
               min: "2020-01-01",
               max: "2020-12-31"
             },
@@ -54747,6 +54775,7 @@ var render = function() {
                       "item-text": "campo",
                       label: "Seleziona campo"
                     },
+                    on: { change: _vm.visulOra },
                     model: {
                       value: _vm.selezionato,
                       callback: function($$v) {
@@ -54777,7 +54806,14 @@ var render = function() {
                 { attrs: { cols: "2" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "ora", type: "time", suffix: "" },
+                    attrs: {
+                      label: "ora",
+                      type: "time",
+                      suffix: "",
+                      step: _vm.minute,
+                      min: "09:00",
+                      max: "22:00"
+                    },
                     model: {
                       value: _vm.oraIn,
                       callback: function($$v) {
@@ -54808,7 +54844,14 @@ var render = function() {
                 { attrs: { cols: "2" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "ora", type: "time", suffix: "" },
+                    attrs: {
+                      label: "ora",
+                      type: "time",
+                      suffix: "",
+                      step: _vm.minute,
+                      min: "09:00",
+                      max: "22:00"
+                    },
                     model: {
                       value: _vm.oraOut,
                       callback: function($$v) {
@@ -55342,6 +55385,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.inviaForm($event)
             }
           }
         },
@@ -55364,11 +55408,12 @@ var render = function() {
                 expression: "calendInizio"
               }
             ],
+            ref: "inizio",
             attrs: {
               type: "date",
-              id: "inizio",
               min: "2020-01-01",
-              max: "2020-12-31"
+              max: "2020-12-31",
+              value: "2020-06-01"
             },
             domProps: { value: _vm.calendInizio },
             on: {
@@ -55381,7 +55426,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("label", { attrs: { for: "fine" } }, [_vm._v("Da")]),
+          _c("label", { attrs: { for: "fine" } }, [_vm._v("A")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -55424,6 +55469,7 @@ var render = function() {
                       "item-text": "campo",
                       label: "Seleziona campo"
                     },
+                    on: { change: _vm.visulOra },
                     model: {
                       value: _vm.selezionato,
                       callback: function($$v) {
@@ -55454,7 +55500,14 @@ var render = function() {
                 { attrs: { cols: "2" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "ora", type: "time", suffix: "" },
+                    attrs: {
+                      value: "09:00",
+                      label: "ora",
+                      type: "time",
+                      step: _vm.minute,
+                      min: "09:00",
+                      max: "22:00"
+                    },
                     model: {
                       value: _vm.oraIn,
                       callback: function($$v) {
@@ -55485,7 +55538,14 @@ var render = function() {
                 { attrs: { cols: "2" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "ora", type: "time", suffix: "" },
+                    ref: "blocca",
+                    attrs: {
+                      label: "ora",
+                      type: "time",
+                      step: _vm.minute,
+                      min: "09:00",
+                      max: "22:00"
+                    },
                     model: {
                       value: _vm.oraOut,
                       callback: function($$v) {
@@ -55506,9 +55566,7 @@ var render = function() {
           ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("v-btn", { on: { click: _vm.prova } })
+      )
     ],
     1
   )
