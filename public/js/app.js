@@ -4335,6 +4335,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['pren', 'indice'],
   created: function created() {},
@@ -4503,11 +4506,11 @@ __webpack_require__.r(__webpack_exports__);
       _this2.cambiaComponent = change;
       _this2.idUtente = idsel;
       console.log(idsel);
-      axios.post('/api/auth/prenotazioniUtenteSelezionato/' + idsel).then(function (res) {
+      axios.get('/api/auth/prenotazioniUtenteSelezionato/' + idsel).then(function (res) {
         return _this2.prenotazioni = res.data.data;
       } //console.log(this.prenotazioni)
       );
-    }), EventBus.$on('cancellaPren', function (id, i) {
+    }), EventBus.$on('cancellaPren', function (i, id) {
       var costoPrenotazione = 0;
 
       if (_this2.stato == 'gratis') {
@@ -4539,8 +4542,8 @@ __webpack_require__.r(__webpack_exports__);
           _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_3__["default"].storeCredito(_this2.credito);
         }
 
-      axios["delete"]('/api/prenotazioni/' + id + '/' + _this2.idUtente + '/' + _this2.credito + '/' + _this2.privilegi).then(function (i) {
-        _this2.prenotazioni.splice(i, 1);
+      axios["delete"]('/api/prenotazioni/' + id + '/' + _this2.idUtente + '/' + _this2.credito + '/' + _this2.privilegi).then(function () {
+        location.reload();
       });
     });
   }
@@ -54922,6 +54925,20 @@ var render = function() {
           _c("v-col", [_vm._v(_vm._s(_vm.pren.campo))]),
           _vm._v(" "),
           _c("v-col", [_vm._v(_vm._s(_vm.pren.oraon))]),
+          _vm._v(" "),
+          _c("v-col", [_vm._v(_vm._s(_vm.pren.doppio))]),
+          _vm._v(" "),
+          _c("v-col", [
+            _vm._v(
+              _vm._s(_vm.pren.username1) +
+                " " +
+                _vm._s(_vm.pren.username2) +
+                "\n             " +
+                _vm._s(_vm.pren.username3) +
+                " " +
+                _vm._s(_vm.pren.username4)
+            )
+          ]),
           _vm._v(" "),
           _c(
             "v-col",

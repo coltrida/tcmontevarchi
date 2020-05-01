@@ -4,6 +4,9 @@
             <v-col>{{pren.dataprenotazione}}</v-col>
             <v-col>{{pren.campo}}</v-col>
             <v-col>{{pren.oraon}}</v-col>
+            <v-col>{{pren.doppio}}</v-col>
+            <v-col>{{pren.username1}} {{pren.username2}}
+                {{pren.username3}} {{pren.username4}}</v-col>
             <v-col>
                 <v-card-actions >
                     <v-btn @click="cancella" color="red">cancella</v-btn>

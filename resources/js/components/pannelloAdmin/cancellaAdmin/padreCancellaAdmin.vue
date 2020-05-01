@@ -94,12 +94,12 @@ export default {
         this.cambiaComponent = change;
         this.idUtente= idsel;
         console.log(idsel)
-        axios.post('/api/auth/prenotazioniUtenteSelezionato/'+idsel ).then(
+        axios.get('/api/auth/prenotazioniUtenteSelezionato/'+idsel ).then(
               res => this.prenotazioni = res.data.data,
               //console.log(this.prenotazioni)
          )}
       ),
-    EventBus.$on('cancellaPren', (id, i) => {
+    EventBus.$on('cancellaPren', (i, id) => {
              let costoPrenotazione = 0
             if(this.stato == 'gratis'){
                 /* ------------ RICARICA  I PRIVILEGI ---------------*/
@@ -131,8 +131,8 @@ export default {
             }
 
             axios.delete('/api/prenotazioni/'+id+'/'+this.idUtente+'/'+this.credito+'/'+this.privilegi).then(
-                (i) => {
-                    this.prenotazioni.splice(i ,1)
+                () => {
+                    location.reload()
                 })
         })
         
