@@ -82,20 +82,21 @@ export default {
     methods:{
     filtraggio: function(){
       axios.post('/api/auth/users/'+this.filtro).then(
-        res => {this.prelevati= res.data
-        //console.log(res.data)
+        res => {this.prelevati= res.data.data
+        //console.log(res.data.data)
         }
       )
     }
   },
     created(){
 
-      EventBus.$on('cancellazione',(id,change) =>{
+      EventBus.$on('cancellazione',(idsel,change) =>{
         this.cambiaComponent = change;
-        this.idUtente= id;
-        axios.post('/api/auth/prenotazioniUtenteSelezionato/', {utente: id} ).then(
+        this.idUtente= idsel;
+        console.log(idsel)
+        axios.post('/api/auth/prenotazioniUtenteSelezionato/'+idsel ).then(
               res => this.prenotazioni = res.data.data,
-              console.log(this.prenotazioni)
+              //console.log(this.prenotazioni)
          )}
       ),
     EventBus.$on('cancellaPren', (id, i) => {

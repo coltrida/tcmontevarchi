@@ -9,7 +9,7 @@
 
         <v-list two-line subheader>
             <prenotazione
-                v-for="n in 15"
+                v-for="n in 14"
                 :orario='n+8'
                 :prenotazioni="prenotazioni"
                 :prenotazioneremota="prenotazioneremota"
