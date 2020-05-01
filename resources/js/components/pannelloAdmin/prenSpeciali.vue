@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-form @submit.prevent>
+    <v-form @submit.prevent="inviaForm">
         <div id="titolo">
         <v-row><h1>Prenotazioni Speciali</h1></v-row>
         </div>
@@ -41,6 +41,7 @@
             <v-col cols="2">
             <v-text-field
             v-model="oraOut"
+            value="09:00"
             label="ora"
             type="time"
             suffix=""
@@ -58,6 +59,7 @@
 <script>
 export default {
     data: () => ({
+        id: User.id(),
         selezionato: '',
         calendInizio:'',
         calendFine:'',
@@ -91,7 +93,7 @@ export default {
   inviaForm () {
       
     let data = { campo: this.selezionato, dataIn: this.calendInizio, dataOut: this.calendFine, 
-                oraIn : this.oraIn, oraOut : this.oraOut }
+                oraIn : this.oraIn, oraOut : this.oraOut, id: this.id }
     axios.post('/api/admin/prenParticolare', data)
     .then(function (response) {
        //console.log(response);

@@ -4258,8 +4258,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4769,9 +4767,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      id: User.id(),
       selezionato: '',
       calendInizio: '',
       calendFine: '',
@@ -4798,7 +4798,8 @@ __webpack_require__.r(__webpack_exports__);
         dataIn: this.calendInizio,
         dataOut: this.calendFine,
         oraIn: this.oraIn,
-        oraOut: this.oraOut
+        oraOut: this.oraOut,
+        id: this.id
       };
       axios.post('/api/admin/prenParticolare', data).then(function (response) {//console.log(response);
       })["catch"](function (error) {
@@ -5397,14 +5398,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Socio",
   props: ['socio'],
   data: function data() {
     return {
       dialog: false,
+      invioMessaggio: false,
       testoMessaggio: ''
     };
   },
@@ -5420,6 +5420,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         _this.testoMessaggio = '';
         _this.dialog = false;
+        _this.invioMessaggio = true;
         alert('messaggio inviato');
       });
     }
@@ -54665,6 +54666,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.inviaForm($event)
             }
           }
         },
@@ -55342,6 +55344,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.inviaForm($event)
             }
           }
         },
@@ -55485,7 +55488,12 @@ var render = function() {
                 { attrs: { cols: "2" } },
                 [
                   _c("v-text-field", {
-                    attrs: { label: "ora", type: "time", suffix: "" },
+                    attrs: {
+                      value: "09:00",
+                      label: "ora",
+                      type: "time",
+                      suffix: ""
+                    },
                     model: {
                       value: _vm.oraOut,
                       callback: function($$v) {
@@ -116834,8 +116842,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\coltr\Documents\progetti\laravel\laraproject\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\coltrida\Documents\projects\LARAPROJECTS\tcmontevarchi2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

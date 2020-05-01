@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-form @submit.prevent>
+    <v-form @submit.prevent="inviaForm">
         <div id="titolo">
            <v-row><h1>Cancellazioni Speciali</h1></v-row>
         </div>
@@ -52,8 +52,6 @@
     
     <v-btn @click="prova"></v-btn>
     </div>
-     
-         
 
 </template>
 

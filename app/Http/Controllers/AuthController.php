@@ -180,7 +180,8 @@ class AuthController extends Controller
     public function foto(User $user, Request $request)
     {
         $imagename = $user->id.'.jpg';
-        $request->image->storeAs('soci', $imagename);
+        //dd($request->image);
+        $request->image->storeAs('public', $imagename);
     }
 
     public function reimposta(Request $request)

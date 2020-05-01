@@ -52,9 +52,7 @@
                 </v-card>
             </v-dialog>
 
-
         </v-card-actions>
-
     </v-card>
 </template>
 
@@ -66,6 +64,7 @@
 
         data: () => ({
             dialog: false,
+            invioMessaggio: false,
             testoMessaggio:''
         }),
 
@@ -81,6 +80,7 @@
                     .then(() => {
                         this.testoMessaggio = ''
                         this.dialog = false
+                        this.invioMessaggio = true
                         alert('messaggio inviato')
                     })
             }
